@@ -2,13 +2,12 @@ name: Build test for Node.js
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
@@ -18,5 +17,5 @@ jobs:
         with:
           node-version: '16.x'
       - run: yarn
-      - run: yarn build 
+      - run: yarn build
       # - run: yarn test # Pending playwright test suite
