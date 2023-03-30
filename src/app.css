@@ -3,19 +3,17 @@
 @tailwind utilities;
 
 .fluid-gradient {
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background: linear-gradient(0deg, #1d2e5b , #C61E5D 30%, #DF5178 45%,  #1d2e5b);
+	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
 	background-size: 150% 150%;
-	animation: gradient 4s ease infinite;
+	animation: gradient 4s ease forwards;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
+		background-position: 50% 100%;
 	}
 	100% {
-		background-position: 0% 50%;
+		background-position: 50% -20%;
 	}
 }
