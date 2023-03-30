@@ -6,7 +6,7 @@
 	<span class="flex flex-col md:flex-row mx-auto">
 		<div class="flex flex-col text-3xl m-5 font-serif">
 			<div class="whitespace-nowrap">Reflections | Projections</div>
-			<div>2023</div>
+			<div class="text-gray-300">2023</div>
 			<div class="text-xl my-3">Coming Soon</div>
 		</div>
 		<div class="flex flex-col m-5 w-96 font-sans">
