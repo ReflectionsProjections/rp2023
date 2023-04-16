@@ -13,6 +13,10 @@
         ethnicity: '',
         race: '',
         firstGen: ''
+        resumeSharePerms: '',
+        jobTypeInterest: '',
+        portfolioLink: '',
+        gpa: ''
     };
 
 </script>
@@ -144,6 +148,40 @@
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
+            </div>
+            <!--Section 4: Resume/Networking -->
+            <div>
+                <label for="perms-res-share">Would you like your resume to be shared with R|P sponsors? </label>
+                <select id="perms-res-share" bind:value={formValues.resumeSharePerms}>
+                    <option value="no">No</option>
+                    <option value="yes">Yes</option>
+                </select>
+            </div>
+
+            {#if formValues.resumeSharePerms == "yes"}
+            <div>
+                <label for="resume">Upload your Resume Here: </label>
+                <input type="file" name="resume" accept="application/pdf, application/msword, .doc, .docx">
+            </div>
+            {/if}
+
+            <div>
+                <label for="job-type">Job Type Interest: </label>
+                <select id="job-type" bind:value={formValues.jobTypeInterest} multiple>
+                    <option value="full-time">Full Time</option>
+                    <option value="internship">Internship</option>
+                    <option value="co-op">Co-Op</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="portfolio">Portfolio Link/LinkedIn: </label>
+                <input type="url" bind:value={formValues.portfolioLink}>
+            </div>
+
+            <div>
+                <label for="gpa">GPA</label>
+                <input type="number" min="1.0" max="5.0" bind:value={formValues.gpa}>
             </div>
         </form>
     </main>
