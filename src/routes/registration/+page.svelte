@@ -7,7 +7,13 @@
         major: '',
         collegeName: '',
         expectedGradYear: '',
-        occupation: ''
+        occupation: '',
+        age: '',
+        gender: '',
+        ethnicity: '',
+        race: '',
+        firstGen: '',
+        food: '',
     };
 
 </script>
@@ -125,6 +131,59 @@
                     <option value="slack">Slack</option>
                     <option value="word-of-mouth">Word of Mouth</option>
                     <input type="marketingother" id="marketing-other" bind:value={formValues.marketingOther}>
+            <!-- DEMOGRAPHICS -->
+            <div>
+                <label for="age">Age: </label>
+                <input type="number" id="age" bind:value={formValues.age}>
+            </div>
+            <script type="text/javascript">
+                function showfield(name){
+                  if(name=='Other')document.getElementById('genderDemographics').innerHTML='Other: <input type="text" name="other" />';
+                  else document.getElementById('genderDemographics').innerHTML='';
+                }
+            </script>
+            <div id="genderDemographics">
+                <label for="gender">Gender: </label>
+                <select id="gender" bind:value={formValues.gender}>
+                    <option value="">Choose One</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="preferNotToSay">Prefer not to say</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="ethnicity">Ethnicity: </label>
+                <select id="ethnicity" bind:value={formValues.ethnicity}>
+                    <option value="">Choose One</option>
+                    <option value="hispanicOrLatino">Hispanic/Latino</option>
+                    <option value="notHispanicOrLatino">Not Hispanic/Latino</option>
+                </select>
+            </div>
+            <script type="text/javascript">
+                function showfield(name){
+                  if(name=='Other')document.getElementById('raceDemographics').innerHTML='Other: <input type="text" name="other" />';
+                  else document.getElementById('raceDemographics').innerHTML='';
+                }
+            </script>
+            <div id="raceDemographics">
+                <label for="race">Race: </label>
+                <select id="race" bind:value={formValues.race} multiple>
+                    <option value="americanIndianOrAlaska">American Indian/Alaska Native</option>
+                    <option value="eastAsian">East Asian</option>
+                    <option value="southAsian">South Asian</option>
+                    <option value="black">Black or African-American</option>
+                    <option value="pacificIslander">Native Hawaiian or Pacific Islander</option>
+                    <option value="white">White/Caucasian</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="is-first-gen">If you're a college student, are you first generation?</label>
+                <select id="is-first-gen" bind:value={formValues.firstGen}>
+                    <option value="">Choose One</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
                 </select>
             </div>
         </form>
