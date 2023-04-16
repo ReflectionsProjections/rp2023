@@ -15,12 +15,13 @@
         firstGen: '',
         food: '',
         foodOther: '',
-        marketing: '',
-        marketingOther: '',
         resumeSharePerms: '',
         jobTypeInterest: '',
         portfolioLink: '',
-        gpa: ''
+        gpa: '',
+        mechPuzzle: '',
+        marketing: '',
+        marketingOther: '',
     };
 
 </script>
@@ -48,11 +49,11 @@
         <form>
             <div>
                 <label for="name">Name: </label>
-                <input type="text" id="name" bind:value={formValues.name}/>
+                <input type="text" id="name" bind:value={formValues.name} required/>
             </div>
             <div>
                 <label for="email">Email: </label>
-                <input type="email" id="email" bind:value={formValues.email}/>
+                <input type="email" id="email" bind:value={formValues.email} required/>
             </div>
             <div>
                 <label for="is-college-student">Are you a college student? </label>
@@ -77,6 +78,11 @@
                     <label for="exp-grad-date">Expected Graduation Year: </label>
                     <input type="date" id="exp-grad-date" bind:value={formValues.expectedGradYear}> 
                 </div>
+
+                <div>
+                    <label for="major">Major (if applicable): </label>
+                    <input type="text" id="major" bind:value={formValues.major}/>
+                </div>
             {/if}
 
             {#if formValues.isUIUCStudent == "no"}
@@ -86,11 +92,6 @@
                 </div>
             {/if}
 
-            <div>
-                <label for="major">Major (if applicable): </label>
-                <input type="text" id="major" bind:value={formValues.major}/>
-            </div>
-
             {#if formValues.isCollegeStudent == "no"}
                 <div>
                     <label for="occupation">Current Occupation: </label>
@@ -98,50 +99,11 @@
                 </div>
             {/if}
 
-            <div>
-                <label for="food">Do you have any dietary restrictions? </label>
-                <select id="food" bind:value={formValues.food}>
-                    <option value="Vegetarian">Vegetarian</option>
-                    <option value="Vegan">Vegan</option>
-                    <option value="Gluten-Free">Gluten-Free</option>
-                    <input type="other" id="food-other" bind:value={formValues.foodOther}>
-                </select>
-            </div>
-
-            <div>
-                <label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
-                <select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
-                    <option value="both">Yes, I'm interested in both</option>
-                    <option value="mechmania">I'm just interested in MechMania</option>
-                    <option value="puzzlebang">I'm just interested in PuzzleBang</option>
-                    <option value="no-Free">No</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="marketing">How did you hear about R|P? </label>
-                <select id="marketing" bind:value={formValues.marketing} multiple>
-                    <option value="ACMOH">ACM Open House</option>
-                    <option value="ACMN">ACM Newsletter</option>
-                    <option value="building-ads">Building Ads</option>
-                    <option value="courses">Courses</option>
-                    <option value="WCS">WCS Newsletter</option>
-                    <option value="cs-newsletter">CS Department Newsletter</option>
-                    <option value="social-media">Social Media</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="email">Email</option>
-                    <option value="in-class-pitch">In-Class Pitch</option>
-                    <option value="posters">Posters/Flyers</option>
-                    <option value="quad-day">Quad Day</option>
-                    <option value="e-night">E-night</option>
-                    <option value="website">Website</option>
-                    <option value="slack">Slack</option>
-                    <option value="word-of-mouth">Word of Mouth</option>
-                    <input type="marketingother" id="marketing-other" bind:value={formValues.marketingOther}>
             <!-- DEMOGRAPHICS -->
+            {#if formValues.isCollegeStudent == "yes" || formValues.occupation != ""}
             <div>
                 <label for="age">Age: </label>
-                <input type="number" id="age" bind:value={formValues.age}>
+                <input type="number" id="age" bind:value={formValues.age} min="1">
             </div>
             <script type="text/javascript">
                 function showfield(name){
@@ -193,7 +155,23 @@
                     <option value="no">No</option>
                 </select>
             </div>
+            {/if}
+
+            {#if formValues.firstGen != ""}
+            <div>
+                <label for="food">Do you have any dietary restrictions? </label>
+                <select id="food" bind:value={formValues.food}>
+                    <option value="Vegetarian">Vegetarian</option>
+                    <option value="Vegan">Vegan</option>
+                    <option value="Gluten-Free">Gluten-Free</option>
+                    <option value="none">No dietary restrictions</option>
+                    <input type="other" id="food-other" bind:value={formValues.foodOther}>
+                </select>
+            </div>
+            {/if}
+
             <!--Section 4: Resume/Networking -->
+            {#if formValues.food != ""}
             <div>
                 <label for="perms-res-share">Would you like your resume to be shared with R|P sponsors? </label>
                 <select id="perms-res-share" bind:value={formValues.resumeSharePerms}>
@@ -227,6 +205,47 @@
                 <label for="gpa">GPA</label>
                 <input type="number" min="1.0" max="5.0" bind:value={formValues.gpa}>
             </div>
+            {/if}
+
+            {#if formValues.resumeSharePerms != ""}
+            <div>
+                <label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
+                <select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
+                    <option value="both">Yes, I'm interested in both</option>
+                    <option value="mechmania">I'm just interested in MechMania</option>
+                    <option value="puzzlebang">I'm just interested in PuzzleBang</option>
+                    <option value="no-Free">No</option>
+                </select>
+            </div>
+            {/if}
+
+            {#if formValues.mechPuzzle != ""}
+            <div>
+                <label for="marketing">How did you hear about R|P? </label>
+                <select id="marketing" bind:value={formValues.marketing} multiple>
+                    <option value="ACMOH">ACM Open House</option>
+                    <option value="ACMN">ACM Newsletter</option>
+                    <option value="building-ads">Building Ads</option>
+                    <option value="courses">Courses</option>
+                    <option value="WCS">WCS Newsletter</option>
+                    <option value="cs-newsletter">CS Department Newsletter</option>
+                    <option value="social-media">Social Media</option>
+                    <option value="twitter">Twitter</option>
+                    <option value="email">Email</option>
+                    <option value="in-class-pitch">In-Class Pitch</option>
+                    <option value="posters">Posters/Flyers</option>
+                    <option value="quad-day">Quad Day</option>
+                    <option value="e-night">E-night</option>
+                    <option value="website">Website</option>
+                    <option value="slack">Slack</option>
+                    <option value="word-of-mouth">Word of Mouth</option>
+                    <input type="marketingother" id="marketing-other" bind:value={formValues.marketingOther}>
+            </div>
+            {/if}
+
+            {#if formValues.marketing != ""}
+                <input type="submit"> 
+            {/if}
         </form>
     </main>
 </div>
