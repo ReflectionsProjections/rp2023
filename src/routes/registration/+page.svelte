@@ -11,16 +11,16 @@
         age: '',
         gender: '',
         ethnicity: '',
-        race: '',
+        race: [],
         firstGen: '',
         food: '',
         foodOther: '',
         resumeSharePerms: '',
-        jobTypeInterest: '',
+        jobTypeInterest: [],
         portfolioLink: '',
         gpa: '',
         mechPuzzle: '',
-        marketing: '',
+        marketing: [],
         marketingOther: '',
     };
 
@@ -40,6 +40,7 @@
 
 
 <div class="w-screen h-screen">
+    <!-- For Debugging Only: Can see the values of each field as you edit on site-->
     <main>
         <div>
             <pre>
@@ -136,16 +137,21 @@
                 }
             </script>
             <div id="raceDemographics">
-                <label for="race">Race: </label>
-                <select id="race" bind:value={formValues.race} multiple>
-                    <option value="americanIndianOrAlaska">American Indian/Alaska Native</option>
-                    <option value="eastAsian">East Asian</option>
-                    <option value="southAsian">South Asian</option>
-                    <option value="black">Black or African-American</option>
-                    <option value="pacificIslander">Native Hawaiian or Pacific Islander</option>
-                    <option value="white">White/Caucasian</option>
-                    <option value="Other">Other</option>
-                </select>
+                <label for="race">Race: </label> <br>
+                    <input type="checkbox" id="americanIndianOrAlaska" value="americanIndianOrAlaska" bind:group={formValues.race}/>
+                    <label for="americanIndianOrAlaska">American Indian/Alaska Native</label> <br>
+                    <input type="checkbox" id="eastAsian" value="eastAsian" bind:group={formValues.race}/>
+                    <label for="eastAsian">East Asian</label> <br>
+                    <input type="checkbox" id="southAsian" value="southAsian" bind:group={formValues.race}/>
+                    <label for="southAsian">South Asian</label> <br>
+                    <input type="checkbox" id="black" value="black" bind:group={formValues.race}/>
+                    <label for="black">Black or African-American</label> <br>
+                    <input type="checkbox" id="pacificIslander" value="pacificIslander" bind:group={formValues.race}/>
+                    <label for="pacificIslander">PacificIslander</label> <br>
+                    <input type="checkbox" id="white" value="white" bind:group={formValues.race}/>
+                    <label for="white">White/Caucasian</label> <br>
+                    <input type="checkbox" id="other" value="other" bind:group={formValues.race}/>
+                    <label for="other">Other</label>
             </div>
             <div>
                 <label for="is-first-gen">If you're a college student, are you first generation?</label>
@@ -188,12 +194,19 @@
             {/if}
 
             <div>
-                <label for="job-type">Job Type Interest: </label>
-                <select id="job-type" bind:value={formValues.jobTypeInterest} multiple>
+                <label for="job-type">Job Type Interest: </label> <br>
+                    <input type="checkbox" id="full-time" value="full-time" bind:group={formValues.jobTypeInterest}/>
+                    <label for="full-time">Full Time</label> <br>
+                    <input type="checkbox" id="internship" value="internship" bind:group={formValues.jobTypeInterest}/>
+                    <label for="internship">Internship</label> <br>
+                    <input type="checkbox" id="co-op" value="co-op" bind:group={formValues.jobTypeInterest}/>
+                    <label for="co-op">Co-Op</label>
+
+                <!-- <select id="job-type" bind:value={formValues.jobTypeInterest} multiple>
                     <option value="full-time">Full Time</option>
                     <option value="internship">Internship</option>
                     <option value="co-op">Co-Op</option>
-                </select>
+                </select> -->
             </div>
 
             <div>
@@ -221,29 +234,49 @@
 
             {#if formValues.mechPuzzle != ""}
             <div>
-                <label for="marketing">How did you hear about R|P? </label>
-                <select id="marketing" bind:value={formValues.marketing} multiple>
-                    <option value="ACMOH">ACM Open House</option>
-                    <option value="ACMN">ACM Newsletter</option>
-                    <option value="building-ads">Building Ads</option>
-                    <option value="courses">Courses</option>
-                    <option value="WCS">WCS Newsletter</option>
-                    <option value="cs-newsletter">CS Department Newsletter</option>
-                    <option value="social-media">Social Media</option>
-                    <option value="twitter">Twitter</option>
-                    <option value="email">Email</option>
-                    <option value="in-class-pitch">In-Class Pitch</option>
-                    <option value="posters">Posters/Flyers</option>
-                    <option value="quad-day">Quad Day</option>
-                    <option value="e-night">E-night</option>
-                    <option value="website">Website</option>
-                    <option value="slack">Slack</option>
-                    <option value="word-of-mouth">Word of Mouth</option>
-                    <input type="marketingother" id="marketing-other" bind:value={formValues.marketingOther}>
+                <label for="marketing">How did you hear about R|P? </label> <br>
+                    <input type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing}/>
+                    <label for="ACMOH">ACM Open House</label> <br>
+                    <input type="checkbox" id="ACMN" value="ACMN" bind:group={formValues.marketing}/>
+                    <label for="ACMN">ACM Newsletter</label> <br>
+                    <input type="checkbox" id="building-ads" value="building-ads" bind:group={formValues.marketing}/>
+                    <label for="building-ads">Building Ads</label> <br>
+                    <input type="checkbox" id="courses" value="Course" bind:group={formValues.marketing}/>
+                    <label for="courses">School Course</label> <br>
+                    <input type="checkbox" id="WCS" value="WCS" bind:group={formValues.marketing}/>
+                    <label for="WCS">WCS Newsletter</label> <br>
+                    <input type="checkbox" id="cs-newsletter" value="cs-newsletter" bind:group={formValues.marketing}/>
+                    <label for="cs-newsletter">CS Department Newsletter</label> <br>
+                    <input type="checkbox" id="instagram" value="instagram" bind:group={formValues.marketing}/>
+                    <label for="instagram">Instagram</label> <br>
+                    <input type="checkbox" id="facebook" value="facebook" bind:group={formValues.marketing}/>
+                    <label for="facebook">Facebook</label> <br>
+                    <input type="checkbox" id="twitter" value="twitter" bind:group={formValues.marketing}/>
+                    <label for="twitter">Twitter</label> <br>
+                    <input type="checkbox" id="linkedin" value="linkedin" bind:group={formValues.marketing}/>
+                    <label for="linkedin">LinkedIn</label> <br>
+                    <input type="checkbox" id="email" value="email" bind:group={formValues.marketing}/>
+                    <label for="email">E-mail</label> <br>
+                    <input type="checkbox" id="posters" value="posters" bind:group={formValues.marketing}/>
+                    <label for="posters">Posters/Flyers</label> <br>
+                    <input type="checkbox" id="quad-day" value="quad-day" bind:group={formValues.marketing}/>
+                    <label for="quad-day">Quad Day</label> <br>
+                    <input type="checkbox" id="e-night" value="e-night" bind:group={formValues.marketing}/>
+                    <label for="e-night">E-Night</label> <br>
+                    <input type="checkbox" id="website" value="website" bind:group={formValues.marketing}/>
+                    <label for="website">Website</label> <br>
+                    <input type="checkbox" id="slack" value="slack" bind:group={formValues.marketing}/>
+                    <label for="slack">Slack</label> <br>
+                    <input type="checkbox" id="discord" value="discord" bind:group={formValues.marketing}/>
+                    <label for="discord">Discord</label> <br>
+                    <input type="checkbox" id="word-of-mouth" value="word-of-mouth" bind:group={formValues.marketing}/>
+                    <label for="word-of-mouth">Word of Mouth</label> <br>
+                    <label for="marketin-other">Other: </label>
+                    <input type="text" id="marketing-other" bind:value={formValues.marketingOther}>
             </div>
             {/if}
 
-            {#if formValues.marketing != ""}
+            {#if formValues.marketing.length != 0}
                 <input type="submit"> 
             {/if}
         </form>
