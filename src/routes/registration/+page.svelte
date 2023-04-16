@@ -14,6 +14,7 @@
         race: '',
         firstGen: '',
         food: '',
+        marketing: '',
         resumeSharePerms: '',
         jobTypeInterest: '',
         portfolioLink: '',
@@ -117,7 +118,7 @@
 
             <div>
                 <label for="marketing">How did you hear about R|P? </label>
-                <select id="food" bind:value={formValues.food} multiple>
+                <select id="marketing" bind:value={formValues.marketing} multiple>
                     <option value="ACMOH">ACM Open House</option>
                     <option value="ACMN">ACM Newsletter</option>
                     <option value="building-ads">Building Ads</option>
