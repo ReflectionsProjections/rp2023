@@ -1,5 +1,7 @@
 <script lang="ts">
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
+	import PageControls from '../../components/registration/page-controls.svelte';
+
 	const formValues = {
 		name: '',
 		email: '',
@@ -25,6 +27,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
+	let page = 0;
 </script>
 
 <div>Welcome to Registration!</div>
@@ -33,26 +36,30 @@
 	<!-- For Debugging Only: Can see the values of each field as you edit on site-->
 	<main>
 		<form class="mx-auto w-fit">
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
-				<div class="flex flex-row items-center">
-					<div class="">Name:</div>
-					<input
-						id="name"
-						bind:value={formValues.name}
-						required
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
+			{#if page == 0}
+				<div
+					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+				>
+					<div class="flex flex-row items-center">
+						<div class="">Name:</div>
+						<input
+							id="name"
+							bind:value={formValues.name}
+							required
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						/>
+					</div>
+					<div>
+						<label for="email">Email: </label>
+						<input type="email" id="email" bind:value={formValues.email} required />
+					</div>
+					<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 				</div>
-				<div>
-					<label for="email">Email: </label>
-					<input type="email" id="email" bind:value={formValues.email} required />
-				</div>
-				<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
-			</div>
+				<PageControls bind:page prev={0} next={formValues.isCollegeStudent ? 1 : 4} />
+			{/if}
 
-			{#if formValues.isCollegeStudent == 'yes'}
+			{#if page == 1}
+				<!-- formValues.isCollegeStudent == 'yes' -->
 				<div>
 					<label for="is-uiuc-student">Are you a UIUC student? </label>
 					<select id="is-uiuc-student" bind:value={formValues.isUIUCStudent}>
