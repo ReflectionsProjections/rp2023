@@ -1,6 +1,6 @@
 <script lang="ts">
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
-
+	import OtherField from '../../components/registration/other-field.svelte';
 	const formValues = {
 		name: '',
 		email: '',
@@ -14,6 +14,7 @@
 		gender: '',
 		ethnicity: '',
 		race: [],
+		raceOther: '',
 		firstGen: '',
 		food: '',
 		foodOther: '',
@@ -29,7 +30,7 @@
 
 <div>Welcome to Registration!</div>
 
-<div class="w-screen h-screen">
+<div class="h-screen">
 	<!-- For Debugging Only: Can see the values of each field as you edit on site-->
 	<main>
 		<form>
@@ -142,8 +143,8 @@
 					<label for="pacificIslander">PacificIslander</label> <br />
 					<input type="checkbox" id="white" value="white" bind:group={formValues.race} />
 					<label for="white">White/Caucasian</label> <br />
-					<input type="checkbox" id="other" value="other" bind:group={formValues.race} />
 					<label for="other">Other</label>
+					<input type="text" id="other" bind:value={formValues.raceOther} />
 				</div>
 				<div>
 					<label for="is-first-gen">If you're a college student, are you first generation?</label>
