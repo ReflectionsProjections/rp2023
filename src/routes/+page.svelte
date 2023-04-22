@@ -4,8 +4,6 @@
 	import ShootingStar from '../components/shooting-star.svelte';
 </script>
 
-<div class="stars" />
-<div class="twinkling" />
 <ShootingStar />
 <div class="h-screen text-white flex items-center">
 	<span class="flex flex-col md:flex-row mx-auto">
