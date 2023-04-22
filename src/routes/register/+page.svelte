@@ -1,6 +1,5 @@
 <script lang="ts">
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
-	import OtherField from '../../components/registration/other-field.svelte';
 	const formValues = {
 		name: '',
 		email: '',
@@ -30,19 +29,28 @@
 
 <div>Welcome to Registration!</div>
 
-<div class="h-screen">
+<div class="w-screen">
 	<!-- For Debugging Only: Can see the values of each field as you edit on site-->
 	<main>
-		<form>
-			<div>
-				<label for="name">Name: </label>
-				<input type="text" id="name" bind:value={formValues.name} required />
+		<form class="mx-auto w-fit">
+			<div
+				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+			>
+				<div class="flex flex-row items-center">
+					<div class="">Name:</div>
+					<input
+						id="name"
+						bind:value={formValues.name}
+						required
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+					/>
+				</div>
+				<div>
+					<label for="email">Email: </label>
+					<input type="email" id="email" bind:value={formValues.email} required />
+				</div>
+				<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 			</div>
-			<div>
-				<label for="email">Email: </label>
-				<input type="email" id="email" bind:value={formValues.email} required />
-			</div>
-			<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 
 			{#if formValues.isCollegeStudent == 'yes'}
 				<div>

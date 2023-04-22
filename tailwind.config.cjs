@@ -6,7 +6,11 @@ module.exports = {
 			'sans': ['Roboto'],
 			'serif': ['Roboto\\ Slab']
 		},
-		extend: {}
+		extend: {
+			colors: {
+				"rp-blue": "#1D2E5B"
+			},
+		}
 	},
 	plugins: []
 };
