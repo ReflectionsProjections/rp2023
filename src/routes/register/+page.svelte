@@ -11,7 +11,7 @@
 		collegeName: '',
 		expectedGradYear: '',
 		occupation: '',
-		age: '',
+		age: 1,
 		gender: '',
 		ethnicity: '',
 		race: [],
@@ -22,7 +22,7 @@
 		resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
-		gpa: '',
+		gpa: 1.0,
 		mechPuzzle: '',
 		marketing: [],
 		marketingOther: ''
