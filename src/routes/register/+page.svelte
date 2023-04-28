@@ -30,6 +30,22 @@
 	let page = 0;
 </script>
 
+<!--
+	Page 0) Name, email, isCollegeStudent
+	Page 1) if they said yes to CollegeStudent 
+
+	Page 3) Occupation (if they said no to college student)
+	Page 4) Demographics
+	Page 5) Food
+	Page 6) Resume
+	Page 7) MechMania and PuzzleBang
+	Page 8 ) How did you hear about RP?
+-->
+
+
+
+
+
 <div>Welcome to Registration!</div>
 
 <div class="w-screen">
@@ -55,7 +71,7 @@
 					</div>
 					<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 				</div>
-				<PageControls bind:page prev={0} next={formValues.isCollegeStudent ? 1 : 4} />
+				<PageControls bind:page prev={0} next={formValues.isCollegeStudent ? 1 : 3} />
 			{/if}
 
 			{#if page == 1}
@@ -80,34 +96,32 @@
 				</div>
 			{/if}
 
+			{#if formValues.isUIUCStudent == 'yes'}
+				<PageControls bind:page prev={1} next={4} />
+			{/if}
+
 			{#if formValues.isUIUCStudent == 'no'}
 				<div>
 					<label for="college-name">Name of University: </label>
 					<input type="text" id="college-name" bind:value={formValues.collegeName} />
 				</div>
+				<PageControls bind:page prev={1} next={4} />
 			{/if}
 
-			{#if formValues.isCollegeStudent == 'no'}
+			{#if page == 3}
 				<div>
 					<label for="occupation">Current Occupation: </label>
 					<input type="text" id="occupation" bind:value={formValues.occupation} />
 				</div>
+				<PageControls bind:page prev={3} next={4} />
 			{/if}
 
 			<!-- DEMOGRAPHICS -->
-			{#if formValues.isCollegeStudent == 'yes' || formValues.occupation != ''}
+			{#if page == 4}
 				<div>
 					<label for="age">Age: </label>
 					<input type="number" id="age" bind:value={formValues.age} min="1" />
 				</div>
-				<script type="text/javascript">
-					function showfield(name) {
-						if (name == 'Other')
-							document.getElementById('genderDemographics').innerHTML =
-								'Other: <input type="text" name="other" />';
-						else document.getElementById('genderDemographics').innerHTML = '';
-					}
-				</script>
 				<div id="genderDemographics">
 					<label for="gender">Gender: </label>
 					<select id="gender" bind:value={formValues.gender}>
@@ -126,14 +140,6 @@
 						<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
 					</select>
 				</div>
-				<script type="text/javascript">
-					function showfield(name) {
-						if (name == 'Other')
-							document.getElementById('raceDemographics').innerHTML =
-								'Other: <input type="text" name="other" />';
-						else document.getElementById('raceDemographics').innerHTML = '';
-					}
-				</script>
 				<div id="raceDemographics">
 					<label for="race">Race: </label> <br />
 					<input
@@ -169,9 +175,11 @@
 						<option value="no">No</option>
 					</select>
 				</div>
+
+				<PageControls bind:page prev={4} next={5} />
 			{/if}
 
-			{#if formValues.firstGen != ''}
+			{#if page == 5}
 				<div>
 					<label for="food">Do you have any dietary restrictions? </label>
 					<select id="food" bind:value={formValues.food}>
@@ -182,10 +190,11 @@
 						<input type="other" id="food-other" bind:value={formValues.foodOther} />
 					</select>
 				</div>
+				<PageControls bind:page prev={5} next={6} />
 			{/if}
 
 			<!--Section 4: Resume/Networking -->
-			{#if formValues.food != ''}
+			{#if page == 6}
 				<div>
 					<label for="perms-res-share"
 						>Would you like your resume to be shared with R|P sponsors?
@@ -225,12 +234,6 @@
 					<label for="internship">Internship</label> <br />
 					<input type="checkbox" id="co-op" value="co-op" bind:group={formValues.jobTypeInterest} />
 					<label for="co-op">Co-Op</label>
-
-					<!-- <select id="job-type" bind:value={formValues.jobTypeInterest} multiple>
-                    <option value="full-time">Full Time</option>
-                    <option value="internship">Internship</option>
-                    <option value="co-op">Co-Op</option>
-                </select> -->
 				</div>
 
 				<div>
@@ -242,9 +245,11 @@
 					<label for="gpa">GPA</label>
 					<input type="number" min="1.0" max="5.0" bind:value={formValues.gpa} />
 				</div>
+
+				<PageControls bind:page prev={6} next={7} />
 			{/if}
 
-			{#if formValues.resumeSharePerms != ''}
+			{#if page == 7}
 				<div>
 					<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
 					<select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
@@ -254,9 +259,11 @@
 						<option value="no-Free">No</option>
 					</select>
 				</div>
+
+				<PageControls bind:page prev={7} next={8} />
 			{/if}
 
-			{#if formValues.mechPuzzle != ''}
+			{#if page == 8}
 				<div>
 					<label for="marketing">How did you hear about R|P? </label> <br />
 					<input type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing} />
@@ -318,9 +325,11 @@
 					<label for="marketin-other">Other: </label>
 					<input type="text" id="marketing-other" bind:value={formValues.marketingOther} />
 				</div>
+				
+				<PageControls bind:page prev={8} next={9} />
 			{/if}
 
-			{#if formValues.marketing.length != 0}
+			{#if page == 9}
 				<input type="submit" />
 			{/if}
 		</form>
