@@ -180,7 +180,7 @@
 			{/if}
 
 			{#if page == 5}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 					<label for="food">Do you have any dietary restrictions? </label>
 					<select id="food" bind:value={formValues.food}>
 						<option value="Vegetarian">Vegetarian</option>
@@ -250,7 +250,7 @@
 			{/if}
 
 			{#if page == 7}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 					<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
 					<select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
 						<option value="both">Yes, I'm interested in both</option>
@@ -264,7 +264,7 @@
 			{/if}
 
 			{#if page == 8}
-				<div>
+				<div class="bg-slate-900 text-white p-40 px-50 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="marketing">How did you hear about R|P? </label> <br />
 					<input type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing} />
 					<label for="ACMOH">ACM Open House</label> <br />
@@ -330,7 +330,9 @@
 			{/if}
 
 			{#if page == 9}
-				<input type="submit" />
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
+					<input type="submit" />
+				</div>
 			{/if}
 		</form>
 		<div>
