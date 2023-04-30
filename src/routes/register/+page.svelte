@@ -42,7 +42,22 @@
 	Page 8 ) How did you hear about RP?
 -->
 
+<style>
+	div {
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
 
+	select {
+        background-color: rgb(30 41 59);
+		border-color: rgb(255 255 255);
+		border-radius: 0.375rem;
+		border-width: 2px;
+		margin-left: 2px;
+		margin-right: 2px;
+		height: fit-content;
+    }
+</style>
 
 
 
@@ -67,7 +82,7 @@
 					</div>
 					<div>
 						<label for="email">Email: </label>
-						<input type="email" id="email" bind:value={formValues.email} required />
+						<input type="email" id="email" bind:value={formValues.email} class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" required />
 					</div>
 					<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 				</div>
@@ -76,23 +91,23 @@
 
 			{#if page == 1}
 				<!-- formValues.isCollegeStudent == 'yes' -->
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="is-uiuc-student">Are you a UIUC student? </label>
-					<select id="is-uiuc-student" bind:value={formValues.isUIUCStudent}>
+					<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent}>
 						<option value="">Choose One</option>
 						<option value="yes">Yes</option>
 						<option value="no">No</option>
 					</select>
 				</div>
 
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="exp-grad-date">Expected Graduation Year: </label>
 					<input type="date" id="exp-grad-date" bind:value={formValues.expectedGradYear} />
 				</div>
 
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="major">Major (if applicable): </label>
-					<input type="text" id="major" bind:value={formValues.major} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="text" id="major" bind:value={formValues.major} />
 				</div>
 			{/if}
 
@@ -101,28 +116,28 @@
 			{/if}
 
 			{#if formValues.isUIUCStudent == 'no'}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="college-name">Name of University: </label>
-					<input type="text" id="college-name" bind:value={formValues.collegeName} />
+					<input style="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="text" id="college-name" bind:value={formValues.collegeName} />
 				</div>
 				<PageControls bind:page prev={1} next={4} />
 			{/if}
 
 			{#if page == 3}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="occupation">Current Occupation: </label>
-					<input type="text" id="occupation" bind:value={formValues.occupation} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="text" id="occupation" bind:value={formValues.occupation} />
 				</div>
 				<PageControls bind:page prev={3} next={4} />
 			{/if}
 
 			<!-- DEMOGRAPHICS -->
 			{#if page == 4}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="age">Age: </label>
-					<input type="number" id="age" bind:value={formValues.age} min="1" />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="number" id="age" bind:value={formValues.age} min="1" />
 				</div>
-				<div id="genderDemographics">
+				<div id="genderDemographics" class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="gender">Gender: </label>
 					<select id="gender" bind:value={formValues.gender}>
 						<option value="">Choose One</option>
@@ -132,7 +147,7 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="ethnicity">Ethnicity: </label>
 					<select id="ethnicity" bind:value={formValues.ethnicity}>
 						<option value="">Choose One</option>
@@ -140,34 +155,36 @@
 						<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
 					</select>
 				</div>
-				<div id="raceDemographics">
+				<div id="raceDemographics" class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="race">Race: </label> <br />
 					<input
 						type="checkbox"
 						id="americanIndianOrAlaska"
 						value="americanIndianOrAlaska"
 						bind:group={formValues.race}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
 					<label for="americanIndianOrAlaska">American Indian/Alaska Native</label> <br />
-					<input type="checkbox" id="eastAsian" value="eastAsian" bind:group={formValues.race} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="eastAsian" value="eastAsian" bind:group={formValues.race} />
 					<label for="eastAsian">East Asian</label> <br />
-					<input type="checkbox" id="southAsian" value="southAsian" bind:group={formValues.race} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="southAsian" value="southAsian" bind:group={formValues.race} />
 					<label for="southAsian">South Asian</label> <br />
-					<input type="checkbox" id="black" value="black" bind:group={formValues.race} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="black" value="black" bind:group={formValues.race} />
 					<label for="black">Black or African-American</label> <br />
 					<input
 						type="checkbox"
 						id="pacificIslander"
 						value="pacificIslander"
 						bind:group={formValues.race}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
-					<label for="pacificIslander">PacificIslander</label> <br />
-					<input type="checkbox" id="white" value="white" bind:group={formValues.race} />
+					<label for="pacificIslander">Pacific Islander</label> <br />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="white" value="white" bind:group={formValues.race} />
 					<label for="white">White/Caucasian</label> <br />
 					<label for="other">Other</label>
-					<input type="text" id="other" bind:value={formValues.raceOther} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="text" id="other" bind:value={formValues.raceOther} />
 				</div>
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="is-first-gen">If you're a college student, are you first generation?</label>
 					<select id="is-first-gen" bind:value={formValues.firstGen}>
 						<option value="">Choose One</option>
@@ -187,7 +204,7 @@
 						<option value="Vegan">Vegan</option>
 						<option value="Gluten-Free">Gluten-Free</option>
 						<option value="none">No dietary restrictions</option>
-						<input type="other" id="food-other" bind:value={formValues.foodOther} />
+						<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="other" id="food-other" bind:value={formValues.foodOther} />
 					</select>
 				</div>
 				<PageControls bind:page prev={5} next={6} />
@@ -195,7 +212,7 @@
 
 			<!--Section 4: Resume/Networking -->
 			{#if page == 6}
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 					<label for="perms-res-share"
 						>Would you like your resume to be shared with R|P sponsors?
 					</label>
@@ -206,44 +223,41 @@
 				</div>
 
 				{#if formValues.resumeSharePerms == 'yes'}
-					<div>
+					<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 						<label for="resume">Upload your Resume Here: </label>
 						<input
 							type="file"
 							name="resume"
 							accept="application/pdf, application/msword, .doc, .docx"
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 						/>
 					</div>
 				{/if}
 
-				<div>
-					<label for="job-type">Job Type Interest: </label> <br />
-					<input
-						type="checkbox"
-						id="full-time"
-						value="full-time"
-						bind:group={formValues.jobTypeInterest}
-					/>
-					<label for="full-time">Full Time</label> <br />
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
+					<label for="job-type">Job Type Interest: </label>
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="full-time" value="full-time" bind:group={formValues.jobTypeInterest} />
+					<label for="full-time">Full Time</label>
 					<input
 						type="checkbox"
 						id="internship"
 						value="internship"
 						bind:group={formValues.jobTypeInterest}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
-					<label for="internship">Internship</label> <br />
-					<input type="checkbox" id="co-op" value="co-op" bind:group={formValues.jobTypeInterest} />
+					<label for="internship">Internship</label>
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="co-op" value="co-op" bind:group={formValues.jobTypeInterest} />
 					<label for="co-op">Co-Op</label>
 				</div>
 
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 					<label for="portfolio">Portfolio Link/LinkedIn: </label>
-					<input type="url" bind:value={formValues.portfolioLink} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="url" bind:value={formValues.portfolioLink} />
 				</div>
 
-				<div>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 					<label for="gpa">GPA</label>
-					<input type="number" min="1.0" max="5.0" bind:value={formValues.gpa} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="number" min="1.0" max="5.0" bind:value={formValues.gpa} />
 				</div>
 
 				<PageControls bind:page prev={6} next={7} />
@@ -264,28 +278,30 @@
 			{/if}
 
 			{#if page == 8}
-				<div class="bg-slate-900 text-white p-40 px-50 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 					<label for="marketing">How did you hear about R|P? </label> <br />
-					<input type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing} />
 					<label for="ACMOH">ACM Open House</label> <br />
-					<input type="checkbox" id="ACMN" value="ACMN" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="ACMN" value="ACMN" bind:group={formValues.marketing} />
 					<label for="ACMN">ACM Newsletter</label> <br />
 					<input
 						type="checkbox"
 						id="building-ads"
 						value="building-ads"
 						bind:group={formValues.marketing}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
 					<label for="building-ads">Building Ads</label> <br />
-					<input type="checkbox" id="courses" value="Course" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="courses" value="Course" bind:group={formValues.marketing} />
 					<label for="courses">School Course</label> <br />
-					<input type="checkbox" id="WCS" value="WCS" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="WCS" value="WCS" bind:group={formValues.marketing} />
 					<label for="WCS">WCS Newsletter</label> <br />
 					<input
 						type="checkbox"
 						id="cs-newsletter"
 						value="cs-newsletter"
 						bind:group={formValues.marketing}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
 					<label for="cs-newsletter">CS Department Newsletter</label> <br />
 					<input
@@ -293,37 +309,39 @@
 						id="instagram"
 						value="instagram"
 						bind:group={formValues.marketing}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
 					<label for="instagram">Instagram</label> <br />
-					<input type="checkbox" id="facebook" value="facebook" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="facebook" value="facebook" bind:group={formValues.marketing} />
 					<label for="facebook">Facebook</label> <br />
-					<input type="checkbox" id="twitter" value="twitter" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="twitter" value="twitter" bind:group={formValues.marketing} />
 					<label for="twitter">Twitter</label> <br />
-					<input type="checkbox" id="linkedin" value="linkedin" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="linkedin" value="linkedin" bind:group={formValues.marketing} />
 					<label for="linkedin">LinkedIn</label> <br />
-					<input type="checkbox" id="email" value="email" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="email" value="email" bind:group={formValues.marketing} />
 					<label for="email">E-mail</label> <br />
-					<input type="checkbox" id="posters" value="posters" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="posters" value="posters" bind:group={formValues.marketing} />
 					<label for="posters">Posters/Flyers</label> <br />
-					<input type="checkbox" id="quad-day" value="quad-day" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="quad-day" value="quad-day" bind:group={formValues.marketing} />
 					<label for="quad-day">Quad Day</label> <br />
-					<input type="checkbox" id="e-night" value="e-night" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="e-night" value="e-night" bind:group={formValues.marketing} />
 					<label for="e-night">E-Night</label> <br />
-					<input type="checkbox" id="website" value="website" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="website" value="website" bind:group={formValues.marketing} />
 					<label for="website">Website</label> <br />
-					<input type="checkbox" id="slack" value="slack" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="slack" value="slack" bind:group={formValues.marketing} />
 					<label for="slack">Slack</label> <br />
-					<input type="checkbox" id="discord" value="discord" bind:group={formValues.marketing} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="checkbox" id="discord" value="discord" bind:group={formValues.marketing} />
 					<label for="discord">Discord</label> <br />
 					<input
 						type="checkbox"
 						id="word-of-mouth"
 						value="word-of-mouth"
 						bind:group={formValues.marketing}
+						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 					/>
 					<label for="word-of-mouth">Word of Mouth</label> <br />
 					<label for="marketin-other">Other: </label>
-					<input type="text" id="marketing-other" bind:value={formValues.marketingOther} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="text" id="marketing-other" bind:value={formValues.marketingOther} />
 				</div>
 				
 				<PageControls bind:page prev={8} next={9} />
@@ -342,10 +360,3 @@
 		</div>
 	</main>
 </div>
-
-<style>
-	div {
-		padding-top: 15px;
-		padding-bottom: 15px;
-	}
-</style>
