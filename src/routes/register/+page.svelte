@@ -48,6 +48,15 @@
 		slack: 'Slack',
 		discord: 'Discord'
 	};
+
+	const raceOptions = {
+		americanIndianOrAlaska: 'American Indian/Alaska Native',
+		eastAsian: 'East Asian',
+		southAsian: 'South Asian',
+		black: 'Black or African-American',
+		pacificIslander: 'Pacific Islander',
+		white: 'White/Caucasian'
+	};
 </script>
 
 <div>Welcome to Registration!</div>
@@ -193,54 +202,16 @@
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
 				>
 					<label for="race">Race: </label> <br />
-					<input
-						type="checkbox"
-						id="americanIndianOrAlaska"
-						value="americanIndianOrAlaska"
-						bind:group={formValues.race}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="americanIndianOrAlaska">American Indian/Alaska Native</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="eastAsian"
-						value="eastAsian"
-						bind:group={formValues.race}
-					/>
-					<label for="eastAsian">East Asian</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="southAsian"
-						value="southAsian"
-						bind:group={formValues.race}
-					/>
-					<label for="southAsian">South Asian</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="black"
-						value="black"
-						bind:group={formValues.race}
-					/>
-					<label for="black">Black or African-American</label> <br />
-					<input
-						type="checkbox"
-						id="pacificIslander"
-						value="pacificIslander"
-						bind:group={formValues.race}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="pacificIslander">Pacific Islander</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="white"
-						value="white"
-						bind:group={formValues.race}
-					/>
-					<label for="white">White/Caucasian</label> <br />
+					{#each Object.keys(raceOptions) as raceId}
+						<input
+							type="checkbox"
+							id={raceId}
+							value={raceId}
+							bind:group={formValues.race}
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						/>
+						<label for={raceId}>{raceOptions[raceId] || 'undefined'}</label> <br />
+					{/each}
 					<label for="other">Other</label>
 					<input
 						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
