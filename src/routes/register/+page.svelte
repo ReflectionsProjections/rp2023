@@ -29,25 +29,25 @@
 	};
 	let page = 0;
 
-	const pointOfReferral = {
-		ACMOH: 'ACM Open House',
-		ACMN: 'ACM Newsletter',
-		buildingAds: 'Building Ads',
-		courses: 'School Course',
-		WCS: 'WCS Newsletter',
-		csNewsletter: 'CS Department Newsletter',
-		instagram: 'Instagram',
-		facebook: 'Facebook',
-		twitter: 'Twitter',
-		linkedin: 'LinkedIn',
-		email: 'E-mail',
-		posters: 'Posters/Flyers',
-		quadDay: 'Quad Day',
-		eNight: 'E-Night',
-		website: 'Website',
-		slack: 'Slack',
-		discord: 'Discord'
-	};
+	const pointOfReferral = [
+		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
+		{ referralId: 'ACMN', displayText: 'ACM Newsletter' },
+		{ referralId: 'buildingAds', displayText: 'Building Ads' },
+		{ referralId: 'courses', displayText: 'School Course' },
+		{ referralId: 'WCS', displayText: 'WCS Newsletter' },
+		{ referralId: 'csNewsletter', displayText: 'CS Department Newsletter' },
+		{ referralId: 'instagram', displayText: 'Instagram' },
+		{ referralId: 'facebook', displayText: 'Facebook' },
+		{ referralId: 'twitter', displayText: 'Twitter' },
+		{ referralId: 'linkedin', displayText: 'LinkedIn' },
+		{ referralId: 'email', displayText: 'E-mail' },
+		{ referralId: 'posters', displayText: 'Posters/Flyers' },
+		{ referralId: 'quadDay', displayText: 'Quad Day' },
+		{ referralId: 'eNight', displayText: 'E-Night' },
+		{ referralId: 'website', displayText: 'Website' },
+		{ referralId: 'slack', displayText: 'Slack' },
+		{ referralId: 'discord', displayText: 'Discord' }
+	];
 
 	const raceOptions = {
 		americanIndianOrAlaska: 'American Indian/Alaska Native',
@@ -362,7 +362,7 @@
 				>
 					<label for="marketing">How did you hear about R|P? </label> <br />
 
-					{#each Object.keys(pointOfReferral) as referralId}
+					{#each pointOfReferral as { referralId, displayText }}
 						<input
 							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 							type="checkbox"
@@ -370,7 +370,7 @@
 							value={referralId}
 							bind:group={formValues.marketing}
 						/>
-						<label for={referralId}>{pointOfReferral[referralId] || 'undefined'}</label> <br />
+						<label for={referralId}>{displayText}</label> <br />
 					{/each}
 
 					<label for="word-of-mouth">Word of Mouth</label> <br />
