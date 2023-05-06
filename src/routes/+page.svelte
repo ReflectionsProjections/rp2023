@@ -4,8 +4,8 @@
 	import ShootingStar from '../components/shooting-star.svelte';
 </script>
 
-<ShootingStar />
-<div class="h-screen text-white flex items-center">
+<div class="h-full text-white flex items-center">
+	<ShootingStar />
 	<span class="flex flex-col md:flex-row mx-auto">
 		<div class="flex flex-col text-3xl m-5 font-serif">
 			<div class="whitespace-nowrap flex flex-row">
