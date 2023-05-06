@@ -28,6 +28,26 @@
 		marketingOther: ''
 	};
 	let page = 0;
+
+	const pointOfReferral = {
+		ACMOH: 'ACM Open House',
+		ACMN: 'ACM Newsletter',
+		buildingAds: 'Building Ads',
+		courses: 'School Course',
+		WCS: 'WCS Newsletter',
+		csNewsletter: 'CS Department Newsletter',
+		instagram: 'Instagram',
+		facebook: 'Facebook',
+		twitter: 'Twitter',
+		linkedin: 'LinkedIn',
+		email: 'E-mail',
+		posters: 'Posters/Flyers',
+		quadDay: 'Quad Day',
+		eNight: 'E-Night',
+		website: 'Website',
+		slack: 'Slack',
+		discord: 'Discord'
+	};
 </script>
 
 <div>Welcome to Registration!</div>
@@ -370,149 +390,18 @@
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
 				>
 					<label for="marketing">How did you hear about R|P? </label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="ACMOH"
-						value="ACMOH"
-						bind:group={formValues.marketing}
-					/>
-					<label for="ACMOH">ACM Open House</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="ACMN"
-						value="ACMN"
-						bind:group={formValues.marketing}
-					/>
-					<label for="ACMN">ACM Newsletter</label> <br />
-					<input
-						type="checkbox"
-						id="building-ads"
-						value="building-ads"
-						bind:group={formValues.marketing}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="building-ads">Building Ads</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="courses"
-						value="Course"
-						bind:group={formValues.marketing}
-					/>
-					<label for="courses">School Course</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="WCS"
-						value="WCS"
-						bind:group={formValues.marketing}
-					/>
-					<label for="WCS">WCS Newsletter</label> <br />
-					<input
-						type="checkbox"
-						id="cs-newsletter"
-						value="cs-newsletter"
-						bind:group={formValues.marketing}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="cs-newsletter">CS Department Newsletter</label> <br />
-					<input
-						type="checkbox"
-						id="instagram"
-						value="instagram"
-						bind:group={formValues.marketing}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="instagram">Instagram</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="facebook"
-						value="facebook"
-						bind:group={formValues.marketing}
-					/>
-					<label for="facebook">Facebook</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="twitter"
-						value="twitter"
-						bind:group={formValues.marketing}
-					/>
-					<label for="twitter">Twitter</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="linkedin"
-						value="linkedin"
-						bind:group={formValues.marketing}
-					/>
-					<label for="linkedin">LinkedIn</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="email"
-						value="email"
-						bind:group={formValues.marketing}
-					/>
-					<label for="email">E-mail</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="posters"
-						value="posters"
-						bind:group={formValues.marketing}
-					/>
-					<label for="posters">Posters/Flyers</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="quad-day"
-						value="quad-day"
-						bind:group={formValues.marketing}
-					/>
-					<label for="quad-day">Quad Day</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="e-night"
-						value="e-night"
-						bind:group={formValues.marketing}
-					/>
-					<label for="e-night">E-Night</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="website"
-						value="website"
-						bind:group={formValues.marketing}
-					/>
-					<label for="website">Website</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="slack"
-						value="slack"
-						bind:group={formValues.marketing}
-					/>
-					<label for="slack">Slack</label> <br />
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="discord"
-						value="discord"
-						bind:group={formValues.marketing}
-					/>
-					<label for="discord">Discord</label> <br />
-					<input
-						type="checkbox"
-						id="word-of-mouth"
-						value="word-of-mouth"
-						bind:group={formValues.marketing}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
+
+					{#each Object.keys(pointOfReferral) as referralId}
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="checkbox"
+							id={referralId}
+							value={referralId}
+							bind:group={formValues.marketing}
+						/>
+						<label for={referralId}>{pointOfReferral[referralId] || 'undefined'}</label> <br />
+					{/each}
+
 					<label for="word-of-mouth">Word of Mouth</label> <br />
 					<label for="marketin-other">Other: </label>
 					<input
