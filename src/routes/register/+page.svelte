@@ -29,7 +29,7 @@
 	};
 	let page = 0;
 
-	const pointOfReferral = [
+	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
 		{ referralId: 'ACMN', displayText: 'ACM Newsletter' },
 		{ referralId: 'buildingAds', displayText: 'Building Ads' },
@@ -49,14 +49,14 @@
 		{ referralId: 'discord', displayText: 'Discord' }
 	];
 
-	const raceOptions = {
-		americanIndianOrAlaska: 'American Indian/Alaska Native',
-		eastAsian: 'East Asian',
-		southAsian: 'South Asian',
-		black: 'Black or African-American',
-		pacificIslander: 'Pacific Islander',
-		white: 'White/Caucasian'
-	};
+	const raceOptions = [
+		{ raceId: 'americanIndianOrAlaska', displayText: 'American Indian/Alaska Native' },
+		{ raceId: 'eastAsian', displayText: 'East Asian' },
+		{ raceId: 'southAsian', displayText: 'South Asian' },
+		{ raceId: 'black', displayText: 'Black or African-American' },
+		{ raceId: 'pacificIslander', displayText: 'Pacific Islander' },
+		{ raceId: 'white', displayText: 'White/Caucasian' }
+	];
 </script>
 
 <div>Welcome to Registration!</div>
@@ -202,7 +202,7 @@
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
 				>
 					<label for="race">Race: </label> <br />
-					{#each Object.keys(raceOptions) as raceId}
+					{#each raceOptions as {raceId, displayText}}
 						<input
 							type="checkbox"
 							id={raceId}
@@ -210,7 +210,7 @@
 							bind:group={formValues.race}
 							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 						/>
-						<label for={raceId}>{raceOptions[raceId] || 'undefined'}</label> <br />
+						<label for={raceId}>{displayText}</label> <br />
 					{/each}
 					<label for="other">Other</label>
 					<input
@@ -362,7 +362,7 @@
 				>
 					<label for="marketing">How did you hear about R|P? </label> <br />
 
-					{#each pointOfReferral as { referralId, displayText }}
+					{#each referralOptions as { referralId, displayText }}
 						<input
 							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 							type="checkbox"
