@@ -9,7 +9,7 @@
 				alt="Reflections Projections Home Page"
 				height={50}
 				width={50}
-				class=""
+				class="hover:rotate-180 duration-500"
 			/>
 		</a>
 	</div>
