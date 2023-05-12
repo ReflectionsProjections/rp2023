@@ -1,5 +1,9 @@
 <script>
 	import '../app.css';
+	import Navbar from '../components/navbar.svelte';
 </script>
 
-<slot />
+<div class="h-screen">
+	<Navbar />
+	<slot />
+</div>
