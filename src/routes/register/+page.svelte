@@ -59,10 +59,7 @@
 	];
 </script>
 
-<div>Welcome to Registration!</div>
-
 <div class="">
-	<!-- For Debugging Only: Can see the values of each field as you edit on site-->
 	<main>
 		<form class="mx-auto w-fit">
 			{#if page == 0}
@@ -94,55 +91,44 @@
 			{/if}
 
 			{#if page == 1}
-				<!-- formValues.isCollegeStudent == 'yes' -->
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"> 
+				<div class="flex flex-row items-center">
 					<label for="is-uiuc-student">Are you a UIUC student? </label>
-					<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent}>
+					<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent} required>
 						<option value="">Choose One</option>
 						<option value="yes">Yes</option>
 						<option value="no">No</option>
 					</select>
 				</div>
 
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div class="flex flex-row items-center">
 					<label for="exp-grad-date">Expected Graduation Year: </label>
-					<input type="date" id="exp-grad-date" bind:value={formValues.expectedGradYear} />
+					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="date" id="exp-grad-date" required bind:value={formValues.expectedGradYear} />
 				</div>
 
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
-					<label for="major">Major (if applicable): </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="text"
-						id="major"
-						bind:value={formValues.major}
-					/>
-				</div>
-			{/if}
-
-			{#if formValues.isUIUCStudent == 'yes'}
-				<PageControls bind:page prev={1} next={4} />
-			{/if}
-
+			<div class="flex flex-row items-center">
+				<label for="major">Major (if applicable): </label>
+				<input
+					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+					type="text"
+					id="major"
+					bind:value={formValues.major}
+				/>
+			</div>
 			{#if formValues.isUIUCStudent == 'no'}
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
-					<label for="college-name">Name of University: </label>
-					<input
-						style="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="text"
-						id="college-name"
-						bind:value={formValues.collegeName}
-					/>
-				</div>
-				<PageControls bind:page prev={1} next={4} />
+			<div class="flex flex-row items-center">
+				<label for="college-name">Name of University: </label>
+				<input
+					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+					type="text"
+					id="college-name"
+					bind:value={formValues.collegeName}
+					required
+				/>
+			</div>	
+			{/if}
+		</div>
+			<PageControls bind:page prev={0} next={4} />
 			{/if}
 
 			{#if page == 3}
@@ -155,16 +141,18 @@
 						type="text"
 						id="occupation"
 						bind:value={formValues.occupation}
+						required
 					/>
 				</div>
-				<PageControls bind:page prev={3} next={4} />
+				<PageControls bind:page prev={0} next={4} />
 			{/if}
 
 			<!-- DEMOGRAPHICS -->
 			{#if page == 4}
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+				> 
+				<div class="flex flex-row items-center">
 					<label for="age">Age: </label>
 					<input
 						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
@@ -172,12 +160,10 @@
 						id="age"
 						bind:value={formValues.age}
 						min="1"
+						
 					/>
 				</div>
-				<div
-					id="genderDemographics"
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div id="genderDemographics" class="flex flex-row items-center">
 					<label for="gender">Gender: </label>
 					<select id="gender" bind:value={formValues.gender}>
 						<option value="">Choose One</option>
@@ -187,9 +173,7 @@
 						<option value="Other">Other</option>
 					</select>
 				</div>
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div class="flex flex-row items-center">
 					<label for="ethnicity">Ethnicity: </label>
 					<select id="ethnicity" bind:value={formValues.ethnicity}>
 						<option value="">Choose One</option>
@@ -197,10 +181,7 @@
 						<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
 					</select>
 				</div>
-				<div
-					id="raceDemographics"
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div id="raceDemographics">
 					<label for="race">Race: </label> <br />
 					{#each raceOptions as {raceId, displayText}}
 						<input
@@ -220,9 +201,7 @@
 						bind:value={formValues.raceOther}
 					/>
 				</div>
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-				>
+				<div class="flex flex-row items-center">
 					<label for="is-first-gen">If you're a college student, are you first generation?</label>
 					<select id="is-first-gen" bind:value={formValues.firstGen}>
 						<option value="">Choose One</option>
@@ -230,8 +209,9 @@
 						<option value="no">No</option>
 					</select>
 				</div>
+			</div>
 
-				<PageControls bind:page prev={4} next={5} />
+				<PageControls bind:page prev={formValues.isCollegeStudent ? 1 : 3} next={5} />
 			{/if}
 
 			{#if page == 5}
@@ -239,7 +219,7 @@
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
 				>
 					<label for="food">Do you have any dietary restrictions? </label>
-					<select id="food" bind:value={formValues.food}>
+					<select id="food" bind:value={formValues.food} required>
 						<option value="Vegetarian">Vegetarian</option>
 						<option value="Vegan">Vegan</option>
 						<option value="Gluten-Free">Gluten-Free</option>
@@ -252,18 +232,17 @@
 						/>
 					</select>
 				</div>
-				<PageControls bind:page prev={5} next={6} />
+				<PageControls bind:page prev={4} next={6} />
 			{/if}
 
 			<!--Section 4: Resume/Networking -->
 			{#if page == 6}
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-				>
-					<label for="perms-res-share"
-						>Would you like your resume to be shared with R|P sponsors?
+			<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
+				<div class="flex flex-row items-center">
+					<label for="perms-res-share">
+						Would you like your resume to be shared with R|P sponsors?
 					</label>
-					<select id="perms-res-share" bind:value={formValues.resumeSharePerms}>
+					<select id="perms-res-share" bind:value={formValues.resumeSharePerms} required>
 						<option value="no">No</option>
 						<option value="yes">Yes</option>
 					</select>
@@ -271,7 +250,7 @@
 
 				{#if formValues.resumeSharePerms == 'yes'}
 					<div
-						class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+						class="flex flex-row items-center"
 					>
 						<label for="resume">Upload your Resume Here: </label>
 						<input
@@ -283,9 +262,7 @@
 					</div>
 				{/if}
 
-				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-				>
+				<div>
 					<label for="job-type">Job Type Interest: </label>
 					<input
 						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
@@ -314,7 +291,7 @@
 				</div>
 
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+					class="flex flex-row items-center"
 				>
 					<label for="portfolio">Portfolio Link/LinkedIn: </label>
 					<input
@@ -325,7 +302,7 @@
 				</div>
 
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+					class="flex flex-row items-center"
 				>
 					<label for="gpa">GPA</label>
 					<input
@@ -336,8 +313,9 @@
 						bind:value={formValues.gpa}
 					/>
 				</div>
-
-				<PageControls bind:page prev={6} next={7} />
+			</div>
+				<PageControls bind:page prev={5} next={7} />
+			
 			{/if}
 
 			{#if page == 7}
@@ -353,7 +331,7 @@
 					</select>
 				</div>
 
-				<PageControls bind:page prev={7} next={8} />
+				<PageControls bind:page prev={6} next={8} />
 			{/if}
 
 			{#if page == 8}
@@ -369,6 +347,7 @@
 							id={referralId}
 							value={referralId}
 							bind:group={formValues.marketing}
+							
 						/>
 						<label for={referralId}>{displayText}</label> <br />
 					{/each}
@@ -382,16 +361,13 @@
 						bind:value={formValues.marketingOther}
 					/>
 				</div>
-
-				<PageControls bind:page prev={8} next={9} />
-			{/if}
-
-			{#if page == 9}
+				{#if formValues.marketing.length != 0 || formValues.marketingOther != ''}
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-				>
-					<input type="submit" />
-				</div>
+				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
+				<input type="submit" />
+			</div>
+				{/if}
+				<PageControls bind:page prev={7} next={8} />
 			{/if}
 		</form>
 		<div>
