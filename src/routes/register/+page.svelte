@@ -391,7 +391,4 @@
 		height: fit-content;
 	}
 
-	.center {
-		top: 50%;
-	}
 </style>
