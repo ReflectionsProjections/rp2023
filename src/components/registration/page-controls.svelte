@@ -5,19 +5,19 @@
 	export let prev: number;
 </script>
 
-<div class="flex flex-row gap-5">
+<div class="flex flex-row gap-5 justify-end mx-2">
 	{#if prev >= 0}
-	<button
-		on:click={() => {
-			page = prev;
-		}}><Icon icon="ic:round-navigate-before" class="text-2xl text-white" /></button
-	>
+		<button
+			on:click={() => {
+				page = prev;
+			}}><Icon icon="ic:round-navigate-before" class="text-3xl text-white" /></button
+		>
 	{/if}
-	{#if next >= 0 }
-	<button
-		on:click={() => {
-			page = next;
-		}}><Icon icon="ic:round-navigate-next" class="text-2xl text-white" /></button
-	>
+	{#if next >= 0}
+		<button
+			on:click={() => {
+				page = next;
+			}}><Icon icon="ic:round-navigate-next" class="text-3xl text-white" /></button
+		>
 	{/if}
 </div>
