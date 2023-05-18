@@ -59,7 +59,7 @@
 
 	const extraEventOptions = [
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
-		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang'}
+		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
 	];
 </script>
 
@@ -95,44 +95,52 @@
 			{/if}
 
 			{#if page == 1}
-				<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"> 
-				<div class="flex flex-row items-center">
-					<label for="is-uiuc-student">Are you a UIUC student? </label>
-					<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent} required>
-						<option value="">Choose One</option>
-						<option value="yes">Yes</option>
-						<option value="no">No</option>
-					</select>
-				</div>
+				<div
+					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+				>
+					<div class="flex flex-row items-center">
+						<label for="is-uiuc-student">Are you a UIUC student? </label>
+						<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent} required>
+							<option value="">Choose One</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
 
-				<div class="flex flex-row items-center">
-					<label for="exp-grad-date">Expected Graduation Year: </label>
-					<input class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit" type="date" id="exp-grad-date" required bind:value={formValues.expectedGradYear} />
-				</div>
+					<div class="flex flex-row items-center">
+						<label for="exp-grad-date">Expected Graduation Year: </label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="date"
+							id="exp-grad-date"
+							required
+							bind:value={formValues.expectedGradYear}
+						/>
+					</div>
 
-			<div class="flex flex-row items-center">
-				<label for="major">Major (if applicable): </label>
-				<input
-					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					type="text"
-					id="major"
-					bind:value={formValues.major}
-				/>
-			</div>
-			{#if formValues.isUIUCStudent == 'no'}
-			<div class="flex flex-row items-center">
-				<label for="college-name">Name of University: </label>
-				<input
-					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					type="text"
-					id="college-name"
-					bind:value={formValues.collegeName}
-					required
-				/>
-			</div>	
-			{/if}
-		</div>
-			<PageControls bind:page prev={0} next={4} />
+					<div class="flex flex-row items-center">
+						<label for="major">Major (if applicable): </label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="text"
+							id="major"
+							bind:value={formValues.major}
+						/>
+					</div>
+					{#if formValues.isUIUCStudent == 'no'}
+						<div class="flex flex-row items-center">
+							<label for="college-name">Name of University: </label>
+							<input
+								class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+								type="text"
+								id="college-name"
+								bind:value={formValues.collegeName}
+								required
+							/>
+						</div>
+					{/if}
+				</div>
+				<PageControls bind:page prev={0} next={4} />
 			{/if}
 
 			{#if page == 3}
@@ -155,64 +163,63 @@
 			{#if page == 4}
 				<div
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-				> 
-				<div class="flex flex-row items-center">
-					<label for="age">Age: </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="number"
-						id="age"
-						bind:value={formValues.age}
-						
-					/>
-				</div>
-				<div id="genderDemographics" class="flex flex-row items-center">
-					<label for="gender">Gender: </label>
-					<select id="gender" bind:value={formValues.gender}>
-						<option value="">Choose One</option>
-						<option value="male">Male</option>
-						<option value="female">Female</option>
-						<option value="nonbinary">Non-Binary</option>
-						<option value="preferNotToSay">Prefer not to say</option>
-					</select>
-				</div>
-				<div class="flex flex-row items-center">
-					<label for="ethnicity">Ethnicity: </label>
-					<select id="ethnicity" bind:value={formValues.ethnicity}>
-						<option value="">Choose One</option>
-						<option value="hispanicOrLatino">Hispanic/Latino</option>
-						<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
-					</select>
-				</div>
-				<div id="raceDemographics">
-					<label for="race">Race: </label> <br />
-					{#each raceOptions as {raceId, displayText}}
+				>
+					<div class="flex flex-row items-center">
+						<label for="age">Age: </label>
 						<input
-							type="checkbox"
-							id={raceId}
-							value={raceId}
-							bind:group={formValues.race}
 							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="number"
+							id="age"
+							bind:value={formValues.age}
 						/>
-						<label for={raceId}>{displayText}</label> <br />
-					{/each}
-					<label for="other">Other</label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="text"
-						id="other"
-						bind:value={formValues.raceOther}
-					/>
+					</div>
+					<div id="genderDemographics" class="flex flex-row items-center">
+						<label for="gender">Gender: </label>
+						<select id="gender" bind:value={formValues.gender}>
+							<option value="">Choose One</option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+							<option value="nonbinary">Non-Binary</option>
+							<option value="preferNotToSay">Prefer not to say</option>
+						</select>
+					</div>
+					<div class="flex flex-row items-center">
+						<label for="ethnicity">Ethnicity: </label>
+						<select id="ethnicity" bind:value={formValues.ethnicity}>
+							<option value="">Choose One</option>
+							<option value="hispanicOrLatino">Hispanic/Latino</option>
+							<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
+						</select>
+					</div>
+					<div id="raceDemographics">
+						<label for="race">Race: </label> <br />
+						{#each raceOptions as { raceId, displayText }}
+							<input
+								type="checkbox"
+								id={raceId}
+								value={raceId}
+								bind:group={formValues.race}
+								class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							/>
+							<label for={raceId}>{displayText}</label> <br />
+						{/each}
+						<label for="other">Other</label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="text"
+							id="other"
+							bind:value={formValues.raceOther}
+						/>
+					</div>
+					<div class="flex flex-row items-center">
+						<label for="is-first-gen">If you're a college student, are you first generation?</label>
+						<select id="is-first-gen" bind:value={formValues.firstGen}>
+							<option value="">Choose One</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
 				</div>
-				<div class="flex flex-row items-center">
-					<label for="is-first-gen">If you're a college student, are you first generation?</label>
-					<select id="is-first-gen" bind:value={formValues.firstGen}>
-						<option value="">Choose One</option>
-						<option value="yes">Yes</option>
-						<option value="no">No</option>
-					</select>
-				</div>
-			</div>
 
 				<PageControls bind:page prev={formValues.isCollegeStudent ? 1 : 3} next={5} />
 			{/if}
@@ -240,10 +247,10 @@
 
 			<!--Section 4: Resume/Networking -->
 			{#if page == 6}
-			<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
-					<div
-						class="flex flex-row items-center"
-					>
+				<div
+					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+				>
+					<div class="flex flex-row items-center">
 						<label for="resume">Upload your Resume Here: </label>
 						<input
 							type="file"
@@ -253,68 +260,65 @@
 						/>
 					</div>
 
-				<div>
-					<label for="job-type">Job Type Interest: </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="full-time"
-						value="full-time"
-						bind:group={formValues.jobTypeInterest}
-					/>
-					<label for="full-time">Full Time</label>
-					<input
-						type="checkbox"
-						id="internship"
-						value="internship"
-						bind:group={formValues.jobTypeInterest}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-					/>
-					<label for="internship">Internship</label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="checkbox"
-						id="co-op"
-						value="co-op"
-						bind:group={formValues.jobTypeInterest}
-					/>
-					<label for="co-op">Co-Op</label>
-				</div>
+					<div>
+						<label for="job-type">Job Type Interest: </label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="checkbox"
+							id="full-time"
+							value="full-time"
+							bind:group={formValues.jobTypeInterest}
+						/>
+						<label for="full-time">Full Time</label>
+						<input
+							type="checkbox"
+							id="internship"
+							value="internship"
+							bind:group={formValues.jobTypeInterest}
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						/>
+						<label for="internship">Internship</label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="checkbox"
+							id="co-op"
+							value="co-op"
+							bind:group={formValues.jobTypeInterest}
+						/>
+						<label for="co-op">Co-Op</label>
+					</div>
 
-				<div
-					class="flex flex-row items-center"
-				>
-					<label for="portfolio">Portfolio Link/LinkedIn: </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="url"
-						bind:value={formValues.portfolioLink}
-					/>
+					<div class="flex flex-row items-center">
+						<label for="portfolio">Portfolio Link/LinkedIn: </label>
+						<input
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							type="url"
+							bind:value={formValues.portfolioLink}
+						/>
+					</div>
 				</div>
-			</div>
 				<PageControls bind:page prev={5} next={7} />
-			
 			{/if}
 
 			{#if page == 7}
 				<div
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
 				>
-				<div class="flex flex-col">
-					<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
-					{#each extraEventOptions as {extraEventId, displayText}}
-						<div class="flex items-center">
-							<input
-							type="checkbox"
-							id={extraEventId}
-							value={extraEventId}
-							bind:group={formValues.mechPuzzle}
-							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						/>
-							<label for={extraEventId}>{displayText}</label>
-						</div>
-					{/each}
-				</div>
+					<div class="flex flex-col">
+						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
+						{#each extraEventOptions as { extraEventId, displayText }}
+							<div class="flex items-center">
+								<input
+									type="checkbox"
+									id={extraEventId}
+									value={extraEventId}
+									bind:group={formValues.mechPuzzle}
+									class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+								/>
+								<label for={extraEventId}>{displayText}</label>
+							</div>
+						{/each}
+					</div>
 				</div>
 
 				<PageControls bind:page prev={6} next={8} />
@@ -333,7 +337,6 @@
 							id={referralId}
 							value={referralId}
 							bind:group={formValues.marketing}
-							
 						/>
 						<label for={referralId}>{displayText}</label> <br />
 					{/each}
@@ -348,10 +351,11 @@
 					/>
 				</div>
 				{#if formValues.marketing.length != 0 || formValues.marketingOther != ''}
-				<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
-				<input type="submit" />
-			</div>
+					<div
+						class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+					>
+						<input type="submit" />
+					</div>
 				{/if}
 				<PageControls bind:page prev={7} next={-1} />
 			{/if}
@@ -391,4 +395,7 @@
 		height: fit-content;
 	}
 
+	input {
+		padding: 0.25rem;
+	}
 </style>
