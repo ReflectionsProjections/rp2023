@@ -5,7 +5,7 @@
 <div class="flex flex-row gap-2">
 	<label for="is-college-student text-lg">Are you a college student? </label>
 	<select
-		class="bg-[#803b61] border rounded-md p-0.5"
+		class="bg-rp-dull-pink border rounded-md p-0.5"
 		id="is-college-student"
 		bind:value={isCollegeStudent}
 	>

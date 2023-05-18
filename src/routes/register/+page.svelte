@@ -95,61 +95,64 @@
 		{/if}
 
 		{#if page == 1}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
-				<div class="flex flex-row items-center">
-					<label for="is-uiuc-student">Are you a UIUC student? </label>
-					<select class="box" id="is-uiuc-student" bind:value={formValues.isUIUCStudent} required>
-						<option value="">Choose One</option>
-						<option value="yes">Yes</option>
-						<option value="no">No</option>
-					</select>
-				</div>
-
-				<div class="flex flex-row items-center">
-					<label for="exp-grad-date">Expected Graduation Year: </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="date"
-						id="exp-grad-date"
-						required
-						bind:value={formValues.expectedGradYear}
-					/>
-				</div>
-
-				<div class="flex flex-row items-center">
-					<label for="major">Major (if applicable): </label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="text"
-						id="major"
-						bind:value={formValues.major}
-					/>
-				</div>
-				{#if formValues.isUIUCStudent == 'no'}
-					<div class="flex flex-row items-center">
-						<label for="college-name">Name of University: </label>
-						<input
-							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-							type="text"
-							id="college-name"
-							bind:value={formValues.collegeName}
+			<GlassContainer>
+				<div class="flex flex-col">
+					<div class="flex flex-row justify-between items-center">
+						<label for="is-uiuc-student">Are you a UIUC student? </label>
+						<select
+							class="bg-rp-dull-pink rounded-md p-0.5"
+							id="is-uiuc-student"
+							bind:value={formValues.isUIUCStudent}
 							required
+						>
+							<option value="">Choose One</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
+
+					<div class="flex flex-row justify-between items-center">
+						<label for="exp-grad-date">Expected Graduation Year: </label>
+						<input
+							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							type="date"
+							id="exp-grad-date"
+							required
+							bind:value={formValues.expectedGradYear}
 						/>
 					</div>
-				{/if}
-			</div>
-			<PageControls bind:page prev={0} next={4} />
+
+					<div class="flex flex-row items-center">
+						<label for="major">Major (if applicable): </label>
+						<input
+							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							type="text"
+							id="major"
+							bind:value={formValues.major}
+						/>
+					</div>
+					{#if formValues.isUIUCStudent == 'no'}
+						<div class="flex flex-row items-center">
+							<label for="college-name">Name of University: </label>
+							<input
+								class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+								type="text"
+								id="college-name"
+								bind:value={formValues.collegeName}
+								required
+							/>
+						</div>
+					{/if}
+				</div>
+				<PageControls bind:page prev={0} next={4} />
+			</GlassContainer>
 		{/if}
 
 		{#if page == 3}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 				<label for="occupation">Current Occupation: </label>
 				<input
-					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+					class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 					type="text"
 					id="occupation"
 					bind:value={formValues.occupation}
@@ -161,13 +164,11 @@
 
 		<!-- DEMOGRAPHICS -->
 		{#if page == 4}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 				<div class="flex flex-row items-center">
 					<label for="age">Age: </label>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="number"
 						id="age"
 						bind:value={formValues.age}
@@ -199,13 +200,13 @@
 							id={raceId}
 							value={raceId}
 							bind:group={formValues.race}
-							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						/>
 						<label for={raceId}>{displayText}</label> <br />
 					{/each}
 					<label for="other">Other</label>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="text"
 						id="other"
 						bind:value={formValues.raceOther}
@@ -225,9 +226,7 @@
 		{/if}
 
 		{#if page == 5}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 				<label for="food">Do you have any dietary restrictions? </label>
 				<select id="food" bind:value={formValues.food} required>
 					<option value="Vegetarian">Vegetarian</option>
@@ -235,7 +234,7 @@
 					<option value="Gluten-Free">Gluten-Free</option>
 					<option value="none">No dietary restrictions</option>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="other"
 						id="food-other"
 						bind:value={formValues.foodOther}
@@ -247,23 +246,21 @@
 
 		<!--Section 4: Resume/Networking -->
 		{#if page == 6}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 				<div class="flex flex-row items-center">
 					<label for="resume">Upload your Resume Here: </label>
 					<input
 						type="file"
 						name="resume"
 						accept="application/pdf, application/msword, .doc, .docx"
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 					/>
 				</div>
 
 				<div>
 					<label for="job-type">Job Type Interest: </label>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="checkbox"
 						id="full-time"
 						value="full-time"
@@ -275,11 +272,11 @@
 						id="internship"
 						value="internship"
 						bind:group={formValues.jobTypeInterest}
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 					/>
 					<label for="internship">Internship</label>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="checkbox"
 						id="co-op"
 						value="co-op"
@@ -291,7 +288,7 @@
 				<div class="flex flex-row items-center">
 					<label for="portfolio">Portfolio Link/LinkedIn: </label>
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="url"
 						bind:value={formValues.portfolioLink}
 					/>
@@ -301,9 +298,7 @@
 		{/if}
 
 		{#if page == 7}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
 				<div class="flex flex-col">
 					<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
 					{#each extraEventOptions as { extraEventId, displayText }}
@@ -313,7 +308,7 @@
 								id={extraEventId}
 								value={extraEventId}
 								bind:group={formValues.mechPuzzle}
-								class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+								class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 							/>
 							<label for={extraEventId}>{displayText}</label>
 						</div>
@@ -325,14 +320,12 @@
 		{/if}
 
 		{#if page == 8}
-			<div
-				class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400"
-			>
+			<div class=" text-white p-4 px-5 m-3 rounded-md gap-5 flex-col border-2 border-blue-400">
 				<label for="marketing">How did you hear about R|P? </label> <br />
 
 				{#each referralOptions as { referralId, displayText }}
 					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 						type="checkbox"
 						id={referralId}
 						value={referralId}
@@ -344,7 +337,7 @@
 				<label for="word-of-mouth">Word of Mouth</label> <br />
 				<label for="marketin-other">Other: </label>
 				<input
-					class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+					class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 					type="text"
 					id="marketing-other"
 					bind:value={formValues.marketingOther}
@@ -352,7 +345,7 @@
 			</div>
 			{#if formValues.marketing.length != 0 || formValues.marketingOther != ''}
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+					class=" text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
 				>
 					<input type="submit" />
 				</div>
@@ -382,16 +375,6 @@
 	div {
 		padding-top: 15px;
 		padding-bottom: 15px;
-	}
-
-	select {
-		background-color: rgb(30 41 59);
-		border-color: rgb(255 255 255);
-		border-radius: 0.375rem;
-		border-width: 2px;
-		margin-left: 2px;
-		margin-right: 2px;
-		height: fit-content;
 	}
 
 	input {

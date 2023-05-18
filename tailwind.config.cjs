@@ -9,7 +9,8 @@ module.exports = {
 		extend: {
 			colors: {
 				"rp-blue": "#1D2E5B",
-				"rp-pink": "#EE4179"
+				"rp-pink": "#EE4179",
+				"rp-dull-pink": "#803b61"
 			},
 		}
 	},
