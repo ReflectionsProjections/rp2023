@@ -8,7 +8,8 @@ module.exports = {
 		},
 		extend: {
 			colors: {
-				"rp-blue": "#1D2E5B"
+				"rp-blue": "#1D2E5B",
+				"rp-pink": "#EE4179"
 			},
 		}
 	},
