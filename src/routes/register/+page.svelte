@@ -11,7 +11,7 @@
 		collegeName: '',
 		expectedGradYear: '',
 		occupation: '',
-		age: 1,
+		age: '',
 		gender: '',
 		ethnicity: '',
 		race: [],
@@ -19,11 +19,10 @@
 		firstGen: '',
 		food: '',
 		foodOther: '',
-		resumeSharePerms: '',
+		//resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
-		gpa: 1.0,
-		mechPuzzle: '',
+		mechPuzzle: [],
 		marketing: [],
 		marketingOther: ''
 	};
@@ -57,6 +56,11 @@
 		{ raceId: 'pacificIslander', displayText: 'Pacific Islander' },
 		{ raceId: 'white', displayText: 'White/Caucasian' }
 	];
+
+	const extraEventOptions = [
+		{ extraEventId: 'mechmania', displayText: 'MechMania' },
+		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang'}
+	];
 </script>
 
 <div class="">
@@ -64,7 +68,7 @@
 		<form class="mx-auto w-fit">
 			{#if page == 0}
 				<div
-					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
+					class="center; bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
 				>
 					<div class="flex flex-row items-center">
 						<div class="">Name:</div>
@@ -87,7 +91,7 @@
 					</div>
 					<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 				</div>
-				<PageControls bind:page prev={0} next={formValues.isCollegeStudent ? 1 : 3} />
+				<PageControls bind:page prev={-1} next={formValues.isCollegeStudent ? 1 : 3} />
 			{/if}
 
 			{#if page == 1}
@@ -159,7 +163,6 @@
 						type="number"
 						id="age"
 						bind:value={formValues.age}
-						min="1"
 						
 					/>
 				</div>
@@ -169,8 +172,8 @@
 						<option value="">Choose One</option>
 						<option value="male">Male</option>
 						<option value="female">Female</option>
+						<option value="nonbinary">Non-Binary</option>
 						<option value="preferNotToSay">Prefer not to say</option>
-						<option value="Other">Other</option>
 					</select>
 				</div>
 				<div class="flex flex-row items-center">
@@ -238,17 +241,6 @@
 			<!--Section 4: Resume/Networking -->
 			{#if page == 6}
 			<div class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400">
-				<div class="flex flex-row items-center">
-					<label for="perms-res-share">
-						Would you like your resume to be shared with R|P sponsors?
-					</label>
-					<select id="perms-res-share" bind:value={formValues.resumeSharePerms} required>
-						<option value="no">No</option>
-						<option value="yes">Yes</option>
-					</select>
-				</div>
-
-				{#if formValues.resumeSharePerms == 'yes'}
 					<div
 						class="flex flex-row items-center"
 					>
@@ -260,7 +252,6 @@
 							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
 						/>
 					</div>
-				{/if}
 
 				<div>
 					<label for="job-type">Job Type Interest: </label>
@@ -300,19 +291,6 @@
 						bind:value={formValues.portfolioLink}
 					/>
 				</div>
-
-				<div
-					class="flex flex-row items-center"
-				>
-					<label for="gpa">GPA</label>
-					<input
-						class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
-						type="number"
-						min="1.0"
-						max="5.0"
-						bind:value={formValues.gpa}
-					/>
-				</div>
 			</div>
 				<PageControls bind:page prev={5} next={7} />
 			
@@ -322,13 +300,21 @@
 				<div
 					class="bg-slate-900 text-white p-4 px-5 m-3 rounded-md flex gap-2 flex-col border-2 border-blue-400"
 				>
+				<div class="flex flex-col">
 					<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
-					<select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
-						<option value="both">Yes, I'm interested in both</option>
-						<option value="mechmania">I'm just interested in MechMania</option>
-						<option value="puzzlebang">I'm just interested in PuzzleBang</option>
-						<option value="no-Free">No</option>
-					</select>
+					{#each extraEventOptions as {extraEventId, displayText}}
+						<div class="flex items-center">
+							<input
+							type="checkbox"
+							id={extraEventId}
+							value={extraEventId}
+							bind:group={formValues.mechPuzzle}
+							class="bg-slate-800 border-2 border-white rounded-md mx-2 h-fit"
+						/>
+							<label for={extraEventId}>{displayText}</label>
+						</div>
+					{/each}
+				</div>
 				</div>
 
 				<PageControls bind:page prev={6} next={8} />
@@ -367,14 +353,14 @@
 				<input type="submit" />
 			</div>
 				{/if}
-				<PageControls bind:page prev={7} next={8} />
+				<PageControls bind:page prev={7} next={-1} />
 			{/if}
 		</form>
-		<div>
+		<!-- <div>
 			<pre>
                 {JSON.stringify(formValues, null, 2)}
             </pre>
-		</div>
+		</div> -->
 	</main>
 </div>
 
@@ -403,5 +389,9 @@
 		margin-left: 2px;
 		margin-right: 2px;
 		height: fit-content;
+	}
+
+	.center {
+		top: 50%;
 	}
 </style>
