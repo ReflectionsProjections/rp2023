@@ -3,10 +3,16 @@ module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			'sans': ['Roboto'],
+			'sans': ['Nunito Sans'],
 			'serif': ['Roboto\\ Slab']
 		},
-		extend: {}
+		extend: {
+			colors: {
+				"rp-blue": "#1D2E5B",
+				"rp-pink": "#EE4179",
+				"rp-dull-pink": "#803b61"
+			},
+		}
 	},
 	plugins: []
 };
