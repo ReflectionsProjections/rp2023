@@ -14,15 +14,3 @@
 		<option value="">No</option>
 	</select>
 </div>
-
-<style>
-	/* select {
-		background-color: rgb(30 41 59);
-		border-color: rgb(255 255 255);
-		border-radius: 0.375rem;
-		border-width: 2px;
-		margin-left: 2px;
-		margin-right: 2px;
-		height: fit-content;
-	} */
-</style>
