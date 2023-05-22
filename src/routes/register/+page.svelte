@@ -64,6 +64,8 @@
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
 	];
 
+	let submitted = false;
+
 	const onSubmit = async () => {
 		const response = await fetch('http://localhost:3000/attendee', {
 			method: 'POST',
@@ -72,6 +74,7 @@
 			},
 			body: JSON.stringify(formValues)
 		});
+		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 	};
 	
@@ -365,6 +368,7 @@
 
 		{#if page == 8}
 			<GlassContainer>
+				{#if !submitted}
 				<div class="flex flex-col mb-3">
 					<label class="text-lg" for="marketing">How did you hear about R|P? </label> <br />
 
@@ -389,7 +393,8 @@
 						bind:value={formValues.marketingOther}
 					/>
 				</div>
-				{#if formValues.marketing.length != 0 || formValues.marketingOther != ''}
+				{/if}
+				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
 					<button
 						type="submit"
 						class="mx-auto text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
@@ -398,9 +403,17 @@
 						Submit
 					</button>
 				{/if}
-				<PageControls bind:page prev={7} next={-1} />
+				
+				{#if !submitted}
+					<PageControls bind:page prev={7} next={-1} />
+				{/if}
+
+				{#if submitted}
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+				{/if}
 			</GlassContainer>
 		{/if}
+
 	</form>
 	<!-- <div>
 			<pre>
