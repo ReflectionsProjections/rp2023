@@ -19,7 +19,7 @@
 		raceOther: '',
 		firstGen: '',
 		food: '',
-		foodOther: '',
+		//foodOther: '',
 		//resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
@@ -63,6 +63,18 @@
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
 	];
+
+	const onSubmit = async () => {
+		const response = await fetch('http://localhost:3000/attendee', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formValues)
+		});
+		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+	};
+	
 </script>
 
 <main class="flex h-full">
@@ -258,12 +270,12 @@
 						<option value="Vegan">Vegan</option>
 						<option value="Gluten-Free">Gluten-Free</option>
 						<option value="none">No dietary restrictions</option>
-						<input
+						<!-- <input
 							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
 							type="other"
 							id="food-other"
 							bind:value={formValues.foodOther}
-						/>
+						/> -->
 					</select>
 				</div>
 				<PageControls bind:page prev={4} next={6} />
@@ -381,6 +393,7 @@
 					<button
 						type="submit"
 						class="mx-auto text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+						on:click = {onSubmit}
 					>
 						Submit
 					</button>
