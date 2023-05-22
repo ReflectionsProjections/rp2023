@@ -66,26 +66,26 @@
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
+	<form class="mx-auto my-auto md:w-1/3 text-gray-100 accent-rp-pink">
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
-					<div class="flex flex-row items-center">
-						<label class="text-lg" for="name">Name</label>
+					<div class="flex flex-col items-start">
+						<label for="name">Full Name</label>
 						<input
 							id="name"
 							bind:value={formValues.name}
 							required
-							class="bg-transparent border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 						/>
 					</div>
-					<div class="flex flex-row items-center">
-						<label class="text-lg" for="email">Email</label>
+					<div class="flex flex-col items-start">
+						<label for="email">Email Address</label>
 						<input
 							type="email"
 							id="email"
 							bind:value={formValues.email}
-							class="bg-transparent border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 							required
 						/>
 					</div>
@@ -115,7 +115,7 @@
 					<div class="flex flex-row justify-between items-center">
 						<label class="text-lg" for="exp-grad-date">Expected Graduation Year: </label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="date"
 							id="exp-grad-date"
 							required
@@ -126,7 +126,7 @@
 					<div class="flex flex-row items-center">
 						<label class="text-lg" for="major">Major (if applicable): </label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="text"
 							id="major"
 							bind:value={formValues.major}
@@ -136,7 +136,7 @@
 						<div class="flex flex-row items-center">
 							<label class="text-lg" for="college-name">Name of University: </label>
 							<input
-								class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+								class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 								type="text"
 								id="college-name"
 								bind:value={formValues.collegeName}
@@ -154,7 +154,7 @@
 				<div class="flex flex-row items-center mb-3">
 					<label class="text-lg" for="occupation">Current Occupation </label>
 					<input
-						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 						type="text"
 						id="occupation"
 						bind:value={formValues.occupation}
@@ -212,13 +212,13 @@
 								id={raceId}
 								value={raceId}
 								bind:group={formValues.race}
-								class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+								class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							/>
 							<label class="text-lg" for={raceId}>{displayText}</label> <br />
 						{/each}
 						<label class="text-lg" for="other">Other</label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="text"
 							id="other"
 							bind:value={formValues.raceOther}
@@ -259,7 +259,7 @@
 						<option value="Gluten-Free">Gluten-Free</option>
 						<option value="none">No dietary restrictions</option>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="other"
 							id="food-other"
 							bind:value={formValues.foodOther}
@@ -280,14 +280,14 @@
 							type="file"
 							name="resume"
 							accept="application/pdf, application/msword, .doc, .docx"
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 						/>
 					</div>
 
 					<div>
 						<label class="text-lg" for="job-type">Job Type Interest: </label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="checkbox"
 							id="full-time"
 							value="full-time"
@@ -299,11 +299,11 @@
 							id="internship"
 							value="internship"
 							bind:group={formValues.jobTypeInterest}
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 						/>
 						<label class="text-lg" for="internship">Internship</label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="checkbox"
 							id="co-op"
 							value="co-op"
@@ -315,7 +315,7 @@
 					<div class="flex flex-row items-center">
 						<label class="text-lg" for="portfolio">Portfolio Link/LinkedIn: </label>
 						<input
-							class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 							type="url"
 							bind:value={formValues.portfolioLink}
 						/>
@@ -339,7 +339,7 @@
 									id={extraEventId}
 									value={extraEventId}
 									bind:group={formValues.mechPuzzle}
-									class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+									class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 								/>
 								<label class="text-lg" for={extraEventId}>{displayText}</label>
 							</div>
@@ -359,7 +359,7 @@
 					{#each referralOptions as { referralId, displayText }}
 						<span class="flex flex-row items-center">
 							<input
-								class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+								class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 								type="checkbox"
 								id={referralId}
 								value={referralId}
@@ -371,7 +371,7 @@
 
 					<label class="text-lg" for="marketin-other">Other: </label>
 					<input
-						class="bg-rp-dull-pink border-2 border-gray-400 rounded-md mx-2 h-fit"
+						class="bg-rp-dull-pink border border-gray-400 rounded-md mx-2 h-fit"
 						type="text"
 						id="marketing-other"
 						bind:value={formValues.marketingOther}
