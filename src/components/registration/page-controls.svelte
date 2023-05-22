@@ -5,13 +5,15 @@
 	export let prev: number;
 </script>
 
-<div class="flex flex-row gap-5 justify-end mx-2">
+<div class="flex flex-row gap-5 justify-between mx-2">
 	{#if prev >= 0}
 		<button
 			on:click={() => {
 				page = prev;
 			}}><Icon icon="ic:round-navigate-before" class="text-3xl text-white" /></button
 		>
+	{:else}
+		<div />
 	{/if}
 	{#if next >= 0}
 		<button
