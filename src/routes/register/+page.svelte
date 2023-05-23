@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassContainer from '../../components/glass-container.svelte';
+	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
@@ -88,7 +89,7 @@
 			prev: formValues.isCollegeStudent ? 1 : 3
 		},
 		5: {
-			title: 'Food Related',
+			title: 'Dietary Restrictions',
 			next: 6,
 			prev: 4
 		},
@@ -279,24 +280,8 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<label for="food">Do you have any dietary restrictions? </label>
-					<select
-						class="bg-rp-dull-pink border rounded-md p-0.5"
-						id="food"
-						bind:value={formValues.food}
-						required
-					>
-						<option value="Vegetarian">Vegetarian</option>
-						<option value="Vegan">Vegan</option>
-						<option value="Gluten-Free">Gluten-Free</option>
-						<option value="none">No dietary restrictions</option>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="other"
-							id="food-other"
-							bind:value={formValues.foodOther}
-						/>
-					</select>
+
+					<DietaryOptions bind:foodOther={formValues.foodOther} />
 				</div>
 				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
