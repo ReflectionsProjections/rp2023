@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let isUIUCStudent = 'no';
-	export let isCollegeStudent: string = '';
+	export let isUIUCStudent: string;
+	export let isCollegeStudent: string;
 </script>
 
 <div class="flex flex-col rounded-md border-gray-700">

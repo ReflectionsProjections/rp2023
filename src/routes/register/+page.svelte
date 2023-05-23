@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassContainer from '../../components/glass-container.svelte';
+	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
 
@@ -85,16 +86,7 @@
 						bind:isUIUCStudent={formValues.isUIUCStudent}
 					/>
 
-					<div class="flex flex-col items-start">
-						<label for="email">Email Address</label>
-						<input
-							type="email"
-							id="email"
-							bind:value={formValues.email}
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							required
-						/>
-					</div>
+					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
 				</div>
 				<PageControls bind:page prev={-1} next={formValues.isCollegeStudent ? 1 : 3} />
 			</GlassContainer>
