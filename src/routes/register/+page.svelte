@@ -29,7 +29,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 8;
+	let page = 0;
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
