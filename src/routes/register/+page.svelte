@@ -1,14 +1,13 @@
 <script lang="ts">
 	import GlassContainer from '../../components/glass-container.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
-	import IsIllini from '../../components/registration/is-illini.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
 
 	const formValues = {
 		name: '',
 		email: '',
-		isCollegeStudent: '',
-		isUIUCStudent: '',
+		isCollegeStudent: 'yes',
+		isUIUCStudent: 'yes',
 		major: '',
 		collegeName: '',
 		expectedGradYear: '',
@@ -28,7 +27,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 1;
+	let page = 0;
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -80,6 +79,12 @@
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 						/>
 					</div>
+
+					<IsCollegeStudent
+						bind:isCollegeStudent={formValues.isCollegeStudent}
+						bind:isUIUCStudent={formValues.isUIUCStudent}
+					/>
+
 					<div class="flex flex-col items-start">
 						<label for="email">Email Address</label>
 						<input
@@ -90,7 +95,6 @@
 							required
 						/>
 					</div>
-					<IsCollegeStudent bind:isCollegeStudent={formValues.isCollegeStudent} />
 				</div>
 				<PageControls bind:page prev={-1} next={formValues.isCollegeStudent ? 1 : 3} />
 			</GlassContainer>
@@ -99,8 +103,6 @@
 		{#if page == 1}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
-					<IsIllini bind:isUIUCStudent={formValues.isUIUCStudent} />
-
 					<div class="flex flex-col justify-between items-start">
 						<label for="exp-grad-date">Expected Graduation Date</label>
 						<input
@@ -115,7 +117,7 @@
 					<div class="flex flex-col items-start">
 						<label for="major">Major</label>
 						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
 							type="text"
 							id="major"
 							bind:value={formValues.major}
@@ -140,15 +142,17 @@
 
 		{#if page == 3}
 			<GlassContainer>
-				<div class="flex flex-col items-start mb-3">
-					<label for="occupation">Current Occupation </label>
-					<input
-						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-						type="text"
-						id="occupation"
-						bind:value={formValues.occupation}
-						required
-					/>
+				<div class="flex flex-col gap-5 mb-3">
+					<div class="flex flex-col items-start">
+						<label for="occupation">Current Occupation </label>
+						<input
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
+							type="text"
+							id="occupation"
+							bind:value={formValues.occupation}
+							required
+						/>
+					</div>
 				</div>
 				<PageControls bind:page prev={0} next={4} />
 			</GlassContainer>
