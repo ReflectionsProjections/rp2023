@@ -3,6 +3,7 @@
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
+	import type { PageMeta } from '../../components/registration/page-meta.type';
 
 	const formValues = {
 		name: '',
@@ -28,7 +29,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 0;
+	let page = 8;
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -64,13 +65,57 @@
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
 	];
+
+	const pageMeta: PageMeta = {
+		0: {
+			title: 'General Info',
+			next: formValues.isCollegeStudent ? 1 : 3,
+			prev: -1
+		},
+		1: {
+			title: 'Academics',
+			next: 4,
+			prev: 0
+		},
+		3: {
+			title: 'Occupation',
+			next: 4,
+			prev: 0
+		},
+		4: {
+			title: 'Demographics',
+			next: 5,
+			prev: formValues.isCollegeStudent ? 1 : 3
+		},
+		5: {
+			title: 'Food Related',
+			next: 6,
+			prev: 4
+		},
+		6: {
+			title: 'Recruitment',
+			next: 7,
+			prev: 5
+		},
+		7: {
+			title: 'Special Events',
+			next: 8,
+			prev: 6
+		},
+		8: {
+			title: 'One Last Step',
+			next: -1,
+			prev: 7
+		}
+	};
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto md:w-1/3 text-gray-100 accent-rp-pink">
+	<form class="mx-auto my-auto md:w-3/5 lg:w-1/3 text-gray-200 accent-rp-pink">
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col items-start">
 						<label for="name">Full Name</label>
 						<input
@@ -88,13 +133,14 @@
 
 					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
 				</div>
-				<PageControls bind:page prev={-1} next={formValues.isCollegeStudent ? 1 : 3} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
 		{#if page == 1}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col justify-between items-start">
 						<label for="exp-grad-date">Expected Graduation Date</label>
 						<input
@@ -128,13 +174,14 @@
 						</div>
 					{/if}
 				</div>
-				<PageControls bind:page prev={0} next={4} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
 		{#if page == 3}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col items-start">
 						<label for="occupation">Current Occupation </label>
 						<input
@@ -146,7 +193,7 @@
 						/>
 					</div>
 				</div>
-				<PageControls bind:page prev={0} next={4} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -154,6 +201,7 @@
 		{#if page == 4}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col items-start  gap-2">
 						<label for="age">Age</label>
 						<input
@@ -223,13 +271,14 @@
 					</div>
 				</div>
 
-				<PageControls bind:page prev={formValues.isCollegeStudent ? 1 : 3} next={5} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
 		{#if page == 5}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<label for="food">Do you have any dietary restrictions? </label>
 					<select
 						class="bg-rp-dull-pink border rounded-md p-0.5"
@@ -249,7 +298,7 @@
 						/>
 					</select>
 				</div>
-				<PageControls bind:page prev={4} next={6} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -257,6 +306,7 @@
 		{#if page == 6}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col items-start">
 						<label for="resume">Upload your Resume Here</label>
 						<input
@@ -304,13 +354,14 @@
 						/>
 					</div>
 				</div>
-				<PageControls bind:page prev={5} next={7} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
 		{#if page == 7}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col gap-5 mb-3">
 						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
 						{#each extraEventOptions as { extraEventId, displayText }}
@@ -328,27 +379,30 @@
 					</div>
 				</div>
 
-				<PageControls bind:page prev={6} next={8} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
 		{#if page == 8}
 			<GlassContainer>
 				<div class="flex flex-col mb-3">
-					<label for="marketing">How did you hear about R|P? </label> <br />
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					{#each referralOptions as { referralId, displayText }}
-						<span class="flex flex-col items-start">
-							<input
-								class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-								type="checkbox"
-								id={referralId}
-								value={referralId}
-								bind:group={formValues.marketing}
-							/>
-							<label for={referralId}>{displayText}</label> <br />
-						</span>
-					{/each}
+					<label for="marketing">How did you hear about R|P? </label> <br />
+					<div class="flex flex-row flex-wrap">
+						{#each referralOptions as { referralId, displayText }}
+							<span class="flex flex-row items-center w-1/2">
+								<input
+									class="rounded-md"
+									type="checkbox"
+									id={referralId}
+									value={referralId}
+									bind:group={formValues.marketing}
+								/>
+								<label for={referralId}>{displayText}</label> <br />
+							</span>
+						{/each}
+					</div>
 
 					<label for="marketin-other">Other</label>
 					<input
@@ -366,15 +420,10 @@
 						Submit
 					</button>
 				{/if}
-				<PageControls bind:page prev={7} next={-1} />
+				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 	</form>
-	<!-- <div>
-			<pre>
-                {JSON.stringify(formValues, null, 2)}
-            </pre>
-		</div> -->
 </main>
 
 <!--

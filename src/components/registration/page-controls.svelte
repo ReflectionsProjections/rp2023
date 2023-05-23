@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import type { PageMeta } from './page-meta.type';
 	export let page: number;
-	export let next: number;
-	export let prev: number;
+	export let pageMeta: PageMeta;
+
+	$: next = pageMeta[page]['next'];
+	$: prev = pageMeta[page]['prev'];
 </script>
 
 <div class="flex flex-row gap-5 justify-between mx-2">
