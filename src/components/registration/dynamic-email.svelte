@@ -9,7 +9,7 @@
 
 {#if uiucStudent === 'yes'}
 	<div class="flex flex-col items-start">
-		<label for="email">School Email Address</label>
+		<label for="email"> NetID</label>
 		<span class="flex flex-row items-center w-full">
 			<input
 				type="email"
