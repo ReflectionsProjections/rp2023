@@ -1,6 +1,7 @@
 <script lang="ts">
 	// we'll pull from a database later, this is just for testing/reference
 	let events: any = [];
+	let sample_id = "autogen";
 	let sample_name = "mf test";
 	let sample_startTime = "2019-09-26T05:58:30.996Z";
 	let sample_duration = "3";
@@ -11,7 +12,7 @@
 	const fetchEvents = async () => {
 		const response = await fetch('http://127.0.0.1:3000/events');
 		events = await response.json();
-		console.log("I'm alive", events);
+		// console.log("I'm alive", events);
 		// console.log(events);
 	};
 
@@ -21,7 +22,7 @@
 	// events = response.json();
 
 
-	const columns = ['Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual"];
+	const columns = ['id', 'Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual", "Action"];
 	var newRow = columns;
 
 	async function postData(json: any) {
@@ -33,7 +34,22 @@
 			},
 			body: JSON.stringify(json)
 		});
+		console.log(response.status);
 	}
+
+	async function editEventRequest(json: any, id:string) {
+		let url = `http://127.0.0.1:3000/events/${id}`;
+		console.log(url, json, id);
+		const resp = await fetch(url, {
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(json)
+		});
+		console.log(resp.status);
+	}
+
 	// function createEvent(e: SubmitEvent) {
     function createEvent(name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
 		let json = {
@@ -50,7 +66,17 @@
 
 
 	}
-	function editEvent() {
+	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
+		console.log("ive reached here at least");
+		let json = {
+			"name": name,
+			"description": description,
+			"start_time": start_time,
+			"duration": Number(duration),
+			"location": location,
+			"virtual": Boolean(virtual)
+		}
+		editEventRequest(json, id);
 		alert('you edited an event! (placeholder')
 	}
 </script>
@@ -71,18 +97,19 @@
 		<tbody>
 			{#each events as event}
 				<tr>
+					<td contenteditable="false" bind:innerHTML={event._id}></td>
 					<td contenteditable="true" bind:innerHTML={event.name}></td>
 					<td contenteditable="true" bind:innerHTML={event.description}></td>
-					<td contenteditable="true" bind:innerHTML={event.startTime}></td>
-					<td contenteditable="true" bind:innerHTML={event.duration}></td>
+					<td contenteditable="true" bind:textContent={event.startTime}></td>
+					<td contenteditable="true" bind:textContent={event.duration}></td>
 					<td contenteditable="true" bind:innerHTML={event.location}></td>
-					<td contenteditable="true" bind:innerHTML={event.isVirtual}></td>
-					<button on:click={editEvent}>Save edits</button>
+					<td contenteditable="true" bind:textContent={event.isVirtual}></td>
+					<button on:click={() => editEvent(event._id, event.name, event.description, event.startTime, event.duration, event.location, event.isVirtual)} >Save edits</button>
 				</tr> 
 			 {/each}
 			<tr>
 
-				
+				<td contenteditable="false" bind:textContent={sample_id}></td>
 				<td contenteditable="true" bind:textContent={sample_name}></td>
 				<td contenteditable="true" bind:textContent={sample_description}></td>
 				<td contenteditable="true" bind:textContent={sample_startTime}></td>
