@@ -1,27 +1,54 @@
 <script lang="ts">
 	// we'll pull from a database later, this is just for testing/reference
-	const events = [
-		{
-			name: 'test',
-			description: 'test',
-			startTime: '2023-04-21T18:00',
-			duration: 1,
-			location: 'test',
-			isVirtual: 'yes'
-		},
-		{
-			name: 'test2',
-			description: 'test2',
-			startTime: '2023-04-21T18:00',
-			duration: 2.5,
-			location: 'test2',
-			isVirtual: 'no'
-		}
-	]; 
+	let events: any = [];
+	let sample_name = "mf test";
+	let sample_startTime = "2019-09-26T05:58:30.996Z";
+	let sample_duration = "3";
+	let sample_location = "siebel";
+	let sample_description = "testing test";
+	let sample_isVirtual = "false";
+
+	const fetchEvents = async () => {
+		const response = await fetch('http://127.0.0.1:3000/events');
+		events = await response.json();
+		console.log("I'm alive", events);
+		// console.log(events);
+	};
+
+	fetchEvents();
+
+	// const response = fetch(url).then((response) => response.json())
+	// events = response.json();
+
+
 	const columns = ['Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual"];
 	var newRow = columns;
-    function createEvent(e: SubmitEvent) {
-		alert('you created an event! (placeholder)');
+
+	async function postData(json: any) {
+		const url = "http://127.0.0.1:3000/events";
+		const response = await fetch(url, {
+			method: 'POST',
+			headers: {
+			'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(json)
+		});
+	}
+	// function createEvent(e: SubmitEvent) {
+    function createEvent(name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
+		let json = {
+			"name": name,
+			"description": description,
+			"start_time": start_time,
+			"duration": Number(duration),
+			"location": location,
+			"virtual": Boolean(virtual)
+		}
+		postData(json);
+		alert('you created an event! (placeholder) please refresh to see changes!');
+		
+
+
 	}
 	function editEvent() {
 		alert('you edited an event! (placeholder')
@@ -32,6 +59,7 @@
 <div>Click on a field to edit event details</div>
 
 <div>
+
 	<table width="100%" style="text-align: center">
 		<thead>
 			<tr>
@@ -50,13 +78,20 @@
 					<td contenteditable="true" bind:innerHTML={event.location}></td>
 					<td contenteditable="true" bind:innerHTML={event.isVirtual}></td>
 					<button on:click={editEvent}>Save edits</button>
-				</tr>
-			{/each}
+				</tr> 
+			 {/each}
 			<tr>
-				{#each newRow as column}
-					<td contenteditable="true" bind:innerHTML={column} style="color: grey"/>
-				{/each}
-				<button on:click={createEvent} >Create New Event</button>
+
+				
+				<td contenteditable="true" bind:textContent={sample_name}></td>
+				<td contenteditable="true" bind:textContent={sample_description}></td>
+				<td contenteditable="true" bind:textContent={sample_startTime}></td>
+				<td contenteditable="true" bind:textContent={sample_duration}></td>
+				<td contenteditable="true" bind:textContent={sample_location}></td>
+				<td contenteditable="true" bind:textContent={sample_isVirtual}></td>
+				
+				<!-- <input bind:value={sample_name} placeholder="Enter input value" /> -->
+				<button on:click={() => createEvent(sample_name, sample_description, sample_startTime, sample_duration, sample_location, sample_isVirtual)} >Create New Event</button>
 			</tr>
 		</tbody>
 	</table>
