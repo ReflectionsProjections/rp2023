@@ -2,21 +2,23 @@
 	import GlassContainer from '../../components/glass-container.svelte';
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
+	import GenderSelector from '../../components/registration/gender-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
+	import type { boolStr, genderOptions } from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
 
 	const formValues = {
 		name: '',
 		email: '',
-		isCollegeStudent: 'yes',
-		isUIUCStudent: 'yes',
+		isCollegeStudent: 'yes' as boolStr,
+		isUIUCStudent: 'yes' as boolStr,
 		major: '',
 		collegeName: '',
 		expectedGradYear: '',
 		occupation: '',
 		age: '',
-		gender: '',
+		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: '',
 		race: [],
 		raceOther: '',
@@ -30,7 +32,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 0;
+	let page = 4;
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -109,6 +111,8 @@
 			prev: 7
 		}
 	};
+
+	$: console.log(formValues);
 </script>
 
 <main class="flex h-full">
@@ -213,18 +217,11 @@
 						/>
 					</div>
 					<div id="genderDemographics" class="flex flex-col items-start gap-2">
-						<label for="gender">Gender</label>
-						<select
-							class="bg-rp-dull-pink border rounded-md p-0.5"
-							id="gender"
-							bind:value={formValues.gender}
-						>
-							<option value="">Choose One</option>
-							<option value="male">Male</option>
-							<option value="female">Female</option>
-							<option value="nonbinary">Non-Binary</option>
-							<option value="preferNotToSay">Prefer not to say</option>
-						</select>
+						<label for="gender" class="flex flex-row gap-2">
+							<div>Gender</div>
+							<div class="text-slate-400">(optional)</div>
+						</label>
+						<GenderSelector bind:gender={formValues.gender} />
 					</div>
 					<div class="flex flex-col items-start gap-2">
 						<label for="ethnicity">Ethnicity</label>
