@@ -2,9 +2,14 @@
 	import GlassContainer from '../../components/glass-container.svelte';
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
+	import EthinicitySelector from '../../components/registration/ethinicity-selector.svelte';
 	import GenderSelector from '../../components/registration/gender-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
-	import type { boolStr, genderOptions } from '../../components/registration/misc-types';
+	import type {
+		boolStr,
+		ethnicityOptions,
+		genderOptions
+	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
 
@@ -19,7 +24,7 @@
 		occupation: '',
 		age: '',
 		gender: 'preferNotToSay' as genderOptions,
-		ethnicity: '',
+		ethnicity: 'preferNotToSay' as ethnicityOptions,
 		race: [],
 		raceOther: '',
 		firstGen: '',
@@ -116,7 +121,7 @@
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto md:w-3/5 lg:w-1/3 text-gray-200 accent-rp-pink">
+	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-1/3 text-gray-200 accent-rp-pink">
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
@@ -220,7 +225,10 @@
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col items-start  gap-2">
-						<label for="age">Age</label>
+						<label for="gender" class="flex flex-row gap-2">
+							<div>Age</div>
+							<div class="text-slate-400">(optional)</div>
+						</label>
 						<input
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
 							type="number"
@@ -236,16 +244,11 @@
 						<GenderSelector bind:gender={formValues.gender} />
 					</div>
 					<div class="flex flex-col items-start gap-2">
-						<label for="ethnicity">Ethnicity</label>
-						<select
-							class="bg-rp-dull-pink border rounded-md p-0.5"
-							id="ethnicity"
-							bind:value={formValues.ethnicity}
-						>
-							<option value="">Choose One</option>
-							<option value="hispanicOrLatino">Hispanic/Latino</option>
-							<option value="notHispanicOrLatino">Not Hispanic/Latino</option>
-						</select>
+						<label for="gender" class="flex flex-row gap-2">
+							<div>Ethnicity</div>
+							<div class="text-slate-400">(optional)</div>
+						</label>
+						<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
 					</div>
 					<div id="raceDemographics">
 						<label for="race">Race</label> <br />
