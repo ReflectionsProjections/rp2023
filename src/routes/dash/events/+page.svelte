@@ -61,7 +61,8 @@
 			"virtual": Boolean(virtual)
 		}
 		postData(json);
-		alert('you created an event! (placeholder) please refresh to see changes!');
+		fetchEvents();
+		// alert('you created an event! (placeholder) please refresh to see changes!');
 		
 
 
@@ -77,16 +78,17 @@
 			"virtual": Boolean(virtual)
 		}
 		editEventRequest(json, id);
-		alert('you edited an event! (placeholder')
+		fetchEvents();
+		// alert('you edited an event! (placeholder')
 	}
 </script>
 
 <div>Welcome to Event Details!</div>
-<div>Click on a field to edit event details</div>
+<div class= "text-white">Click on a field to edit event details</div>
 
-<div>
+<div class = "p-10">
 
-	<table width="100%" style="text-align: center">
+	<table class=" text-center overflow-x-scroll  ">
 		<thead>
 			<tr>
 				{#each columns as column}
@@ -94,17 +96,17 @@
 				{/each}
 			</tr>
 		</thead>
-		<tbody>
+		<tbody >
 			{#each events as event}
 				<tr>
 					<td contenteditable="false" bind:innerHTML={event._id}></td>
-					<td contenteditable="true" bind:innerHTML={event.name}></td>
+					<td contenteditable="true" bind:innerHTML={event.name} class =" w-56 p-2"></td>
 					<td contenteditable="true" bind:innerHTML={event.description}></td>
-					<td contenteditable="true" bind:textContent={event.startTime}></td>
+					<td contenteditable="true" bind:textContent={event.start_time}></td>
 					<td contenteditable="true" bind:textContent={event.duration}></td>
 					<td contenteditable="true" bind:innerHTML={event.location}></td>
-					<td contenteditable="true" bind:textContent={event.isVirtual}></td>
-					<button on:click={() => editEvent(event._id, event.name, event.description, event.startTime, event.duration, event.location, event.isVirtual)} >Save edits</button>
+					<td contenteditable="true" bind:textContent={event.virtual}></td>
+					<button on:click={() => editEvent(event._id, event.name, event.description, event.start_time, event.duration, event.location, event.virtual)} >Save edits</button>
 				</tr> 
 			 {/each}
 			<tr>
