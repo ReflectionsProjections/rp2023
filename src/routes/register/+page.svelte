@@ -41,7 +41,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 4;
+	let page = 0;
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -80,7 +80,7 @@
 
 	const pageMeta: PageMeta = {
 		0: {
-			title: 'General Info',
+			title: 'Welcome to R | P',
 			next: formValues.isCollegeStudent ? 1 : 3,
 			prev: -1
 		},
@@ -129,7 +129,12 @@
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
+					<div>
+						<div class="text-lg md:text-xl text-white">{pageMeta[page].title}</div>
+						<div class="text-base text-slate-300">
+							We're glad you made it. Sign up here to receive your conference passes.
+						</div>
+					</div>
 					<div class="flex flex-col items-start">
 						<label for="name">Full Name</label>
 						<input
