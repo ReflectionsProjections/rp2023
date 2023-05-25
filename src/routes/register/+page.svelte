@@ -267,7 +267,9 @@
 											formValues.race = formValues.race.concat(raceId);
 										}
 									}}
-									class="w-1/2 text-center bg-white p-3 {formValues.race.includes(raceId)
+									class="w-1/2 duration-300 text-center bg-white p-3 {formValues.race.includes(
+										raceId
+									)
 										? 'bg-opacity-40'
 										: 'bg-opacity-10 hover:bg-opacity-20'}"
 								>
