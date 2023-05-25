@@ -1,11 +1,13 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import type { PageMeta } from './page-meta.type';
+	import type { boolStr } from './misc-types';
 	export let page: number;
 	export let pageMeta: PageMeta;
+	export let formValues: any = {};
 
-	$: next = pageMeta[page]['next'];
-	$: prev = pageMeta[page]['prev'];
+	$: next = pageMeta[page]['next'](formValues?.isCollegeStudent === 'yes');
+	$: prev = pageMeta[page]['prev'](formValues?.isCollegeStudent === 'yes');
 </script>
 
 <div class="flex flex-row gap-5 justify-between mx-2">

@@ -81,43 +81,43 @@
 	const pageMeta: PageMeta = {
 		0: {
 			title: 'Welcome to R | P',
-			next: formValues.isCollegeStudent ? 1 : 3,
-			prev: -1
+			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 3),
+			prev: () => -1
 		},
 		1: {
 			title: 'Academics',
-			next: 4,
-			prev: 0
+			next: () => 4,
+			prev: () => 0
 		},
 		3: {
 			title: 'Occupation',
-			next: 4,
-			prev: 0
+			next: () => 4,
+			prev: () => 0
 		},
 		4: {
 			title: 'Demographics',
-			next: 5,
-			prev: formValues.isCollegeStudent ? 1 : 3
+			next: () => 5,
+			prev: () => (formValues.isCollegeStudent ? 1 : 3)
 		},
 		5: {
 			title: 'Dietary Restrictions',
-			next: 6,
-			prev: 4
+			next: () => 6,
+			prev: () => 4
 		},
 		6: {
 			title: 'Recruitment',
-			next: 7,
-			prev: 5
+			next: () => 7,
+			prev: () => 5
 		},
 		7: {
 			title: 'Special Events',
-			next: 8,
-			prev: 6
+			next: () => 8,
+			prev: () => 6
 		},
 		8: {
 			title: 'One Last Step',
-			next: -1,
-			prev: 7
+			next: () => -1,
+			prev: () => 7
 		}
 	};
 
@@ -152,7 +152,7 @@
 
 					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
 				</div>
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -197,7 +197,7 @@
 						<FirstGenSelector bind:firstGen={formValues.firstGen} />
 					</div>
 				</div>
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -216,7 +216,7 @@
 						/>
 					</div>
 				</div>
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -289,7 +289,7 @@
 					</div>
 				</div>
 
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -300,7 +300,7 @@
 
 					<DietaryOptions bind:foodOther={formValues.foodOther} />
 				</div>
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -356,7 +356,7 @@
 						/>
 					</div>
 				</div>
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -381,7 +381,7 @@
 					</div>
 				</div>
 
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
@@ -425,7 +425,7 @@
 					Submit
 				</button>
 
-				<PageControls bind:page {pageMeta} />
+				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 	</form>
