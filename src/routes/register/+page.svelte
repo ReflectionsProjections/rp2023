@@ -156,7 +156,7 @@
 					<div class="flex flex-col items-start">
 						<label for="major">Major</label>
 						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 							type="text"
 							id="major"
 							bind:value={formValues.major}
@@ -166,7 +166,7 @@
 						<div class="flex flex-col items-start">
 							<label for="college-name">Name of University</label>
 							<input
-								class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+								class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 								type="text"
 								id="college-name"
 								bind:value={formValues.collegeName}
@@ -206,7 +206,7 @@
 					<div class="flex flex-col items-start  gap-2">
 						<label for="age">Age</label>
 						<input
-							class="bg-rp-dull-pink border-gray-400 rounded-md h-fit w-16"
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
 							type="number"
 							id="age"
 							bind:value={formValues.age}
@@ -370,41 +370,44 @@
 
 		{#if page == 8}
 			<GlassContainer>
-				<div class="flex flex-col mb-3">
+				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<label for="marketing">How did you hear about R|P? </label> <br />
-					<div class="flex flex-row flex-wrap">
-						{#each referralOptions as { referralId, displayText }}
-							<span class="flex flex-row items-center w-1/2">
-								<input
-									class="rounded-md"
-									type="checkbox"
-									id={referralId}
-									value={referralId}
-									bind:group={formValues.marketing}
-								/>
-								<label for={referralId}>{displayText}</label> <br />
-							</span>
-						{/each}
-					</div>
+					<div>
+						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
+						<div class="flex flex-row flex-wrap">
+							{#each referralOptions as { referralId, displayText }}
+								<span class="flex flex-row items-center w-1/2">
+									<input
+										class="rounded-md"
+										type="checkbox"
+										id={referralId}
+										value={referralId}
+										bind:group={formValues.marketing}
+									/>
+									<label for={referralId}>{displayText}</label>
+								</span>
+							{/each}
+						</div>
 
-					<label for="marketin-other">Other</label>
-					<input
-						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-						type="text"
-						id="marketing-other"
-						bind:value={formValues.marketingOther}
-					/>
+						<label for="marketin-other">Other</label>
+						<input
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							type="text"
+							id="marketing-other"
+							bind:value={formValues.marketingOther}
+						/>
+					</div>
 				</div>
-				{#if formValues.marketing.length != 0 || formValues.marketingOther != ''}
-					<button
-						type="submit"
-						class="mx-auto text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-					>
-						Submit
-					</button>
-				{/if}
+
+				<button
+					type="submit"
+					class="mx-auto disabled:hidden duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+					disabled={formValues.marketing.length == 0 && formValues.marketingOther == ''}
+				>
+					Submit
+				</button>
+
 				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
