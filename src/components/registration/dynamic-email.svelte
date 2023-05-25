@@ -12,7 +12,6 @@
 		<label for="email"> NetID</label>
 		<span class="flex flex-row items-center w-full">
 			<input
-				type="email"
 				id="email"
 				bind:value={uiucEmail}
 				class="bg-transparent p-1 border border-r-0 border-gray-400 rounded-l-md h-fit"
