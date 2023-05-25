@@ -3,13 +3,16 @@
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import EthinicitySelector from '../../components/registration/ethinicity-selector.svelte';
+	import FirstGenSelector from '../../components/registration/first-gen-selector.svelte';
 	import GenderSelector from '../../components/registration/gender-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
+		firstGenOptions,
 		genderOptions,
-		raceOptions
+		raceOptions,
+		unanswered
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
@@ -28,7 +31,7 @@
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
 		race: [] as raceOptions[],
 		raceOther: '',
-		firstGen: '',
+		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
 		foodOther: '',
 		//resumeSharePerms: '',
@@ -186,15 +189,7 @@
 					{/if}
 					<div class="flex flex-col items-start gap-2">
 						<label for="is-first-gen">If you're a college student, are you first generation?</label>
-						<select
-							class="bg-rp-dull-pink border rounded-md p-0.5"
-							id="is-first-gen"
-							bind:value={formValues.firstGen}
-						>
-							<option value="">Choose One</option>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
-						</select>
+						<FirstGenSelector bind:firstGen={formValues.firstGen} />
 					</div>
 				</div>
 				<PageControls bind:page {pageMeta} />
@@ -417,7 +412,7 @@
 
 				<button
 					type="submit"
-					class="mx-auto disabled:hidden duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
 					disabled={formValues.marketing.length == 0 && formValues.marketingOther == ''}
 				>
 					Submit

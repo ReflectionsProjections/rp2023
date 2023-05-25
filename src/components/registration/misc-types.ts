@@ -1,6 +1,10 @@
-export type genderOptions = 'male' | 'female' | 'nonbinary' | 'preferNotToSay';
+export type unanswered = 'preferNotToSay';
 
-export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | 'preferNotToSay';
+export type genderOptions = 'male' | 'female' | 'nonbinary' | unanswered;
+
+export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | unanswered;
+
+export type firstGenOptions = boolStr | unanswered;
 
 export type raceOptions =
 	| 'americanIndianOrAlaska'
