@@ -178,6 +178,18 @@
 							/>
 						</div>
 					{/if}
+					<div class="flex flex-col items-start gap-2">
+						<label for="is-first-gen">If you're a college student, are you first generation?</label>
+						<select
+							class="bg-rp-dull-pink border rounded-md p-0.5"
+							id="is-first-gen"
+							bind:value={formValues.firstGen}
+						>
+							<option value="">Choose One</option>
+							<option value="yes">Yes</option>
+							<option value="no">No</option>
+						</select>
+					</div>
 				</div>
 				<PageControls bind:page {pageMeta} />
 			</GlassContainer>
@@ -254,18 +266,6 @@
 							id="other"
 							bind:value={formValues.raceOther}
 						/>
-					</div>
-					<div class="flex flex-col items-start gap-2">
-						<label for="is-first-gen">If you're a college student, are you first generation?</label>
-						<select
-							class="bg-rp-dull-pink border rounded-md p-0.5"
-							id="is-first-gen"
-							bind:value={formValues.firstGen}
-						>
-							<option value="">Choose One</option>
-							<option value="yes">Yes</option>
-							<option value="no">No</option>
-						</select>
 					</div>
 				</div>
 
