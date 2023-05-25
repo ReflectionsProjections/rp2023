@@ -7,7 +7,7 @@
 <div class="flex-col flex">
 	<div class="flex flex-row">
 		<button
-			class="flex rounded-tl-md items-center w-full p-3 bg-white flex-col gap-2 {foodOther ===
+			class="flex rounded-tl-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {foodOther ===
 			'Vegan'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
@@ -19,7 +19,7 @@
 			<div>Vegan</div>
 		</button>
 		<button
-			class="flex rounded-tr-md items-center w-full p-3 bg-white flex-col gap-2 {foodOther ===
+			class="flex rounded-tr-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {foodOther ===
 			'Vegetarian'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
@@ -36,7 +36,7 @@
 	</div>
 	<div class="flex flex-row">
 		<button
-			class="flex rounded-bl-md items-center w-full p-3 bg-white flex-col gap-2 {foodOther ===
+			class="flex rounded-bl-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {foodOther ===
 			'Gluten-Free'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
@@ -48,7 +48,7 @@
 			<div>Gluten-Free</div>
 		</button>
 		<button
-			class="flex rounded-br-md items-center w-full p-3 bg-white flex-col gap-2 {foodOther ===
+			class="flex rounded-br-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {foodOther ===
 			'none'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"

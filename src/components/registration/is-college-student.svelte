@@ -6,7 +6,7 @@
 
 <div class="flex flex-col rounded-md border-gray-700">
 	<button
-		class="w-full flex-col items-center h-20 gap-1 p-2 flex justify-center bg-white rounded-t-md {isUIUCStudent ===
+		class="w-full duration-300 flex-col items-center h-20 gap-1 p-2 flex justify-center bg-white rounded-t-md {isUIUCStudent ===
 		'yes'
 			? 'bg-opacity-40'
 			: 'bg-opacity-10 hover:bg-opacity-20'}"
@@ -20,7 +20,7 @@
 	</button>
 	<span class="flex flex-row">
 		<button
-			class="w-full flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-bl-md {isCollegeStudent ===
+			class="w-full duration-300 flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-bl-md {isCollegeStudent ===
 				'yes' && isUIUCStudent === 'no'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
@@ -34,7 +34,7 @@
 			<div>I'm from another college</div>
 		</button>
 		<button
-			class="w-full flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-br-md {isCollegeStudent !==
+			class="w-full duration-300 flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-br-md {isCollegeStudent !==
 			'yes'
 				? 'bg-opacity-40'
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
