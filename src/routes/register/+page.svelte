@@ -8,7 +8,8 @@
 	import type {
 		boolStr,
 		ethnicityOptions,
-		genderOptions
+		genderOptions,
+		raceOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
@@ -25,7 +26,7 @@
 		age: '',
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
-		race: [],
+		race: [] as raceOptions[],
 		raceOther: '',
 		firstGen: '',
 		food: '',
@@ -60,13 +61,13 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	const raceOptions = [
-		{ raceId: 'americanIndianOrAlaska', displayText: 'American Indian/Alaska Native' },
+	const raceOptions: { raceId: raceOptions; displayText: string }[] = [
+		{ raceId: 'americanIndianOrAlaska', displayText: 'American Indian / Alaska Native' },
 		{ raceId: 'eastAsian', displayText: 'East Asian' },
 		{ raceId: 'southAsian', displayText: 'South Asian' },
 		{ raceId: 'black', displayText: 'Black or African-American' },
 		{ raceId: 'pacificIslander', displayText: 'Pacific Islander' },
-		{ raceId: 'white', displayText: 'White/Caucasian' }
+		{ raceId: 'white', displayText: 'White / Caucasian' }
 	];
 
 	const extraEventOptions = [
@@ -121,7 +122,7 @@
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-1/3 text-gray-200 accent-rp-pink">
+	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
@@ -250,25 +251,39 @@
 						</label>
 						<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
 					</div>
-					<div id="raceDemographics">
-						<label for="race">Race</label> <br />
-						{#each raceOptions as { raceId, displayText }}
+					<div class="flex flex-col items-start gap-2" id="raceDemographics">
+						<label for="gender" class="flex flex-row gap-2">
+							<div>Race</div>
+							<div class="text-slate-400">(optional)</div>
+						</label>
+						<div class="flex flex-row flex-wrap">
+							{#each raceOptions as { raceId, displayText }}
+								<button
+									id={raceId}
+									on:click={() => {
+										if (formValues.race.includes(raceId)) {
+											formValues.race = formValues.race.filter((val) => val !== raceId);
+										} else {
+											formValues.race = formValues.race.concat(raceId);
+										}
+									}}
+									class="w-1/2 text-center bg-white p-3 {formValues.race.includes(raceId)
+										? 'bg-opacity-40'
+										: 'bg-opacity-10 hover:bg-opacity-20'}"
+								>
+									{displayText}</button
+								>
+							{/each}
+						</div>
+						<div class="flex flex-row gap-3 items-center pl-3">
+							<label for="other">Other</label>
 							<input
-								type="checkbox"
-								id={raceId}
-								value={raceId}
-								bind:group={formValues.race}
-								class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+								class="bg-transparent border border-gray-400 rounded-md h-fit"
+								type="text"
+								id="other"
+								bind:value={formValues.raceOther}
 							/>
-							<label for={raceId}>{displayText}</label> <br />
-						{/each}
-						<label for="other">Other</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="text"
-							id="other"
-							bind:value={formValues.raceOther}
-						/>
+						</div>
 					</div>
 				</div>
 
