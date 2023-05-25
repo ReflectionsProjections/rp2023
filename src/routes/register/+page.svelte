@@ -148,6 +148,7 @@
 					<IsCollegeStudent
 						bind:isCollegeStudent={formValues.isCollegeStudent}
 						bind:isUIUCStudent={formValues.isUIUCStudent}
+						bind:collegeName={formValues.collegeName}
 					/>
 
 					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />

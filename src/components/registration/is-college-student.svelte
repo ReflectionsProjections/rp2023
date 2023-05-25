@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte';
 	export let isUIUCStudent: string;
 	export let isCollegeStudent: string;
+	export let collegeName: string;
 </script>
 
 <div class="flex flex-col rounded-md border-gray-700">
@@ -14,6 +15,7 @@
 		on:click={() => {
 			isUIUCStudent = 'yes';
 			isCollegeStudent = 'yes';
+			collegeName = 'UIUC';
 		}}
 	>
 		<img src="uiuc-logo.svg" alt="illinois logo" class="h-full p-3" />
