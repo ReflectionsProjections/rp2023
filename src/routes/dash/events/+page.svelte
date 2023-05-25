@@ -2,7 +2,7 @@
 	// we'll pull from a database later, this is just for testing/reference
 	let events: any = [];
 	let sample_id = "autogen";
-	let sample_name = "mf test";
+	let sample_name = "test name";
 	let sample_startTime = "2019-09-26T05:58:30.996Z";
 	let sample_duration = "3";
 	let sample_location = "siebel";
@@ -35,6 +35,7 @@
 			body: JSON.stringify(json)
 		});
 		console.log(response.status);
+		fetchEvents();
 	}
 
 	async function editEventRequest(json: any, id:string) {
@@ -48,6 +49,7 @@
 			body: JSON.stringify(json)
 		});
 		console.log(resp.status);
+		fetchEvents();
 	}
 
 	// function createEvent(e: SubmitEvent) {
@@ -61,12 +63,8 @@
 			"virtual": Boolean(virtual)
 		}
 		postData(json);
-		fetchEvents();
-		// alert('you created an event! (placeholder) please refresh to see changes!');
-		
-
-
 	}
+	
 	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
 		console.log("ive reached here at least");
 		let json = {
@@ -79,7 +77,6 @@
 		}
 		editEventRequest(json, id);
 		fetchEvents();
-		// alert('you edited an event! (placeholder')
 	}
 </script>
 
@@ -99,13 +96,13 @@
 		<tbody >
 			{#each events as event}
 				<tr>
-					<td contenteditable="false" bind:innerHTML={event._id}></td>
+					<td contenteditable="false" bind:innerHTML={event._id} class =" w-56 p-2"></td>
 					<td contenteditable="true" bind:innerHTML={event.name} class =" w-56 p-2"></td>
-					<td contenteditable="true" bind:innerHTML={event.description}></td>
-					<td contenteditable="true" bind:textContent={event.start_time}></td>
-					<td contenteditable="true" bind:textContent={event.duration}></td>
-					<td contenteditable="true" bind:innerHTML={event.location}></td>
-					<td contenteditable="true" bind:textContent={event.virtual}></td>
+					<td contenteditable="true" bind:innerHTML={event.description} class =" w-56 p-2"></td>
+					<td contenteditable="true" bind:textContent={event.start_time} class =" w-56 p-2"></td>
+					<td contenteditable="true" bind:textContent={event.duration} class =" w-56 p-2"></td>
+					<td contenteditable="true" bind:innerHTML={event.location} class =" w-56 p-2"></td>
+					<td contenteditable="true" bind:textContent={event.virtual} class =" w-56 p-2"></td>
 					<button on:click={() => editEvent(event._id, event.name, event.description, event.start_time, event.duration, event.location, event.virtual)} >Save edits</button>
 				</tr> 
 			 {/each}
