@@ -89,15 +89,10 @@
 			next: () => 4,
 			prev: () => 0
 		},
-		// 3: {
-		// 	title: 'Occupation',
-		// 	next: () => 4,
-		// 	prev: () => 0
-		// },
 		4: {
 			title: 'Demographics',
 			next: () => 5,
-			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0),
+			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0)
 		},
 		5: {
 			title: 'Dietary Restrictions',
@@ -201,25 +196,6 @@
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
-
-		<!-- {#if page == 3}
-			<GlassContainer>
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col items-start">
-						<label for="occupation">Current Occupation </label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							type="text"
-							id="occupation"
-							bind:value={formValues.occupation}
-							required
-						/>
-					</div>
-				</div>
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if} -->
 
 		<!-- DEMOGRAPHICS -->
 		{#if page == 4}
@@ -435,8 +411,6 @@
 <!--
 	Page 0) Name, email, isCollegeStudent
 	Page 1) if they said yes to CollegeStudent 
-
-	Page 3) Occupation (if they said no to college student)
 	Page 4) Demographics
 	Page 5) Food
 	Page 6) Resume
