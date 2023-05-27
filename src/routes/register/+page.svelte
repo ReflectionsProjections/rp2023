@@ -321,7 +321,7 @@
 					</div>
 
 					<div>
-						<label for="job-type">Job Type Interest</label>
+						<label for="job-type">Job Type Interest: </label>
 						<input
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
 							type="checkbox"
