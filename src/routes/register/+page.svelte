@@ -25,7 +25,7 @@
 		major: '',
 		collegeName: '',
 		expectedGradYear: '',
-		occupation: '',
+		// occupation: '',
 		age: '',
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
@@ -81,7 +81,7 @@
 	const pageMeta: PageMeta = {
 		0: {
 			title: 'Welcome to R | P',
-			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 3),
+			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 4),
 			prev: () => -1
 		},
 		1: {
@@ -89,15 +89,15 @@
 			next: () => 4,
 			prev: () => 0
 		},
-		3: {
-			title: 'Occupation',
-			next: () => 4,
-			prev: () => 0
-		},
+		// 3: {
+		// 	title: 'Occupation',
+		// 	next: () => 4,
+		// 	prev: () => 0
+		// },
 		4: {
 			title: 'Demographics',
 			next: () => 5,
-			prev: () => (formValues.isCollegeStudent ? 1 : 3)
+			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0),
 		},
 		5: {
 			title: 'Dietary Restrictions',
@@ -202,7 +202,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 3}
+		<!-- {#if page == 3}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -219,7 +219,7 @@
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
-		{/if}
+		{/if} -->
 
 		<!-- DEMOGRAPHICS -->
 		{#if page == 4}
@@ -321,7 +321,7 @@
 					</div>
 
 					<div>
-						<label for="job-type">Job Type Interest</label>
+						<label for="job-type">Job Type Interest: </label>
 						<input
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
 							type="checkbox"
