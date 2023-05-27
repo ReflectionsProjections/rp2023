@@ -11,8 +11,7 @@
 		ethnicityOptions,
 		firstGenOptions,
 		genderOptions,
-		raceOptions,
-		unanswered
+		raceOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
