@@ -16,6 +16,7 @@
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageMeta } from '../../components/registration/page-meta.type';
+	import RaceSelector from '../../components/registration/race-selector.svelte';
 
 	const formValues = {
 		name: '',
@@ -62,15 +63,6 @@
 		{ referralId: 'slack', displayText: 'Slack' },
 		{ referralId: 'discord', displayText: 'Discord' },
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
-	];
-
-	const raceOptions: { raceId: raceOptions; displayText: string }[] = [
-		{ raceId: 'americanIndianOrAlaska', displayText: 'American Indian / Alaska Native' },
-		{ raceId: 'eastAsian', displayText: 'East Asian' },
-		{ raceId: 'southAsian', displayText: 'South Asian' },
-		{ raceId: 'black', displayText: 'Black or African-American' },
-		{ raceId: 'pacificIslander', displayText: 'Pacific Islander' },
-		{ raceId: 'white', displayText: 'White / Caucasian' }
 	];
 
 	const extraEventOptions = [
@@ -188,10 +180,8 @@
 							/>
 						</div>
 					{/if}
-					<div class="flex flex-col items-start gap-2">
-						<label for="is-first-gen">If you're a college student, are you first generation?</label>
-						<FirstGenSelector bind:firstGen={formValues.firstGen} />
-					</div>
+
+					<FirstGenSelector bind:firstGen={formValues.firstGen} />
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
@@ -214,56 +204,12 @@
 							bind:value={formValues.age}
 						/>
 					</div>
-					<div id="genderDemographics" class="flex flex-col items-start gap-2">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Gender</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<GenderSelector bind:gender={formValues.gender} />
-					</div>
-					<div class="flex flex-col items-start gap-2">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Ethnicity</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
-					</div>
-					<div class="flex flex-col items-start gap-2" id="raceDemographics">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Race</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<div class="flex flex-row flex-wrap">
-							{#each raceOptions as { raceId, displayText }}
-								<button
-									id={raceId}
-									on:click={() => {
-										if (formValues.race.includes(raceId)) {
-											formValues.race = formValues.race.filter((val) => val !== raceId);
-										} else {
-											formValues.race = formValues.race.concat(raceId);
-										}
-									}}
-									class="w-1/2 duration-300 text-center bg-white p-3 {formValues.race.includes(
-										raceId
-									)
-										? 'bg-opacity-40'
-										: 'bg-opacity-10 hover:bg-opacity-20'}"
-								>
-									{displayText}</button
-								>
-							{/each}
-						</div>
-						<div class="flex flex-row gap-3 items-center pl-3">
-							<label for="other">Other</label>
-							<input
-								class="bg-transparent border border-gray-400 rounded-md h-fit"
-								type="text"
-								id="other"
-								bind:value={formValues.raceOther}
-							/>
-						</div>
-					</div>
+
+					<GenderSelector bind:gender={formValues.gender} />
+
+					<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
+
+					<RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />

@@ -6,8 +6,11 @@
 	export let pageMeta: PageMeta;
 	export let formValues: any = {};
 
-	$: next = pageMeta[page]['next'](formValues?.isCollegeStudent === 'yes');
-	$: prev = pageMeta[page]['prev'](formValues?.isCollegeStudent === 'yes');
+	$: isCollegeStudent = formValues?.isCollegeStudent === 'yes';
+	$: numPages = Object.keys(pageMeta).length;
+
+	$: next = pageMeta[page]['next'](isCollegeStudent);
+	$: prev = pageMeta[page]['prev'](isCollegeStudent);
 </script>
 
 <div class="flex flex-row gap-5 justify-between mx-2">
@@ -22,6 +25,7 @@
 	{:else}
 		<div />
 	{/if}
+	<div class="text-slate-300">1 of {isCollegeStudent ? numPages : numPages - 1}</div>
 	{#if next >= 0}
 		<button
 			aria-label="next page"
