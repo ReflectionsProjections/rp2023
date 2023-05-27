@@ -21,7 +21,7 @@
 			: 'bg-opacity-10 hover:bg-opacity-20'}"
 		on:click={handleClick('male')}
 	>
-		<Icon class="text-3xl" icon="fa-solid:male" />
+		<Icon class="text-3xl" icon="mdi:human-male" />
 		<div>Male</div>
 	</button>
 	<button
@@ -30,7 +30,7 @@
 			: 'bg-opacity-10 hover:bg-opacity-20'}"
 		on:click={handleClick('female')}
 	>
-		<Icon class="text-3xl" icon="fa-solid:female" />
+		<Icon class="text-3xl" icon="mdi:human-female" />
 		<div>Female</div>
 	</button>
 	<button
