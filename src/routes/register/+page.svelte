@@ -25,7 +25,7 @@
 		major: '',
 		collegeName: '',
 		expectedGradYear: '',
-		occupation: '',
+		// occupation: '',
 		age: '',
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
@@ -81,7 +81,7 @@
 	const pageMeta: PageMeta = {
 		0: {
 			title: 'Welcome to R | P',
-			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 3),
+			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 4),
 			prev: () => -1
 		},
 		1: {
@@ -89,15 +89,15 @@
 			next: () => 4,
 			prev: () => 0
 		},
-		3: {
-			title: 'Occupation',
-			next: () => 4,
-			prev: () => 0
-		},
+		// 3: {
+		// 	title: 'Occupation',
+		// 	next: () => 4,
+		// 	prev: () => 0
+		// },
 		4: {
 			title: 'Demographics',
 			next: () => 5,
-			prev: () => (formValues.isCollegeStudent ? 1 : 3)
+			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0),
 		},
 		5: {
 			title: 'Dietary Restrictions',
@@ -202,7 +202,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 3}
+		<!-- {#if page == 3}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -219,7 +219,7 @@
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
-		{/if}
+		{/if} -->
 
 		<!-- DEMOGRAPHICS -->
 		{#if page == 4}
@@ -361,68 +361,80 @@
 			</GlassContainer>
 		{/if}
 
-            {#if formValues.resumeSharePerms != ""}
-            <div>
-                <label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
-                <select id="mech-puzzle" bind:value={formValues.mechPuzzle}>
-                    <option value="both">Yes, I'm interested in both</option>
-                    <option value="mechmania">I'm just interested in MechMania</option>
-                    <option value="puzzlebang">I'm just interested in PuzzleBang</option>
-                    <option value="no-Free">No</option>
-                </select>
-            </div>
-            {/if}
+		{#if page == 7}
+			<GlassContainer>
+				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
+					<div class="flex flex-col gap-5 mb-3">
+						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
+						{#each extraEventOptions as { extraEventId, displayText }}
+							<div class="flex items-center">
+								<input
+									type="checkbox"
+									id={extraEventId}
+									value={extraEventId}
+									bind:group={formValues.mechPuzzle}
+									class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+								/>
+								<label for={extraEventId}>{displayText}</label>
+							</div>
+						{/each}
+					</div>
+				</div>
 
-            {#if formValues.mechPuzzle != ""}
-            <div>
-                <label for="marketing">How did you hear about R|P? </label> <br>
-                    <input type="checkbox" id="ACMOH" value="ACMOH" bind:group={formValues.marketing}/>
-                    <label for="ACMOH">ACM Open House</label> <br>
-                    <input type="checkbox" id="ACMN" value="ACMN" bind:group={formValues.marketing}/>
-                    <label for="ACMN">ACM Newsletter</label> <br>
-                    <input type="checkbox" id="building-ads" value="building-ads" bind:group={formValues.marketing}/>
-                    <label for="building-ads">Building Ads</label> <br>
-                    <input type="checkbox" id="courses" value="Course" bind:group={formValues.marketing}/>
-                    <label for="courses">School Course</label> <br>
-                    <input type="checkbox" id="WCS" value="WCS" bind:group={formValues.marketing}/>
-                    <label for="WCS">WCS Newsletter</label> <br>
-                    <input type="checkbox" id="cs-newsletter" value="cs-newsletter" bind:group={formValues.marketing}/>
-                    <label for="cs-newsletter">CS Department Newsletter</label> <br>
-                    <input type="checkbox" id="instagram" value="instagram" bind:group={formValues.marketing}/>
-                    <label for="instagram">Instagram</label> <br>
-                    <input type="checkbox" id="facebook" value="facebook" bind:group={formValues.marketing}/>
-                    <label for="facebook">Facebook</label> <br>
-                    <input type="checkbox" id="twitter" value="twitter" bind:group={formValues.marketing}/>
-                    <label for="twitter">Twitter</label> <br>
-                    <input type="checkbox" id="linkedin" value="linkedin" bind:group={formValues.marketing}/>
-                    <label for="linkedin">LinkedIn</label> <br>
-                    <input type="checkbox" id="email" value="email" bind:group={formValues.marketing}/>
-                    <label for="email">E-mail</label> <br>
-                    <input type="checkbox" id="posters" value="posters" bind:group={formValues.marketing}/>
-                    <label for="posters">Posters/Flyers</label> <br>
-                    <input type="checkbox" id="quad-day" value="quad-day" bind:group={formValues.marketing}/>
-                    <label for="quad-day">Quad Day</label> <br>
-                    <input type="checkbox" id="e-night" value="e-night" bind:group={formValues.marketing}/>
-                    <label for="e-night">E-Night</label> <br>
-                    <input type="checkbox" id="website" value="website" bind:group={formValues.marketing}/>
-                    <label for="website">Website</label> <br>
-                    <input type="checkbox" id="slack" value="slack" bind:group={formValues.marketing}/>
-                    <label for="slack">Slack</label> <br>
-                    <input type="checkbox" id="discord" value="discord" bind:group={formValues.marketing}/>
-                    <label for="discord">Discord</label> <br>
-                    <input type="checkbox" id="word-of-mouth" value="word-of-mouth" bind:group={formValues.marketing}/>
-                    <label for="word-of-mouth">Word of Mouth</label> <br>
-                    <label for="marketin-other">Other: </label>
-                    <input type="text" id="marketing-other" bind:value={formValues.marketingOther}>
-            </div>
-            {/if}
+				<PageControls {formValues} bind:page {pageMeta} />
+			</GlassContainer>
+		{/if}
 
-            {#if formValues.marketing.length != 0}
-                <input type="submit"> 
-            {/if}
-        </form>
-    </main>
-</div>
+		{#if page == 8}
+			<GlassContainer>
+				<div class="flex flex-col gap-5 mb-3">
+					<div class="text-xl text-white">{pageMeta[page].title}</div>
+
+					<div>
+						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
+						<div class="flex flex-row flex-wrap">
+							{#each referralOptions as { referralId, displayText }}
+								<span class="flex flex-row items-center w-1/2">
+									<input
+										class="rounded-md"
+										type="checkbox"
+										id={referralId}
+										value={referralId}
+										bind:group={formValues.marketing}
+									/>
+									<label for={referralId}>{displayText}</label>
+								</span>
+							{/each}
+						</div>
+
+						<label for="marketin-other">Other</label>
+						<input
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							type="text"
+							id="marketing-other"
+							bind:value={formValues.marketingOther}
+						/>
+					</div>
+				</div>
+
+				<button
+					type="submit"
+					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+					disabled={formValues.marketing.length == 0 && formValues.marketingOther == ''}
+				>
+					Submit
+				</button>
+
+				<PageControls {formValues} bind:page {pageMeta} />
+			</GlassContainer>
+		{/if}
+	</form>
+</main>
+
+<!--
+	Page 0) Name, email, isCollegeStudent
+	Page 1) if they said yes to CollegeStudent 
 
 	Page 3) Occupation (if they said no to college student)
 	Page 4) Demographics
