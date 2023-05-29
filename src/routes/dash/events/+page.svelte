@@ -12,17 +12,11 @@
 	const fetchEvents = async () => {
 		const response = await fetch('http://127.0.0.1:3000/events');
 		events = await response.json();
-		// console.log("I'm alive", events);
-		// console.log(events);
 	};
 
 	fetchEvents();
 
-	// const response = fetch(url).then((response) => response.json())
-	// events = response.json();
-
-
-	const columns = ['id', 'Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual", "Action"];
+	const columns = ['Delete Action', 'id', 'Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual", "Action"];
 	var newRow = columns;
 
 	async function postData(json: any) {
@@ -64,9 +58,20 @@
 		}
 		postData(json);
 	}
-	
+
+	async function deleteEvent(id:string) {
+		let url = `http://127.0.0.1:3000/events/${id}`;
+		console.log(url, id);
+		const resp = await fetch(url, {
+			method: 'DELETE',
+			// body: JSON.stringify(json)
+		});
+		// console.log(resp.status);
+		fetchEvents();
+	}
+
 	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
-		console.log("ive reached here at least");
+		// console.log("ive reached here at least");
 		let json = {
 			"name": name,
 			"description": description,
@@ -76,7 +81,6 @@
 			"virtual": Boolean(virtual)
 		}
 		editEventRequest(json, id);
-		fetchEvents();
 	}
 </script>
 
@@ -96,6 +100,7 @@
 		<tbody >
 			{#each events as event}
 				<tr>
+					<button on:click={() => deleteEvent(event._id)} >Delete Event</button>
 					<td contenteditable="false" bind:innerHTML={event._id} class =" w-56 p-2"></td>
 					<td contenteditable="true" bind:innerHTML={event.name} class =" w-56 p-2"></td>
 					<td contenteditable="true" bind:innerHTML={event.description} class =" w-56 p-2"></td>
