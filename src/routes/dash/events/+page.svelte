@@ -10,11 +10,25 @@
 	let sample_isVirtual = "false";
 
 	const fetchEvents = async () => {
-		const response = await fetch('http://127.0.0.1:3000/events');
-		events = await response.json();
-		// console.log("I'm alive", events);
-		// console.log(events);
-	};
+         let response;
+
+         try {
+             response = await fetch('http://127.0.0.1:3000/events');
+             try {
+                 const jsonResponse = await response.json();
+
+                 if (response.ok) {
+                     events = jsonResponse;
+                 } else {
+                     console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+                 }
+             } catch (e) {
+                 console.log(`Error parsing response: ${e}`);
+             }
+         } catch (e) {
+             console.log(`Error making request: ${e}`);
+         }
+ 	};
 
 	fetchEvents();
 
