@@ -35,7 +35,7 @@
 	const columns = ['Delete Action', 'id', 'Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual", "Action"];
 	var newRow = columns;
 
-	async function postData(json: any) {
+	async function createEventRequest(json: any) {
 		const url = "http://127.0.0.1:3000/events";
 		const response = await fetch(url, {
 			method: 'POST',
@@ -62,17 +62,15 @@
 		fetchEvents();
 	}
 
-	// function createEvent(e: SubmitEvent) {
     function createEvent(name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
-		let json = {
-			"name": name,
-			"description": description,
-			"start_time": start_time,
-			"duration": Number(duration),
-			"location": location,
-			"virtual": Boolean(virtual)
-		}
-		postData(json);
+		let json = generateJson(name, description, start_time, duration, location, virtual);
+		createEventRequest(json);
+	}
+
+	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
+		// console.log("ive reached here at least");
+		let json = generateJson(name, description, start_time, duration, location, virtual);
+		editEventRequest(json, id);
 	}
 
 	async function deleteEvent(id:string) {
@@ -80,24 +78,36 @@
 		console.log(url, id);
 		const resp = await fetch(url, {
 			method: 'DELETE',
-			// body: JSON.stringify(json)
 		});
-		// console.log(resp.status);
+
 		fetchEvents();
 	}
 
-	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
-		// console.log("ive reached here at least");
+	function generateJson(name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
+		let duration_number = Number(duration);
+		if (duration_number === 0) {
+			alert("duration is 0, you can edit this later if you'd like");
+		}
+
+		if (isNaN(duration_number)) {
+			console.log("duration is not a number")
+			alert("duration is not a number")
+			return;
+		}
+
 		let json = {
-			"name": name,
+			"name": name, 
 			"description": description,
 			"start_time": start_time,
 			"duration": Number(duration),
 			"location": location,
 			"virtual": Boolean(virtual)
 		}
-		editEventRequest(json, id);
+
+		return json;
 	}
+
+	
 </script>
 
 <div>Welcome to Event Details!</div>
@@ -128,7 +138,7 @@
 				</tr> 
 			 {/each}
 			<tr>
-
+				<td contenteditable="false"> - </td>
 				<td contenteditable="false" bind:textContent={sample_id}></td>
 				<td contenteditable="true" bind:textContent={sample_name}></td>
 				<td contenteditable="true" bind:textContent={sample_description}></td>
