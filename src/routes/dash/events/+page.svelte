@@ -44,6 +44,18 @@
 			},
 			body: JSON.stringify(json)
 		});
+
+		try {
+			const jsonResponse = await response.json();
+
+			if (response.ok) {
+				events = jsonResponse;
+			} else {
+				console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+			}
+        } catch (e) {
+            console.log(`Error parsing response: ${e}`);
+        }
 		console.log(response.status);
 		fetchEvents();
 	}
@@ -51,14 +63,26 @@
 	async function editEventRequest(json: any, id:string) {
 		let url = `http://127.0.0.1:3000/events/${id}`;
 		console.log(url, json, id);
-		const resp = await fetch(url, {
+		const response = await fetch(url, {
 			method: 'PATCH',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(json)
 		});
-		console.log(resp.status);
+		
+		try {
+			const jsonResponse = await response.json();
+
+			if (response.ok) {
+				events = jsonResponse;
+			} else {
+				console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+			}
+        } catch (e) {
+            console.log(`Error parsing response: ${e}`);
+        }
+		console.log(response.status);
 		fetchEvents();
 	}
 
@@ -135,7 +159,7 @@
 					<td contenteditable="true" bind:innerHTML={event.location} class =" w-56 p-2"></td>
 					<td contenteditable="true" bind:textContent={event.virtual} class =" w-56 p-2"></td>
 					<button on:click={() => editEvent(event._id, event.name, event.description, event.start_time, event.duration, event.location, event.virtual)} >Save edits</button>
-				</tr> 
+				</tr>
 			 {/each}
 			<tr>
 				<td contenteditable="false"> - </td>
