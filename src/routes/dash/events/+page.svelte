@@ -35,6 +35,11 @@
 	const columns = ['Delete Action', 'id', 'Name', 'Description', 'Start Time', 'Duration', 'Location', "Is Virtual", "Action"];
 	var newRow = columns;
 
+	function isISO8601Date(value: string): boolean {
+		const iso8601Pattern = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,3})?Z?$/;
+		return iso8601Pattern.test(value);
+	}
+
 	async function createEventRequest(json: any) {
 		const url = "http://127.0.0.1:3000/events";
 		const response = await fetch(url, {
@@ -57,7 +62,7 @@
             console.log(`Error parsing response: ${e}`);
         }
 		console.log(response.status);
-		fetchEvents();
+		// fetchEvents();
 	}
 
 	async function editEventRequest(json: any, id:string) {
@@ -83,18 +88,20 @@
             console.log(`Error parsing response: ${e}`);
         }
 		console.log(response.status);
-		fetchEvents();
+		// fetchEvents();
 	}
 
     function createEvent(name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
 		let json = generateJson(name, description, start_time, duration, location, virtual);
 		createEventRequest(json);
+		fetchEvents();
 	}
 
 	function editEvent(id: string, name: string, description: string, start_time: string, duration:string, location:string, virtual:string) {
 		// console.log("ive reached here at least");
 		let json = generateJson(name, description, start_time, duration, location, virtual);
 		editEventRequest(json, id);
+		fetchEvents();
 	}
 
 	async function deleteEvent(id:string) {
@@ -116,6 +123,11 @@
 		if (isNaN(duration_number)) {
 			console.log("duration is not a number")
 			alert("duration is not a number")
+			return;
+		}
+
+		if (!isISO8601Date(start_time)) {
+			alert("start date is not ISO8601, try again!")
 			return;
 		}
 
