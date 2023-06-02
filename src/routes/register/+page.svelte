@@ -132,6 +132,21 @@
 	};
 
 	$: console.log(formValues);
+
+	let submitted = false;
+
+	const onSubmit = async () => {
+		const response = await fetch('http://localhost:3000/attendee', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formValues)
+		});
+		submitted = true;
+		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+	};
+
 </script>
 
 <main class="flex h-full">
@@ -191,6 +206,32 @@
 								</option>
 							{/each}
 						</select>
+
+						<!-- <div class="counter">
+							<span id="minus">-</span>
+							<span id="year">2023</span>
+							<span id="plus">+</span>
+						  </div>
+						
+						  <script>
+							var yearElement = document.getElementById('year');
+							var minusElement = document.getElementById('minus');
+							var plusElement = document.getElementById('plus');
+
+							formValues.expectedGradYear = 2023;
+						
+							minusElement.addEventListener('click', function() {
+							  var currentYear = parseInt(yearElement.innerText);
+							  yearElement.innerText = currentYear - 1;
+							  formValues.expectedGradYear = parseInt(formValues.expectedGradYear) - 1;
+							});
+						
+							plusElement.addEventListener('click', function() {
+							  var currentYear = parseInt(yearElement.innerText);
+							  yearElement.innerText = currentYear + 1;
+							  formValues.expectedGradYear = parseInt(formValues.expectedGradYear) - 1;
+							});
+						  </script> -->
 
 						<!-- <input
 							class="bg-transparent border border-gray-400 rounded-md h-fit"
@@ -406,6 +447,7 @@
 
 		{#if page == 8}
 			<GlassContainer>
+				{#if !submitted}
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
@@ -435,16 +477,24 @@
 						/>
 					</div>
 				</div>
+				{/if}
+				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
+					<button
+						type="submit"
+						class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+						on:click = {onSubmit}
+					>
+						Submit
+					</button>
+				{/if}
 
-				<button
-					type="submit"
-					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-					disabled={formValues.marketing.length == 0 && formValues.marketingOther == ''}
-				>
-					Submit
-				</button>
+				{#if !submitted}
+					<PageControls {formValues} bind:page {pageMeta} />
+				{/if}
 
-				<PageControls {formValues} bind:page {pageMeta} />
+				{#if submitted}
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+				{/if}
 			</GlassContainer>
 		{/if}
 	</form>
@@ -463,4 +513,17 @@
 	input {
 		padding: 0.25rem;
 	}
+
+	.counter {
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .counter span {
+      cursor: pointer;
+      padding: 0 10px;
+    }
+
 </style>
