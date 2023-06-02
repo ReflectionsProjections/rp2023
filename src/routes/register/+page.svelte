@@ -24,6 +24,7 @@
 		isUIUCStudent: 'yes' as boolStr,
 		major: '',
 		collegeName: '',
+		expectedGradTerm: '',
 		expectedGradYear: '',
 		// occupation: '',
 		age: '',
@@ -76,6 +77,20 @@
 	const extraEventOptions = [
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
+	];
+
+	const gradYearOptions = [
+		{ gradYearId: '2023', displayText: '2023'},
+		{ gradYearId: '2024', displayText: '2024'},
+		{ gradYearId: '2025', displayText: '2025'},
+		{ gradYearId: '2026', displayText: '2026'},
+		{ gradYearId: '2027', displayText: '2027'}
+	];
+
+	const gradTermOptions = [
+		{ gradTermId: 'fall', displayText: 'Fall' },
+		{ gradTermId: 'spring', displayText: 'Spring' },
+		{ gradTermId: 'summer', displayText: 'Summer' }
 	];
 
 	const pageMeta: PageMeta = {
@@ -157,15 +172,41 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col justify-between items-start">
-						<label for="exp-grad-date">Expected Graduation Date</label>
-						<input
+					<div class="flex flex-row items-start">
+						<label for="exp-grad-date">Expected Graduation Date: </label>
+						<select name="exp-grad-term" id="grad-term" bind:value={formValues.expectedGradTerm} class="bg-transparent border border-gray-400 rounded-md h-fit">
+							{#each gradTermOptions as { gradTermId, displayText }}
+								<option
+									class="w-1/2 duration-300 bg-transparent p-3"
+									value={gradTermId}>{displayText}
+								</option>
+							{/each}
+						</select>
+						
+						<select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
+							{#each gradYearOptions as { gradYearId, displayText }}
+								<option
+									class="w-1/2 duration-300 bg-transparent p-3"
+									value={gradYearId}>{displayText}
+								</option>
+							{/each}
+						</select>
+
+						<!-- <input
 							class="bg-transparent border border-gray-400 rounded-md h-fit"
 							type="date"
-							id="exp-grad-date"
+							id="exp-grad-term"
+							required
+							bind:value={formValues.expectedGradTerm}
+						/> -->
+						
+						<!-- <input
+							class="bg-transparent border border-gray-400 rounded-md h-fit"
+							type="date"
+							id="exp-grad-year"
 							required
 							bind:value={formValues.expectedGradYear}
-						/>
+						/> -->
 					</div>
 
 					<div class="flex flex-col items-start">
