@@ -34,7 +34,7 @@
 		raceOther: '',
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
-		foodOther: '',
+		//foodOther: '',
 		//resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
@@ -88,9 +88,9 @@
 	];
 
 	const gradTermOptions = [
-		{ gradTermId: 'fall', displayText: 'Fall' },
-		{ gradTermId: 'spring', displayText: 'Spring' },
-		{ gradTermId: 'summer', displayText: 'Summer' }
+		{ gradTermId: 'Fall', displayText: 'Fall' },
+		{ gradTermId: 'Spring', displayText: 'Spring' },
+		{ gradTermId: 'Summer', displayText: 'Summer' }
 	];
 
 	const pageMeta: PageMeta = {
@@ -340,7 +340,7 @@
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<DietaryOptions bind:foodOther={formValues.foodOther} />
+					<DietaryOptions bind:foodOther={formValues.food} />
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
