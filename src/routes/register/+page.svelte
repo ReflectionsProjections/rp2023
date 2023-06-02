@@ -137,6 +137,7 @@
 							bind:value={formValues.name}
 							required
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
+							autocomplete="off"
 						/>
 					</div>
 
