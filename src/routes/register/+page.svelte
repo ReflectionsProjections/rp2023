@@ -14,7 +14,7 @@
 		raceOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
-	import type { PageMeta } from '../../components/registration/page-meta.type';
+	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
 
 	const formValues = {
@@ -41,7 +41,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 0;
+	let page: PageIndex = 'welcome';
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -70,40 +70,40 @@
 	];
 
 	const pageMeta: PageMeta = {
-		0: {
+		welcome: {
 			title: 'Welcome to R | P',
-			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 4),
-			prev: () => -1
+			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
+			prev: () => 'none'
 		},
-		1: {
+		academics: {
 			title: 'Academics',
-			next: () => 4,
-			prev: () => 0
+			next: () => 'demographics',
+			prev: () => 'welcome'
 		},
-		4: {
+		demographics: {
 			title: 'Demographics',
-			next: () => 5,
-			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0)
+			next: () => 'dietaryRestrictions',
+			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome')
 		},
-		5: {
+		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
-			next: () => 6,
-			prev: () => 4
+			next: () => 'recruitment',
+			prev: () => 'demographics'
 		},
-		6: {
+		recruitment: {
 			title: 'Recruitment',
-			next: () => 7,
-			prev: () => 5
+			next: () => 'specialEvents',
+			prev: () => 'dietaryRestrictions'
 		},
-		7: {
+		specialEvents: {
 			title: 'Special Events',
-			next: () => 8,
-			prev: () => 6
+			next: () => 'marketing',
+			prev: () => 'recruitment'
 		},
-		8: {
+		marketing: {
 			title: 'One Last Step',
-			next: () => -1,
-			prev: () => 7
+			next: () => 'none',
+			prev: () => 'specialEvents'
 		}
 	};
 
@@ -112,7 +112,7 @@
 
 <main class="flex h-full">
 	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
-		{#if page == 0}
+		{#if page == 'welcome'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div>
@@ -143,7 +143,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 1}
+		{#if page == 'academics'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -186,8 +186,7 @@
 			</GlassContainer>
 		{/if}
 
-		<!-- DEMOGRAPHICS -->
-		{#if page == 4}
+		{#if page == 'demographics'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -215,7 +214,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 5}
+		{#if page == 'dietaryRestrictions'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -226,8 +225,7 @@
 			</GlassContainer>
 		{/if}
 
-		<!--Section 4: Resume/Networking -->
-		{#if page == 6}
+		{#if page == 'recruitment'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -282,7 +280,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 7}
+		{#if page == 'specialEvents'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -307,7 +305,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 8}
+		{#if page == 'marketing'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>

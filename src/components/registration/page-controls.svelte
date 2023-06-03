@@ -1,8 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import type { PageMeta } from './page-meta.type';
+	import type { PageIndex, PageMeta } from './page-meta.type';
 	import type { boolStr } from './misc-types';
-	export let page: number;
+	export let page: PageIndex;
 	export let pageMeta: PageMeta;
 	export let formValues: any = {};
 
@@ -14,7 +14,7 @@
 </script>
 
 <div class="flex flex-row gap-5 justify-between mx-2">
-	{#if prev >= 0}
+	{#if page !== 'welcome'}
 		<button
 			aria-label="previous page"
 			title="previous page"
@@ -25,8 +25,7 @@
 	{:else}
 		<div />
 	{/if}
-	<div class="text-slate-300">1 of {isCollegeStudent ? numPages : numPages - 1}</div>
-	{#if next >= 0}
+	{#if page !== 'marketing'}
 		<button
 			aria-label="next page"
 			title="next page"
