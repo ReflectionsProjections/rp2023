@@ -4,11 +4,19 @@
 
 	let uiucEmail = '';
 
-	$: email = uiucEmail.length > 0 ? uiucEmail.split('@')[0].trim() + '@illinois.edu' : '';
+	$: email =
+		uiucEmail.length > 0
+			? uiucEmail.split(' ')[0].split('@')[0].trim().toLocaleLowerCase() + '@illinois.edu'
+			: '';
+
+	// Basic regex for validating emails. NOT RFC2822 compliant, but will not have any false negatives.
+	// Philosophy: Best way to validate an email is by sending a verification token to it.
+	const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	$: emailValid = email.length > 0 && regex.test(email);
 </script>
 
-{#if uiucStudent === 'yes'}
-	<div class="flex flex-col items-start">
+<div class="flex flex-col items-start">
+	{#if uiucStudent === 'yes'}
 		<label for="email"> NetID</label>
 		<span class="flex flex-row items-center w-full">
 			<input
@@ -23,9 +31,7 @@
 				@illinois.edu
 			</div>
 		</span>
-	</div>
-{:else}
-	<div class="flex flex-col items-start">
+	{:else}
 		<label for="email">Email Address</label>
 		<input
 			type="email"
@@ -34,5 +40,8 @@
 			class="bg-transparent p-1 border border-gray-400  rounded-md h-fit w-full"
 			required
 		/>
+	{/if}
+	<div class="{emailValid ? 'opacity-100' : 'opacity-0'} text-green-300 mt-2 duration-300">
+		We'll send you a code at {email}
 	</div>
-{/if}
+</div>
