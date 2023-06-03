@@ -34,7 +34,7 @@
 		raceOther: '',
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
-		foodOther: '',
+		//foodOther: '',
 		//resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
@@ -88,9 +88,9 @@
 	];
 
 	const gradTermOptions = [
-		{ gradTermId: 'fall', displayText: 'Fall' },
-		{ gradTermId: 'spring', displayText: 'Spring' },
-		{ gradTermId: 'summer', displayText: 'Summer' }
+		{ gradTermId: 'Fall', displayText: 'Fall' },
+		{ gradTermId: 'Spring', displayText: 'Spring' },
+		{ gradTermId: 'Summer', displayText: 'Summer' }
 	];
 
 	const pageMeta: PageMeta = {
@@ -150,7 +150,7 @@
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
+	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink" id="form">
 		{#if page == 0}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
@@ -198,56 +198,38 @@
 							{/each}
 						</select>
 						
-						<select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
+						<!-- <select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
 							{#each gradYearOptions as { gradYearId, displayText }}
 								<option
 									class="w-1/2 duration-300 bg-transparent p-3"
 									value={gradYearId}>{displayText}
 								</option>
 							{/each}
-						</select>
+						</select> -->
 
-						<!-- <div class="counter">
-							<span id="minus">-</span>
-							<span id="year">2023</span>
-							<span id="plus">+</span>
-						  </div>
-						
-						  <script>
-							var yearElement = document.getElementById('year');
-							var minusElement = document.getElementById('minus');
-							var plusElement = document.getElementById('plus');
-
-							formValues.expectedGradYear = 2023;
-						
-							minusElement.addEventListener('click', function() {
-							  var currentYear = parseInt(yearElement.innerText);
-							  yearElement.innerText = currentYear - 1;
-							  formValues.expectedGradYear = parseInt(formValues.expectedGradYear) - 1;
-							});
-						
-							plusElement.addEventListener('click', function() {
-							  var currentYear = parseInt(yearElement.innerText);
-							  yearElement.innerText = currentYear + 1;
-							  formValues.expectedGradYear = parseInt(formValues.expectedGradYear) - 1;
-							});
-						  </script> -->
-
-						<!-- <input
-							class="bg-transparent border border-gray-400 rounded-md h-fit"
-							type="date"
-							id="exp-grad-term"
-							required
-							bind:value={formValues.expectedGradTerm}
-						/> -->
-						
-						<!-- <input
-							class="bg-transparent border border-gray-400 rounded-md h-fit"
-							type="date"
-							id="exp-grad-year"
-							required
-							bind:value={formValues.expectedGradYear}
-						/> -->
+						<div class="counter">
+							<button on:click={() => {
+								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
+									formValues.expectedGradYear = "2023";
+								} else {
+									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) - 1).toString();
+								}
+							}}>-</button>
+							{#if !formValues.expectedGradYear}
+								<span>2023</span>
+							{:else}
+								<span>{formValues.expectedGradYear}</span>
+							{/if}
+							<button on:click={() => {
+								if (!formValues.expectedGradYear) {
+									formValues.expectedGradYear = "2024";
+								} else if (formValues.expectedGradYear == "2027") {
+									formValues.expectedGradYear = "2027";
+								} else {
+									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) + 1).toString();
+								}
+							}}>+</button>
+						</div>
 					</div>
 
 					<div class="flex flex-col items-start">
@@ -358,7 +340,7 @@
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<DietaryOptions bind:foodOther={formValues.foodOther} />
+					<DietaryOptions bind:foodOther={formValues.food} />
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
@@ -531,7 +513,7 @@
       padding: 10px;
     }
 
-    .counter span {
+    .counter button {
       cursor: pointer;
       padding: 0 10px;
     }
