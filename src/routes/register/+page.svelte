@@ -425,17 +425,27 @@
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-col gap-5 mb-3">
-						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
+						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
 						{#each extraEventOptions as { extraEventId, displayText }}
 							<div class="flex items-center">
-								<input
-									type="checkbox"
-									id={extraEventId}
-									value={extraEventId}
-									bind:group={formValues.mechPuzzle}
-									class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-								/>
-								<label for={extraEventId}>{displayText}</label>
+								<button
+										id={extraEventId}
+										on:click={() => {
+											if (formValues.mechPuzzle.includes(extraEventId)) {
+												formValues.mechPuzzle = formValues.mechPuzzle.filter((val) => val !== extraEventId);
+											} else {
+												formValues.mechPuzzle = formValues.mechPuzzle.concat(extraEventId);
+											}
+										}}
+										class="w-1/2 duration-300 text-center bg-white p-3 {formValues.mechPuzzle.includes(
+											extraEventId
+										)
+											? 'bg-opacity-40'
+											: 'bg-opacity-10 hover:bg-opacity-20'}"
+									>
+										{displayText}</button
+									>
+								
 							</div>
 						{/each}
 					</div>
