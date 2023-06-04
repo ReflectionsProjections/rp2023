@@ -11,7 +11,8 @@
 		ethnicityOptions,
 		firstGenOptions,
 		genderOptions,
-		raceOptions
+		raceOptions,
+		extraEventOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
@@ -38,7 +39,7 @@
 		//resumeSharePerms: '',
 		jobTypeInterest: [],
 		portfolioLink: '',
-		mechPuzzle: [],
+		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
 		marketingOther: ''
 	};
@@ -65,7 +66,7 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	const extraEventOptions = [
+	const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
 	];

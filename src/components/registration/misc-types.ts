@@ -6,6 +6,8 @@ export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | unan
 
 export type firstGenOptions = boolStr | unanswered;
 
+export type extraEventOptions = 'mechmania' | 'puzzlebang';
+
 export type raceOptions =
 	| 'americanIndianOrAlaska'
 	| 'eastAsian'
