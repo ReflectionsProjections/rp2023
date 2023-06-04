@@ -11,11 +11,11 @@
 		ethnicityOptions,
 		firstGenOptions,
 		genderOptions,
-		raceOptions,
-		unanswered
+		raceOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
-	import type { PageMeta } from '../../components/registration/page-meta.type';
+	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
+	import RaceSelector from '../../components/registration/race-selector.svelte';
 
 	const formValues = {
 		name: '',
@@ -42,7 +42,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page = 0;
+	let page: PageIndex = 'welcome';
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -65,15 +65,6 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	const raceOptions: { raceId: raceOptions; displayText: string }[] = [
-		{ raceId: 'americanIndianOrAlaska', displayText: 'American Indian / Alaska Native' },
-		{ raceId: 'eastAsian', displayText: 'East Asian' },
-		{ raceId: 'southAsian', displayText: 'South Asian' },
-		{ raceId: 'black', displayText: 'Black or African-American' },
-		{ raceId: 'pacificIslander', displayText: 'Pacific Islander' },
-		{ raceId: 'white', displayText: 'White / Caucasian' }
-	];
-
 	const extraEventOptions = [
 		{ extraEventId: 'mechmania', displayText: 'MechMania' },
 		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
@@ -94,40 +85,40 @@
 	];
 
 	const pageMeta: PageMeta = {
-		0: {
+		welcome: {
 			title: 'Welcome to R | P',
-			next: (isCollegeStudent) => (isCollegeStudent ? 1 : 4),
-			prev: () => -1
+			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
+			prev: () => 'none'
 		},
-		1: {
+		academics: {
 			title: 'Academics',
-			next: () => 4,
-			prev: () => 0
+			next: () => 'demographics',
+			prev: () => 'welcome'
 		},
-		4: {
+		demographics: {
 			title: 'Demographics',
-			next: () => 5,
-			prev: (isCollegeStudent) => (isCollegeStudent ? 1 : 0)
+			next: () => 'dietaryRestrictions',
+			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome')
 		},
-		5: {
+		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
-			next: () => 6,
-			prev: () => 4
+			next: () => 'recruitment',
+			prev: () => 'demographics'
 		},
-		6: {
+		recruitment: {
 			title: 'Recruitment',
-			next: () => 7,
-			prev: () => 5
+			next: () => 'specialEvents',
+			prev: () => 'dietaryRestrictions'
 		},
-		7: {
+		specialEvents: {
 			title: 'Special Events',
-			next: () => 8,
-			prev: () => 6
+			next: () => 'marketing',
+			prev: () => 'recruitment'
 		},
-		8: {
+		marketing: {
 			title: 'One Last Step',
-			next: () => -1,
-			prev: () => 7
+			next: () => 'none',
+			prev: () => 'specialEvents'
 		}
 	};
 
@@ -150,8 +141,8 @@
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink" id="form">
-		{#if page == 0}
+	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
+		{#if page == 'welcome'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div>
@@ -183,7 +174,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 1}
+		{#if page == 'academics'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -253,17 +244,14 @@
 							/>
 						</div>
 					{/if}
-					<div class="flex flex-col items-start gap-2">
-						<label for="is-first-gen">If you're a college student, are you first generation?</label>
-						<FirstGenSelector bind:firstGen={formValues.firstGen} />
-					</div>
+
+					<FirstGenSelector bind:firstGen={formValues.firstGen} />
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
-		<!-- DEMOGRAPHICS -->
-		{#if page == 4}
+		{#if page == 'demographics'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -279,63 +267,19 @@
 							bind:value={formValues.age}
 						/>
 					</div>
-					<div id="genderDemographics" class="flex flex-col items-start gap-2">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Gender</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<GenderSelector bind:gender={formValues.gender} />
-					</div>
-					<div class="flex flex-col items-start gap-2">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Ethnicity</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
-					</div>
-					<div class="flex flex-col items-start gap-2" id="raceDemographics">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Race</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<div class="flex flex-row flex-wrap">
-							{#each raceOptions as { raceId, displayText }}
-								<button
-									id={raceId}
-									on:click={() => {
-										if (formValues.race.includes(raceId)) {
-											formValues.race = formValues.race.filter((val) => val !== raceId);
-										} else {
-											formValues.race = formValues.race.concat(raceId);
-										}
-									}}
-									class="w-1/2 duration-300 text-center bg-white p-3 {formValues.race.includes(
-										raceId
-									)
-										? 'bg-opacity-40'
-										: 'bg-opacity-10 hover:bg-opacity-20'}"
-								>
-									{displayText}</button
-								>
-							{/each}
-						</div>
-						<div class="flex flex-row gap-3 items-center pl-3">
-							<label for="other">Other</label>
-							<input
-								class="bg-transparent border border-gray-400 rounded-md h-fit"
-								type="text"
-								id="other"
-								bind:value={formValues.raceOther}
-							/>
-						</div>
-					</div>
+
+					<GenderSelector bind:gender={formValues.gender} />
+
+					<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
+
+					<RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
 		{/if}
 
-		{#if page == 5}
+		{#if page == 'dietaryRestrictions'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -346,8 +290,7 @@
 			</GlassContainer>
 		{/if}
 
-		<!--Section 4: Resume/Networking -->
-		{#if page == 6}
+		{#if page == 'recruitment'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -402,7 +345,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 7}
+		{#if page == 'specialEvents'}
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
@@ -437,7 +380,7 @@
 			</GlassContainer>
 		{/if}
 
-		{#if page == 8}
+		{#if page == 'marketing'}
 			<GlassContainer>
 				{#if !submitted}
 				<div class="flex flex-col gap-5 mb-3">
