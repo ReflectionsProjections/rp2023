@@ -89,43 +89,52 @@
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
-			prev: () => 'none'
+			prev: () => 'none',
+			requiredFields: ['name', 'email']
 		},
 		academics: {
 			title: 'Academics',
 			next: () => 'demographics',
-			prev: () => 'welcome'
+			prev: () => 'welcome',
+			requiredFields: ['expectedGradTerm', 'expectedGradYear', 'major', 'firstGen']
 		},
 		demographics: {
 			title: 'Demographics',
 			next: () => 'dietaryRestrictions',
-			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome')
+			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome'),
+			requiredFields: []
 		},
 		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
 			next: () => 'recruitment',
-			prev: () => 'demographics'
+			prev: () => 'demographics',
+			requiredFields: ['food']
 		},
 		recruitment: {
 			title: 'Recruitment',
 			next: () => 'specialEvents',
-			prev: () => 'dietaryRestrictions'
+			prev: () => 'dietaryRestrictions',
+			requiredFields: []
 		},
 		specialEvents: {
 			title: 'Special Events',
 			next: () => 'marketing',
-			prev: () => 'recruitment'
+			prev: () => 'recruitment',
+			requiredFields: []
 		},
 		marketing: {
 			title: 'One Last Step',
 			next: () => 'none',
-			prev: () => 'specialEvents'
+			prev: () => 'specialEvents',
+			requiredFields: ['marketing']
 		}
 	};
 
 	$: console.log(formValues);
 
 	let submitted = false;
+
+	let error = '';
 
 	const onSubmit = async () => {
 		const response = await fetch('http://localhost:3000/attendee', {
@@ -135,6 +144,7 @@
 			},
 			body: JSON.stringify(formValues)
 		});
+
 		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 	};
@@ -198,7 +208,6 @@
 								</option>
 							{/each}
 						</select> -->
-
 						<div class="counter">
 							<button on:click={() => {
 								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
