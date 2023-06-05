@@ -17,3 +17,9 @@ export type raceOptions =
 	| 'white';
 
 export type boolStr = 'yes' | 'no';
+
+export type jobTypeOptions = 'full-time' | 'internship' | 'co-op';
+
+
+
+

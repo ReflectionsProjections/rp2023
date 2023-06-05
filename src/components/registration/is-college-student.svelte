@@ -18,7 +18,8 @@
 			collegeName = 'UIUC';
 		}}
 	>
-		<img src="Illinois_Fighting_Illini_logo.svg" alt="illinois logo" class="h-full p-3" />
+		<img src="uiuc-logo.svg" alt="illinois logo" class="h-full p-3" />
+		<div>I'm an Illini!</div>
 	</button>
 	<span class="flex flex-row">
 		<button

@@ -6,13 +6,17 @@
 	import FirstGenSelector from '../../components/registration/first-gen-selector.svelte';
 	import GenderSelector from '../../components/registration/gender-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
+	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
+	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
 		firstGenOptions,
 		genderOptions,
 		raceOptions,
-		extraEventOptions
+		extraEventOptions,
+		jobTypeOptions,
+
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
@@ -37,7 +41,7 @@
 		food: '',
 		//foodOther: '',
 		//resumeSharePerms: '',
-		jobTypeInterest: [],
+		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: '',
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
@@ -66,10 +70,10 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
-		{ extraEventId: 'mechmania', displayText: 'MechMania' },
-		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
-	];
+	// const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
+	// 	{ extraEventId: 'mechmania', displayText: 'MechMania' },
+	// 	{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
+	// ];
 
 	const gradYearOptions = [
 		{ gradYearId: '2023', displayText: '2023'},
@@ -194,7 +198,7 @@
 						<select name="exp-grad-term" id="grad-term" bind:value={formValues.expectedGradTerm} class="bg-transparent border border-gray-400 rounded-md h-fit">
 							{#each gradTermOptions as { gradTermId, displayText }}
 								<option
-									class="w-1/2 duration-300 bg-transparent p-3"
+									class="w-1/2 text-black p-3"
 									value={gradTermId}>{displayText}
 								</option>
 							{/each}
@@ -314,33 +318,7 @@
 						/>
 					</div>
 
-					<div>
-						<label for="job-type">Job Type Interest: </label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="checkbox"
-							id="full-time"
-							value="full-time"
-							bind:group={formValues.jobTypeInterest}
-						/>
-						<label for="full-time">Full Time</label>
-						<input
-							type="checkbox"
-							id="internship"
-							value="internship"
-							bind:group={formValues.jobTypeInterest}
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-						/>
-						<label for="internship">Internship</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="checkbox"
-							id="co-op"
-							value="co-op"
-							bind:group={formValues.jobTypeInterest}
-						/>
-						<label for="co-op">Co-Op</label>
-					</div>
+					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
 					<div class="flex flex-col items-start">
 						<label for="portfolio">Portfolio Link/LinkedIn</label>
@@ -359,7 +337,10 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col gap-5 mb-3">
+
+					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
+
+					<!-- <div class="flex flex-col gap-5 mb-3">
 						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
 						{#each extraEventOptions as { extraEventId, displayText }}
 							<div class="flex items-center">
@@ -383,7 +364,7 @@
 								
 							</div>
 						{/each}
-					</div>
+					</div> -->
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />
