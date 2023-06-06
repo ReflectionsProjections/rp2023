@@ -321,9 +321,9 @@
 					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
 					<div class="flex flex-col items-start">
-						<label for="portfolio">Portfolio Link/LinkedIn</label>
+						<label for="portfolio">Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label>
 						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
 							type="url"
 							bind:value={formValues.portfolioLink}
 						/>
@@ -337,7 +337,9 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-
+					<div class="text-base text-slate-300">
+						PLACEHOLDER FOR DESCRIPTION
+					</div>
 					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 
 					<!-- <div class="flex flex-col gap-5 mb-3">
@@ -353,7 +355,7 @@
 												formValues.mechPuzzle = formValues.mechPuzzle.concat(extraEventId);
 											}
 										}}
-										class="w-1/2 duration-300 text-center bg-white p-3 {formValues.mechPuzzle.includes(
+										class="w-1/2 duration-300 text-center bg-white p-3 flex rounded-md {formValues.mechPuzzle.includes(
 											extraEventId
 										)
 											? 'bg-opacity-40'
