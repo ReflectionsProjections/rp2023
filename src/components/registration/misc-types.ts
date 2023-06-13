@@ -18,7 +18,9 @@ export type raceOptions =
 
 export type boolStr = 'yes' | 'no';
 
-export type jobTypeOptions = 'full-time' | 'internship' | 'co-op';
+export type jobTypeOptions = 'full-time' | 'internship' | 'co-op' | unanswered;
+
+export type majorOptions = 'cs' | 'cs+stats' | 'cs+math' | 'cs+x';
 
 
 

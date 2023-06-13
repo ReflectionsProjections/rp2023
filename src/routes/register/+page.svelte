@@ -8,6 +8,7 @@
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
 	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
+	import MajorSelector from '../../components/registration/major-selector.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
@@ -28,6 +29,7 @@
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
 		major: '',
+		majorOther: '',
 		collegeName: '',
 		expectedGradTerm: '',
 		expectedGradYear: '',
@@ -237,7 +239,7 @@
 						</div>
 					</div>
 
-					<div class="flex flex-col items-start">
+					<!-- <div class="flex flex-col items-start">
 						<label for="major">Major</label>
 						<input
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
@@ -245,7 +247,8 @@
 							id="major"
 							bind:value={formValues.major}
 						/>
-					</div>
+					</div> -->
+					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
 							<label for="college-name">Name of University</label>
