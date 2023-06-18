@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 
-	export let foodOther = '';
+	export let foodOther: string;
 </script>
 
 <div class="flex-col flex">
