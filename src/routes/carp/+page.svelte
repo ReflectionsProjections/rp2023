@@ -12,13 +12,41 @@
 	} from '@smui/data-table';
 	import IconButton from '@smui/icon-button';
 	import { Label } from '@smui/common';
-	import Select, { Option } from '@smui/select';
+	import { onMount } from 'svelte';
  
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
+	$: major_filters = new Set<string>();
 
-	let grad_year = ['None', 'December 2023', 'May 2024', 'December 2024', 'May 2025', 'December 2025', 'May 2026', 'December 2026', 'May 2026', 'December 2027', 'May 2027 or later'];
+	let show_majors = false;
+
+
+	let grad_years = ['None', 'December 2023', 'May 2024', 'December 2024', 'May 2025', 'December 2025', 'May 2026', 'December 2026', 'May 2026', 'December 2027', 'May 2027 or later'];
 	let grad_year_value = 'None';
+	$: grad_year_filters = new Set<string>();
+
+	let show_grad_year = false;
+
+	let job_interests = ['None', 'Full-Time', 'Internship', 'Co-op'];
+	let job_interest_value = 'None';
+	$: job_interest_filters = new Set<string>();
+
+	let show_job_interest = false;
+
+	function onCheckBoxClick(filters: Set<string>, item: string, div_id: string) {
+		if (item == 'None') {
+			filters.clear();
+			var checks = document.querySelectorAll('#' + div_id + ' input[type="checkbox"]');
+			for(var i =0; i< checks.length;i++){
+				(<HTMLInputElement>checks[i]).checked = false
+			}
+		} else if (filters.has(item))  {
+			filters.delete(item);
+		} else {
+			filters.add(item);
+		}
+	}
+    
 
 	type Todo = {
     id: number;
@@ -58,86 +86,107 @@
 				</GlassContainer>
 			</div>
 			
-			<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
-				<GlassContainer>	
-					<div class="columns margins" style="justify-content: flex-start;">
-						<Select bind:major_value label="Filter by Major:">
-							{#each majors as major}
-								<Option major_value={major}>{major}</Option>
-							{/each}
-						</Select>
-						<pre class="status">Selected: {major_value}</pre>
+			<!-- Dropdowns for Filters-->
+			<div class="flex flex-row mx-auto my-auto">	
+
+				<!-- Majors Drop Down-->
+				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+					<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
+						<GlassContainer>	
+							<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
+						</GlassContainer>
 					</div>
-				</GlassContainer>
-			</div>
-			<div>
-				<GlassContainer>
-					<DataTable stickyHeader table$aria-label="Resume Table" style="width: 100%;">
-						<Head>
-						  <Row>
-							<Cell numeric>ID</Cell>
-							<Cell style="width: 100%;">Title</Cell>
-							<Cell>Completed</Cell>
-							<Cell numeric>User ID</Cell>
-						  </Row>
-						</Head>
-						<Body>
-						  {#each slice as item (item.id)}
-							<Row>
-							  <Cell numeric>{item.id}</Cell>
-							  <Cell>{item.title}</Cell>
-							  <Cell>{item.completed ? 'Yes' : 'No'}</Cell>
-							  <Cell numeric>{item.userId}</Cell>
-							</Row>
-						  {/each}
-						</Body>
-					  
-						<Pagination slot="paginate">
-						  <svelte:fragment slot="rowsPerPage">
-							<Label>Rows Per Page</Label>
-							<Select variant="outlined" bind:value={rowsPerPage} noLabel>
-							  <Option value={10}>10</Option>
-							  <Option value={25}>25</Option>
-							  <Option value={100}>100</Option>
-							</Select>
-						  </svelte:fragment>
-						  <svelte:fragment slot="total">
-							{start + 1}-{end} of {items.length}
-						  </svelte:fragment>
-					  
-						  <IconButton
-							class="material-icons"
-							action="first-page"
-							title="First page"
-							on:click={() => (currentPage = 0)}
-							disabled={currentPage === 0}>first_page</IconButton
-						  >
-						  <IconButton
-							class="material-icons"
-							action="prev-page"
-							title="Prev page"
-							on:click={() => currentPage--}
-							disabled={currentPage === 0}>chevron_left</IconButton
-						  >
-						  <IconButton
-							class="material-icons"
-							action="next-page"
-							title="Next page"
-							on:click={() => currentPage++}
-							disabled={currentPage === lastPage}>chevron_right</IconButton
-						  >
-						  <IconButton
-							class="material-icons"
-							action="last-page"
-							title="Last page"
-							on:click={() => (currentPage = lastPage)}
-							disabled={currentPage === lastPage}>last_page</IconButton
-						  >
-						</Pagination>
-					  </DataTable>
-				</GlassContainer>
+
+					{#if show_majors}
+					<div class="">
+						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+							{#each majors as major}
+							<li id="major-check" class="flex flex-row hover:text-gray-300">
+								<div  class="pr-3">
+									<input type="checkbox" on:click={() => {
+										onCheckBoxClick(major_filters, major, "major-check")
+										major_filters = major_filters;
+										}} />								
+								</div>
+								<div >{major}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
+
+				<!-- Grad_Year Drop Down-->
+				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+					<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
+						<GlassContainer>	
+							<button class="" on:click={() => (show_grad_year= !show_grad_year)}> Filter By {grad_year_filters.size} Graduation Year(s) </button>
+						</GlassContainer>
+					</div>
+
+					{#if show_grad_year}
+					<div class="">
+						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+							{#each grad_years as grad_year}
+							<li class="flex flex-row hover:text-gray-300">
+								<div id="grad-year-check" class="pr-3">
+									<input type="checkbox" on:click={() => {
+										onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
+										grad_year_filters = grad_year_filters;
+										}} />
+								</div>
+								<div >{grad_year}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
+
+				<!-- Job Interest -->
+				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+					<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
+						<GlassContainer>	
+							<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
+						</GlassContainer>
+					</div>
+
+					{#if show_job_interest}
+					<div class="">
+						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+							{#each job_interests as job_interest}
+							<li class="flex flex-row hover:text-gray-300">
+								<div id="job-interest-check" class="pr-3">
+								<input type="checkbox" on:click={() => {
+									onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
+									job_interest_filters = job_interest_filters;
+									}} />
+								</div>
+								<div >{job_interest}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
 			</div>
 
+			
+
+			<!-- <div class="mx-auto my-auto text-gray-100">
+				Filtered By:
+				{#each grad_year_filters as grad_year}
+				<div>
+					{grad_year} 
+				</div>
+				{/each}
+
+				{#each major_filters as major}
+				<div>
+					{major}
+				</div>
+				{/each}
+			</div> -->
 			<div>
 				table
 			</div>
