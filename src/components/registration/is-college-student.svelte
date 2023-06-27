@@ -1,28 +1,54 @@
 <script lang="ts">
-	export let isCollegeStudent: string = '';
+	import Icon from '@iconify/svelte';
+	export let isUIUCStudent: string;
+	export let isCollegeStudent: string;
+	export let collegeName: string;
 </script>
 
-<div class="flex flex-row gap-2">
-	<label for="is-college-student text-lg">Are you a college student? </label>
-	<select
-		class="bg-rp-dull-pink border rounded-md p-0.5"
-		id="is-college-student"
-		bind:value={isCollegeStudent}
+<div class="flex flex-col rounded-md border-gray-700">
+	<button
+		class="w-full duration-300 flex-col items-center h-20 gap-1 p-2 flex justify-center bg-white rounded-t-md {isUIUCStudent ===
+		'yes'
+			? 'bg-opacity-40'
+			: 'bg-opacity-10 hover:bg-opacity-20'}"
+		aria-label="I am a UIUC student"
+		on:click={() => {
+			isUIUCStudent = 'yes';
+			isCollegeStudent = 'yes';
+			collegeName = 'UIUC';
+		}}
 	>
-		<!-- <option value="">Choose One</option> -->
-		<option value="yes">Yes</option>
-		<option value="">No</option>
-	</select>
+		<img src="uiuc-logo.svg" alt="illinois logo" class="h-full p-3" />
+		<div>I'm an Illini!</div>
+	</button>
+	<span class="flex flex-row">
+		<button
+			class="w-full duration-300 flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-bl-md {isCollegeStudent ===
+				'yes' && isUIUCStudent === 'no'
+				? 'bg-opacity-40'
+				: 'bg-opacity-10 hover:bg-opacity-20'}"
+			aria-label="I'm from another college"
+			on:click={() => {
+				isCollegeStudent = 'yes';
+				isUIUCStudent = 'no';
+			}}
+		>
+			<Icon icon="ph:student-fill" class="text-2xl" />
+			<div>I'm from another college</div>
+		</button>
+		<button
+			class="w-full duration-300 flex-col items-center gap-1 p-3 flex justify-center bg-white rounded-br-md {isCollegeStudent !==
+			'yes'
+				? 'bg-opacity-40'
+				: 'bg-opacity-10 hover:bg-opacity-20'}"
+			aria-label="I am not a college student"
+			on:click={() => {
+				isCollegeStudent = '';
+				isUIUCStudent = 'no';
+			}}
+		>
+			<Icon icon="ph:user-fill" class="text-2xl" />
+			<div>Not a college student</div>
+		</button>
+	</span>
 </div>
-
-<style>
-	/* select {
-		background-color: rgb(30 41 59);
-		border-color: rgb(255 255 255);
-		border-radius: 0.375rem;
-		border-width: 2px;
-		margin-left: 2px;
-		margin-right: 2px;
-		height: fit-content;
-	} */
-</style>
