@@ -1,5 +1,6 @@
 <script lang="ts">
 	import GlassContainer from '../../components/glass-container.svelte';
+	import Marketing from '../../components/registration/marketing.svelte'
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import EthinicitySelector from '../../components/registration/ethinicity-selector.svelte';
@@ -49,26 +50,19 @@
 		marketing: [],
 		marketingOther: ''
 	};
+
+	// const resume;
+
 	let page: PageIndex = 'welcome';
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
-		{ referralId: 'ACMN', displayText: 'ACM Newsletter' },
 		{ referralId: 'buildingAds', displayText: 'Building Ads' },
 		{ referralId: 'courses', displayText: 'School Course' },
-		{ referralId: 'WCS', displayText: 'WCS Newsletter' },
-		{ referralId: 'csNewsletter', displayText: 'CS Department Newsletter' },
 		{ referralId: 'instagram', displayText: 'Instagram' },
-		{ referralId: 'facebook', displayText: 'Facebook' },
-		{ referralId: 'twitter', displayText: 'Twitter' },
-		{ referralId: 'linkedin', displayText: 'LinkedIn' },
 		{ referralId: 'email', displayText: 'E-mail' },
 		{ referralId: 'posters', displayText: 'Posters/Flyers' },
-		{ referralId: 'quadDay', displayText: 'Quad Day' },
-		{ referralId: 'eNight', displayText: 'E-Night' },
 		{ referralId: 'website', displayText: 'Website' },
-		{ referralId: 'slack', displayText: 'Slack' },
-		{ referralId: 'discord', displayText: 'Discord' },
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
@@ -143,6 +137,18 @@
 	let error = '';
 
 	const onSubmit = async () => {
+		// const fileInput = document.getElementById('resume-upload') as HTMLInputElement;
+		// const fileInput = formValues.resume;
+		// const file = fileInput.files ? fileInput.files[0] : null;
+		// const fileInput = formValues.resume;
+
+		// // Check if a file is selected
+		// if (fileInput) {
+		// 	const file = fileInput[0];
+		// 	// Upload the file
+		// 	await uploadResume(file);
+		// }
+
 		const response = await fetch('http://localhost:3000/attendee', {
 			method: 'POST',
 			headers: {
@@ -154,6 +160,32 @@
 		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 	};
+
+	// const uploadResume = async (file: string | Blob) => {
+	// 	// Create a new instance of the FormData object
+	// 	const formData = new FormData();
+
+	// 	// Append the file to the FormData object
+	// 	formData.append('resume', file);
+
+	// 	try {
+	// 		// Make a POST request to your backend server to upload the file
+	// 		const response = await fetch('http://localhost:3000/upload', {
+	// 		method: 'POST',
+	// 		body: formData,
+	// 		});
+
+	// 		// Handle the response from the server
+	// 		if (response.ok) {
+	// 		console.log('Resume uploaded successfully');
+	// 		} else {
+	// 		console.error('Error uploading resume');
+	// 		}
+	// 	} catch (error) {
+	// 		console.error('Error uploading resume', error);
+	// 	}
+	// };
+
 
 </script>
 
@@ -316,10 +348,43 @@
 						<input
 							type="file"
 							name="resume"
+							id="resume-upload"
 							accept="application/pdf, application/msword, .doc, .docx"
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
 						/>
 					</div>
+					<button id="upload-button">Upload</button>
+
+					<script>
+						document.getElementById('upload-button').addEventListener('click', function() {
+						  var fileInput = document.getElementById('resume-upload');
+						  var file = fileInput.files[0];
+					  
+						  if (!file) {
+							return alert('Please select a file.');
+						  }
+					  
+						  var formData = new FormData();
+						  formData.append('file', file);
+					  
+						  fetch('http://localhost:3000/upload', {
+							method: 'POST',
+							body: formData
+						  })
+							.then(function(response) {
+							  if (response.ok) {
+								return response.text();
+							  }
+							  throw new Error('Error: ' + response.status);
+							})
+							.then(function(data) {
+							  alert('File uploaded successfully.');
+							})
+							.catch(function(error) {
+							  alert('An error occurred: ' + error.message);
+							});
+						});
+					  </script>					  
 
 					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
@@ -384,6 +449,7 @@
 
 					<div>
 						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
+						<!-- <Marketing bind:marketingOther={formValues.marketingOther} /> -->
 						<div class="flex flex-row flex-wrap">
 							{#each referralOptions as { referralId, displayText }}
 								<span class="flex flex-row items-center w-1/2">
