@@ -23,8 +23,9 @@
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
+	import HandleClick from '../../components/registration/submit-handler.svelte';
 
-	const formValues = {
+	let formValues = {
 		name: '',
 		email: '',
 		isCollegeStudent: 'yes' as boolStr,
@@ -34,7 +35,6 @@
 		collegeName: '',
 		expectedGradTerm: '',
 		expectedGradYear: '',
-		// occupation: '',
 		age: '',
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
@@ -42,16 +42,12 @@
 		raceOther: '',
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
-		//foodOther: '',
-		//resumeSharePerms: '',
 		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: '',
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
 		marketingOther: ''
 	};
-
-	// const resume;
 
 	let page: PageIndex = 'welcome';
 
@@ -65,11 +61,6 @@
 		{ referralId: 'website', displayText: 'Website' },
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
-
-	// const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
-	// 	{ extraEventId: 'mechmania', displayText: 'MechMania' },
-	// 	{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
-	// ];
 
 	const gradYearOptions = [
 		{ gradYearId: '2023', displayText: '2023'},
@@ -135,19 +126,13 @@
 	let submitted = false;
 
 	let error = '';
+	let fileData: File;
+
+	$: console.log(fileData);
+
+	let attendeeId: string;
 
 	const onSubmit = async () => {
-		// const fileInput = document.getElementById('resume-upload') as HTMLInputElement;
-		// const fileInput = formValues.resume;
-		// const file = fileInput.files ? fileInput.files[0] : null;
-		// const fileInput = formValues.resume;
-
-		// // Check if a file is selected
-		// if (fileInput) {
-		// 	const file = fileInput[0];
-		// 	// Upload the file
-		// 	await uploadResume(file);
-		// }
 
 		const response = await fetch('http://localhost:3000/attendee', {
 			method: 'POST',
@@ -159,33 +144,21 @@
 
 		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+		const responseData = await response.json();
+		attendeeId = responseData._id.toString();
+		return attendeeId;
 	};
 
-	// const uploadResume = async (file: string | Blob) => {
-	// 	// Create a new instance of the FormData object
-	// 	const formData = new FormData();
+	function handleFileInput(event: Event) {
 
-	// 	// Append the file to the FormData object
-	// 	formData.append('resume', file);
+		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
+		var file = fileInput?.files?.[0];
 
-	// 	try {
-	// 		// Make a POST request to your backend server to upload the file
-	// 		const response = await fetch('http://localhost:3000/upload', {
-	// 		method: 'POST',
-	// 		body: formData,
-	// 		});
-
-	// 		// Handle the response from the server
-	// 		if (response.ok) {
-	// 		console.log('Resume uploaded successfully');
-	// 		} else {
-	// 		console.error('Error uploading resume');
-	// 		}
-	// 	} catch (error) {
-	// 		console.error('Error uploading resume', error);
-	// 	}
-	// };
-
+		if (file) {
+			fileData = file;
+			console.log("Filedata is updated to: ", fileData);
+		}
+	}
 
 </script>
 
@@ -238,14 +211,6 @@
 							{/each}
 						</select>
 						
-						<!-- <select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
-							{#each gradYearOptions as { gradYearId, displayText }}
-								<option
-									class="w-1/2 duration-300 bg-transparent p-3"
-									value={gradYearId}>{displayText}
-								</option>
-							{/each}
-						</select> -->
 						<div class="counter">
 							<button on:click={() => {
 								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
@@ -270,16 +235,7 @@
 							}}>+</button>
 						</div>
 					</div>
-
-					<!-- <div class="flex flex-col items-start">
-						<label for="major">Major</label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							type="text"
-							id="major"
-							bind:value={formValues.major}
-						/>
-					</div> -->
+					
 					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
@@ -351,41 +307,9 @@
 							id="resume-upload"
 							accept="application/pdf, application/msword, .doc, .docx"
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							on:change={handleFileInput}
 						/>
 					</div>
-					<button id="upload-button">Upload</button>
-
-					<script>
-						document.getElementById('upload-button').addEventListener('click', function() {
-						  var fileInput = document.getElementById('resume-upload');
-						  var file = fileInput.files[0];
-					  
-						  if (!file) {
-							return alert('Please select a file.');
-						  }
-					  
-						  var formData = new FormData();
-						  formData.append('file', file);
-					  
-						//   fetch('http://localhost:3000/upload', {
-						fetch('http://localhost:3000/attendee/upload', {
-							method: 'POST',
-							body: formData
-						  })
-							.then(function(response) {
-							  if (response.ok) {
-								return response.text();
-							  }
-							  throw new Error('Error: ' + response.status);
-							})
-							.then(function(data) {
-							  alert('File uploaded successfully.');
-							})
-							.catch(function(error) {
-							  alert('An error occurred: ' + error.message);
-							});
-						});
-					  </script>					  
 
 					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
@@ -410,32 +334,6 @@
 						PLACEHOLDER FOR DESCRIPTION
 					</div>
 					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
-
-					<!-- <div class="flex flex-col gap-5 mb-3">
-						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
-						{#each extraEventOptions as { extraEventId, displayText }}
-							<div class="flex items-center">
-								<button
-										id={extraEventId}
-										on:click={() => {
-											if (formValues.mechPuzzle.includes(extraEventId)) {
-												formValues.mechPuzzle = formValues.mechPuzzle.filter((val) => val !== extraEventId);
-											} else {
-												formValues.mechPuzzle = formValues.mechPuzzle.concat(extraEventId);
-											}
-										}}
-										class="w-1/2 duration-300 text-center bg-white p-3 flex rounded-md {formValues.mechPuzzle.includes(
-											extraEventId
-										)
-											? 'bg-opacity-40'
-											: 'bg-opacity-10 hover:bg-opacity-20'}"
-									>
-										{displayText}</button
-									>
-								
-							</div>
-						{/each}
-					</div> -->
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />
@@ -477,13 +375,9 @@
 				</div>
 				{/if}
 				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
-					<button
-						type="submit"
-						class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-						on:click = {onSubmit}
-					>
-						Submit
-					</button>
+
+					<HandleClick {onSubmit} {fileData}/>
+					
 				{/if}
 
 				{#if !submitted}
