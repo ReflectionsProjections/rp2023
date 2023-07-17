@@ -1,0 +1,2300 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/atharvanaik/.nvm/versions/node/v6.17.1/bin/node',
+1 verbose cli   '/Users/atharvanaik/.nvm/versions/node/v6.17.1/bin/npm',
+1 verbose cli   'i' ]
+2 info using npm@3.10.10
+3 info using node@v6.17.1
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly fetchNamedPackageData @iconify/svelte
+20 silly mapToRegistry name @iconify/svelte
+21 silly mapToRegistry scope (from package name) @iconify
+22 verbose mapToRegistry no registry URL found in name for scope @iconify
+23 silly mapToRegistry using default registry
+24 silly mapToRegistry registry https://registry.npmjs.org/
+25 silly mapToRegistry data Result {
+25 silly mapToRegistry   raw: '@iconify/svelte',
+25 silly mapToRegistry   scope: '@iconify',
+25 silly mapToRegistry   escapedName: '@iconify%2fsvelte',
+25 silly mapToRegistry   name: '@iconify/svelte',
+25 silly mapToRegistry   rawSpec: '',
+25 silly mapToRegistry   spec: 'latest',
+25 silly mapToRegistry   type: 'tag' }
+26 silly mapToRegistry uri https://registry.npmjs.org/@iconify%2fsvelte
+27 silly fetchNamedPackageData @playwright/test
+28 silly mapToRegistry name @playwright/test
+29 silly mapToRegistry scope (from package name) @playwright
+30 verbose mapToRegistry no registry URL found in name for scope @playwright
+31 silly mapToRegistry using default registry
+32 silly mapToRegistry registry https://registry.npmjs.org/
+33 silly mapToRegistry data Result {
+33 silly mapToRegistry   raw: '@playwright/test',
+33 silly mapToRegistry   scope: '@playwright',
+33 silly mapToRegistry   escapedName: '@playwright%2ftest',
+33 silly mapToRegistry   name: '@playwright/test',
+33 silly mapToRegistry   rawSpec: '',
+33 silly mapToRegistry   spec: 'latest',
+33 silly mapToRegistry   type: 'tag' }
+34 silly mapToRegistry uri https://registry.npmjs.org/@playwright%2ftest
+35 silly fetchNamedPackageData @smui/data-table
+36 silly mapToRegistry name @smui/data-table
+37 silly mapToRegistry scope (from package name) @smui
+38 verbose mapToRegistry no registry URL found in name for scope @smui
+39 silly mapToRegistry using default registry
+40 silly mapToRegistry registry https://registry.npmjs.org/
+41 silly mapToRegistry data Result {
+41 silly mapToRegistry   raw: '@smui/data-table',
+41 silly mapToRegistry   scope: '@smui',
+41 silly mapToRegistry   escapedName: '@smui%2fdata-table',
+41 silly mapToRegistry   name: '@smui/data-table',
+41 silly mapToRegistry   rawSpec: '',
+41 silly mapToRegistry   spec: 'latest',
+41 silly mapToRegistry   type: 'tag' }
+42 silly mapToRegistry uri https://registry.npmjs.org/@smui%2fdata-table
+43 silly fetchNamedPackageData @sveltejs/adapter-auto
+44 silly mapToRegistry name @sveltejs/adapter-auto
+45 silly mapToRegistry scope (from package name) @sveltejs
+46 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+47 silly mapToRegistry using default registry
+48 silly mapToRegistry registry https://registry.npmjs.org/
+49 silly mapToRegistry data Result {
+49 silly mapToRegistry   raw: '@sveltejs/adapter-auto',
+49 silly mapToRegistry   scope: '@sveltejs',
+49 silly mapToRegistry   escapedName: '@sveltejs%2fadapter-auto',
+49 silly mapToRegistry   name: '@sveltejs/adapter-auto',
+49 silly mapToRegistry   rawSpec: '',
+49 silly mapToRegistry   spec: 'latest',
+49 silly mapToRegistry   type: 'tag' }
+50 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+51 silly fetchNamedPackageData @sveltejs/kit
+52 silly mapToRegistry name @sveltejs/kit
+53 silly mapToRegistry scope (from package name) @sveltejs
+54 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+55 silly mapToRegistry using default registry
+56 silly mapToRegistry registry https://registry.npmjs.org/
+57 silly mapToRegistry data Result {
+57 silly mapToRegistry   raw: '@sveltejs/kit',
+57 silly mapToRegistry   scope: '@sveltejs',
+57 silly mapToRegistry   escapedName: '@sveltejs%2fkit',
+57 silly mapToRegistry   name: '@sveltejs/kit',
+57 silly mapToRegistry   rawSpec: '',
+57 silly mapToRegistry   spec: 'latest',
+57 silly mapToRegistry   type: 'tag' }
+58 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fkit
+59 silly fetchNamedPackageData @typescript-eslint/eslint-plugin
+60 silly mapToRegistry name @typescript-eslint/eslint-plugin
+61 silly mapToRegistry scope (from package name) @typescript-eslint
+62 verbose mapToRegistry no registry URL found in name for scope @typescript-eslint
+63 silly mapToRegistry using default registry
+64 silly mapToRegistry registry https://registry.npmjs.org/
+65 silly mapToRegistry data Result {
+65 silly mapToRegistry   raw: '@typescript-eslint/eslint-plugin',
+65 silly mapToRegistry   scope: '@typescript-eslint',
+65 silly mapToRegistry   escapedName: '@typescript-eslint%2feslint-plugin',
+65 silly mapToRegistry   name: '@typescript-eslint/eslint-plugin',
+65 silly mapToRegistry   rawSpec: '',
+65 silly mapToRegistry   spec: 'latest',
+65 silly mapToRegistry   type: 'tag' }
+66 silly mapToRegistry uri https://registry.npmjs.org/@typescript-eslint%2feslint-plugin
+67 silly fetchNamedPackageData @typescript-eslint/parser
+68 silly mapToRegistry name @typescript-eslint/parser
+69 silly mapToRegistry scope (from package name) @typescript-eslint
+70 verbose mapToRegistry no registry URL found in name for scope @typescript-eslint
+71 silly mapToRegistry using default registry
+72 silly mapToRegistry registry https://registry.npmjs.org/
+73 silly mapToRegistry data Result {
+73 silly mapToRegistry   raw: '@typescript-eslint/parser',
+73 silly mapToRegistry   scope: '@typescript-eslint',
+73 silly mapToRegistry   escapedName: '@typescript-eslint%2fparser',
+73 silly mapToRegistry   name: '@typescript-eslint/parser',
+73 silly mapToRegistry   rawSpec: '',
+73 silly mapToRegistry   spec: 'latest',
+73 silly mapToRegistry   type: 'tag' }
+74 silly mapToRegistry uri https://registry.npmjs.org/@typescript-eslint%2fparser
+75 silly fetchNamedPackageData autoprefixer
+76 silly mapToRegistry name autoprefixer
+77 silly mapToRegistry using default registry
+78 silly mapToRegistry registry https://registry.npmjs.org/
+79 silly mapToRegistry data Result {
+79 silly mapToRegistry   raw: 'autoprefixer',
+79 silly mapToRegistry   scope: null,
+79 silly mapToRegistry   escapedName: 'autoprefixer',
+79 silly mapToRegistry   name: 'autoprefixer',
+79 silly mapToRegistry   rawSpec: '',
+79 silly mapToRegistry   spec: 'latest',
+79 silly mapToRegistry   type: 'tag' }
+80 silly mapToRegistry uri https://registry.npmjs.org/autoprefixer
+81 silly fetchNamedPackageData eslint
+82 silly mapToRegistry name eslint
+83 silly mapToRegistry using default registry
+84 silly mapToRegistry registry https://registry.npmjs.org/
+85 silly mapToRegistry data Result {
+85 silly mapToRegistry   raw: 'eslint',
+85 silly mapToRegistry   scope: null,
+85 silly mapToRegistry   escapedName: 'eslint',
+85 silly mapToRegistry   name: 'eslint',
+85 silly mapToRegistry   rawSpec: '',
+85 silly mapToRegistry   spec: 'latest',
+85 silly mapToRegistry   type: 'tag' }
+86 silly mapToRegistry uri https://registry.npmjs.org/eslint
+87 silly fetchNamedPackageData eslint-config-prettier
+88 silly mapToRegistry name eslint-config-prettier
+89 silly mapToRegistry using default registry
+90 silly mapToRegistry registry https://registry.npmjs.org/
+91 silly mapToRegistry data Result {
+91 silly mapToRegistry   raw: 'eslint-config-prettier',
+91 silly mapToRegistry   scope: null,
+91 silly mapToRegistry   escapedName: 'eslint-config-prettier',
+91 silly mapToRegistry   name: 'eslint-config-prettier',
+91 silly mapToRegistry   rawSpec: '',
+91 silly mapToRegistry   spec: 'latest',
+91 silly mapToRegistry   type: 'tag' }
+92 silly mapToRegistry uri https://registry.npmjs.org/eslint-config-prettier
+93 silly fetchNamedPackageData eslint-plugin-svelte3
+94 silly mapToRegistry name eslint-plugin-svelte3
+95 silly mapToRegistry using default registry
+96 silly mapToRegistry registry https://registry.npmjs.org/
+97 silly mapToRegistry data Result {
+97 silly mapToRegistry   raw: 'eslint-plugin-svelte3',
+97 silly mapToRegistry   scope: null,
+97 silly mapToRegistry   escapedName: 'eslint-plugin-svelte3',
+97 silly mapToRegistry   name: 'eslint-plugin-svelte3',
+97 silly mapToRegistry   rawSpec: '',
+97 silly mapToRegistry   spec: 'latest',
+97 silly mapToRegistry   type: 'tag' }
+98 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-svelte3
+99 silly fetchNamedPackageData postcss
+100 silly mapToRegistry name postcss
+101 silly mapToRegistry using default registry
+102 silly mapToRegistry registry https://registry.npmjs.org/
+103 silly mapToRegistry data Result {
+103 silly mapToRegistry   raw: 'postcss',
+103 silly mapToRegistry   scope: null,
+103 silly mapToRegistry   escapedName: 'postcss',
+103 silly mapToRegistry   name: 'postcss',
+103 silly mapToRegistry   rawSpec: '',
+103 silly mapToRegistry   spec: 'latest',
+103 silly mapToRegistry   type: 'tag' }
+104 silly mapToRegistry uri https://registry.npmjs.org/postcss
+105 silly fetchNamedPackageData prettier
+106 silly mapToRegistry name prettier
+107 silly mapToRegistry using default registry
+108 silly mapToRegistry registry https://registry.npmjs.org/
+109 silly mapToRegistry data Result {
+109 silly mapToRegistry   raw: 'prettier',
+109 silly mapToRegistry   scope: null,
+109 silly mapToRegistry   escapedName: 'prettier',
+109 silly mapToRegistry   name: 'prettier',
+109 silly mapToRegistry   rawSpec: '',
+109 silly mapToRegistry   spec: 'latest',
+109 silly mapToRegistry   type: 'tag' }
+110 silly mapToRegistry uri https://registry.npmjs.org/prettier
+111 silly fetchNamedPackageData prettier-plugin-svelte
+112 silly mapToRegistry name prettier-plugin-svelte
+113 silly mapToRegistry using default registry
+114 silly mapToRegistry registry https://registry.npmjs.org/
+115 silly mapToRegistry data Result {
+115 silly mapToRegistry   raw: 'prettier-plugin-svelte',
+115 silly mapToRegistry   scope: null,
+115 silly mapToRegistry   escapedName: 'prettier-plugin-svelte',
+115 silly mapToRegistry   name: 'prettier-plugin-svelte',
+115 silly mapToRegistry   rawSpec: '',
+115 silly mapToRegistry   spec: 'latest',
+115 silly mapToRegistry   type: 'tag' }
+116 silly mapToRegistry uri https://registry.npmjs.org/prettier-plugin-svelte
+117 silly fetchNamedPackageData svelte
+118 silly mapToRegistry name svelte
+119 silly mapToRegistry using default registry
+120 silly mapToRegistry registry https://registry.npmjs.org/
+121 silly mapToRegistry data Result {
+121 silly mapToRegistry   raw: 'svelte',
+121 silly mapToRegistry   scope: null,
+121 silly mapToRegistry   escapedName: 'svelte',
+121 silly mapToRegistry   name: 'svelte',
+121 silly mapToRegistry   rawSpec: '',
+121 silly mapToRegistry   spec: 'latest',
+121 silly mapToRegistry   type: 'tag' }
+122 silly mapToRegistry uri https://registry.npmjs.org/svelte
+123 silly fetchNamedPackageData svelte-check
+124 silly mapToRegistry name svelte-check
+125 silly mapToRegistry using default registry
+126 silly mapToRegistry registry https://registry.npmjs.org/
+127 silly mapToRegistry data Result {
+127 silly mapToRegistry   raw: 'svelte-check',
+127 silly mapToRegistry   scope: null,
+127 silly mapToRegistry   escapedName: 'svelte-check',
+127 silly mapToRegistry   name: 'svelte-check',
+127 silly mapToRegistry   rawSpec: '',
+127 silly mapToRegistry   spec: 'latest',
+127 silly mapToRegistry   type: 'tag' }
+128 silly mapToRegistry uri https://registry.npmjs.org/svelte-check
+129 silly fetchNamedPackageData tailwindcss
+130 silly mapToRegistry name tailwindcss
+131 silly mapToRegistry using default registry
+132 silly mapToRegistry registry https://registry.npmjs.org/
+133 silly mapToRegistry data Result {
+133 silly mapToRegistry   raw: 'tailwindcss',
+133 silly mapToRegistry   scope: null,
+133 silly mapToRegistry   escapedName: 'tailwindcss',
+133 silly mapToRegistry   name: 'tailwindcss',
+133 silly mapToRegistry   rawSpec: '',
+133 silly mapToRegistry   spec: 'latest',
+133 silly mapToRegistry   type: 'tag' }
+134 silly mapToRegistry uri https://registry.npmjs.org/tailwindcss
+135 silly fetchNamedPackageData tslib
+136 silly mapToRegistry name tslib
+137 silly mapToRegistry using default registry
+138 silly mapToRegistry registry https://registry.npmjs.org/
+139 silly mapToRegistry data Result {
+139 silly mapToRegistry   raw: 'tslib',
+139 silly mapToRegistry   scope: null,
+139 silly mapToRegistry   escapedName: 'tslib',
+139 silly mapToRegistry   name: 'tslib',
+139 silly mapToRegistry   rawSpec: '',
+139 silly mapToRegistry   spec: 'latest',
+139 silly mapToRegistry   type: 'tag' }
+140 silly mapToRegistry uri https://registry.npmjs.org/tslib
+141 silly fetchNamedPackageData typescript
+142 silly mapToRegistry name typescript
+143 silly mapToRegistry using default registry
+144 silly mapToRegistry registry https://registry.npmjs.org/
+145 silly mapToRegistry data Result {
+145 silly mapToRegistry   raw: 'typescript',
+145 silly mapToRegistry   scope: null,
+145 silly mapToRegistry   escapedName: 'typescript',
+145 silly mapToRegistry   name: 'typescript',
+145 silly mapToRegistry   rawSpec: '',
+145 silly mapToRegistry   spec: 'latest',
+145 silly mapToRegistry   type: 'tag' }
+146 silly mapToRegistry uri https://registry.npmjs.org/typescript
+147 silly fetchNamedPackageData vite
+148 silly mapToRegistry name vite
+149 silly mapToRegistry using default registry
+150 silly mapToRegistry registry https://registry.npmjs.org/
+151 silly mapToRegistry data Result {
+151 silly mapToRegistry   raw: 'vite',
+151 silly mapToRegistry   scope: null,
+151 silly mapToRegistry   escapedName: 'vite',
+151 silly mapToRegistry   name: 'vite',
+151 silly mapToRegistry   rawSpec: '',
+151 silly mapToRegistry   spec: 'latest',
+151 silly mapToRegistry   type: 'tag' }
+152 silly mapToRegistry uri https://registry.npmjs.org/vite
+153 verbose request uri https://registry.npmjs.org/@playwright%2ftest
+154 verbose request no auth needed
+155 info attempt registry request try #1 at 4:54:02 PM
+156 verbose request id f745a89d1e2d9e98
+157 http request GET https://registry.npmjs.org/@playwright%2ftest
+158 verbose request uri https://registry.npmjs.org/@iconify%2fsvelte
+159 verbose request no auth needed
+160 info attempt registry request try #1 at 4:54:02 PM
+161 http request GET https://registry.npmjs.org/@iconify%2fsvelte
+162 verbose request uri https://registry.npmjs.org/@smui%2fdata-table
+163 verbose request no auth needed
+164 info attempt registry request try #1 at 4:54:02 PM
+165 http request GET https://registry.npmjs.org/@smui%2fdata-table
+166 verbose request uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+167 verbose request no auth needed
+168 info attempt registry request try #1 at 4:54:02 PM
+169 http request GET https://registry.npmjs.org/@sveltejs%2fadapter-auto
+170 verbose request uri https://registry.npmjs.org/@sveltejs%2fkit
+171 verbose request no auth needed
+172 info attempt registry request try #1 at 4:54:02 PM
+173 http request GET https://registry.npmjs.org/@sveltejs%2fkit
+174 verbose request uri https://registry.npmjs.org/@typescript-eslint%2fparser
+175 verbose request no auth needed
+176 info attempt registry request try #1 at 4:54:02 PM
+177 http request GET https://registry.npmjs.org/@typescript-eslint%2fparser
+178 verbose request uri https://registry.npmjs.org/@typescript-eslint%2feslint-plugin
+179 verbose request no auth needed
+180 info attempt registry request try #1 at 4:54:02 PM
+181 http request GET https://registry.npmjs.org/@typescript-eslint%2feslint-plugin
+182 verbose request uri https://registry.npmjs.org/autoprefixer
+183 verbose request no auth needed
+184 info attempt registry request try #1 at 4:54:02 PM
+185 http request GET https://registry.npmjs.org/autoprefixer
+186 verbose request uri https://registry.npmjs.org/eslint
+187 verbose request no auth needed
+188 info attempt registry request try #1 at 4:54:02 PM
+189 http request GET https://registry.npmjs.org/eslint
+190 verbose request uri https://registry.npmjs.org/eslint-config-prettier
+191 verbose request no auth needed
+192 info attempt registry request try #1 at 4:54:02 PM
+193 http request GET https://registry.npmjs.org/eslint-config-prettier
+194 verbose request uri https://registry.npmjs.org/eslint-plugin-svelte3
+195 verbose request no auth needed
+196 info attempt registry request try #1 at 4:54:02 PM
+197 http request GET https://registry.npmjs.org/eslint-plugin-svelte3
+198 verbose request uri https://registry.npmjs.org/prettier-plugin-svelte
+199 verbose request no auth needed
+200 info attempt registry request try #1 at 4:54:02 PM
+201 http request GET https://registry.npmjs.org/prettier-plugin-svelte
+202 verbose request uri https://registry.npmjs.org/svelte
+203 verbose request no auth needed
+204 info attempt registry request try #1 at 4:54:02 PM
+205 http request GET https://registry.npmjs.org/svelte
+206 verbose request uri https://registry.npmjs.org/svelte-check
+207 verbose request no auth needed
+208 info attempt registry request try #1 at 4:54:02 PM
+209 http request GET https://registry.npmjs.org/svelte-check
+210 verbose request uri https://registry.npmjs.org/tailwindcss
+211 verbose request no auth needed
+212 info attempt registry request try #1 at 4:54:02 PM
+213 http request GET https://registry.npmjs.org/tailwindcss
+214 verbose request uri https://registry.npmjs.org/typescript
+215 verbose request no auth needed
+216 info attempt registry request try #1 at 4:54:02 PM
+217 http request GET https://registry.npmjs.org/typescript
+218 verbose request uri https://registry.npmjs.org/vite
+219 verbose request no auth needed
+220 info attempt registry request try #1 at 4:54:02 PM
+221 http request GET https://registry.npmjs.org/vite
+222 verbose request uri https://registry.npmjs.org/postcss
+223 verbose request no auth needed
+224 info attempt registry request try #1 at 4:54:02 PM
+225 verbose etag W/"699261a53cdf418cdc10d64a694334a7"
+226 verbose lastModified Fri, 24 Jun 2022 09:22:36 GMT
+227 http request GET https://registry.npmjs.org/postcss
+228 verbose request uri https://registry.npmjs.org/prettier
+229 verbose request no auth needed
+230 info attempt registry request try #1 at 4:54:02 PM
+231 verbose etag W/"e4fd6b4c84296426b8b55c02cde7ceca"
+232 verbose lastModified Fri, 24 Jun 2022 14:44:19 GMT
+233 http request GET https://registry.npmjs.org/prettier
+234 verbose request uri https://registry.npmjs.org/tslib
+235 verbose request no auth needed
+236 info attempt registry request try #1 at 4:54:02 PM
+237 verbose etag W/"6b3dbbbdb4927c615e56462454d6a02d"
+238 verbose lastModified Mon, 27 Jun 2022 22:35:29 GMT
+239 http request GET https://registry.npmjs.org/tslib
+240 http 200 https://registry.npmjs.org/eslint-config-prettier
+241 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+241 verbose headers   'content-type': 'application/json',
+241 verbose headers   'transfer-encoding': 'chunked',
+241 verbose headers   connection: 'keep-alive',
+241 verbose headers   'cf-ray': '7e85b8a019f31247-ORD',
+241 verbose headers   'cf-cache-status': 'HIT',
+241 verbose headers   'access-control-allow-origin': '*',
+241 verbose headers   age: '69',
+241 verbose headers   'cache-control': 'public, max-age=300',
+241 verbose headers   etag: 'W/"f8be2a8216b1773a87d4c5521aae0a4b"',
+241 verbose headers   'last-modified': 'Mon, 20 Mar 2023 18:13:47 GMT',
+241 verbose headers   vary: 'accept-encoding, accept',
+241 verbose headers   'x-amz-replication-status': 'COMPLETED',
+241 verbose headers   'x-amz-server-side-encryption': 'AES256',
+241 verbose headers   server: 'cloudflare',
+241 verbose headers   'content-encoding': 'gzip' }
+242 silly get cb [ 200,
+242 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+242 silly get     'content-type': 'application/json',
+242 silly get     'transfer-encoding': 'chunked',
+242 silly get     connection: 'keep-alive',
+242 silly get     'cf-ray': '7e85b8a019f31247-ORD',
+242 silly get     'cf-cache-status': 'HIT',
+242 silly get     'access-control-allow-origin': '*',
+242 silly get     age: '69',
+242 silly get     'cache-control': 'public, max-age=300',
+242 silly get     etag: 'W/"f8be2a8216b1773a87d4c5521aae0a4b"',
+242 silly get     'last-modified': 'Mon, 20 Mar 2023 18:13:47 GMT',
+242 silly get     vary: 'accept-encoding, accept',
+242 silly get     'x-amz-replication-status': 'COMPLETED',
+242 silly get     'x-amz-server-side-encryption': 'AES256',
+242 silly get     server: 'cloudflare',
+242 silly get     'content-encoding': 'gzip' } ]
+243 verbose get saving eslint-config-prettier to /Users/atharvanaik/.npm/registry.npmjs.org/eslint-config-prettier/.cache.json
+244 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+245 silly resolveWithNewModule eslint-config-prettier@8.8.0 checking installable status
+246 silly cache add args [ 'eslint-config-prettier@^8.5.0', null ]
+247 verbose cache add spec eslint-config-prettier@^8.5.0
+248 silly cache add parsed spec Result {
+248 silly cache add   raw: 'eslint-config-prettier@^8.5.0',
+248 silly cache add   scope: null,
+248 silly cache add   escapedName: 'eslint-config-prettier',
+248 silly cache add   name: 'eslint-config-prettier',
+248 silly cache add   rawSpec: '^8.5.0',
+248 silly cache add   spec: '>=8.5.0 <9.0.0',
+248 silly cache add   type: 'range' }
+249 silly addNamed eslint-config-prettier@>=8.5.0 <9.0.0
+250 verbose addNamed ">=8.5.0 <9.0.0" is a valid semver range for eslint-config-prettier
+251 silly addNameRange { name: 'eslint-config-prettier',
+251 silly addNameRange   range: '>=8.5.0 <9.0.0',
+251 silly addNameRange   hasData: false }
+252 silly mapToRegistry name eslint-config-prettier
+253 silly mapToRegistry using default registry
+254 silly mapToRegistry registry https://registry.npmjs.org/
+255 silly mapToRegistry data Result {
+255 silly mapToRegistry   raw: 'eslint-config-prettier',
+255 silly mapToRegistry   scope: null,
+255 silly mapToRegistry   escapedName: 'eslint-config-prettier',
+255 silly mapToRegistry   name: 'eslint-config-prettier',
+255 silly mapToRegistry   rawSpec: '',
+255 silly mapToRegistry   spec: 'latest',
+255 silly mapToRegistry   type: 'tag' }
+256 silly mapToRegistry uri https://registry.npmjs.org/eslint-config-prettier
+257 verbose addNameRange registry:https://registry.npmjs.org/eslint-config-prettier not in flight; fetching
+258 verbose get https://registry.npmjs.org/eslint-config-prettier not expired, no request
+259 silly addNameRange number 2 { name: 'eslint-config-prettier',
+259 silly addNameRange   range: '>=8.5.0 <9.0.0',
+259 silly addNameRange   hasData: true }
+260 silly addNameRange versions [ 'eslint-config-prettier',
+260 silly addNameRange   [ '1.0.0',
+260 silly addNameRange     '1.0.1',
+260 silly addNameRange     '1.0.2',
+260 silly addNameRange     '1.0.3',
+260 silly addNameRange     '1.1.0',
+260 silly addNameRange     '1.1.1',
+260 silly addNameRange     '1.2.0',
+260 silly addNameRange     '1.3.0',
+260 silly addNameRange     '1.4.0',
+260 silly addNameRange     '1.4.1',
+260 silly addNameRange     '1.5.0',
+260 silly addNameRange     '1.6.0',
+260 silly addNameRange     '1.7.0',
+260 silly addNameRange     '2.0.0',
+260 silly addNameRange     '2.1.0',
+260 silly addNameRange     '2.1.1',
+260 silly addNameRange     '2.2.0',
+260 silly addNameRange     '2.3.0',
+260 silly addNameRange     '2.4.0',
+260 silly addNameRange     '2.5.0',
+260 silly addNameRange     '2.6.0',
+260 silly addNameRange     '2.7.0',
+260 silly addNameRange     '2.8.0',
+260 silly addNameRange     '2.9.0',
+260 silly addNameRange     '2.10.0',
+260 silly addNameRange     '3.0.0',
+260 silly addNameRange     '3.0.1',
+260 silly addNameRange     '3.1.0',
+260 silly addNameRange     '3.2.0',
+260 silly addNameRange     '3.3.0',
+260 silly addNameRange     '3.4.0',
+260 silly addNameRange     '3.5.0',
+260 silly addNameRange     '3.6.0',
+260 silly addNameRange     '4.0.0',
+260 silly addNameRange     '4.1.0',
+260 silly addNameRange     '4.2.0',
+260 silly addNameRange     '4.3.0',
+260 silly addNameRange     '5.0.0',
+260 silly addNameRange     '5.1.0',
+260 silly addNameRange     '6.0.0',
+260 silly addNameRange     '6.1.0',
+260 silly addNameRange     '6.2.0',
+260 silly addNameRange     '6.3.0',
+260 silly addNameRange     '6.4.0',
+260 silly addNameRange     '6.5.0',
+260 silly addNameRange     '6.6.0',
+260 silly addNameRange     '6.7.0',
+260 silly addNameRange     '6.8.0',
+260 silly addNameRange     '6.9.0',
+260 silly addNameRange     '6.10.0',
+260 silly addNameRange     '6.10.1',
+260 silly addNameRange     '6.11.0',
+260 silly addNameRange     '6.12.0',
+260 silly addNameRange     '6.13.0',
+260 silly addNameRange     '6.14.0',
+260 silly addNameRange     '6.15.0',
+260 silly addNameRange     '7.0.0',
+260 silly addNameRange     '7.1.0',
+260 silly addNameRange     '7.2.0',
+260 silly addNameRange     '8.0.0',
+260 silly addNameRange     '8.1.0',
+260 silly addNameRange     '8.2.0',
+260 silly addNameRange     '8.3.0',
+260 silly addNameRange     '8.4.0',
+260 silly addNameRange     '8.5.0',
+260 silly addNameRange     '8.6.0',
+260 silly addNameRange     '8.7.0',
+260 silly addNameRange     '8.8.0' ] ]
+261 silly addNamed eslint-config-prettier@8.8.0
+262 verbose addNamed "8.8.0" is a plain semver version for eslint-config-prettier
+263 silly mapToRegistry name eslint-config-prettier
+264 silly mapToRegistry using default registry
+265 silly mapToRegistry registry https://registry.npmjs.org/
+266 silly mapToRegistry data Result {
+266 silly mapToRegistry   raw: 'eslint-config-prettier',
+266 silly mapToRegistry   scope: null,
+266 silly mapToRegistry   escapedName: 'eslint-config-prettier',
+266 silly mapToRegistry   name: 'eslint-config-prettier',
+266 silly mapToRegistry   rawSpec: '',
+266 silly mapToRegistry   spec: 'latest',
+266 silly mapToRegistry   type: 'tag' }
+267 silly mapToRegistry uri https://registry.npmjs.org/eslint-config-prettier
+268 verbose addRemoteTarball https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz not in flight; adding
+269 verbose addRemoteTarball [ 'https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz',
+269 verbose addRemoteTarball   'bfda738d412adc917fd7b038857110efe98c9348' ]
+270 info retry fetch attempt 1 at 4:54:02 PM
+271 info attempt registry request try #1 at 4:54:02 PM
+272 http fetch GET https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz
+273 http fetch 200 https://registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz
+274 silly fetchAndShaCheck shasum bfda738d412adc917fd7b038857110efe98c9348
+275 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/eslint-config-prettier/-/eslint-config-prettier-8.8.0.tgz not in flight; adding
+276 verbose addTmpTarball already have metadata; skipping unpack for eslint-config-prettier@8.8.0
+277 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+278 http 200 https://registry.npmjs.org/eslint-plugin-svelte3
+279 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+279 verbose headers   'content-type': 'application/json',
+279 verbose headers   'transfer-encoding': 'chunked',
+279 verbose headers   connection: 'keep-alive',
+279 verbose headers   'cf-ray': '7e85b8a02f65223d-ORD',
+279 verbose headers   'cf-cache-status': 'REVALIDATED',
+279 verbose headers   'access-control-allow-origin': '*',
+279 verbose headers   'cache-control': 'public, max-age=300',
+279 verbose headers   etag: 'W/"e150d880cfb6ede76cc548ab92e52bdc"',
+279 verbose headers   'last-modified': 'Tue, 04 Apr 2023 20:13:25 GMT',
+279 verbose headers   vary: 'accept-encoding, accept',
+279 verbose headers   'x-amz-replication-status': 'COMPLETED',
+279 verbose headers   'x-amz-server-side-encryption': 'AES256',
+279 verbose headers   server: 'cloudflare',
+279 verbose headers   'content-encoding': 'gzip' }
+280 silly get cb [ 200,
+280 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+280 silly get     'content-type': 'application/json',
+280 silly get     'transfer-encoding': 'chunked',
+280 silly get     connection: 'keep-alive',
+280 silly get     'cf-ray': '7e85b8a02f65223d-ORD',
+280 silly get     'cf-cache-status': 'REVALIDATED',
+280 silly get     'access-control-allow-origin': '*',
+280 silly get     'cache-control': 'public, max-age=300',
+280 silly get     etag: 'W/"e150d880cfb6ede76cc548ab92e52bdc"',
+280 silly get     'last-modified': 'Tue, 04 Apr 2023 20:13:25 GMT',
+280 silly get     vary: 'accept-encoding, accept',
+280 silly get     'x-amz-replication-status': 'COMPLETED',
+280 silly get     'x-amz-server-side-encryption': 'AES256',
+280 silly get     server: 'cloudflare',
+280 silly get     'content-encoding': 'gzip' } ]
+281 verbose get saving eslint-plugin-svelte3 to /Users/atharvanaik/.npm/registry.npmjs.org/eslint-plugin-svelte3/.cache.json
+282 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+283 silly resolveWithNewModule eslint-plugin-svelte3@4.0.0 checking installable status
+284 silly cache add args [ 'eslint-plugin-svelte3@^4.0.0', null ]
+285 verbose cache add spec eslint-plugin-svelte3@^4.0.0
+286 silly cache add parsed spec Result {
+286 silly cache add   raw: 'eslint-plugin-svelte3@^4.0.0',
+286 silly cache add   scope: null,
+286 silly cache add   escapedName: 'eslint-plugin-svelte3',
+286 silly cache add   name: 'eslint-plugin-svelte3',
+286 silly cache add   rawSpec: '^4.0.0',
+286 silly cache add   spec: '>=4.0.0 <5.0.0',
+286 silly cache add   type: 'range' }
+287 silly addNamed eslint-plugin-svelte3@>=4.0.0 <5.0.0
+288 verbose addNamed ">=4.0.0 <5.0.0" is a valid semver range for eslint-plugin-svelte3
+289 silly addNameRange { name: 'eslint-plugin-svelte3',
+289 silly addNameRange   range: '>=4.0.0 <5.0.0',
+289 silly addNameRange   hasData: false }
+290 silly mapToRegistry name eslint-plugin-svelte3
+291 silly mapToRegistry using default registry
+292 silly mapToRegistry registry https://registry.npmjs.org/
+293 silly mapToRegistry data Result {
+293 silly mapToRegistry   raw: 'eslint-plugin-svelte3',
+293 silly mapToRegistry   scope: null,
+293 silly mapToRegistry   escapedName: 'eslint-plugin-svelte3',
+293 silly mapToRegistry   name: 'eslint-plugin-svelte3',
+293 silly mapToRegistry   rawSpec: '',
+293 silly mapToRegistry   spec: 'latest',
+293 silly mapToRegistry   type: 'tag' }
+294 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-svelte3
+295 verbose addNameRange registry:https://registry.npmjs.org/eslint-plugin-svelte3 not in flight; fetching
+296 http 200 https://registry.npmjs.org/tslib
+297 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+297 verbose headers   'content-type': 'application/json',
+297 verbose headers   'transfer-encoding': 'chunked',
+297 verbose headers   connection: 'keep-alive',
+297 verbose headers   'cf-ray': '7e85b8a06e1e6369-ORD',
+297 verbose headers   'cf-cache-status': 'HIT',
+297 verbose headers   'access-control-allow-origin': '*',
+297 verbose headers   age: '199',
+297 verbose headers   'cache-control': 'public, max-age=300',
+297 verbose headers   etag: 'W/"708375495438d940d163b46b17540767"',
+297 verbose headers   'last-modified': 'Mon, 26 Jun 2023 23:07:42 GMT',
+297 verbose headers   vary: 'accept-encoding, accept',
+297 verbose headers   'x-amz-replication-status': 'FAILED',
+297 verbose headers   'x-amz-server-side-encryption': 'AES256',
+297 verbose headers   server: 'cloudflare',
+297 verbose headers   'content-encoding': 'gzip' }
+298 silly get cb [ 200,
+298 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+298 silly get     'content-type': 'application/json',
+298 silly get     'transfer-encoding': 'chunked',
+298 silly get     connection: 'keep-alive',
+298 silly get     'cf-ray': '7e85b8a06e1e6369-ORD',
+298 silly get     'cf-cache-status': 'HIT',
+298 silly get     'access-control-allow-origin': '*',
+298 silly get     age: '199',
+298 silly get     'cache-control': 'public, max-age=300',
+298 silly get     etag: 'W/"708375495438d940d163b46b17540767"',
+298 silly get     'last-modified': 'Mon, 26 Jun 2023 23:07:42 GMT',
+298 silly get     vary: 'accept-encoding, accept',
+298 silly get     'x-amz-replication-status': 'FAILED',
+298 silly get     'x-amz-server-side-encryption': 'AES256',
+298 silly get     server: 'cloudflare',
+298 silly get     'content-encoding': 'gzip' } ]
+299 verbose get saving tslib to /Users/atharvanaik/.npm/registry.npmjs.org/tslib/.cache.json
+300 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+301 silly cache afterAdd eslint-config-prettier@8.8.0
+302 verbose afterAdd /Users/atharvanaik/.npm/eslint-config-prettier/8.8.0/package/package.json not in flight; writing
+303 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+304 verbose get https://registry.npmjs.org/eslint-plugin-svelte3 not expired, no request
+305 silly addNameRange number 2 { name: 'eslint-plugin-svelte3',
+305 silly addNameRange   range: '>=4.0.0 <5.0.0',
+305 silly addNameRange   hasData: true }
+306 silly addNameRange versions [ 'eslint-plugin-svelte3',
+306 silly addNameRange   [ '0.4.4',
+306 silly addNameRange     '0.4.5',
+306 silly addNameRange     '0.4.6',
+306 silly addNameRange     '0.4.7',
+306 silly addNameRange     '1.0.0',
+306 silly addNameRange     '1.1.0',
+306 silly addNameRange     '1.2.0',
+306 silly addNameRange     '1.2.1',
+306 silly addNameRange     '1.2.2',
+306 silly addNameRange     '1.2.3',
+306 silly addNameRange     '2.0.0',
+306 silly addNameRange     '2.0.1',
+306 silly addNameRange     '2.0.2',
+306 silly addNameRange     '2.1.0',
+306 silly addNameRange     '2.2.0',
+306 silly addNameRange     '2.2.1',
+306 silly addNameRange     '2.2.2',
+306 silly addNameRange     '2.3.0',
+306 silly addNameRange     '2.4.0',
+306 silly addNameRange     '2.4.1',
+306 silly addNameRange     '2.4.2',
+306 silly addNameRange     '2.5.0',
+306 silly addNameRange     '2.6.0',
+306 silly addNameRange     '2.7.0',
+306 silly addNameRange     '2.7.1',
+306 silly addNameRange     '2.7.2',
+306 silly addNameRange     '2.7.3',
+306 silly addNameRange     '4.0.0' ] ]
+307 silly addNamed eslint-plugin-svelte3@4.0.0
+308 verbose addNamed "4.0.0" is a plain semver version for eslint-plugin-svelte3
+309 silly mapToRegistry name eslint-plugin-svelte3
+310 silly mapToRegistry using default registry
+311 silly mapToRegistry registry https://registry.npmjs.org/
+312 silly mapToRegistry data Result {
+312 silly mapToRegistry   raw: 'eslint-plugin-svelte3',
+312 silly mapToRegistry   scope: null,
+312 silly mapToRegistry   escapedName: 'eslint-plugin-svelte3',
+312 silly mapToRegistry   name: 'eslint-plugin-svelte3',
+312 silly mapToRegistry   rawSpec: '',
+312 silly mapToRegistry   spec: 'latest',
+312 silly mapToRegistry   type: 'tag' }
+313 silly mapToRegistry uri https://registry.npmjs.org/eslint-plugin-svelte3
+314 verbose addRemoteTarball https://registry.npmjs.org/eslint-plugin-svelte3/-/eslint-plugin-svelte3-4.0.0.tgz not in flight; adding
+315 verbose addRemoteTarball [ 'https://registry.npmjs.org/eslint-plugin-svelte3/-/eslint-plugin-svelte3-4.0.0.tgz',
+315 verbose addRemoteTarball   '3d4f3dcaec5761dac8bc697f81de3613b485b4e3' ]
+316 http 200 https://registry.npmjs.org/prettier
+317 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+317 verbose headers   'content-type': 'application/json',
+317 verbose headers   'transfer-encoding': 'chunked',
+317 verbose headers   connection: 'keep-alive',
+317 verbose headers   'cf-ray': '7e85b8a058ab86fc-ORD',
+317 verbose headers   'cf-cache-status': 'HIT',
+317 verbose headers   'access-control-allow-origin': '*',
+317 verbose headers   age: '217',
+317 verbose headers   'cache-control': 'public, max-age=300',
+317 verbose headers   etag: 'W/"13e7967381033db5ce2d0d75f7b29248"',
+317 verbose headers   'last-modified': 'Wed, 05 Jul 2023 12:44:16 GMT',
+317 verbose headers   vary: 'accept-encoding, accept',
+317 verbose headers   'x-amz-replication-status': 'PENDING',
+317 verbose headers   'x-amz-server-side-encryption': 'AES256',
+317 verbose headers   server: 'cloudflare',
+317 verbose headers   'content-encoding': 'gzip' }
+318 silly get cb [ 200,
+318 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+318 silly get     'content-type': 'application/json',
+318 silly get     'transfer-encoding': 'chunked',
+318 silly get     connection: 'keep-alive',
+318 silly get     'cf-ray': '7e85b8a058ab86fc-ORD',
+318 silly get     'cf-cache-status': 'HIT',
+318 silly get     'access-control-allow-origin': '*',
+318 silly get     age: '217',
+318 silly get     'cache-control': 'public, max-age=300',
+318 silly get     etag: 'W/"13e7967381033db5ce2d0d75f7b29248"',
+318 silly get     'last-modified': 'Wed, 05 Jul 2023 12:44:16 GMT',
+318 silly get     vary: 'accept-encoding, accept',
+318 silly get     'x-amz-replication-status': 'PENDING',
+318 silly get     'x-amz-server-side-encryption': 'AES256',
+318 silly get     server: 'cloudflare',
+318 silly get     'content-encoding': 'gzip' } ]
+319 verbose get saving prettier to /Users/atharvanaik/.npm/registry.npmjs.org/prettier/.cache.json
+320 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+321 info retry fetch attempt 1 at 4:54:03 PM
+322 info attempt registry request try #1 at 4:54:03 PM
+323 http fetch GET https://registry.npmjs.org/eslint-plugin-svelte3/-/eslint-plugin-svelte3-4.0.0.tgz
+324 verbose afterAdd /Users/atharvanaik/.npm/eslint-config-prettier/8.8.0/package/package.json written
+325 silly resolveWithNewModule tslib@2.6.0 checking installable status
+326 silly cache add args [ 'tslib@^2.4.1', null ]
+327 verbose cache add spec tslib@^2.4.1
+328 silly cache add parsed spec Result {
+328 silly cache add   raw: 'tslib@^2.4.1',
+328 silly cache add   scope: null,
+328 silly cache add   escapedName: 'tslib',
+328 silly cache add   name: 'tslib',
+328 silly cache add   rawSpec: '^2.4.1',
+328 silly cache add   spec: '>=2.4.1 <3.0.0',
+328 silly cache add   type: 'range' }
+329 silly addNamed tslib@>=2.4.1 <3.0.0
+330 verbose addNamed ">=2.4.1 <3.0.0" is a valid semver range for tslib
+331 silly addNameRange { name: 'tslib', range: '>=2.4.1 <3.0.0', hasData: false }
+332 silly mapToRegistry name tslib
+333 silly mapToRegistry using default registry
+334 silly mapToRegistry registry https://registry.npmjs.org/
+335 silly mapToRegistry data Result {
+335 silly mapToRegistry   raw: 'tslib',
+335 silly mapToRegistry   scope: null,
+335 silly mapToRegistry   escapedName: 'tslib',
+335 silly mapToRegistry   name: 'tslib',
+335 silly mapToRegistry   rawSpec: '',
+335 silly mapToRegistry   spec: 'latest',
+335 silly mapToRegistry   type: 'tag' }
+336 silly mapToRegistry uri https://registry.npmjs.org/tslib
+337 verbose addNameRange registry:https://registry.npmjs.org/tslib not in flight; fetching
+338 verbose get https://registry.npmjs.org/tslib not expired, no request
+339 silly addNameRange number 2 { name: 'tslib', range: '>=2.4.1 <3.0.0', hasData: true }
+340 silly addNameRange versions [ 'tslib',
+340 silly addNameRange   [ '0.0.1-security',
+340 silly addNameRange     '1.0.0',
+340 silly addNameRange     '1.1.0',
+340 silly addNameRange     '1.2.0',
+340 silly addNameRange     '1.3.0',
+340 silly addNameRange     '1.4.0',
+340 silly addNameRange     '1.5.0',
+340 silly addNameRange     '1.6.0',
+340 silly addNameRange     '1.6.1',
+340 silly addNameRange     '1.7.0',
+340 silly addNameRange     '1.7.1',
+340 silly addNameRange     '1.8.0',
+340 silly addNameRange     '1.8.1',
+340 silly addNameRange     '1.9.0',
+340 silly addNameRange     '1.9.1',
+340 silly addNameRange     '1.9.2',
+340 silly addNameRange     '1.9.3',
+340 silly addNameRange     '1.10.0',
+340 silly addNameRange     '1.11.0',
+340 silly addNameRange     '1.11.1',
+340 silly addNameRange     '1.11.2',
+340 silly addNameRange     '1.12.0',
+340 silly addNameRange     '1.13.0',
+340 silly addNameRange     '2.0.0',
+340 silly addNameRange     '2.0.1',
+340 silly addNameRange     '1.14.0',
+340 silly addNameRange     '2.0.2',
+340 silly addNameRange     '1.14.1',
+340 silly addNameRange     '2.0.3',
+340 silly addNameRange     '2.1.0',
+340 silly addNameRange     '2.2.0',
+340 silly addNameRange     '2.3.0',
+340 silly addNameRange     '2.3.1',
+340 silly addNameRange     '2.4.0',
+340 silly addNameRange     '2.4.1',
+340 silly addNameRange     '2.5.0',
+340 silly addNameRange     '2.5.1',
+340 silly addNameRange     '2.5.2',
+340 silly addNameRange     '2.5.3',
+340 silly addNameRange     '2.6.0' ] ]
+341 silly addNamed tslib@2.6.0
+342 verbose addNamed "2.6.0" is a plain semver version for tslib
+343 silly mapToRegistry name tslib
+344 silly mapToRegistry using default registry
+345 silly mapToRegistry registry https://registry.npmjs.org/
+346 silly mapToRegistry data Result {
+346 silly mapToRegistry   raw: 'tslib',
+346 silly mapToRegistry   scope: null,
+346 silly mapToRegistry   escapedName: 'tslib',
+346 silly mapToRegistry   name: 'tslib',
+346 silly mapToRegistry   rawSpec: '',
+346 silly mapToRegistry   spec: 'latest',
+346 silly mapToRegistry   type: 'tag' }
+347 silly mapToRegistry uri https://registry.npmjs.org/tslib
+348 verbose addRemoteTarball https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz not in flight; adding
+349 verbose addRemoteTarball [ 'https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz',
+349 verbose addRemoteTarball   'b295854684dbda164e181d259a22cd779dcd7bc3' ]
+350 silly resolveWithNewModule prettier@2.8.8 checking installable status
+351 http 200 https://registry.npmjs.org/postcss
+352 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+352 verbose headers   'content-type': 'application/json',
+352 verbose headers   'transfer-encoding': 'chunked',
+352 verbose headers   connection: 'keep-alive',
+352 verbose headers   'cf-ray': '7e85b8a05a2b1263-ORD',
+352 verbose headers   'cf-cache-status': 'HIT',
+352 verbose headers   'access-control-allow-origin': '*',
+352 verbose headers   age: '24',
+352 verbose headers   'cache-control': 'public, max-age=300',
+352 verbose headers   etag: 'W/"9d3f7736c3047e1642810da1e6e631d0"',
+352 verbose headers   'last-modified': 'Thu, 13 Jul 2023 19:24:17 GMT',
+352 verbose headers   vary: 'accept-encoding, accept',
+352 verbose headers   'x-amz-replication-status': 'FAILED',
+352 verbose headers   'x-amz-server-side-encryption': 'AES256',
+352 verbose headers   server: 'cloudflare',
+352 verbose headers   'content-encoding': 'gzip' }
+353 silly get cb [ 200,
+353 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+353 silly get     'content-type': 'application/json',
+353 silly get     'transfer-encoding': 'chunked',
+353 silly get     connection: 'keep-alive',
+353 silly get     'cf-ray': '7e85b8a05a2b1263-ORD',
+353 silly get     'cf-cache-status': 'HIT',
+353 silly get     'access-control-allow-origin': '*',
+353 silly get     age: '24',
+353 silly get     'cache-control': 'public, max-age=300',
+353 silly get     etag: 'W/"9d3f7736c3047e1642810da1e6e631d0"',
+353 silly get     'last-modified': 'Thu, 13 Jul 2023 19:24:17 GMT',
+353 silly get     vary: 'accept-encoding, accept',
+353 silly get     'x-amz-replication-status': 'FAILED',
+353 silly get     'x-amz-server-side-encryption': 'AES256',
+353 silly get     server: 'cloudflare',
+353 silly get     'content-encoding': 'gzip' } ]
+354 verbose get saving postcss to /Users/atharvanaik/.npm/registry.npmjs.org/postcss/.cache.json
+355 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+356 info retry fetch attempt 1 at 4:54:03 PM
+357 info attempt registry request try #1 at 4:54:03 PM
+358 http fetch GET https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz
+359 http 200 https://registry.npmjs.org/svelte-check
+360 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+360 verbose headers   'content-type': 'application/json',
+360 verbose headers   'transfer-encoding': 'chunked',
+360 verbose headers   connection: 'keep-alive',
+360 verbose headers   'cf-ray': '7e85b8a04b161098-ORD',
+360 verbose headers   'cf-cache-status': 'HIT',
+360 verbose headers   'access-control-allow-origin': '*',
+360 verbose headers   age: '162',
+360 verbose headers   'cache-control': 'public, max-age=300',
+360 verbose headers   etag: 'W/"178f91299f401fdbe6a26afa626e74e4"',
+360 verbose headers   'last-modified': 'Tue, 11 Jul 2023 12:43:54 GMT',
+360 verbose headers   vary: 'accept-encoding, accept',
+360 verbose headers   'x-amz-replication-status': 'FAILED',
+360 verbose headers   'x-amz-server-side-encryption': 'AES256',
+360 verbose headers   server: 'cloudflare',
+360 verbose headers   'content-encoding': 'gzip' }
+361 silly get cb [ 200,
+361 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+361 silly get     'content-type': 'application/json',
+361 silly get     'transfer-encoding': 'chunked',
+361 silly get     connection: 'keep-alive',
+361 silly get     'cf-ray': '7e85b8a04b161098-ORD',
+361 silly get     'cf-cache-status': 'HIT',
+361 silly get     'access-control-allow-origin': '*',
+361 silly get     age: '162',
+361 silly get     'cache-control': 'public, max-age=300',
+361 silly get     etag: 'W/"178f91299f401fdbe6a26afa626e74e4"',
+361 silly get     'last-modified': 'Tue, 11 Jul 2023 12:43:54 GMT',
+361 silly get     vary: 'accept-encoding, accept',
+361 silly get     'x-amz-replication-status': 'FAILED',
+361 silly get     'x-amz-server-side-encryption': 'AES256',
+361 silly get     server: 'cloudflare',
+361 silly get     'content-encoding': 'gzip' } ]
+362 verbose get saving svelte-check to /Users/atharvanaik/.npm/registry.npmjs.org/svelte-check/.cache.json
+363 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+364 silly resolveWithNewModule postcss@8.4.26 checking installable status
+365 silly resolveWithNewModule svelte-check@3.4.6 checking installable status
+366 silly cache add args [ 'svelte-check@^3.0.1', null ]
+367 verbose cache add spec svelte-check@^3.0.1
+368 silly cache add parsed spec Result {
+368 silly cache add   raw: 'svelte-check@^3.0.1',
+368 silly cache add   scope: null,
+368 silly cache add   escapedName: 'svelte-check',
+368 silly cache add   name: 'svelte-check',
+368 silly cache add   rawSpec: '^3.0.1',
+368 silly cache add   spec: '>=3.0.1 <4.0.0',
+368 silly cache add   type: 'range' }
+369 silly addNamed svelte-check@>=3.0.1 <4.0.0
+370 verbose addNamed ">=3.0.1 <4.0.0" is a valid semver range for svelte-check
+371 silly addNameRange { name: 'svelte-check', range: '>=3.0.1 <4.0.0', hasData: false }
+372 silly mapToRegistry name svelte-check
+373 silly mapToRegistry using default registry
+374 silly mapToRegistry registry https://registry.npmjs.org/
+375 silly mapToRegistry data Result {
+375 silly mapToRegistry   raw: 'svelte-check',
+375 silly mapToRegistry   scope: null,
+375 silly mapToRegistry   escapedName: 'svelte-check',
+375 silly mapToRegistry   name: 'svelte-check',
+375 silly mapToRegistry   rawSpec: '',
+375 silly mapToRegistry   spec: 'latest',
+375 silly mapToRegistry   type: 'tag' }
+376 silly mapToRegistry uri https://registry.npmjs.org/svelte-check
+377 verbose addNameRange registry:https://registry.npmjs.org/svelte-check not in flight; fetching
+378 http fetch 200 https://registry.npmjs.org/eslint-plugin-svelte3/-/eslint-plugin-svelte3-4.0.0.tgz
+379 verbose get https://registry.npmjs.org/svelte-check not expired, no request
+380 silly addNameRange number 2 { name: 'svelte-check', range: '>=3.0.1 <4.0.0', hasData: true }
+381 silly addNameRange versions [ 'svelte-check',
+381 silly addNameRange   [ '0.1.2',
+381 silly addNameRange     '0.1.3',
+381 silly addNameRange     '0.1.4',
+381 silly addNameRange     '0.1.5',
+381 silly addNameRange     '0.1.6',
+381 silly addNameRange     '0.1.7',
+381 silly addNameRange     '0.1.8',
+381 silly addNameRange     '0.1.9',
+381 silly addNameRange     '0.1.10',
+381 silly addNameRange     '0.1.11',
+381 silly addNameRange     '0.1.12',
+381 silly addNameRange     '0.1.13',
+381 silly addNameRange     '0.1.14',
+381 silly addNameRange     '0.1.15',
+381 silly addNameRange     '0.1.16',
+381 silly addNameRange     '0.1.17',
+381 silly addNameRange     '0.1.18',
+381 silly addNameRange     '0.1.19',
+381 silly addNameRange     '0.1.20',
+381 silly addNameRange     '0.1.21',
+381 silly addNameRange     '0.1.22',
+381 silly addNameRange     '0.1.23',
+381 silly addNameRange     '0.1.24',
+381 silly addNameRange     '0.1.25',
+381 silly addNameRange     '0.1.26',
+381 silly addNameRange     '0.1.27',
+381 silly addNameRange     '0.1.28',
+381 silly addNameRange     '0.1.29',
+381 silly addNameRange     '0.1.30',
+381 silly addNameRange     '0.1.31',
+381 silly addNameRange     '0.1.32',
+381 silly addNameRange     '0.1.33',
+381 silly addNameRange     '0.1.34',
+381 silly addNameRange     '0.1.35',
+381 silly addNameRange     '0.1.36',
+381 silly addNameRange     '0.1.37',
+381 silly addNameRange     '0.1.38',
+381 silly addNameRange     '0.1.39',
+381 silly addNameRange     '0.1.40',
+381 silly addNameRange     '0.1.41',
+381 silly addNameRange     '0.1.42',
+381 silly addNameRange     '0.1.43',
+381 silly addNameRange     '0.1.44',
+381 silly addNameRange     '0.1.45',
+381 silly addNameRange     '0.1.46',
+381 silly addNameRange     '0.1.47',
+381 silly addNameRange     '0.1.48',
+381 silly addNameRange     '0.1.49',
+381 silly addNameRange     '0.1.50',
+381 silly addNameRange     '0.1.51',
+381 silly addNameRange     '0.1.52',
+381 silly addNameRange     '0.1.53',
+381 silly addNameRange     '0.1.54',
+381 silly addNameRange     '0.1.55',
+381 silly addNameRange     '0.1.56',
+381 silly addNameRange     '0.1.57',
+381 silly addNameRange     '0.1.58',
+381 silly addNameRange     '0.1.59',
+381 silly addNameRange     '1.0.0',
+381 silly addNameRange     '1.0.1',
+381 silly addNameRange     '1.0.2',
+381 silly addNameRange     '1.0.3',
+381 silly addNameRange     '1.0.4',
+381 silly addNameRange     '1.0.5',
+381 silly addNameRange     '1.0.6',
+381 silly addNameRange     '1.0.7',
+381 silly addNameRange     '1.0.8',
+381 silly addNameRange     '1.0.9',
+381 silly addNameRange     '1.0.10',
+381 silly addNameRange     '1.0.11',
+381 silly addNameRange     '1.0.12',
+381 silly addNameRange     '1.0.13',
+381 silly addNameRange     '1.0.14',
+381 silly addNameRange     '1.0.15',
+381 silly addNameRange     '1.0.16',
+381 silly addNameRange     '1.0.17',
+381 silly addNameRange     '1.0.18',
+381 silly addNameRange     '1.0.19',
+381 silly addNameRange     '1.0.20',
+381 silly addNameRange     '1.0.21',
+381 silly addNameRange     '1.0.22',
+381 silly addNameRange     '1.0.23',
+381 silly addNameRange     '1.0.24',
+381 silly addNameRange     '1.0.25',
+381 silly addNameRange     '1.0.26',
+381 silly addNameRange     '1.0.27',
+381 silly addNameRange     '1.0.28',
+381 silly addNameRange     '1.0.29',
+381 silly addNameRange     '1.0.30',
+381 silly addNameRange     '1.0.31',
+381 silly addNameRange     '1.0.32',
+381 silly addNameRange     '1.0.33',
+381 silly addNameRange     '1.0.34',
+381 silly addNameRange     '1.0.35',
+381 silly addNameRange     '1.0.36',
+381 silly addNameRange     '1.0.37',
+381 silly addNameRange     '1.0.38',
+381 silly addNameRange     '1.0.39',
+381 silly addNameRange     '1.0.40',
+381 silly addNameRange     '1.0.41',
+381 silly addNameRange     ... 130 more items ] ]
+382 silly addNamed svelte-check@3.4.6
+383 verbose addNamed "3.4.6" is a plain semver version for svelte-check
+384 silly fetchAndShaCheck shasum 3d4f3dcaec5761dac8bc697f81de3613b485b4e3
+385 http fetch 200 https://registry.npmjs.org/tslib/-/tslib-2.6.0.tgz
+386 silly mapToRegistry name svelte-check
+387 silly mapToRegistry using default registry
+388 silly mapToRegistry registry https://registry.npmjs.org/
+389 silly mapToRegistry data Result {
+389 silly mapToRegistry   raw: 'svelte-check',
+389 silly mapToRegistry   scope: null,
+389 silly mapToRegistry   escapedName: 'svelte-check',
+389 silly mapToRegistry   name: 'svelte-check',
+389 silly mapToRegistry   rawSpec: '',
+389 silly mapToRegistry   spec: 'latest',
+389 silly mapToRegistry   type: 'tag' }
+390 silly mapToRegistry uri https://registry.npmjs.org/svelte-check
+391 verbose addRemoteTarball https://registry.npmjs.org/svelte-check/-/svelte-check-3.4.6.tgz not in flight; adding
+392 verbose addRemoteTarball [ 'https://registry.npmjs.org/svelte-check/-/svelte-check-3.4.6.tgz',
+392 verbose addRemoteTarball   'd43de724ad89d1198c96770e9d23965d3379ad44' ]
+393 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/eslint-plugin-svelte3/-/eslint-plugin-svelte3-4.0.0.tgz not in flight; adding
+394 verbose addTmpTarball already have metadata; skipping unpack for eslint-plugin-svelte3@4.0.0
+395 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+396 info retry fetch attempt 1 at 4:54:03 PM
+397 info attempt registry request try #1 at 4:54:03 PM
+398 http fetch GET https://registry.npmjs.org/svelte-check/-/svelte-check-3.4.6.tgz
+399 silly fetchAndShaCheck shasum b295854684dbda164e181d259a22cd779dcd7bc3
+400 http 200 https://registry.npmjs.org/autoprefixer
+401 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+401 verbose headers   'content-type': 'application/json',
+401 verbose headers   'transfer-encoding': 'chunked',
+401 verbose headers   connection: 'keep-alive',
+401 verbose headers   'cf-ray': '7e85b8a04f9e6360-ORD',
+401 verbose headers   'cf-cache-status': 'HIT',
+401 verbose headers   'access-control-allow-origin': '*',
+401 verbose headers   age: '140',
+401 verbose headers   'cache-control': 'public, max-age=300',
+401 verbose headers   etag: 'W/"146f4a7b44e8d10c74efd0fd48a5382f"',
+401 verbose headers   'last-modified': 'Thu, 09 Mar 2023 21:42:09 GMT',
+401 verbose headers   vary: 'accept-encoding, accept',
+401 verbose headers   'x-amz-replication-status': 'COMPLETED',
+401 verbose headers   'x-amz-server-side-encryption': 'AES256',
+401 verbose headers   server: 'cloudflare',
+401 verbose headers   'content-encoding': 'gzip' }
+402 silly get cb [ 200,
+402 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+402 silly get     'content-type': 'application/json',
+402 silly get     'transfer-encoding': 'chunked',
+402 silly get     connection: 'keep-alive',
+402 silly get     'cf-ray': '7e85b8a04f9e6360-ORD',
+402 silly get     'cf-cache-status': 'HIT',
+402 silly get     'access-control-allow-origin': '*',
+402 silly get     age: '140',
+402 silly get     'cache-control': 'public, max-age=300',
+402 silly get     etag: 'W/"146f4a7b44e8d10c74efd0fd48a5382f"',
+402 silly get     'last-modified': 'Thu, 09 Mar 2023 21:42:09 GMT',
+402 silly get     vary: 'accept-encoding, accept',
+402 silly get     'x-amz-replication-status': 'COMPLETED',
+402 silly get     'x-amz-server-side-encryption': 'AES256',
+402 silly get     server: 'cloudflare',
+402 silly get     'content-encoding': 'gzip' } ]
+403 verbose get saving autoprefixer to /Users/atharvanaik/.npm/registry.npmjs.org/autoprefixer/.cache.json
+404 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+405 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/tslib/-/tslib-2.6.0.tgz not in flight; adding
+406 verbose addTmpTarball already have metadata; skipping unpack for tslib@2.6.0
+407 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+408 http fetch 200 https://registry.npmjs.org/svelte-check/-/svelte-check-3.4.6.tgz
+409 silly resolveWithNewModule autoprefixer@10.4.14 checking installable status
+410 silly cache afterAdd eslint-plugin-svelte3@4.0.0
+411 verbose afterAdd /Users/atharvanaik/.npm/eslint-plugin-svelte3/4.0.0/package/package.json not in flight; writing
+412 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+413 silly cache afterAdd tslib@2.6.0
+414 verbose afterAdd /Users/atharvanaik/.npm/tslib/2.6.0/package/package.json not in flight; writing
+415 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+416 http 200 https://registry.npmjs.org/prettier-plugin-svelte
+417 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+417 verbose headers   'content-type': 'application/json',
+417 verbose headers   'transfer-encoding': 'chunked',
+417 verbose headers   connection: 'keep-alive',
+417 verbose headers   'cf-ray': '7e85b8a0497d1193-ORD',
+417 verbose headers   'cf-cache-status': 'REVALIDATED',
+417 verbose headers   'access-control-allow-origin': '*',
+417 verbose headers   'cache-control': 'public, max-age=300',
+417 verbose headers   etag: 'W/"bc9044e09210e597976a41a694130575"',
+417 verbose headers   'last-modified': 'Sat, 27 May 2023 21:52:09 GMT',
+417 verbose headers   vary: 'accept-encoding, accept',
+417 verbose headers   'x-amz-replication-status': 'COMPLETED',
+417 verbose headers   'x-amz-server-side-encryption': 'AES256',
+417 verbose headers   server: 'cloudflare',
+417 verbose headers   'content-encoding': 'gzip' }
+418 silly get cb [ 200,
+418 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+418 silly get     'content-type': 'application/json',
+418 silly get     'transfer-encoding': 'chunked',
+418 silly get     connection: 'keep-alive',
+418 silly get     'cf-ray': '7e85b8a0497d1193-ORD',
+418 silly get     'cf-cache-status': 'REVALIDATED',
+418 silly get     'access-control-allow-origin': '*',
+418 silly get     'cache-control': 'public, max-age=300',
+418 silly get     etag: 'W/"bc9044e09210e597976a41a694130575"',
+418 silly get     'last-modified': 'Sat, 27 May 2023 21:52:09 GMT',
+418 silly get     vary: 'accept-encoding, accept',
+418 silly get     'x-amz-replication-status': 'COMPLETED',
+418 silly get     'x-amz-server-side-encryption': 'AES256',
+418 silly get     server: 'cloudflare',
+418 silly get     'content-encoding': 'gzip' } ]
+419 verbose get saving prettier-plugin-svelte to /Users/atharvanaik/.npm/registry.npmjs.org/prettier-plugin-svelte/.cache.json
+420 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+421 verbose afterAdd /Users/atharvanaik/.npm/tslib/2.6.0/package/package.json written
+422 verbose afterAdd /Users/atharvanaik/.npm/eslint-plugin-svelte3/4.0.0/package/package.json written
+423 silly resolveWithNewModule prettier-plugin-svelte@2.10.1 checking installable status
+424 silly cache add args [ 'prettier-plugin-svelte@^2.8.1', null ]
+425 verbose cache add spec prettier-plugin-svelte@^2.8.1
+426 silly cache add parsed spec Result {
+426 silly cache add   raw: 'prettier-plugin-svelte@^2.8.1',
+426 silly cache add   scope: null,
+426 silly cache add   escapedName: 'prettier-plugin-svelte',
+426 silly cache add   name: 'prettier-plugin-svelte',
+426 silly cache add   rawSpec: '^2.8.1',
+426 silly cache add   spec: '>=2.8.1 <3.0.0',
+426 silly cache add   type: 'range' }
+427 silly addNamed prettier-plugin-svelte@>=2.8.1 <3.0.0
+428 verbose addNamed ">=2.8.1 <3.0.0" is a valid semver range for prettier-plugin-svelte
+429 silly addNameRange { name: 'prettier-plugin-svelte',
+429 silly addNameRange   range: '>=2.8.1 <3.0.0',
+429 silly addNameRange   hasData: false }
+430 silly mapToRegistry name prettier-plugin-svelte
+431 silly mapToRegistry using default registry
+432 silly mapToRegistry registry https://registry.npmjs.org/
+433 silly mapToRegistry data Result {
+433 silly mapToRegistry   raw: 'prettier-plugin-svelte',
+433 silly mapToRegistry   scope: null,
+433 silly mapToRegistry   escapedName: 'prettier-plugin-svelte',
+433 silly mapToRegistry   name: 'prettier-plugin-svelte',
+433 silly mapToRegistry   rawSpec: '',
+433 silly mapToRegistry   spec: 'latest',
+433 silly mapToRegistry   type: 'tag' }
+434 silly mapToRegistry uri https://registry.npmjs.org/prettier-plugin-svelte
+435 verbose addNameRange registry:https://registry.npmjs.org/prettier-plugin-svelte not in flight; fetching
+436 verbose get https://registry.npmjs.org/prettier-plugin-svelte not expired, no request
+437 silly addNameRange number 2 { name: 'prettier-plugin-svelte',
+437 silly addNameRange   range: '>=2.8.1 <3.0.0',
+437 silly addNameRange   hasData: true }
+438 silly addNameRange versions [ 'prettier-plugin-svelte',
+438 silly addNameRange   [ '0.1.0',
+438 silly addNameRange     '0.1.1',
+438 silly addNameRange     '0.2.0',
+438 silly addNameRange     '0.3.0',
+438 silly addNameRange     '0.4.0',
+438 silly addNameRange     '0.4.1',
+438 silly addNameRange     '0.4.2',
+438 silly addNameRange     '0.5.0',
+438 silly addNameRange     '0.5.1',
+438 silly addNameRange     '0.6.0',
+438 silly addNameRange     '0.7.0',
+438 silly addNameRange     '1.0.0',
+438 silly addNameRange     '1.1.0',
+438 silly addNameRange     '1.1.1',
+438 silly addNameRange     '1.2.0',
+438 silly addNameRange     '1.2.1',
+438 silly addNameRange     '1.3.0',
+438 silly addNameRange     '1.4.0',
+438 silly addNameRange     '1.4.1',
+438 silly addNameRange     '1.4.2',
+438 silly addNameRange     '2.0.0',
+438 silly addNameRange     '2.0.1',
+438 silly addNameRange     '2.0.2',
+438 silly addNameRange     '2.0.3',
+438 silly addNameRange     '2.1.0',
+438 silly addNameRange     '2.1.1',
+438 silly addNameRange     '2.1.2',
+438 silly addNameRange     '2.1.3',
+438 silly addNameRange     '2.1.4',
+438 silly addNameRange     '2.1.5',
+438 silly addNameRange     '2.1.6',
+438 silly addNameRange     '2.2.0',
+438 silly addNameRange     '2.3.0',
+438 silly addNameRange     '2.3.1',
+438 silly addNameRange     '2.4.0',
+438 silly addNameRange     '2.5.0',
+438 silly addNameRange     '2.5.1',
+438 silly addNameRange     '2.6.0',
+438 silly addNameRange     '2.7.0',
+438 silly addNameRange     '2.7.1',
+438 silly addNameRange     '2.8.0',
+438 silly addNameRange     '2.8.1',
+438 silly addNameRange     '2.9.0',
+438 silly addNameRange     '2.10.0',
+438 silly addNameRange     '2.10.1' ] ]
+439 silly addNamed prettier-plugin-svelte@2.10.1
+440 verbose addNamed "2.10.1" is a plain semver version for prettier-plugin-svelte
+441 silly mapToRegistry name prettier-plugin-svelte
+442 silly mapToRegistry using default registry
+443 silly mapToRegistry registry https://registry.npmjs.org/
+444 silly mapToRegistry data Result {
+444 silly mapToRegistry   raw: 'prettier-plugin-svelte',
+444 silly mapToRegistry   scope: null,
+444 silly mapToRegistry   escapedName: 'prettier-plugin-svelte',
+444 silly mapToRegistry   name: 'prettier-plugin-svelte',
+444 silly mapToRegistry   rawSpec: '',
+444 silly mapToRegistry   spec: 'latest',
+444 silly mapToRegistry   type: 'tag' }
+445 silly mapToRegistry uri https://registry.npmjs.org/prettier-plugin-svelte
+446 verbose addRemoteTarball https://registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz not in flight; adding
+447 verbose addRemoteTarball [ 'https://registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz',
+447 verbose addRemoteTarball   'e1abbe5689e8a926c60b8bc42e61233556ca90d1' ]
+448 info retry fetch attempt 1 at 4:54:03 PM
+449 info attempt registry request try #1 at 4:54:03 PM
+450 http fetch GET https://registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz
+451 http 200 https://registry.npmjs.org/eslint
+452 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+452 verbose headers   'content-type': 'application/json',
+452 verbose headers   'transfer-encoding': 'chunked',
+452 verbose headers   connection: 'keep-alive',
+452 verbose headers   'cf-ray': '7e85b8a03a512d6d-ORD',
+452 verbose headers   'cf-cache-status': 'HIT',
+452 verbose headers   'access-control-allow-origin': '*',
+452 verbose headers   age: '90',
+452 verbose headers   'cache-control': 'public, max-age=300',
+452 verbose headers   etag: 'W/"74ce447293d5f075ff638ca10cfcd4b5"',
+452 verbose headers   'last-modified': 'Fri, 14 Jul 2023 15:54:23 GMT',
+452 verbose headers   vary: 'accept-encoding, accept',
+452 verbose headers   'x-amz-replication-status': 'PENDING',
+452 verbose headers   'x-amz-server-side-encryption': 'AES256',
+452 verbose headers   server: 'cloudflare',
+452 verbose headers   'content-encoding': 'gzip' }
+453 silly get cb [ 200,
+453 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+453 silly get     'content-type': 'application/json',
+453 silly get     'transfer-encoding': 'chunked',
+453 silly get     connection: 'keep-alive',
+453 silly get     'cf-ray': '7e85b8a03a512d6d-ORD',
+453 silly get     'cf-cache-status': 'HIT',
+453 silly get     'access-control-allow-origin': '*',
+453 silly get     age: '90',
+453 silly get     'cache-control': 'public, max-age=300',
+453 silly get     etag: 'W/"74ce447293d5f075ff638ca10cfcd4b5"',
+453 silly get     'last-modified': 'Fri, 14 Jul 2023 15:54:23 GMT',
+453 silly get     vary: 'accept-encoding, accept',
+453 silly get     'x-amz-replication-status': 'PENDING',
+453 silly get     'x-amz-server-side-encryption': 'AES256',
+453 silly get     server: 'cloudflare',
+453 silly get     'content-encoding': 'gzip' } ]
+454 verbose get saving eslint to /Users/atharvanaik/.npm/registry.npmjs.org/eslint/.cache.json
+455 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+456 http fetch 200 https://registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz
+457 http 200 https://registry.npmjs.org/tailwindcss
+458 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+458 verbose headers   'content-type': 'application/json',
+458 verbose headers   'transfer-encoding': 'chunked',
+458 verbose headers   connection: 'keep-alive',
+458 verbose headers   'cf-ray': '7e85b8a04adf2306-ORD',
+458 verbose headers   'cf-cache-status': 'HIT',
+458 verbose headers   'access-control-allow-origin': '*',
+458 verbose headers   age: '152',
+458 verbose headers   'cache-control': 'public, max-age=300',
+458 verbose headers   etag: 'W/"0e61b8f9d163b60275c72b6920de5e18"',
+458 verbose headers   'last-modified': 'Thu, 13 Jul 2023 16:18:56 GMT',
+458 verbose headers   vary: 'accept-encoding, accept',
+458 verbose headers   'x-amz-replication-status': 'FAILED',
+458 verbose headers   'x-amz-server-side-encryption': 'AES256',
+458 verbose headers   server: 'cloudflare',
+458 verbose headers   'content-encoding': 'gzip' }
+459 silly get cb [ 200,
+459 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+459 silly get     'content-type': 'application/json',
+459 silly get     'transfer-encoding': 'chunked',
+459 silly get     connection: 'keep-alive',
+459 silly get     'cf-ray': '7e85b8a04adf2306-ORD',
+459 silly get     'cf-cache-status': 'HIT',
+459 silly get     'access-control-allow-origin': '*',
+459 silly get     age: '152',
+459 silly get     'cache-control': 'public, max-age=300',
+459 silly get     etag: 'W/"0e61b8f9d163b60275c72b6920de5e18"',
+459 silly get     'last-modified': 'Thu, 13 Jul 2023 16:18:56 GMT',
+459 silly get     vary: 'accept-encoding, accept',
+459 silly get     'x-amz-replication-status': 'FAILED',
+459 silly get     'x-amz-server-side-encryption': 'AES256',
+459 silly get     server: 'cloudflare',
+459 silly get     'content-encoding': 'gzip' } ]
+460 verbose get saving tailwindcss to /Users/atharvanaik/.npm/registry.npmjs.org/tailwindcss/.cache.json
+461 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+462 silly resolveWithNewModule eslint@8.45.0 checking installable status
+463 silly resolveWithNewModule tailwindcss@3.3.3 checking installable status
+464 http 200 https://registry.npmjs.org/@sveltejs%2fadapter-auto
+465 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+465 verbose headers   'content-type': 'application/json',
+465 verbose headers   'transfer-encoding': 'chunked',
+465 verbose headers   connection: 'keep-alive',
+465 verbose headers   'cf-ray': '7e85b8a01b872c30-ORD',
+465 verbose headers   'cf-cache-status': 'REVALIDATED',
+465 verbose headers   'access-control-allow-origin': '*',
+465 verbose headers   'cache-control': 'public, max-age=300',
+465 verbose headers   etag: 'W/"a8cea51fb62eb37f66c162851e8da50a"',
+465 verbose headers   'last-modified': 'Wed, 17 May 2023 14:52:25 GMT',
+465 verbose headers   vary: 'accept-encoding, accept',
+465 verbose headers   'x-amz-replication-status': 'COMPLETED',
+465 verbose headers   'x-amz-server-side-encryption': 'AES256',
+465 verbose headers   server: 'cloudflare',
+465 verbose headers   'content-encoding': 'gzip' }
+466 silly get cb [ 200,
+466 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+466 silly get     'content-type': 'application/json',
+466 silly get     'transfer-encoding': 'chunked',
+466 silly get     connection: 'keep-alive',
+466 silly get     'cf-ray': '7e85b8a01b872c30-ORD',
+466 silly get     'cf-cache-status': 'REVALIDATED',
+466 silly get     'access-control-allow-origin': '*',
+466 silly get     'cache-control': 'public, max-age=300',
+466 silly get     etag: 'W/"a8cea51fb62eb37f66c162851e8da50a"',
+466 silly get     'last-modified': 'Wed, 17 May 2023 14:52:25 GMT',
+466 silly get     vary: 'accept-encoding, accept',
+466 silly get     'x-amz-replication-status': 'COMPLETED',
+466 silly get     'x-amz-server-side-encryption': 'AES256',
+466 silly get     server: 'cloudflare',
+466 silly get     'content-encoding': 'gzip' } ]
+467 verbose get saving @sveltejs/adapter-auto to /Users/atharvanaik/.npm/registry.npmjs.org/_40sveltejs_252fadapter-auto/.cache.json
+468 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+469 http 200 https://registry.npmjs.org/@smui%2fdata-table
+470 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+470 verbose headers   'content-type': 'application/json',
+470 verbose headers   'transfer-encoding': 'chunked',
+470 verbose headers   connection: 'keep-alive',
+470 verbose headers   'cf-ray': '7e85b8a02d8a10ea-ORD',
+470 verbose headers   'cf-cache-status': 'MISS',
+470 verbose headers   'access-control-allow-origin': '*',
+470 verbose headers   'cache-control': 'public, max-age=300',
+470 verbose headers   etag: 'W/"7df8a0bb57cc0526e79a88c0d4c20b94"',
+470 verbose headers   'last-modified': 'Fri, 30 Jun 2023 17:18:27 GMT',
+470 verbose headers   vary: 'accept-encoding, accept',
+470 verbose headers   'x-amz-replication-status': 'COMPLETED',
+470 verbose headers   'x-amz-server-side-encryption': 'AES256',
+470 verbose headers   server: 'cloudflare',
+470 verbose headers   'content-encoding': 'gzip' }
+471 silly get cb [ 200,
+471 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+471 silly get     'content-type': 'application/json',
+471 silly get     'transfer-encoding': 'chunked',
+471 silly get     connection: 'keep-alive',
+471 silly get     'cf-ray': '7e85b8a02d8a10ea-ORD',
+471 silly get     'cf-cache-status': 'MISS',
+471 silly get     'access-control-allow-origin': '*',
+471 silly get     'cache-control': 'public, max-age=300',
+471 silly get     etag: 'W/"7df8a0bb57cc0526e79a88c0d4c20b94"',
+471 silly get     'last-modified': 'Fri, 30 Jun 2023 17:18:27 GMT',
+471 silly get     vary: 'accept-encoding, accept',
+471 silly get     'x-amz-replication-status': 'COMPLETED',
+471 silly get     'x-amz-server-side-encryption': 'AES256',
+471 silly get     server: 'cloudflare',
+471 silly get     'content-encoding': 'gzip' } ]
+472 verbose get saving @smui/data-table to /Users/atharvanaik/.npm/registry.npmjs.org/_40smui_252fdata-table/.cache.json
+473 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+474 silly resolveWithNewModule @sveltejs/adapter-auto@1.0.3 checking installable status
+475 silly cache add args [ '@sveltejs/adapter-auto@^1.0.0', null ]
+476 verbose cache add spec @sveltejs/adapter-auto@^1.0.0
+477 silly cache add parsed spec Result {
+477 silly cache add   raw: '@sveltejs/adapter-auto@^1.0.0',
+477 silly cache add   scope: '@sveltejs',
+477 silly cache add   escapedName: '@sveltejs%2fadapter-auto',
+477 silly cache add   name: '@sveltejs/adapter-auto',
+477 silly cache add   rawSpec: '^1.0.0',
+477 silly cache add   spec: '>=1.0.0 <2.0.0',
+477 silly cache add   type: 'range' }
+478 silly addNamed @sveltejs/adapter-auto@>=1.0.0 <2.0.0
+479 verbose addNamed ">=1.0.0 <2.0.0" is a valid semver range for @sveltejs/adapter-auto
+480 silly addNameRange { name: '@sveltejs/adapter-auto',
+480 silly addNameRange   range: '>=1.0.0 <2.0.0',
+480 silly addNameRange   hasData: false }
+481 silly mapToRegistry name @sveltejs/adapter-auto
+482 silly mapToRegistry scope (from package name) @sveltejs
+483 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+484 silly mapToRegistry using default registry
+485 silly mapToRegistry registry https://registry.npmjs.org/
+486 silly mapToRegistry data Result {
+486 silly mapToRegistry   raw: '@sveltejs/adapter-auto',
+486 silly mapToRegistry   scope: '@sveltejs',
+486 silly mapToRegistry   escapedName: '@sveltejs%2fadapter-auto',
+486 silly mapToRegistry   name: '@sveltejs/adapter-auto',
+486 silly mapToRegistry   rawSpec: '',
+486 silly mapToRegistry   spec: 'latest',
+486 silly mapToRegistry   type: 'tag' }
+487 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+488 verbose addNameRange registry:https://registry.npmjs.org/@sveltejs%2fadapter-auto not in flight; fetching
+489 verbose get https://registry.npmjs.org/@sveltejs%2fadapter-auto not expired, no request
+490 silly addNameRange number 2 { name: '@sveltejs/adapter-auto',
+490 silly addNameRange   range: '>=1.0.0 <2.0.0',
+490 silly addNameRange   hasData: true }
+491 silly addNameRange versions [ '@sveltejs/adapter-auto',
+491 silly addNameRange   [ '1.0.0-next.0',
+491 silly addNameRange     '1.0.0-next.1',
+491 silly addNameRange     '1.0.0-next.2',
+491 silly addNameRange     '1.0.0-next.3',
+491 silly addNameRange     '1.0.0-next.4',
+491 silly addNameRange     '1.0.0-next.5',
+491 silly addNameRange     '1.0.0-next.6',
+491 silly addNameRange     '1.0.0-next.7',
+491 silly addNameRange     '1.0.0-next.8',
+491 silly addNameRange     '1.0.0-next.9',
+491 silly addNameRange     '1.0.0-next.10',
+491 silly addNameRange     '1.0.0-next.11',
+491 silly addNameRange     '1.0.0-next.12',
+491 silly addNameRange     '1.0.0-next.13',
+491 silly addNameRange     '1.0.0-next.14',
+491 silly addNameRange     '1.0.0-next.15',
+491 silly addNameRange     '1.0.0-next.16',
+491 silly addNameRange     '1.0.0-next.17',
+491 silly addNameRange     '1.0.0-next.18',
+491 silly addNameRange     '1.0.0-next.19',
+491 silly addNameRange     '1.0.0-next.20',
+491 silly addNameRange     '1.0.0-next.21',
+491 silly addNameRange     '1.0.0-next.22',
+491 silly addNameRange     '1.0.0-next.23',
+491 silly addNameRange     '1.0.0-next.24',
+491 silly addNameRange     '1.0.0-next.25',
+491 silly addNameRange     '1.0.0-next.26',
+491 silly addNameRange     '0.0.1',
+491 silly addNameRange     '1.0.0-next.27',
+491 silly addNameRange     '1.0.0-next.28',
+491 silly addNameRange     '1.0.0-next.29',
+491 silly addNameRange     '1.0.0-next.30',
+491 silly addNameRange     '1.0.0-next.31',
+491 silly addNameRange     '1.0.0-next.32',
+491 silly addNameRange     '1.0.0-next.33',
+491 silly addNameRange     '1.0.0-next.34',
+491 silly addNameRange     '1.0.0-next.35',
+491 silly addNameRange     '1.0.0-next.36',
+491 silly addNameRange     '1.0.0-next.37',
+491 silly addNameRange     '1.0.0-next.38',
+491 silly addNameRange     '1.0.0-next.39',
+491 silly addNameRange     '1.0.0-next.40',
+491 silly addNameRange     '1.0.0-next.41',
+491 silly addNameRange     '1.0.0-next.42',
+491 silly addNameRange     '1.0.0-next.43',
+491 silly addNameRange     '1.0.0-next.44',
+491 silly addNameRange     '1.0.0-next.45',
+491 silly addNameRange     '1.0.0-next.46',
+491 silly addNameRange     '1.0.0-next.47',
+491 silly addNameRange     '1.0.0-next.48',
+491 silly addNameRange     '1.0.0-next.49',
+491 silly addNameRange     '1.0.0-next.50',
+491 silly addNameRange     '1.0.0-next.51',
+491 silly addNameRange     '1.0.0-next.52',
+491 silly addNameRange     '1.0.0-next.53',
+491 silly addNameRange     '1.0.0-next.54',
+491 silly addNameRange     '1.0.0-next.55',
+491 silly addNameRange     '1.0.0-next.56',
+491 silly addNameRange     '1.0.0-next.57',
+491 silly addNameRange     '1.0.0-next.58',
+491 silly addNameRange     '1.0.0-next.59',
+491 silly addNameRange     '1.0.0-next.60',
+491 silly addNameRange     '1.0.0-next.61',
+491 silly addNameRange     '1.0.0-next.62',
+491 silly addNameRange     '1.0.0-next.63',
+491 silly addNameRange     '1.0.0-next.64',
+491 silly addNameRange     '1.0.0-next.65',
+491 silly addNameRange     '1.0.0-next.66',
+491 silly addNameRange     '1.0.0-next.67',
+491 silly addNameRange     '1.0.0-next.68',
+491 silly addNameRange     '1.0.0-next.69',
+491 silly addNameRange     '1.0.0-next.70',
+491 silly addNameRange     '1.0.0-next.71',
+491 silly addNameRange     '1.0.0-next.72',
+491 silly addNameRange     '1.0.0-next.73',
+491 silly addNameRange     '1.0.0-next.74',
+491 silly addNameRange     '1.0.0-next.75',
+491 silly addNameRange     '1.0.0-next.76',
+491 silly addNameRange     '1.0.0-next.77',
+491 silly addNameRange     '1.0.0-next.78',
+491 silly addNameRange     '1.0.0-next.79',
+491 silly addNameRange     '1.0.0-next.80',
+491 silly addNameRange     '1.0.0-next.81',
+491 silly addNameRange     '1.0.0-next.82',
+491 silly addNameRange     '1.0.0-next.83',
+491 silly addNameRange     '1.0.0-next.84',
+491 silly addNameRange     '1.0.0-next.85',
+491 silly addNameRange     '1.0.0-next.86',
+491 silly addNameRange     '1.0.0-next.87',
+491 silly addNameRange     '1.0.0-next.88',
+491 silly addNameRange     '1.0.0-next.89',
+491 silly addNameRange     '1.0.0-next.90',
+491 silly addNameRange     '1.0.0-next.91',
+491 silly addNameRange     '1.0.0',
+491 silly addNameRange     '1.0.1',
+491 silly addNameRange     '1.0.2',
+491 silly addNameRange     '1.0.3',
+491 silly addNameRange     '2.0.0',
+491 silly addNameRange     '2.0.1',
+491 silly addNameRange     '2.1.0' ] ]
+492 silly addNamed @sveltejs/adapter-auto@1.0.3
+493 verbose addNamed "1.0.3" is a plain semver version for @sveltejs/adapter-auto
+494 silly mapToRegistry name @sveltejs/adapter-auto
+495 silly mapToRegistry scope (from package name) @sveltejs
+496 verbose mapToRegistry no registry URL found in name for scope @sveltejs
+497 silly mapToRegistry using default registry
+498 silly mapToRegistry registry https://registry.npmjs.org/
+499 silly mapToRegistry data Result {
+499 silly mapToRegistry   raw: '@sveltejs/adapter-auto',
+499 silly mapToRegistry   scope: '@sveltejs',
+499 silly mapToRegistry   escapedName: '@sveltejs%2fadapter-auto',
+499 silly mapToRegistry   name: '@sveltejs/adapter-auto',
+499 silly mapToRegistry   rawSpec: '',
+499 silly mapToRegistry   spec: 'latest',
+499 silly mapToRegistry   type: 'tag' }
+500 silly mapToRegistry uri https://registry.npmjs.org/@sveltejs%2fadapter-auto
+501 verbose addRemoteTarball https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-1.0.3.tgz not in flight; adding
+502 verbose addRemoteTarball [ 'https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-1.0.3.tgz',
+502 verbose addRemoteTarball   '1be176ca7400facacb77af122c6cfbf69609706e' ]
+503 silly resolveWithNewModule @smui/data-table@7.0.0-beta.14 checking installable status
+504 silly cache add args [ '@smui/data-table@^7.0.0-beta.9', null ]
+505 verbose cache add spec @smui/data-table@^7.0.0-beta.9
+506 silly cache add parsed spec Result {
+506 silly cache add   raw: '@smui/data-table@^7.0.0-beta.9',
+506 silly cache add   scope: '@smui',
+506 silly cache add   escapedName: '@smui%2fdata-table',
+506 silly cache add   name: '@smui/data-table',
+506 silly cache add   rawSpec: '^7.0.0-beta.9',
+506 silly cache add   spec: '>=7.0.0-beta.9 <8.0.0',
+506 silly cache add   type: 'range' }
+507 silly addNamed @smui/data-table@>=7.0.0-beta.9 <8.0.0
+508 verbose addNamed ">=7.0.0-beta.9 <8.0.0" is a valid semver range for @smui/data-table
+509 silly addNameRange { name: '@smui/data-table',
+509 silly addNameRange   range: '>=7.0.0-beta.9 <8.0.0',
+509 silly addNameRange   hasData: false }
+510 silly mapToRegistry name @smui/data-table
+511 silly mapToRegistry scope (from package name) @smui
+512 verbose mapToRegistry no registry URL found in name for scope @smui
+513 silly mapToRegistry using default registry
+514 silly mapToRegistry registry https://registry.npmjs.org/
+515 silly mapToRegistry data Result {
+515 silly mapToRegistry   raw: '@smui/data-table',
+515 silly mapToRegistry   scope: '@smui',
+515 silly mapToRegistry   escapedName: '@smui%2fdata-table',
+515 silly mapToRegistry   name: '@smui/data-table',
+515 silly mapToRegistry   rawSpec: '',
+515 silly mapToRegistry   spec: 'latest',
+515 silly mapToRegistry   type: 'tag' }
+516 silly mapToRegistry uri https://registry.npmjs.org/@smui%2fdata-table
+517 verbose addNameRange registry:https://registry.npmjs.org/@smui%2fdata-table not in flight; fetching
+518 info retry fetch attempt 1 at 4:54:03 PM
+519 info attempt registry request try #1 at 4:54:03 PM
+520 http fetch GET https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-1.0.3.tgz
+521 verbose get https://registry.npmjs.org/@smui%2fdata-table not expired, no request
+522 silly addNameRange number 2 { name: '@smui/data-table',
+522 silly addNameRange   range: '>=7.0.0-beta.9 <8.0.0',
+522 silly addNameRange   hasData: true }
+523 silly addNameRange versions [ '@smui/data-table',
+523 silly addNameRange   [ '1.0.0-beta.8',
+523 silly addNameRange     '1.0.0-beta.9',
+523 silly addNameRange     '1.0.0-beta.10',
+523 silly addNameRange     '1.0.0-beta.11',
+523 silly addNameRange     '1.0.0-beta.14',
+523 silly addNameRange     '1.0.0-beta.15',
+523 silly addNameRange     '1.0.0-beta.16',
+523 silly addNameRange     '1.0.0-beta.17',
+523 silly addNameRange     '1.0.0-beta.18',
+523 silly addNameRange     '1.0.0-beta.19',
+523 silly addNameRange     '1.0.0-beta.20',
+523 silly addNameRange     '1.0.0-beta.21',
+523 silly addNameRange     '1.0.0',
+523 silly addNameRange     '1.1.0',
+523 silly addNameRange     '2.0.0-alpha.0',
+523 silly addNameRange     '2.0.0-beta.0',
+523 silly addNameRange     '2.0.0-beta.1',
+523 silly addNameRange     '3.0.0-beta.0',
+523 silly addNameRange     '3.0.0-beta.1',
+523 silly addNameRange     '3.0.0-beta.2',
+523 silly addNameRange     '3.0.0-beta.3',
+523 silly addNameRange     '3.0.0-beta.4',
+523 silly addNameRange     '3.0.0-beta.5',
+523 silly addNameRange     '3.0.0-beta.6',
+523 silly addNameRange     '3.0.0-beta.7',
+523 silly addNameRange     '3.0.0-beta.8',
+523 silly addNameRange     '3.0.0-beta.9',
+523 silly addNameRange     '3.0.0-beta.10',
+523 silly addNameRange     '3.0.0-beta.11',
+523 silly addNameRange     '3.0.0-beta.12',
+523 silly addNameRange     '3.0.0',
+523 silly addNameRange     '3.0.1',
+523 silly addNameRange     '3.0.2',
+523 silly addNameRange     '3.0.3',
+523 silly addNameRange     '3.1.0',
+523 silly addNameRange     '4.0.0',
+523 silly addNameRange     '4.1.0',
+523 silly addNameRange     '4.2.0',
+523 silly addNameRange     '5.0.0-beta.0',
+523 silly addNameRange     '5.0.0-beta.1',
+523 silly addNameRange     '5.0.0-beta.3',
+523 silly addNameRange     '5.0.0-beta.4',
+523 silly addNameRange     '5.0.0-beta.5',
+523 silly addNameRange     '5.0.0-beta.6',
+523 silly addNameRange     '5.0.0-beta.7',
+523 silly addNameRange     '5.0.0-beta.8',
+523 silly addNameRange     '5.0.0',
+523 silly addNameRange     '5.0.1',
+523 silly addNameRange     '6.0.0-beta.0',
+523 silly addNameRange     '6.0.0-beta.1',
+523 silly addNameRange     '6.0.0-beta.2',
+523 silly addNameRange     '6.0.0-beta.3',
+523 silly addNameRange     '6.0.0-beta.4',
+523 silly addNameRange     '6.0.0-beta.5',
+523 silly addNameRange     '6.0.0-beta.6',
+523 silly addNameRange     '6.0.0-beta.7',
+523 silly addNameRange     '6.0.0-beta.8',
+523 silly addNameRange     '6.0.0-beta.9',
+523 silly addNameRange     '6.0.0-beta.10',
+523 silly addNameRange     '6.0.0-beta.11',
+523 silly addNameRange     '6.0.0-beta.12',
+523 silly addNameRange     '6.0.0-beta.13',
+523 silly addNameRange     '6.0.0-beta.14',
+523 silly addNameRange     '6.0.0-beta.15',
+523 silly addNameRange     '6.0.0-beta.16',
+523 silly addNameRange     '6.0.0',
+523 silly addNameRange     '6.1.0',
+523 silly addNameRange     '6.1.4',
+523 silly addNameRange     '6.2.0',
+523 silly addNameRange     '7.0.0-beta.0',
+523 silly addNameRange     '7.0.0-beta.1',
+523 silly addNameRange     '7.0.0-beta.2',
+523 silly addNameRange     '7.0.0-beta.3',
+523 silly addNameRange     '7.0.0-beta.4',
+523 silly addNameRange     '7.0.0-beta.5',
+523 silly addNameRange     '7.0.0-beta.6',
+523 silly addNameRange     '7.0.0-beta.7',
+523 silly addNameRange     '7.0.0-beta.8',
+523 silly addNameRange     '7.0.0-beta.9',
+523 silly addNameRange     '7.0.0-beta.10',
+523 silly addNameRange     '7.0.0-beta.11',
+523 silly addNameRange     '7.0.0-beta.12',
+523 silly addNameRange     '7.0.0-beta.13',
+523 silly addNameRange     '7.0.0-beta.14' ] ]
+524 silly addNamed @smui/data-table@7.0.0-beta.14
+525 verbose addNamed "7.0.0-beta.14" is a plain semver version for @smui/data-table
+526 silly mapToRegistry name @smui/data-table
+527 silly mapToRegistry scope (from package name) @smui
+528 verbose mapToRegistry no registry URL found in name for scope @smui
+529 silly mapToRegistry using default registry
+530 silly mapToRegistry registry https://registry.npmjs.org/
+531 silly mapToRegistry data Result {
+531 silly mapToRegistry   raw: '@smui/data-table',
+531 silly mapToRegistry   scope: '@smui',
+531 silly mapToRegistry   escapedName: '@smui%2fdata-table',
+531 silly mapToRegistry   name: '@smui/data-table',
+531 silly mapToRegistry   rawSpec: '',
+531 silly mapToRegistry   spec: 'latest',
+531 silly mapToRegistry   type: 'tag' }
+532 silly mapToRegistry uri https://registry.npmjs.org/@smui%2fdata-table
+533 verbose addRemoteTarball https://registry.npmjs.org/@smui/data-table/-/data-table-7.0.0-beta.14.tgz not in flight; adding
+534 verbose addRemoteTarball [ 'https://registry.npmjs.org/@smui/data-table/-/data-table-7.0.0-beta.14.tgz',
+534 verbose addRemoteTarball   '274c0118975ef75d41b343b4359bf4d4da6d824c' ]
+535 info retry fetch attempt 1 at 4:54:03 PM
+536 info attempt registry request try #1 at 4:54:03 PM
+537 http fetch GET https://registry.npmjs.org/@smui/data-table/-/data-table-7.0.0-beta.14.tgz
+538 http 200 https://registry.npmjs.org/svelte
+539 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+539 verbose headers   'content-type': 'application/json',
+539 verbose headers   'transfer-encoding': 'chunked',
+539 verbose headers   connection: 'keep-alive',
+539 verbose headers   'cf-ray': '7e85b8a049712258-ORD',
+539 verbose headers   'cf-cache-status': 'REVALIDATED',
+539 verbose headers   'access-control-allow-origin': '*',
+539 verbose headers   'cache-control': 'public, max-age=300',
+539 verbose headers   etag: 'W/"bffc6b027ad8d4339199d86987ff6e6e"',
+539 verbose headers   'last-modified': 'Thu, 06 Jul 2023 16:16:03 GMT',
+539 verbose headers   vary: 'accept-encoding, accept',
+539 verbose headers   'x-amz-replication-status': 'FAILED',
+539 verbose headers   'x-amz-server-side-encryption': 'AES256',
+539 verbose headers   server: 'cloudflare',
+539 verbose headers   'content-encoding': 'gzip' }
+540 silly get cb [ 200,
+540 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+540 silly get     'content-type': 'application/json',
+540 silly get     'transfer-encoding': 'chunked',
+540 silly get     connection: 'keep-alive',
+540 silly get     'cf-ray': '7e85b8a049712258-ORD',
+540 silly get     'cf-cache-status': 'REVALIDATED',
+540 silly get     'access-control-allow-origin': '*',
+540 silly get     'cache-control': 'public, max-age=300',
+540 silly get     etag: 'W/"bffc6b027ad8d4339199d86987ff6e6e"',
+540 silly get     'last-modified': 'Thu, 06 Jul 2023 16:16:03 GMT',
+540 silly get     vary: 'accept-encoding, accept',
+540 silly get     'x-amz-replication-status': 'FAILED',
+540 silly get     'x-amz-server-side-encryption': 'AES256',
+540 silly get     server: 'cloudflare',
+540 silly get     'content-encoding': 'gzip' } ]
+541 verbose get saving svelte to /Users/atharvanaik/.npm/registry.npmjs.org/svelte/.cache.json
+542 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+543 silly resolveWithNewModule svelte@3.59.2 checking installable status
+544 http 200 https://registry.npmjs.org/@iconify%2fsvelte
+545 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+545 verbose headers   'content-type': 'application/json',
+545 verbose headers   'transfer-encoding': 'chunked',
+545 verbose headers   connection: 'keep-alive',
+545 verbose headers   'cf-ray': '7e85b8a01ec02cb9-ORD',
+545 verbose headers   'cf-cache-status': 'MISS',
+545 verbose headers   'access-control-allow-origin': '*',
+545 verbose headers   'cache-control': 'public, max-age=300',
+545 verbose headers   etag: 'W/"63aeffac1f5e911e0dd044775968679e"',
+545 verbose headers   'last-modified': 'Thu, 01 Jun 2023 15:02:35 GMT',
+545 verbose headers   vary: 'accept-encoding, accept',
+545 verbose headers   'x-amz-replication-status': 'COMPLETED',
+545 verbose headers   'x-amz-server-side-encryption': 'AES256',
+545 verbose headers   server: 'cloudflare',
+545 verbose headers   'content-encoding': 'gzip' }
+546 silly get cb [ 200,
+546 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+546 silly get     'content-type': 'application/json',
+546 silly get     'transfer-encoding': 'chunked',
+546 silly get     connection: 'keep-alive',
+546 silly get     'cf-ray': '7e85b8a01ec02cb9-ORD',
+546 silly get     'cf-cache-status': 'MISS',
+546 silly get     'access-control-allow-origin': '*',
+546 silly get     'cache-control': 'public, max-age=300',
+546 silly get     etag: 'W/"63aeffac1f5e911e0dd044775968679e"',
+546 silly get     'last-modified': 'Thu, 01 Jun 2023 15:02:35 GMT',
+546 silly get     vary: 'accept-encoding, accept',
+546 silly get     'x-amz-replication-status': 'COMPLETED',
+546 silly get     'x-amz-server-side-encryption': 'AES256',
+546 silly get     server: 'cloudflare',
+546 silly get     'content-encoding': 'gzip' } ]
+547 verbose get saving @iconify/svelte to /Users/atharvanaik/.npm/registry.npmjs.org/_40iconify_252fsvelte/.cache.json
+548 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+549 silly resolveWithNewModule @iconify/svelte@3.1.4 checking installable status
+550 silly cache add args [ '@iconify/svelte@^3.1.3', null ]
+551 verbose cache add spec @iconify/svelte@^3.1.3
+552 silly cache add parsed spec Result {
+552 silly cache add   raw: '@iconify/svelte@^3.1.3',
+552 silly cache add   scope: '@iconify',
+552 silly cache add   escapedName: '@iconify%2fsvelte',
+552 silly cache add   name: '@iconify/svelte',
+552 silly cache add   rawSpec: '^3.1.3',
+552 silly cache add   spec: '>=3.1.3 <4.0.0',
+552 silly cache add   type: 'range' }
+553 silly addNamed @iconify/svelte@>=3.1.3 <4.0.0
+554 verbose addNamed ">=3.1.3 <4.0.0" is a valid semver range for @iconify/svelte
+555 silly addNameRange { name: '@iconify/svelte',
+555 silly addNameRange   range: '>=3.1.3 <4.0.0',
+555 silly addNameRange   hasData: false }
+556 silly mapToRegistry name @iconify/svelte
+557 silly mapToRegistry scope (from package name) @iconify
+558 verbose mapToRegistry no registry URL found in name for scope @iconify
+559 silly mapToRegistry using default registry
+560 silly mapToRegistry registry https://registry.npmjs.org/
+561 silly mapToRegistry data Result {
+561 silly mapToRegistry   raw: '@iconify/svelte',
+561 silly mapToRegistry   scope: '@iconify',
+561 silly mapToRegistry   escapedName: '@iconify%2fsvelte',
+561 silly mapToRegistry   name: '@iconify/svelte',
+561 silly mapToRegistry   rawSpec: '',
+561 silly mapToRegistry   spec: 'latest',
+561 silly mapToRegistry   type: 'tag' }
+562 silly mapToRegistry uri https://registry.npmjs.org/@iconify%2fsvelte
+563 verbose addNameRange registry:https://registry.npmjs.org/@iconify%2fsvelte not in flight; fetching
+564 silly fetchAndShaCheck shasum e1abbe5689e8a926c60b8bc42e61233556ca90d1
+565 verbose get https://registry.npmjs.org/@iconify%2fsvelte not expired, no request
+566 silly addNameRange number 2 { name: '@iconify/svelte',
+566 silly addNameRange   range: '>=3.1.3 <4.0.0',
+566 silly addNameRange   hasData: true }
+567 silly addNameRange versions [ '@iconify/svelte',
+567 silly addNameRange   [ '1.0.0-beta.0',
+567 silly addNameRange     '1.0.0-beta.1',
+567 silly addNameRange     '1.0.0-beta.2',
+567 silly addNameRange     '1.0.0-beta.3',
+567 silly addNameRange     '1.0.0-beta.4',
+567 silly addNameRange     '1.0.0',
+567 silly addNameRange     '1.0.1',
+567 silly addNameRange     '1.0.2',
+567 silly addNameRange     '1.0.3',
+567 silly addNameRange     '1.0.4',
+567 silly addNameRange     '2.0.0-alpha.0',
+567 silly addNameRange     '2.0.0-alpha.1',
+567 silly addNameRange     '2.0.0-alpha.2',
+567 silly addNameRange     '2.0.0-alpha.3',
+567 silly addNameRange     '2.0.0-alpha.4',
+567 silly addNameRange     '2.0.0-alpha.5',
+567 silly addNameRange     '2.0.0-alpha.6',
+567 silly addNameRange     '2.0.0-alpha.7',
+567 silly addNameRange     '2.0.0-beta.1',
+567 silly addNameRange     '2.0.0',
+567 silly addNameRange     '2.1.0-beta.1',
+567 silly addNameRange     '2.1.0-beta.2',
+567 silly addNameRange     '2.1.0-beta.3',
+567 silly addNameRange     '2.1.0-beta.4',
+567 silly addNameRange     '2.1.0-beta.5',
+567 silly addNameRange     '2.1.0',
+567 silly addNameRange     '2.1.1',
+567 silly addNameRange     '2.1.2',
+567 silly addNameRange     '2.2.0',
+567 silly addNameRange     '2.2.1',
+567 silly addNameRange     '3.0.0-beta.1',
+567 silly addNameRange     '3.0.0-beta.2',
+567 silly addNameRange     '3.0.0',
+567 silly addNameRange     '3.0.1',
+567 silly addNameRange     '3.1.0',
+567 silly addNameRange     '3.1.1',
+567 silly addNameRange     '3.1.2-beta.1',
+567 silly addNameRange     '3.1.2',
+567 silly addNameRange     '3.1.3-beta.1',
+567 silly addNameRange     '3.1.3',
+567 silly addNameRange     '3.1.4' ] ]
+568 silly addNamed @iconify/svelte@3.1.4
+569 verbose addNamed "3.1.4" is a plain semver version for @iconify/svelte
+570 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz not in flight; adding
+571 verbose addTmpTarball already have metadata; skipping unpack for prettier-plugin-svelte@2.10.1
+572 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+573 silly mapToRegistry name @iconify/svelte
+574 silly mapToRegistry scope (from package name) @iconify
+575 verbose mapToRegistry no registry URL found in name for scope @iconify
+576 silly mapToRegistry using default registry
+577 silly mapToRegistry registry https://registry.npmjs.org/
+578 silly mapToRegistry data Result {
+578 silly mapToRegistry   raw: '@iconify/svelte',
+578 silly mapToRegistry   scope: '@iconify',
+578 silly mapToRegistry   escapedName: '@iconify%2fsvelte',
+578 silly mapToRegistry   name: '@iconify/svelte',
+578 silly mapToRegistry   rawSpec: '',
+578 silly mapToRegistry   spec: 'latest',
+578 silly mapToRegistry   type: 'tag' }
+579 silly mapToRegistry uri https://registry.npmjs.org/@iconify%2fsvelte
+580 verbose addRemoteTarball https://registry.npmjs.org/@iconify/svelte/-/svelte-3.1.4.tgz not in flight; adding
+581 verbose addRemoteTarball [ 'https://registry.npmjs.org/@iconify/svelte/-/svelte-3.1.4.tgz',
+581 verbose addRemoteTarball   '728fa18ea03da8541a64565c1b2b0c2b8dc0d417' ]
+582 info retry fetch attempt 1 at 4:54:03 PM
+583 info attempt registry request try #1 at 4:54:03 PM
+584 http fetch GET https://registry.npmjs.org/@iconify/svelte/-/svelte-3.1.4.tgz
+585 silly cache afterAdd prettier-plugin-svelte@2.10.1
+586 verbose afterAdd /Users/atharvanaik/.npm/prettier-plugin-svelte/2.10.1/package/package.json not in flight; writing
+587 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+588 verbose afterAdd /Users/atharvanaik/.npm/prettier-plugin-svelte/2.10.1/package/package.json written
+589 http 200 https://registry.npmjs.org/@sveltejs%2fkit
+590 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+590 verbose headers   'content-type': 'application/json',
+590 verbose headers   'transfer-encoding': 'chunked',
+590 verbose headers   connection: 'keep-alive',
+590 verbose headers   'cf-ray': '7e85b8a01dd72d25-ORD',
+590 verbose headers   'cf-cache-status': 'HIT',
+590 verbose headers   'access-control-allow-origin': '*',
+590 verbose headers   age: '96',
+590 verbose headers   'cache-control': 'public, max-age=300',
+590 verbose headers   etag: 'W/"8f9cec966df43d9a9682c6c27302b2d8"',
+590 verbose headers   'last-modified': 'Wed, 12 Jul 2023 14:59:13 GMT',
+590 verbose headers   vary: 'accept-encoding, accept',
+590 verbose headers   'x-amz-replication-status': 'COMPLETED',
+590 verbose headers   'x-amz-server-side-encryption': 'AES256',
+590 verbose headers   server: 'cloudflare',
+590 verbose headers   'content-encoding': 'gzip' }
+591 silly get cb [ 200,
+591 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+591 silly get     'content-type': 'application/json',
+591 silly get     'transfer-encoding': 'chunked',
+591 silly get     connection: 'keep-alive',
+591 silly get     'cf-ray': '7e85b8a01dd72d25-ORD',
+591 silly get     'cf-cache-status': 'HIT',
+591 silly get     'access-control-allow-origin': '*',
+591 silly get     age: '96',
+591 silly get     'cache-control': 'public, max-age=300',
+591 silly get     etag: 'W/"8f9cec966df43d9a9682c6c27302b2d8"',
+591 silly get     'last-modified': 'Wed, 12 Jul 2023 14:59:13 GMT',
+591 silly get     vary: 'accept-encoding, accept',
+591 silly get     'x-amz-replication-status': 'COMPLETED',
+591 silly get     'x-amz-server-side-encryption': 'AES256',
+591 silly get     server: 'cloudflare',
+591 silly get     'content-encoding': 'gzip' } ]
+592 verbose get saving @sveltejs/kit to /Users/atharvanaik/.npm/registry.npmjs.org/_40sveltejs_252fkit/.cache.json
+593 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+594 silly resolveWithNewModule @sveltejs/kit@1.22.3 checking installable status
+595 silly fetchAndShaCheck shasum d43de724ad89d1198c96770e9d23965d3379ad44
+596 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/svelte-check/-/svelte-check-3.4.6.tgz not in flight; adding
+597 verbose addTmpTarball already have metadata; skipping unpack for svelte-check@3.4.6
+598 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+599 silly cache afterAdd svelte-check@3.4.6
+600 verbose afterAdd /Users/atharvanaik/.npm/svelte-check/3.4.6/package/package.json not in flight; writing
+601 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+602 verbose afterAdd /Users/atharvanaik/.npm/svelte-check/3.4.6/package/package.json written
+603 http fetch 200 https://registry.npmjs.org/@sveltejs/adapter-auto/-/adapter-auto-1.0.3.tgz
+604 silly fetchAndShaCheck shasum 1be176ca7400facacb77af122c6cfbf69609706e
+605 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/_40sveltejs/adapter-auto/-/adapter-auto-1.0.3.tgz not in flight; adding
+606 verbose addTmpTarball already have metadata; skipping unpack for @sveltejs/adapter-auto@1.0.3
+607 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+608 http 200 https://registry.npmjs.org/@playwright%2ftest
+609 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+609 verbose headers   'content-type': 'application/json',
+609 verbose headers   'transfer-encoding': 'chunked',
+609 verbose headers   connection: 'keep-alive',
+609 verbose headers   'cf-ray': '7e85b8a01d1e123a-ORD',
+609 verbose headers   'cf-cache-status': 'REVALIDATED',
+609 verbose headers   'access-control-allow-origin': '*',
+609 verbose headers   'cache-control': 'public, max-age=300',
+609 verbose headers   etag: 'W/"4ed191d9f9286d97ce91590d692c9c37"',
+609 verbose headers   'last-modified': 'Mon, 17 Jul 2023 00:35:23 GMT',
+609 verbose headers   vary: 'accept-encoding, accept',
+609 verbose headers   'x-amz-replication-status': 'COMPLETED',
+609 verbose headers   'x-amz-server-side-encryption': 'AES256',
+609 verbose headers   server: 'cloudflare',
+609 verbose headers   'content-encoding': 'gzip' }
+610 silly get cb [ 200,
+610 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+610 silly get     'content-type': 'application/json',
+610 silly get     'transfer-encoding': 'chunked',
+610 silly get     connection: 'keep-alive',
+610 silly get     'cf-ray': '7e85b8a01d1e123a-ORD',
+610 silly get     'cf-cache-status': 'REVALIDATED',
+610 silly get     'access-control-allow-origin': '*',
+610 silly get     'cache-control': 'public, max-age=300',
+610 silly get     etag: 'W/"4ed191d9f9286d97ce91590d692c9c37"',
+610 silly get     'last-modified': 'Mon, 17 Jul 2023 00:35:23 GMT',
+610 silly get     vary: 'accept-encoding, accept',
+610 silly get     'x-amz-replication-status': 'COMPLETED',
+610 silly get     'x-amz-server-side-encryption': 'AES256',
+610 silly get     server: 'cloudflare',
+610 silly get     'content-encoding': 'gzip' } ]
+611 verbose get saving @playwright/test to /Users/atharvanaik/.npm/registry.npmjs.org/_40playwright_252ftest/.cache.json
+612 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+613 http fetch 200 https://registry.npmjs.org/@iconify/svelte/-/svelte-3.1.4.tgz
+614 http fetch 200 https://registry.npmjs.org/@smui/data-table/-/data-table-7.0.0-beta.14.tgz
+615 silly fetchAndShaCheck shasum 274c0118975ef75d41b343b4359bf4d4da6d824c
+616 silly resolveWithNewModule @playwright/test@1.36.1 checking installable status
+617 silly cache afterAdd @sveltejs/adapter-auto@1.0.3
+618 verbose afterAdd /Users/atharvanaik/.npm/@sveltejs/adapter-auto/1.0.3/package/package.json not in flight; writing
+619 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+620 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/_40smui/data-table/-/data-table-7.0.0-beta.14.tgz not in flight; adding
+621 verbose addTmpTarball already have metadata; skipping unpack for @smui/data-table@7.0.0-beta.14
+622 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+623 silly fetchAndShaCheck shasum 728fa18ea03da8541a64565c1b2b0c2b8dc0d417
+624 verbose afterAdd /Users/atharvanaik/.npm/@sveltejs/adapter-auto/1.0.3/package/package.json written
+625 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/_40iconify/svelte/-/svelte-3.1.4.tgz not in flight; adding
+626 verbose addTmpTarball already have metadata; skipping unpack for @iconify/svelte@3.1.4
+627 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+628 silly cache afterAdd @smui/data-table@7.0.0-beta.14
+629 verbose afterAdd /Users/atharvanaik/.npm/@smui/data-table/7.0.0-beta.14/package/package.json not in flight; writing
+630 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+631 silly cache afterAdd @iconify/svelte@3.1.4
+632 verbose afterAdd /Users/atharvanaik/.npm/@iconify/svelte/3.1.4/package/package.json not in flight; writing
+633 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+634 verbose afterAdd /Users/atharvanaik/.npm/@smui/data-table/7.0.0-beta.14/package/package.json written
+635 verbose afterAdd /Users/atharvanaik/.npm/@iconify/svelte/3.1.4/package/package.json written
+636 http 200 https://registry.npmjs.org/typescript
+637 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+637 verbose headers   'content-type': 'application/json',
+637 verbose headers   'transfer-encoding': 'chunked',
+637 verbose headers   connection: 'keep-alive',
+637 verbose headers   'cf-ray': '7e85b8a05cbb111b-ORD',
+637 verbose headers   'cf-cache-status': 'HIT',
+637 verbose headers   'access-control-allow-origin': '*',
+637 verbose headers   age: '38',
+637 verbose headers   'cache-control': 'public, max-age=300',
+637 verbose headers   etag: 'W/"61b45bc4b4bf6808ba57886f8a708511"',
+637 verbose headers   'last-modified': 'Mon, 17 Jul 2023 07:12:38 GMT',
+637 verbose headers   vary: 'accept-encoding, accept',
+637 verbose headers   'x-amz-replication-status': 'PENDING',
+637 verbose headers   'x-amz-server-side-encryption': 'AES256',
+637 verbose headers   server: 'cloudflare',
+637 verbose headers   'content-encoding': 'gzip' }
+638 silly get cb [ 200,
+638 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+638 silly get     'content-type': 'application/json',
+638 silly get     'transfer-encoding': 'chunked',
+638 silly get     connection: 'keep-alive',
+638 silly get     'cf-ray': '7e85b8a05cbb111b-ORD',
+638 silly get     'cf-cache-status': 'HIT',
+638 silly get     'access-control-allow-origin': '*',
+638 silly get     age: '38',
+638 silly get     'cache-control': 'public, max-age=300',
+638 silly get     etag: 'W/"61b45bc4b4bf6808ba57886f8a708511"',
+638 silly get     'last-modified': 'Mon, 17 Jul 2023 07:12:38 GMT',
+638 silly get     vary: 'accept-encoding, accept',
+638 silly get     'x-amz-replication-status': 'PENDING',
+638 silly get     'x-amz-server-side-encryption': 'AES256',
+638 silly get     server: 'cloudflare',
+638 silly get     'content-encoding': 'gzip' } ]
+639 verbose get saving typescript to /Users/atharvanaik/.npm/registry.npmjs.org/typescript/.cache.json
+640 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+641 silly resolveWithNewModule typescript@4.9.5 checking installable status
+642 silly cache add args [ 'typescript@^4.9.3', null ]
+643 verbose cache add spec typescript@^4.9.3
+644 silly cache add parsed spec Result {
+644 silly cache add   raw: 'typescript@^4.9.3',
+644 silly cache add   scope: null,
+644 silly cache add   escapedName: 'typescript',
+644 silly cache add   name: 'typescript',
+644 silly cache add   rawSpec: '^4.9.3',
+644 silly cache add   spec: '>=4.9.3 <5.0.0',
+644 silly cache add   type: 'range' }
+645 silly addNamed typescript@>=4.9.3 <5.0.0
+646 verbose addNamed ">=4.9.3 <5.0.0" is a valid semver range for typescript
+647 silly addNameRange { name: 'typescript', range: '>=4.9.3 <5.0.0', hasData: false }
+648 silly mapToRegistry name typescript
+649 silly mapToRegistry using default registry
+650 silly mapToRegistry registry https://registry.npmjs.org/
+651 silly mapToRegistry data Result {
+651 silly mapToRegistry   raw: 'typescript',
+651 silly mapToRegistry   scope: null,
+651 silly mapToRegistry   escapedName: 'typescript',
+651 silly mapToRegistry   name: 'typescript',
+651 silly mapToRegistry   rawSpec: '',
+651 silly mapToRegistry   spec: 'latest',
+651 silly mapToRegistry   type: 'tag' }
+652 silly mapToRegistry uri https://registry.npmjs.org/typescript
+653 verbose addNameRange registry:https://registry.npmjs.org/typescript not in flight; fetching
+654 verbose get https://registry.npmjs.org/typescript not expired, no request
+655 silly addNameRange number 2 { name: 'typescript', range: '>=4.9.3 <5.0.0', hasData: true }
+656 silly addNameRange versions [ 'typescript',
+656 silly addNameRange   [ '0.8.0',
+656 silly addNameRange     '0.8.1',
+656 silly addNameRange     '0.8.1-1',
+656 silly addNameRange     '0.8.2',
+656 silly addNameRange     '0.8.3',
+656 silly addNameRange     '0.9.0',
+656 silly addNameRange     '0.9.0-1',
+656 silly addNameRange     '0.9.1',
+656 silly addNameRange     '0.9.1-1',
+656 silly addNameRange     '0.9.5',
+656 silly addNameRange     '0.9.7',
+656 silly addNameRange     '1.0.0',
+656 silly addNameRange     '1.0.1',
+656 silly addNameRange     '1.1.0-1',
+656 silly addNameRange     '1.3.0',
+656 silly addNameRange     '1.4.1',
+656 silly addNameRange     '1.5.0-alpha',
+656 silly addNameRange     '1.5.0-beta',
+656 silly addNameRange     '1.5.3',
+656 silly addNameRange     '1.6.0-dev.20150722.1',
+656 silly addNameRange     '1.6.0-dev.20150723',
+656 silly addNameRange     '1.6.0-dev.20150724',
+656 silly addNameRange     '1.6.0-dev.20150725',
+656 silly addNameRange     '1.6.0-dev.20150726',
+656 silly addNameRange     '1.6.0-dev.20150727',
+656 silly addNameRange     '1.6.0-dev.20150728',
+656 silly addNameRange     '1.6.0-dev.20150729',
+656 silly addNameRange     '1.6.0-dev.20150730',
+656 silly addNameRange     '1.6.0-dev.20150731',
+656 silly addNameRange     '1.6.0-dev.20150801',
+656 silly addNameRange     '1.6.0-dev.20150802',
+656 silly addNameRange     '1.6.0-dev.20150803',
+656 silly addNameRange     '1.6.0-dev.20150804',
+656 silly addNameRange     '1.6.0-dev.20150805',
+656 silly addNameRange     '1.6.0-dev.20150806',
+656 silly addNameRange     '1.6.0-dev.20150807',
+656 silly addNameRange     '1.6.0-dev.20150808',
+656 silly addNameRange     '1.6.0-dev.20150809',
+656 silly addNameRange     '1.6.0-dev.20150810',
+656 silly addNameRange     '1.6.0-dev.20150811',
+656 silly addNameRange     '1.6.0-dev.20150812',
+656 silly addNameRange     '1.6.0-dev.20150813',
+656 silly addNameRange     '1.6.0-dev.20150814',
+656 silly addNameRange     '1.6.0-dev.20150815',
+656 silly addNameRange     '1.6.0-dev.20150816',
+656 silly addNameRange     '1.6.0-dev.20150817',
+656 silly addNameRange     '1.6.0-dev.20150818',
+656 silly addNameRange     '1.6.0-dev.20150819',
+656 silly addNameRange     '1.6.0-dev.20150820',
+656 silly addNameRange     '1.6.0-dev.20150821',
+656 silly addNameRange     '1.6.0-dev.20150822',
+656 silly addNameRange     '1.6.0-dev.20150823',
+656 silly addNameRange     '1.6.0-dev.20150824',
+656 silly addNameRange     '1.6.0-dev.20150825',
+656 silly addNameRange     '1.7.0-dev.20150826',
+656 silly addNameRange     '1.7.0-dev.20150827',
+656 silly addNameRange     '1.7.0-dev.20150828',
+656 silly addNameRange     '1.7.0-dev.20150829',
+656 silly addNameRange     '1.7.0-dev.20150830',
+656 silly addNameRange     '1.7.0-dev.20150831',
+656 silly addNameRange     '1.7.0-dev.20150901',
+656 silly addNameRange     '1.7.0-dev.20150902',
+656 silly addNameRange     '1.6.0-beta',
+656 silly addNameRange     '1.7.0-dev.20150903',
+656 silly addNameRange     '1.7.0-dev.20150904',
+656 silly addNameRange     '1.6.0-dev.20150905',
+656 silly addNameRange     '1.6.0-dev.20150906',
+656 silly addNameRange     '1.6.0-dev.20150907',
+656 silly addNameRange     '1.6.0-dev.20150908',
+656 silly addNameRange     '1.6.0-dev.20150909',
+656 silly addNameRange     '1.6.0-dev.20150910',
+656 silly addNameRange     '1.6.0-dev.20150911',
+656 silly addNameRange     '1.6.0-dev.20150912',
+656 silly addNameRange     '1.6.0-dev.20150913',
+656 silly addNameRange     '1.6.0-dev.20150914',
+656 silly addNameRange     '1.6.0-dev.20150915',
+656 silly addNameRange     '1.7.0-dev.20150916',
+656 silly addNameRange     '1.6.2',
+656 silly addNameRange     '1.7.0-dev.20150917',
+656 silly addNameRange     '1.7.0-dev.20150918',
+656 silly addNameRange     '1.7.0-dev.20150919',
+656 silly addNameRange     '1.7.0-dev.20150920',
+656 silly addNameRange     '1.7.0-dev.20150921',
+656 silly addNameRange     '1.7.0-dev.20150922',
+656 silly addNameRange     '1.7.0-dev.20150923',
+656 silly addNameRange     '1.7.0-dev.20150924',
+656 silly addNameRange     '1.7.0-dev.20150925',
+656 silly addNameRange     '1.7.0-dev.20150926',
+656 silly addNameRange     '1.7.0-dev.20150927',
+656 silly addNameRange     '1.7.0-dev.20150928',
+656 silly addNameRange     '1.7.0-dev.20150929',
+656 silly addNameRange     '1.7.0-dev.20150930',
+656 silly addNameRange     '1.7.0-dev.20151001',
+656 silly addNameRange     '1.7.0-dev.20151002',
+656 silly addNameRange     '1.7.0-dev.20151003',
+656 silly addNameRange     '1.7.0-dev.20151004',
+656 silly addNameRange     '1.7.0-dev.20151005',
+656 silly addNameRange     '1.7.0-dev.20151006',
+656 silly addNameRange     '1.7.0-dev.20151014',
+656 silly addNameRange     '1.7.0-dev.20151015',
+656 silly addNameRange     ... 2518 more items ] ]
+657 silly addNamed typescript@4.9.5
+658 verbose addNamed "4.9.5" is a plain semver version for typescript
+659 silly mapToRegistry name typescript
+660 silly mapToRegistry using default registry
+661 silly mapToRegistry registry https://registry.npmjs.org/
+662 silly mapToRegistry data Result {
+662 silly mapToRegistry   raw: 'typescript',
+662 silly mapToRegistry   scope: null,
+662 silly mapToRegistry   escapedName: 'typescript',
+662 silly mapToRegistry   name: 'typescript',
+662 silly mapToRegistry   rawSpec: '',
+662 silly mapToRegistry   spec: 'latest',
+662 silly mapToRegistry   type: 'tag' }
+663 silly mapToRegistry uri https://registry.npmjs.org/typescript
+664 verbose addRemoteTarball https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz not in flight; adding
+665 verbose addRemoteTarball [ 'https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz',
+665 verbose addRemoteTarball   '095979f9bcc0d09da324d58d03ce8f8374cbe65a' ]
+666 info retry fetch attempt 1 at 4:54:04 PM
+667 info attempt registry request try #1 at 4:54:04 PM
+668 http fetch GET https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz
+669 http fetch 200 https://registry.npmjs.org/typescript/-/typescript-4.9.5.tgz
+670 http 200 https://registry.npmjs.org/@typescript-eslint%2fparser
+671 verbose headers { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+671 verbose headers   'content-type': 'application/json',
+671 verbose headers   'transfer-encoding': 'chunked',
+671 verbose headers   connection: 'keep-alive',
+671 verbose headers   'cf-ray': '7e85b8a02a892300-ORD',
+671 verbose headers   'cf-cache-status': 'HIT',
+671 verbose headers   'access-control-allow-origin': '*',
+671 verbose headers   age: '48',
+671 verbose headers   'cache-control': 'public, max-age=300',
+671 verbose headers   etag: 'W/"28edbf9b6640bd7a400f72f4e26333be"',
+671 verbose headers   'last-modified': 'Mon, 17 Jul 2023 21:39:25 GMT',
+671 verbose headers   vary: 'accept-encoding, accept',
+671 verbose headers   'x-amz-replication-status': 'COMPLETED',
+671 verbose headers   'x-amz-server-side-encryption': 'AES256',
+671 verbose headers   server: 'cloudflare',
+671 verbose headers   'content-encoding': 'gzip' }
+672 silly get cb [ 200,
+672 silly get   { date: 'Mon, 17 Jul 2023 21:54:02 GMT',
+672 silly get     'content-type': 'application/json',
+672 silly get     'transfer-encoding': 'chunked',
+672 silly get     connection: 'keep-alive',
+672 silly get     'cf-ray': '7e85b8a02a892300-ORD',
+672 silly get     'cf-cache-status': 'HIT',
+672 silly get     'access-control-allow-origin': '*',
+672 silly get     age: '48',
+672 silly get     'cache-control': 'public, max-age=300',
+672 silly get     etag: 'W/"28edbf9b6640bd7a400f72f4e26333be"',
+672 silly get     'last-modified': 'Mon, 17 Jul 2023 21:39:25 GMT',
+672 silly get     vary: 'accept-encoding, accept',
+672 silly get     'x-amz-replication-status': 'COMPLETED',
+672 silly get     'x-amz-server-side-encryption': 'AES256',
+672 silly get     server: 'cloudflare',
+672 silly get     'content-encoding': 'gzip' } ]
+673 verbose get saving @typescript-eslint/parser to /Users/atharvanaik/.npm/registry.npmjs.org/_40typescript-eslint_252fparser/.cache.json
+674 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+675 silly resolveWithNewModule @typescript-eslint/parser@5.62.0 checking installable status
+676 http 200 https://registry.npmjs.org/vite
+677 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+677 verbose headers   'content-type': 'application/json',
+677 verbose headers   'transfer-encoding': 'chunked',
+677 verbose headers   connection: 'keep-alive',
+677 verbose headers   'cf-ray': '7e85b8a05e2a1265-ORD',
+677 verbose headers   'cf-cache-status': 'REVALIDATED',
+677 verbose headers   'access-control-allow-origin': '*',
+677 verbose headers   'cache-control': 'public, max-age=300',
+677 verbose headers   etag: 'W/"b102f01e415d844f5ee15d4effafe185"',
+677 verbose headers   'last-modified': 'Fri, 14 Jul 2023 07:06:34 GMT',
+677 verbose headers   vary: 'accept-encoding, accept',
+677 verbose headers   'x-amz-replication-status': 'COMPLETED',
+677 verbose headers   'x-amz-server-side-encryption': 'AES256',
+677 verbose headers   server: 'cloudflare',
+677 verbose headers   'content-encoding': 'gzip' }
+678 silly get cb [ 200,
+678 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+678 silly get     'content-type': 'application/json',
+678 silly get     'transfer-encoding': 'chunked',
+678 silly get     connection: 'keep-alive',
+678 silly get     'cf-ray': '7e85b8a05e2a1265-ORD',
+678 silly get     'cf-cache-status': 'REVALIDATED',
+678 silly get     'access-control-allow-origin': '*',
+678 silly get     'cache-control': 'public, max-age=300',
+678 silly get     etag: 'W/"b102f01e415d844f5ee15d4effafe185"',
+678 silly get     'last-modified': 'Fri, 14 Jul 2023 07:06:34 GMT',
+678 silly get     vary: 'accept-encoding, accept',
+678 silly get     'x-amz-replication-status': 'COMPLETED',
+678 silly get     'x-amz-server-side-encryption': 'AES256',
+678 silly get     server: 'cloudflare',
+678 silly get     'content-encoding': 'gzip' } ]
+679 verbose get saving vite to /Users/atharvanaik/.npm/registry.npmjs.org/vite/.cache.json
+680 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+681 silly resolveWithNewModule vite@4.4.4 checking installable status
+682 http 200 https://registry.npmjs.org/@typescript-eslint%2feslint-plugin
+683 verbose headers { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+683 verbose headers   'content-type': 'application/json',
+683 verbose headers   'transfer-encoding': 'chunked',
+683 verbose headers   connection: 'keep-alive',
+683 verbose headers   'cf-ray': '7e85b8a0182c1259-ORD',
+683 verbose headers   'cf-cache-status': 'HIT',
+683 verbose headers   'access-control-allow-origin': '*',
+683 verbose headers   age: '191',
+683 verbose headers   'cache-control': 'public, max-age=300',
+683 verbose headers   etag: 'W/"8a7df5ff80dd4fcd72773076d0cba6de"',
+683 verbose headers   'last-modified': 'Mon, 17 Jul 2023 21:40:03 GMT',
+683 verbose headers   vary: 'accept-encoding, accept',
+683 verbose headers   'x-amz-replication-status': 'COMPLETED',
+683 verbose headers   'x-amz-server-side-encryption': 'AES256',
+683 verbose headers   server: 'cloudflare',
+683 verbose headers   'content-encoding': 'gzip' }
+684 silly get cb [ 200,
+684 silly get   { date: 'Mon, 17 Jul 2023 21:54:03 GMT',
+684 silly get     'content-type': 'application/json',
+684 silly get     'transfer-encoding': 'chunked',
+684 silly get     connection: 'keep-alive',
+684 silly get     'cf-ray': '7e85b8a0182c1259-ORD',
+684 silly get     'cf-cache-status': 'HIT',
+684 silly get     'access-control-allow-origin': '*',
+684 silly get     age: '191',
+684 silly get     'cache-control': 'public, max-age=300',
+684 silly get     etag: 'W/"8a7df5ff80dd4fcd72773076d0cba6de"',
+684 silly get     'last-modified': 'Mon, 17 Jul 2023 21:40:03 GMT',
+684 silly get     vary: 'accept-encoding, accept',
+684 silly get     'x-amz-replication-status': 'COMPLETED',
+684 silly get     'x-amz-server-side-encryption': 'AES256',
+684 silly get     server: 'cloudflare',
+684 silly get     'content-encoding': 'gzip' } ]
+685 verbose get saving @typescript-eslint/eslint-plugin to /Users/atharvanaik/.npm/registry.npmjs.org/_40typescript-eslint_252feslint-plugin/.cache.json
+686 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+687 silly resolveWithNewModule @typescript-eslint/eslint-plugin@5.62.0 checking installable status
+688 silly fetchAndShaCheck shasum 095979f9bcc0d09da324d58d03ce8f8374cbe65a
+689 verbose addTmpTarball /var/folders/8d/v68jfb_j38q7x20rssydg7dh0000gp/T/npm-56003-0e101c17/registry.npmjs.org/typescript/-/typescript-4.9.5.tgz not in flight; adding
+690 verbose addTmpTarball already have metadata; skipping unpack for typescript@4.9.5
+691 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+692 silly cache afterAdd typescript@4.9.5
+693 verbose afterAdd /Users/atharvanaik/.npm/typescript/4.9.5/package/package.json not in flight; writing
+694 verbose correctMkdir /Users/atharvanaik/.npm correctMkdir not in flight; initializing
+695 verbose afterAdd /Users/atharvanaik/.npm/typescript/4.9.5/package/package.json written
+696 silly rollbackFailedOptional Starting
+697 silly rollbackFailedOptional Finishing
+698 silly runTopLevelLifecycles Finishing
+699 silly install printInstalled
+700 verbose stack Error: Unsupported engine for prettier@2.8.8: wanted: {"node":">=10.13.0"} (current: {"node":"6.17.1","npm":"3.10.10"})
+700 verbose stack     at checkEngine (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/node_modules/npm-install-checks/index.js:13:14)
+700 verbose stack     at module.exports.isInstallable (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/install/validate-args.js:38:3)
+700 verbose stack     at resolveWithNewModule (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/install/deps.js:511:10)
+700 verbose stack     at /Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/install/deps.js:454:9
+700 verbose stack     at /Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+700 verbose stack     at /Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/fetch-package-metadata.js:37:12
+700 verbose stack     at addRequestedAndFinish (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/fetch-package-metadata.js:67:5)
+700 verbose stack     at returnAndAddMetadata (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/fetch-package-metadata.js:121:7)
+700 verbose stack     at pickVersionFromRegistryDocument (/Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/lib/fetch-package-metadata.js:146:20)
+700 verbose stack     at /Users/atharvanaik/.nvm/versions/node/v6.17.1/lib/node_modules/npm/node_modules/iferr/index.js:13:50
+701 verbose pkgid prettier@2.8.8
+702 verbose cwd /Users/atharvanaik/Desktop/RP2023/rp2023
+703 error Darwin 21.6.0
+704 error argv "/Users/atharvanaik/.nvm/versions/node/v6.17.1/bin/node" "/Users/atharvanaik/.nvm/versions/node/v6.17.1/bin/npm" "i"
+705 error node v6.17.1
+706 error npm  v3.10.10
+707 error code ENOTSUP
+708 error notsup Unsupported engine for prettier@2.8.8: wanted: {"node":">=10.13.0"} (current: {"node":"6.17.1","npm":"3.10.10"})
+709 error notsup Not compatible with your version of node/npm: prettier@2.8.8
+710 error notsup Not compatible with your version of node/npm: prettier@2.8.8
+710 error notsup Required: {"node":">=10.13.0"}
+710 error notsup Actual:   {"npm":"3.10.10","node":"6.17.1"}
+711 verbose exit [ 1, true ]

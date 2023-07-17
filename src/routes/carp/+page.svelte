@@ -13,6 +13,16 @@
 	import IconButton from '@smui/icon-button';
 	import { Label } from '@smui/common';
 	import { onMount } from 'svelte';
+
+	// TODO update this w actual schema
+	// TODO connect with actual API call
+	let schema=[
+		{label: 'Name', key: 'name'},
+		{label: 'Major', key: 'major'},
+		{label: 'Graduation Year', key: 'grad_year'},
+		{label: 'Job Interest', key: 'job_interest'},
+		{label: 'Resume', key: 'resume'}
+	]
  
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
@@ -78,118 +88,134 @@
 	}
 </script>
 
-<main class="flex flex-col h-full">
-			
+<main class="flex flex-col h-full">		
+	<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
+		<GlassContainer>
+			<h1 class="text-5xl" > Resume Viewer </h1>
+		</GlassContainer>
+	</div>
+	
+	<!-- Dropdowns for Filters-->
+	<div class="flex flex-row mx-auto my-auto">	
+
+		<!-- Majors Drop Down-->
+		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
 			<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
-				<GlassContainer>
-					<h1 class="text-5xl" > Resume Viewer </h1>
+				<GlassContainer>	
+					<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
 				</GlassContainer>
 			</div>
-			
-			<!-- Dropdowns for Filters-->
-			<div class="flex flex-row mx-auto my-auto">	
 
-				<!-- Majors Drop Down-->
-				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-					<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
-						<GlassContainer>	
-							<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
-						</GlassContainer>
-					</div>
+			{#if show_majors}
+			<div class="">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each majors as major}
+					<li id="major-check" class="flex flex-row hover:text-gray-300">
+						<div  class="pr-3">
+							<input type="checkbox" on:click={() => {
+								onCheckBoxClick(major_filters, major, "major-check")
+								major_filters = major_filters;
+								}} />								
+						</div>
+						<div >{major}</div>
+					</li>
+					{/each}
+				</ul>
+			</div>
+			{/if}
+		</div>
 
-					{#if show_majors}
-					<div class="">
-						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-							{#each majors as major}
-							<li id="major-check" class="flex flex-row hover:text-gray-300">
-								<div  class="pr-3">
-									<input type="checkbox" on:click={() => {
-										onCheckBoxClick(major_filters, major, "major-check")
-										major_filters = major_filters;
-										}} />								
-								</div>
-								<div >{major}</div>
-							</li>
-							{/each}
-						</ul>
-					</div>
-					{/if}
-				</div>
-
-				<!-- Grad_Year Drop Down-->
-				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-					<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
-						<GlassContainer>	
-							<button class="" on:click={() => (show_grad_year= !show_grad_year)}> Filter By {grad_year_filters.size} Graduation Year(s) </button>
-						</GlassContainer>
-					</div>
-
-					{#if show_grad_year}
-					<div class="">
-						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-							{#each grad_years as grad_year}
-							<li class="flex flex-row hover:text-gray-300">
-								<div id="grad-year-check" class="pr-3">
-									<input type="checkbox" on:click={() => {
-										onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
-										grad_year_filters = grad_year_filters;
-										}} />
-								</div>
-								<div >{grad_year}</div>
-							</li>
-							{/each}
-						</ul>
-					</div>
-					{/if}
-				</div>
-
-				<!-- Job Interest -->
-				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-					<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
-						<GlassContainer>	
-							<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
-						</GlassContainer>
-					</div>
-
-					{#if show_job_interest}
-					<div class="">
-						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-							{#each job_interests as job_interest}
-							<li class="flex flex-row hover:text-gray-300">
-								<div id="job-interest-check" class="pr-3">
-								<input type="checkbox" on:click={() => {
-									onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
-									job_interest_filters = job_interest_filters;
-									}} />
-								</div>
-								<div >{job_interest}</div>
-							</li>
-							{/each}
-						</ul>
-					</div>
-					{/if}
-				</div>
+		<!-- Grad_Year Drop Down-->
+		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+			<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
+				<GlassContainer>	
+					<button class="" on:click={() => (show_grad_year= !show_grad_year)}> Filter By {grad_year_filters.size} Graduation Year(s) </button>
+				</GlassContainer>
 			</div>
 
-			
-
-			<!-- <div class="mx-auto my-auto text-gray-100">
-				Filtered By:
-				{#each grad_year_filters as grad_year}
-				<div>
-					{grad_year} 
-				</div>
-				{/each}
-
-				{#each major_filters as major}
-				<div>
-					{major}
-				</div>
-				{/each}
-			</div> -->
-			<div>
-				table
+			{#if show_grad_year}
+			<div class="">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each grad_years as grad_year}
+					<li class="flex flex-row hover:text-gray-300">
+						<div id="grad-year-check" class="pr-3">
+							<input type="checkbox" on:click={() => {
+								onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
+								grad_year_filters = grad_year_filters;
+								}} />
+						</div>
+						<div >{grad_year}</div>
+					</li>
+					{/each}
+				</ul>
 			</div>
+			{/if}
+		</div>
+
+		<!-- Job Interest -->
+		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+			<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
+				<GlassContainer>	
+					<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
+				</GlassContainer>
+			</div>
+
+			{#if show_job_interest}
+			<div class="">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each job_interests as job_interest}
+					<li class="flex flex-row hover:text-gray-300">
+						<div id="job-interest-check" class="pr-3">
+						<input type="checkbox" on:click={() => {
+							onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
+							job_interest_filters = job_interest_filters;
+							}} />
+						</div>
+						<div >{job_interest}</div>
+					</li>
+					{/each}
+				</ul>
+			</div>
+			{/if}
+		</div>
+	</div>
+
+	
+
+	<!-- <div class="mx-auto my-auto text-gray-100">
+		Filtered By:
+		{#each grad_year_filters as grad_year}
+		<div>
+			{grad_year} 
+		</div>
+		{/each}
+
+		{#each major_filters as major}
+		<div>
+			{major}
+		</div>
+		{/each}
+	</div> -->
+	<div>
+		<table>
+			<thead>
+				<tr>
+					{#each schema as column}
+						<th>{column.label}</th>
+					{/each}
+				</tr>
+			</thead>
+			<tbody>
+				{#each items as item}
+				<tr>
+					{#each schema as column}
+						<td>{item[column.key]}</td>
+					{/each}
+				</tr>
+				{/each}
+			</tbody>
+		</table>
+	</div>
 
 </main>
 
