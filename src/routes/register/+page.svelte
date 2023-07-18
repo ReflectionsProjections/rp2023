@@ -126,6 +126,7 @@
 	let submitted = false;
 
 	let error = '';
+
 	let fileData: File;
 
 	$: console.log(fileData);
@@ -158,7 +159,7 @@
 			fileData = file;
 			console.log("Filedata is updated to: ", fileData);
 		}
-	}
+	};
 
 </script>
 
@@ -210,7 +211,7 @@
 								</option>
 							{/each}
 						</select>
-						
+
 						<div class="counter">
 							<button on:click={() => {
 								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
@@ -235,7 +236,17 @@
 							}}>+</button>
 						</div>
 					</div>
-					
+
+					<!-- <div class="flex flex-col items-start">
+						<label for="major">Major</label>
+						<input
+							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
+							type="text"
+							id="major"
+							bind:value={formValues.major}
+						/>
+					</div> -->
+
 					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
@@ -348,7 +359,6 @@
 
 					<div>
 						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
-						<!-- <Marketing bind:marketingOther={formValues.marketingOther} /> -->
 						<div class="flex flex-row flex-wrap">
 							{#each referralOptions as { referralId, displayText }}
 								<span class="flex flex-row items-center w-1/2">
@@ -373,6 +383,7 @@
 						/>
 					</div>
 				</div>
+
 				{/if}
 				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
 
