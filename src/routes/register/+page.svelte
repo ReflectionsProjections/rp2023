@@ -197,6 +197,8 @@
 	const onSubmit = async () => {
 		const response = await fetch('http://localhost:3000/attendee', {
 			method: 'POST',
+			credentials: 'include',
+			cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
@@ -234,6 +236,9 @@
 						bind:isCollegeStudent={formValues.isCollegeStudent}
 						bind:isUIUCStudent={formValues.isUIUCStudent}
 						bind:collegeName={formValues.collegeName}
+						bind:expectedGradTerm={formValues.expectedGradTerm}
+						bind:expectedGradYear={formValues.expectedGradYear}
+						bind:major={formValues.major}
 					/>
 
 					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
@@ -258,15 +263,6 @@
 								<option class="w-1/2 text-black p-3" value={gradTermId}>{displayText} </option>
 							{/each}
 						</select>
-
-						<!-- <select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
-							{#each gradYearOptions as { gradYearId, displayText }}
-								<option
-									class="w-1/2 duration-300 bg-transparent p-3"
-									value={gradYearId}>{displayText}
-								</option>
-							{/each}
-						</select> -->
 						<div class="counter">
 							<button
 								on:click={() => {
@@ -299,16 +295,6 @@
 							>
 						</div>
 					</div>
-
-					<!-- <div class="flex flex-col items-start">
-						<label for="major">Major</label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							type="text"
-							id="major"
-							bind:value={formValues.major}
-						/>
-					</div> -->
 					<MajorSelector
 						bind:formMajor={formValues.major}
 						bind:formMajorOpenEnded={formValues.majorOther}
@@ -408,32 +394,6 @@
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="text-base text-slate-300">PLACEHOLDER FOR DESCRIPTION</div>
 					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
-
-					<!-- <div class="flex flex-col gap-5 mb-3">
-						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
-						{#each extraEventOptions as { extraEventId, displayText }}
-							<div class="flex items-center">
-								<button
-										id={extraEventId}
-										on:click={() => {
-											if (formValues.mechPuzzle.includes(extraEventId)) {
-												formValues.mechPuzzle = formValues.mechPuzzle.filter((val) => val !== extraEventId);
-											} else {
-												formValues.mechPuzzle = formValues.mechPuzzle.concat(extraEventId);
-											}
-										}}
-										class="w-1/2 duration-300 text-center bg-white p-3 flex rounded-md {formValues.mechPuzzle.includes(
-											extraEventId
-										)
-											? 'bg-opacity-40'
-											: 'bg-opacity-10 hover:bg-opacity-20'}"
-									>
-										{displayText}</button
-									>
-								
-							</div>
-						{/each}
-					</div> -->
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />
@@ -473,23 +433,7 @@
 						</div>
 					</div>
 				{/if}
-				<!-- {#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
-					<button
-						type="submit"
-						class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-						on:click = {onSubmit}
-					>
-						Submit
-					</button>
-				{/if} -->
-
-				<!-- {#if formValues.marketing.length != 0 || formValues.marketingOther != ''} -->
 				<PageControls {formValues} bind:page {pageMeta} />
-				<!-- {/if} -->
-
-				<!-- {#if submitted}
-					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
-				{/if} -->
 			</GlassContainer>
 		{/if}
 

@@ -3,6 +3,9 @@
 	export let isUIUCStudent: string;
 	export let isCollegeStudent: string;
 	export let collegeName: string;
+	export let expectedGradTerm: string;
+	export let expectedGradYear: string;
+	export let major: string;
 </script>
 
 <div class="flex flex-col rounded-md border-gray-700">
@@ -43,8 +46,12 @@
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
 			aria-label="I am not a college student"
 			on:click={() => {
-				isCollegeStudent = '';
+				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
+				collegeName = 'N/A';
+				expectedGradTerm = 'N/A';
+				expectedGradYear = 'N/A';
+				major = 'N/A';
 			}}
 		>
 			<Icon icon="ph:user-fill" class="text-2xl" />
