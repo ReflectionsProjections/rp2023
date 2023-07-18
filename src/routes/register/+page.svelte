@@ -16,12 +16,18 @@
 		genderOptions,
 		raceOptions,
 		extraEventOptions,
-		jobTypeOptions,
-
+		jobTypeOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
+	//import { API_URL } from '../../constants';
+	type ValidationMessage = { error: boolean; message: string; icon: string } | null;
+	let email = '';
+	let emailSent = false;
+	let passcode = '';
+	let emailValidationMsg: ValidationMessage = null;
+	let passcodeValidationMsg: ValidationMessage = null;
 
 	const formValues = {
 		name: '',
@@ -48,6 +54,7 @@
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
 		marketingOther: ''
+		//emailVerificationCode: ''
 	};
 	let page: PageIndex = 'welcome';
 
@@ -72,17 +79,12 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	// const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
-	// 	{ extraEventId: 'mechmania', displayText: 'MechMania' },
-	// 	{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
-	// ];
-
 	const gradYearOptions = [
-		{ gradYearId: '2023', displayText: '2023'},
-		{ gradYearId: '2024', displayText: '2024'},
-		{ gradYearId: '2025', displayText: '2025'},
-		{ gradYearId: '2026', displayText: '2026'},
-		{ gradYearId: '2027', displayText: '2027'}
+		{ gradYearId: '2023', displayText: '2023' },
+		{ gradYearId: '2024', displayText: '2024' },
+		{ gradYearId: '2025', displayText: '2025' },
+		{ gradYearId: '2026', displayText: '2026' },
+		{ gradYearId: '2027', displayText: '2027' }
 	];
 
 	const gradTermOptions = [
@@ -95,6 +97,7 @@
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
+			// next: () => 'emailVerification',
 			prev: () => 'none',
 			requiredFields: ['name', 'email']
 		},
@@ -130,9 +133,15 @@
 		},
 		marketing: {
 			title: 'One Last Step',
-			next: () => 'none',
+			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
 			requiredFields: ['marketing']
+		},
+		emailVerification: {
+			title: 'Email Verification',
+			next: () => 'none',
+			prev: () => 'marketing',
+			requiredFields: ['emailVerificationCode']
 		}
 	};
 
@@ -141,6 +150,49 @@
 	let submitted = false;
 
 	let error = '';
+
+	let passcodeSuccess = false;
+
+	const verifyPasscode = async () => {
+		email = formValues.email;
+		console.log('The email is ', email);
+		console.log('passcode is', passcode);
+		console.log('passcode valid: ', passcodeValid);
+		console.log('email valid: ', emailValid);
+
+		if (!verifyEmail(email) || !passcodeValid) {
+			console.log('entered here cuz something was invalid');
+			return;
+		}
+
+		const response = await fetch('http://localhost:3000/auth/verify', {
+			method: 'POST',
+			cache: 'no-cache',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, passcode })
+		});
+
+		if (response.ok) {
+			passcodeSuccess = true;
+			await onSubmit();
+			
+			// console.log("got to response ok");
+			//window.location = '/' as Location | (string & Location);
+		} else {
+			const res = await response.json();
+		}
+	};
+
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const verifyEmail = (email: string) => email.length > 0 && emailRegex.test(email);
+	$: emailValid = verifyEmail(email);
+
+	//Basic Passcode Validation
+	const passcodeRegex = /^\d{6}$/;
+	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
 
 	const onSubmit = async () => {
 		const response = await fetch('http://localhost:3000/attendee', {
@@ -154,7 +206,6 @@
 		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 	};
-
 </script>
 
 <main class="flex h-full">
@@ -197,15 +248,17 @@
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 					<div class="flex flex-row items-start">
 						<label for="exp-grad-date">Expected Graduation Date: </label>
-						<select name="exp-grad-term" id="grad-term" bind:value={formValues.expectedGradTerm} class="bg-transparent border border-gray-400 rounded-md h-fit">
+						<select
+							name="exp-grad-term"
+							id="grad-term"
+							bind:value={formValues.expectedGradTerm}
+							class="bg-transparent border border-gray-400 rounded-md h-fit"
+						>
 							{#each gradTermOptions as { gradTermId, displayText }}
-								<option
-									class="w-1/2 text-black p-3"
-									value={gradTermId}>{displayText}
-								</option>
+								<option class="w-1/2 text-black p-3" value={gradTermId}>{displayText} </option>
 							{/each}
 						</select>
-						
+
 						<!-- <select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
 							{#each gradYearOptions as { gradYearId, displayText }}
 								<option
@@ -215,27 +268,35 @@
 							{/each}
 						</select> -->
 						<div class="counter">
-							<button on:click={() => {
-								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
-									formValues.expectedGradYear = "2023";
-								} else {
-									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) - 1).toString();
-								}
-							}}>-</button>
+							<button
+								on:click={() => {
+									if (!formValues.expectedGradYear || formValues.expectedGradYear == '2023') {
+										formValues.expectedGradYear = '2023';
+									} else {
+										formValues.expectedGradYear = (
+											parseInt(formValues.expectedGradYear) - 1
+										).toString();
+									}
+								}}>-</button
+							>
 							{#if !formValues.expectedGradYear}
 								<span>2023</span>
 							{:else}
 								<span>{formValues.expectedGradYear}</span>
 							{/if}
-							<button on:click={() => {
-								if (!formValues.expectedGradYear) {
-									formValues.expectedGradYear = "2024";
-								} else if (formValues.expectedGradYear == "2027") {
-									formValues.expectedGradYear = "2027";
-								} else {
-									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) + 1).toString();
-								}
-							}}>+</button>
+							<button
+								on:click={() => {
+									if (!formValues.expectedGradYear) {
+										formValues.expectedGradYear = '2024';
+									} else if (formValues.expectedGradYear == '2027') {
+										formValues.expectedGradYear = '2027';
+									} else {
+										formValues.expectedGradYear = (
+											parseInt(formValues.expectedGradYear) + 1
+										).toString();
+									}
+								}}>+</button
+							>
 						</div>
 					</div>
 
@@ -248,7 +309,10 @@
 							bind:value={formValues.major}
 						/>
 					</div> -->
-					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
+					<MajorSelector
+						bind:formMajor={formValues.major}
+						bind:formMajorOpenEnded={formValues.majorOther}
+					/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
 							<label for="college-name">Name of University</label>
@@ -324,7 +388,9 @@
 					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
 					<div class="flex flex-col items-start">
-						<label for="portfolio">Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label>
+						<label for="portfolio"
+							>Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label
+						>
 						<input
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
 							type="url"
@@ -340,9 +406,7 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="text-base text-slate-300">
-						PLACEHOLDER FOR DESCRIPTION
-					</div>
+					<div class="text-base text-slate-300">PLACEHOLDER FOR DESCRIPTION</div>
 					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 
 					<!-- <div class="flex flex-col gap-5 mb-3">
@@ -379,37 +443,37 @@
 		{#if page == 'marketing'}
 			<GlassContainer>
 				{#if !submitted}
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
+					<div class="flex flex-col gap-5 mb-3">
+						<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<div>
-						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
-						<div class="flex flex-row flex-wrap">
-							{#each referralOptions as { referralId, displayText }}
-								<span class="flex flex-row items-center w-1/2">
-									<input
-										class="rounded-md"
-										type="checkbox"
-										id={referralId}
-										value={referralId}
-										bind:group={formValues.marketing}
-									/>
-									<label for={referralId}>{displayText}</label>
-								</span>
-							{/each}
+						<div>
+							<label for="marketing" class="mb-2">How did you hear about R|P? </label>
+							<div class="flex flex-row flex-wrap">
+								{#each referralOptions as { referralId, displayText }}
+									<span class="flex flex-row items-center w-1/2">
+										<input
+											class="rounded-md"
+											type="checkbox"
+											id={referralId}
+											value={referralId}
+											bind:group={formValues.marketing}
+										/>
+										<label for={referralId}>{displayText}</label>
+									</span>
+								{/each}
+							</div>
+
+							<label for="marketin-other">Other</label>
+							<input
+								class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+								type="text"
+								id="marketing-other"
+								bind:value={formValues.marketingOther}
+							/>
 						</div>
-
-						<label for="marketin-other">Other</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="text"
-							id="marketing-other"
-							bind:value={formValues.marketingOther}
-						/>
 					</div>
-				</div>
 				{/if}
-				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
+				<!-- {#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
 					<button
 						type="submit"
 						class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
@@ -417,14 +481,43 @@
 					>
 						Submit
 					</button>
-				{/if}
+				{/if} -->
+
+				<!-- {#if formValues.marketing.length != 0 || formValues.marketingOther != ''} -->
+				<PageControls {formValues} bind:page {pageMeta} />
+				<!-- {/if} -->
+
+				<!-- {#if submitted}
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+				{/if} -->
+			</GlassContainer>
+		{/if}
+
+		{#if page == 'emailVerification'}
+			<GlassContainer>
+				<div class="flex flex-col items-start">
+					Let's get your email verified!
+					<label for="portfolio">Enter Verification Code from Email</label>
+					<input
+						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
+						bind:value={passcode}
+					/>
+				</div>
+				<button
+					type="submit"
+					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+					on:click={verifyPasscode}
+				>
+					Submit
+				</button>
 
 				{#if !submitted}
 					<PageControls {formValues} bind:page {pageMeta} />
 				{/if}
 
 				{#if submitted}
-					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for
+					additional information.
 				{/if}
 			</GlassContainer>
 		{/if}
@@ -439,6 +532,7 @@
 	Page 6) Resume
 	Page 7) MechMania and PuzzleBang
 	Page 8 ) How did you hear about RP?
+	Pagw 9 ) Email Verification
 -->
 <style>
 	input {
@@ -446,15 +540,14 @@
 	}
 
 	.counter {
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 10px;
-    }
+		display: inline-block;
+		border: 1px solid #ccc;
+		border-radius: 5px;
+		padding: 10px;
+	}
 
-    .counter button {
-      cursor: pointer;
-      padding: 0 10px;
-    }
-
+	.counter button {
+		cursor: pointer;
+		padding: 0 10px;
+	}
 </style>

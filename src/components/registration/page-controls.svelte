@@ -41,7 +41,7 @@
 	  <div />
 	{/if}
   
-	{#if page !== 'marketing'}
+	{#if page !== 'emailVerification'}
 	  {#if next !== null}
 		<button
 		  aria-label="next page"

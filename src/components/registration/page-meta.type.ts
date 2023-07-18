@@ -6,7 +6,8 @@ export type PageIndex =
 	| 'dietaryRestrictions'
 	| 'recruitment'
 	| 'specialEvents'
-	| 'marketing';
+	| 'marketing'
+	| 'emailVerification';
 
 export interface PageMeta {
 	[index: string]: {
