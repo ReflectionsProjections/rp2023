@@ -23,6 +23,23 @@
 		{label: 'Job Interest', key: 'job_interest'},
 		{label: 'Resume', key: 'resume'}
 	]
+	// TODO remove this
+	let temp_items=[
+		{
+			name: 'Atharva Naik',
+			major: 'Math & CS',
+			grad_year: '2024',
+			job_interest: 'Full-Time',
+			resume: 'resume'
+		},
+		{
+			name: 'Saloni Vaishnav',
+			major: 'Computer Science',
+			grad_year: '2025',
+			job_interest: 'Internship',
+			resume: 'resume'
+		},
+	]
  
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
@@ -180,8 +197,6 @@
 		</div>
 	</div>
 
-	
-
 	<!-- <div class="mx-auto my-auto text-gray-100">
 		Filtered By:
 		{#each grad_year_filters as grad_year}
@@ -196,25 +211,29 @@
 		</div>
 		{/each}
 	</div> -->
-	<div>
-		<table>
-			<thead>
-				<tr>
-					{#each schema as column}
-						<th>{column.label}</th>
+
+	<div class="flex flex-col h-full">
+		<GlassContainer>
+			<table class="table-auto text-white text-left">
+				<thead class="font-bold">
+					<tr>
+						{#each schema as column}
+							<th>{column.label}</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					<!-- TODO replace with items -->
+					{#each temp_items as item}
+					<tr>
+						{#each schema as column}
+							<td>{item[column.key]}</td>
+						{/each}
+					</tr>
 					{/each}
-				</tr>
-			</thead>
-			<tbody>
-				{#each items as item}
-				<tr>
-					{#each schema as column}
-						<td>{item[column.key]}</td>
-					{/each}
-				</tr>
-				{/each}
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</GlassContainer>
 	</div>
 
 </main>
