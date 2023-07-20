@@ -1,15 +1,14 @@
-<script>
+<script lang="ts">
 	import Icon from '@iconify/svelte';
-	import svgLogo from '../assets/rp-logo.svg';
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
-	import DietaryOptions from '../components/registration/dietary-options.svelte';
 
 	const getUser = async () => {
 		const response = await fetch(`${API_URL}/auth/me`, {
 			credentials: 'include'
-		});
-		const user = await response.json();
+		}).catch((err) => console.log(err));
+
+		const user = await response?.json();
 		console.log('user', user);
 	};
 

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { ethnicityOptions } from './misc-types';
 
-	export let ethnicity: ethnicityOptions;
+	export let ethnicity: ethnicityOptions = 'preferNotToSay';
 
 	const handleClick = (pressed: ethnicityOptions) => () => {
 		if (pressed === ethnicity) {

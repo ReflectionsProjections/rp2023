@@ -6,6 +6,8 @@ export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | unan
 
 export type firstGenOptions = boolStr | unanswered;
 
+export type extraEventOptions = 'mechmania' | 'puzzlebang';
+
 export type raceOptions =
 	| 'americanIndianOrAlaska'
 	| 'eastAsian'
@@ -15,3 +17,11 @@ export type raceOptions =
 	| 'white';
 
 export type boolStr = 'yes' | 'no';
+
+export type jobTypeOptions = 'full-time' | 'internship' | 'co-op' | unanswered;
+
+export type majorOptions = 'cs' | 'cs+stats' | 'cs+math' | 'cs+x';
+
+
+
+

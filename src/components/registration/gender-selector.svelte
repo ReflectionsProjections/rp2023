@@ -2,7 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import type { genderOptions } from './misc-types';
 
-	export let gender: genderOptions;
+	export let gender: genderOptions = 'preferNotToSay';
 
 	const handleClick = (pressed: genderOptions) => () => {
 		if (pressed === gender) {

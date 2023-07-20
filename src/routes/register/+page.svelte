@@ -6,12 +6,18 @@
 	import FirstGenSelector from '../../components/registration/first-gen-selector.svelte';
 	import GenderSelector from '../../components/registration/gender-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
+	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
+	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
+	import MajorSelector from '../../components/registration/major-selector.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
 		firstGenOptions,
 		genderOptions,
-		raceOptions
+		raceOptions,
+		extraEventOptions,
+		jobTypeOptions,
+
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
@@ -23,7 +29,9 @@
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
 		major: '',
+		majorOther: '',
 		collegeName: '',
+		expectedGradTerm: '',
 		expectedGradYear: '',
 		// occupation: '',
 		age: '',
@@ -33,11 +41,11 @@
 		raceOther: '',
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
-		foodOther: '',
+		//foodOther: '',
 		//resumeSharePerms: '',
-		jobTypeInterest: [],
+		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: '',
-		mechPuzzle: [],
+		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
 		marketingOther: ''
 	};
@@ -64,50 +72,89 @@
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
-	const extraEventOptions = [
-		{ extraEventId: 'mechmania', displayText: 'MechMania' },
-		{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
+	// const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
+	// 	{ extraEventId: 'mechmania', displayText: 'MechMania' },
+	// 	{ extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
+	// ];
+
+	const gradYearOptions = [
+		{ gradYearId: '2023', displayText: '2023'},
+		{ gradYearId: '2024', displayText: '2024'},
+		{ gradYearId: '2025', displayText: '2025'},
+		{ gradYearId: '2026', displayText: '2026'},
+		{ gradYearId: '2027', displayText: '2027'}
+	];
+
+	const gradTermOptions = [
+		{ gradTermId: 'Fall', displayText: 'Fall' },
+		{ gradTermId: 'Spring', displayText: 'Spring' },
+		{ gradTermId: 'Summer', displayText: 'Summer' }
 	];
 
 	const pageMeta: PageMeta = {
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
-			prev: () => 'none'
+			prev: () => 'none',
+			requiredFields: ['name', 'email']
 		},
 		academics: {
 			title: 'Academics',
 			next: () => 'demographics',
-			prev: () => 'welcome'
+			prev: () => 'welcome',
+			requiredFields: ['expectedGradTerm', 'expectedGradYear', 'major', 'firstGen']
 		},
 		demographics: {
 			title: 'Demographics',
 			next: () => 'dietaryRestrictions',
-			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome')
+			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome'),
+			requiredFields: []
 		},
 		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
 			next: () => 'recruitment',
-			prev: () => 'demographics'
+			prev: () => 'demographics',
+			requiredFields: ['food']
 		},
 		recruitment: {
 			title: 'Recruitment',
 			next: () => 'specialEvents',
-			prev: () => 'dietaryRestrictions'
+			prev: () => 'dietaryRestrictions',
+			requiredFields: []
 		},
 		specialEvents: {
 			title: 'Special Events',
 			next: () => 'marketing',
-			prev: () => 'recruitment'
+			prev: () => 'recruitment',
+			requiredFields: []
 		},
 		marketing: {
 			title: 'One Last Step',
 			next: () => 'none',
-			prev: () => 'specialEvents'
+			prev: () => 'specialEvents',
+			requiredFields: ['marketing']
 		}
 	};
 
 	$: console.log(formValues);
+
+	let submitted = false;
+
+	let error = '';
+
+	const onSubmit = async () => {
+		const response = await fetch('http://localhost:3000/attendee', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(formValues)
+		});
+
+		submitted = true;
+		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+	};
+
 </script>
 
 <main class="flex h-full">
@@ -128,6 +175,7 @@
 							bind:value={formValues.name}
 							required
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
+							autocomplete="off"
 						/>
 					</div>
 
@@ -147,18 +195,51 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col justify-between items-start">
-						<label for="exp-grad-date">Expected Graduation Date</label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit"
-							type="date"
-							id="exp-grad-date"
-							required
-							bind:value={formValues.expectedGradYear}
-						/>
+					<div class="flex flex-row items-start">
+						<label for="exp-grad-date">Expected Graduation Date: </label>
+						<select name="exp-grad-term" id="grad-term" bind:value={formValues.expectedGradTerm} class="bg-transparent border border-gray-400 rounded-md h-fit">
+							{#each gradTermOptions as { gradTermId, displayText }}
+								<option
+									class="w-1/2 text-black p-3"
+									value={gradTermId}>{displayText}
+								</option>
+							{/each}
+						</select>
+						
+						<!-- <select name="exp-grad-year" id="grad-year" bind:value={formValues.expectedGradYear} class="bg-transparent border border-gray-400 rounded-md h-fit">
+							{#each gradYearOptions as { gradYearId, displayText }}
+								<option
+									class="w-1/2 duration-300 bg-transparent p-3"
+									value={gradYearId}>{displayText}
+								</option>
+							{/each}
+						</select> -->
+						<div class="counter">
+							<button on:click={() => {
+								if (!formValues.expectedGradYear || formValues.expectedGradYear == "2023") {
+									formValues.expectedGradYear = "2023";
+								} else {
+									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) - 1).toString();
+								}
+							}}>-</button>
+							{#if !formValues.expectedGradYear}
+								<span>2023</span>
+							{:else}
+								<span>{formValues.expectedGradYear}</span>
+							{/if}
+							<button on:click={() => {
+								if (!formValues.expectedGradYear) {
+									formValues.expectedGradYear = "2024";
+								} else if (formValues.expectedGradYear == "2027") {
+									formValues.expectedGradYear = "2027";
+								} else {
+									formValues.expectedGradYear = (parseInt(formValues.expectedGradYear) + 1).toString();
+								}
+							}}>+</button>
+						</div>
 					</div>
 
-					<div class="flex flex-col items-start">
+					<!-- <div class="flex flex-col items-start">
 						<label for="major">Major</label>
 						<input
 							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
@@ -166,7 +247,8 @@
 							id="major"
 							bind:value={formValues.major}
 						/>
-					</div>
+					</div> -->
+					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
 							<label for="college-name">Name of University</label>
@@ -219,7 +301,7 @@
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<DietaryOptions bind:foodOther={formValues.foodOther} />
+					<DietaryOptions bind:foodOther={formValues.food} />
 				</div>
 				<PageControls {formValues} bind:page {pageMeta} />
 			</GlassContainer>
@@ -239,38 +321,12 @@
 						/>
 					</div>
 
-					<div>
-						<label for="job-type">Job Type Interest: </label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="checkbox"
-							id="full-time"
-							value="full-time"
-							bind:group={formValues.jobTypeInterest}
-						/>
-						<label for="full-time">Full Time</label>
-						<input
-							type="checkbox"
-							id="internship"
-							value="internship"
-							bind:group={formValues.jobTypeInterest}
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-						/>
-						<label for="internship">Internship</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="checkbox"
-							id="co-op"
-							value="co-op"
-							bind:group={formValues.jobTypeInterest}
-						/>
-						<label for="co-op">Co-Op</label>
-					</div>
+					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
 					<div class="flex flex-col items-start">
-						<label for="portfolio">Portfolio Link/LinkedIn</label>
+						<label for="portfolio">Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label>
 						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
 							type="url"
 							bind:value={formValues.portfolioLink}
 						/>
@@ -284,21 +340,36 @@
 			<GlassContainer>
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col gap-5 mb-3">
-						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? </label>
+					<div class="text-base text-slate-300">
+						PLACEHOLDER FOR DESCRIPTION
+					</div>
+					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
+
+					<!-- <div class="flex flex-col gap-5 mb-3">
+						<label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
 						{#each extraEventOptions as { extraEventId, displayText }}
 							<div class="flex items-center">
-								<input
-									type="checkbox"
-									id={extraEventId}
-									value={extraEventId}
-									bind:group={formValues.mechPuzzle}
-									class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-								/>
-								<label for={extraEventId}>{displayText}</label>
+								<button
+										id={extraEventId}
+										on:click={() => {
+											if (formValues.mechPuzzle.includes(extraEventId)) {
+												formValues.mechPuzzle = formValues.mechPuzzle.filter((val) => val !== extraEventId);
+											} else {
+												formValues.mechPuzzle = formValues.mechPuzzle.concat(extraEventId);
+											}
+										}}
+										class="w-1/2 duration-300 text-center bg-white p-3 flex rounded-md {formValues.mechPuzzle.includes(
+											extraEventId
+										)
+											? 'bg-opacity-40'
+											: 'bg-opacity-10 hover:bg-opacity-20'}"
+									>
+										{displayText}</button
+									>
+								
 							</div>
 						{/each}
-					</div>
+					</div> -->
 				</div>
 
 				<PageControls {formValues} bind:page {pageMeta} />
@@ -307,6 +378,7 @@
 
 		{#if page == 'marketing'}
 			<GlassContainer>
+				{#if !submitted}
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
 
@@ -336,16 +408,24 @@
 						/>
 					</div>
 				</div>
+				{/if}
+				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
+					<button
+						type="submit"
+						class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+						on:click = {onSubmit}
+					>
+						Submit
+					</button>
+				{/if}
 
-				<button
-					type="submit"
-					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-					disabled={formValues.marketing.length == 0 && formValues.marketingOther == ''}
-				>
-					Submit
-				</button>
+				{#if !submitted}
+					<PageControls {formValues} bind:page {pageMeta} />
+				{/if}
 
-				<PageControls {formValues} bind:page {pageMeta} />
+				{#if submitted}
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+				{/if}
 			</GlassContainer>
 		{/if}
 	</form>
@@ -364,4 +444,17 @@
 	input {
 		padding: 0.25rem;
 	}
+
+	.counter {
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+    }
+
+    .counter button {
+      cursor: pointer;
+      padding: 0 10px;
+    }
+
 </style>
