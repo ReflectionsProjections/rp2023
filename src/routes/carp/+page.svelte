@@ -40,7 +40,7 @@
 			resume: 'resume'
 		},
 	]
- 
+
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
 	$: major_filters = new Set<string>();
@@ -111,7 +111,7 @@
 			<h1 class="text-5xl" > Resume Viewer </h1>
 		</GlassContainer>
 	</div>
-	
+
 	<!-- Dropdowns for Filters-->
 	<div class="flex flex-row mx-auto my-auto">	
 
@@ -212,9 +212,9 @@
 		{/each}
 	</div> -->
 
-	<div class="flex flex-col h-full">
+	<div class="flex flex-col h-full w-9/12 mx-auto my-auto">
 		<GlassContainer>
-			<table class="table-auto text-white text-left">
+			<table class="table-auto text-white text-left mx-auto my-auto">
 				<thead class="font-bold">
 					<tr>
 						{#each schema as column}
@@ -237,7 +237,6 @@
 	</div>
 
 </main>
-
 
 <style>
 	input {
