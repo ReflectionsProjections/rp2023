@@ -107,11 +107,11 @@
 						/>
 						{#if emailValidationMsg}
 							<div
-								class="p-1 mt-2 flex flex-row items-center gap-2 w-full {emailValidationMsg.error
+								class="p-1 flex flex-row items-center gap-2 w-full {emailValidationMsg.error
 									? 'text-red-400'
 									: 'text-green-400'}"
 							>
-								<Icon icon={emailValidationMsg.icon} class="text-2xl" />
+								<Icon icon={emailValidationMsg.icon} class="text-lg" />
 								<div class="break-words">{emailValidationMsg.message}</div>
 							</div>
 						{/if}
@@ -149,11 +149,11 @@
 						</div>
 						{#if passcodeValidationMsg}
 							<div
-								class="p-1 mt-2 flex flex-row items-center gap-2 w-full {passcodeValidationMsg.error
+								class="p-1 flex flex-row items-center gap-2 w-full {passcodeValidationMsg.error
 									? 'text-red-400'
 									: 'text-green-400'}"
 							>
-								<Icon icon={passcodeValidationMsg.icon} class="text-2xl" />
+								<Icon icon={passcodeValidationMsg.icon} class="text-lg" />
 								<div class="break-words">{passcodeValidationMsg.message}</div>
 							</div>
 						{/if}
