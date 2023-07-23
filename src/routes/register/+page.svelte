@@ -132,6 +132,7 @@
 	$: console.log(fileData);
 
 	let attendeeId: string;
+	let attendeeName: string;
 
 	const onSubmit = async () => {
 
@@ -147,7 +148,8 @@
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 		const responseData = await response.json();
 		attendeeId = responseData._id.toString();
-		return attendeeId;
+		attendeeName = responseData.name.toString();
+		return [attendeeName, attendeeId];
 	};
 
 	function handleFileInput(event: Event) {
