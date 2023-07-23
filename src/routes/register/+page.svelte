@@ -133,6 +133,7 @@
 
 	let attendeeId: string;
 	let attendeeName: string;
+	let presignedURL: string;
 
 	const onSubmit = async () => {
 
@@ -146,10 +147,8 @@
 
 		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
-		const responseData = await response.json();
-		attendeeId = responseData._id.toString();
-		attendeeName = responseData.name.toString();
-		return [attendeeName, attendeeId];
+		presignedURL = await response.text();
+		return presignedURL;
 	};
 
 	function handleFileInput(event: Event) {
@@ -238,16 +237,6 @@
 							}}>+</button>
 						</div>
 					</div>
-
-					<!-- <div class="flex flex-col items-start">
-						<label for="major">Major</label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							type="text"
-							id="major"
-							bind:value={formValues.major}
-						/>
-					</div> -->
 
 					<MajorSelector bind:formMajor={formValues.major} bind:formMajorOpenEnded={formValues.majorOther}/>
 					{#if formValues.isUIUCStudent == 'no'}

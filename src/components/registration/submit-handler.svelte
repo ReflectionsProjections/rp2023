@@ -3,28 +3,29 @@
     export let fileData: File;
   
     const HandleClick = async () => {
-      const [attendeeName, attendeeId] = await onSubmit();
+      const presignedURL = await onSubmit();
   
       if (fileData) {
-        const formData = new FormData();
-        formData.append('file', fileData);
-        formData.append('attendeeName', attendeeName);
-        formData.append('attendeeId', attendeeId);
         
         try {
-          const response = await fetch(`http://localhost:3000/attendee/upload`, {
-            method: 'POST',
-            body: formData
-          });
+            const reader = new FileReader();
+            reader.readAsArrayBuffer(fileData);
 
-          console.log(response);
-  
-          if (!response.ok) {
-            throw new Error('Error fetching pre-signed URL: ' + response);
-          }
-  
+            reader.onload = async () => {
+                const blob = new Blob([reader.result as ArrayBuffer]);
+
+                const response = await fetch(presignedURL, {
+                    method: 'PUT',
+                    body: blob,
+                    headers: {
+                    'Content-Type': fileData.type,
+                    },
+                });
+
+                return { success: true, message: 'File uploaded successfully' };
+            };
         } catch (error) {
-            console.log(error);
+            throw new Error('Failed to upload file');
         }
       }
     };
