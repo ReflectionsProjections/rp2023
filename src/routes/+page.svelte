@@ -15,6 +15,7 @@
 	getUser();
 </script>
 
+<!-- Put in tmp hero component/Replace with final-->
 <div class="h-full text-white flex items-center">
 	<ShootingStar />
 	<span
