@@ -62,20 +62,3 @@
 		<button class="uppercase bg-white text-black text-center block mx-auto text-sm md:text-md p-4">Register</button>
 	</span>
 </div>
-
-<div class="mx-auto h-[50%] w-[75%] bg-black">
-	<div class="mx-auto flex flex-row bg-white justify-around">
-		<div><button id="Monday" on:click = {dayButtonClick}>Monday</button></div>
-		<div><button id="Tuesday" on:click = {dayButtonClick}>Tuesday</button></div>
-		<div><button id="Wednesday" on:click = {dayButtonClick}>Wednesday</button></div>
-		<div><button id="Friday" on:click = {dayButtonClick}>Friday</button></div>
-	</div>
-	<!-- update this to iterate through the day's event list and disiplay info for each event-->
-	<div class="h-full w-full bg-red-50">
-		<ul>
-			{#each Object.entries(day_events_list) as [key, value]}
-				<li class="mb-2"><strong class="mr-2">{key}:</strong> {value}</li>
-			{/each}
-		</ul>
-	</div>
-</div>
