@@ -3,28 +3,28 @@
 @tailwind utilities;
 
 .fluid-gradient {
-	background: linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
-	background-size: 200% 200%;
+	background: url(stars-bg.png) repeat, linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
+	background-size: 1090px, 200% 200%;
 	animation: gradient 16s ease infinite alternate;
 }
 
 .text-rp-gradient {
-    color: #C61E5D;
-	background-image: linear-gradient(270deg, #C61E5D, #1d2e5b);
-    background-clip: text;
-    text-fill-color: transparent;
-    -webkit-background-clip: text;
-    -moz-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    -moz-text-fill-color: transparent;
+	color: #c61e5d;
+	background-image: linear-gradient(270deg, #c61e5d, #1d2e5b);
+	background-clip: text;
+	text-fill-color: transparent;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-moz-text-fill-color: transparent;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 200% 30%;
+		background-position: 50%, 200% 30%;
 	}
 	100% {
-		background-position: 50% 0%;
+		background-position: 50%, 50% 0%;
 	}
 }
 
