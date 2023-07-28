@@ -8,6 +8,7 @@
 	let email = '';
 	let emailSent = false;
 	let passcode = '';
+	let showResend = false;
 
 	let emailValidationMsg: ValidationMessage = null;
 	let passcodeValidationMsg: ValidationMessage = null;
@@ -30,6 +31,9 @@
 				error: false
 			};
 			emailSent = true;
+			setTimeout(() => {
+				showResend = true;
+			}, 60 * 1000);
 		} else {
 			const res = await response.json();
 			// Handle case where email has been sent, but page was refreshed
@@ -117,7 +121,7 @@
 						{/if}
 						{#if !emailSent}
 							<button
-								class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-white rounded-md opacity-100 disabled:opacity-0 bg-opacity-20 hover:bg-opacity-40 duration-500 border-gray-400"
+								class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-black rounded-md opacity-100 disabled:opacity-0 disabled:invisible bg-opacity-20 hover:bg-opacity-30 duration-500 border-gray-400 w-fit"
 								disabled={!emailValid}
 								on:click={generateVerification}
 							>
@@ -127,7 +131,11 @@
 						{/if}
 					</div>
 
-					<div class="flex flex-col {emailSent ? 'visible' : 'invisible'}">
+					<div
+						class="flex flex-col duration-500
+						{emailSent ? 'visible' : 'invisible'} 
+						{emailSent ? 'opacity-100' : 'opacity-0'}"
+					>
 						<label for="passcode">One Time Code</label>
 						<div class="flex flex-row">
 							<input
@@ -135,7 +143,7 @@
 								type="text"
 								inputmode="numeric"
 								pattern="[0-9]*"
-								class="bg-transparent border border-slate-200 rounded-md p-1 px-2 w-full"
+								class="bg-transparent border border-slate-200 rounded-md p-1 px-2 w-full text-2xl"
 								placeholder="231288"
 								bind:value={passcode}
 							/>
@@ -155,6 +163,13 @@
 							>
 								<Icon icon={passcodeValidationMsg.icon} class="text-lg" />
 								<div class="break-words">{passcodeValidationMsg.message}</div>
+							</div>
+						{:else if showResend}
+							<div class="m-1 text-sm text-gray-300">
+								Didn't get it? Check spam or <button
+									class="underline"
+									on:click={generateVerification}>resend</button
+								> it
 							</div>
 						{/if}
 					</div>
