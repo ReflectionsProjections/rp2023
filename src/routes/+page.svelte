@@ -17,15 +17,17 @@
 
 <div class="h-full text-white flex items-center">
 	<ShootingStar />
-	<span class="flex flex-col md:flex-row mx-auto p-5 md:bg-white rounded-xl md:bg-opacity-10">
-		<div class="flex flex-col text-2xl m-5 font-serif">
+	<span
+		class="flex flex-col md:flex-row mx-auto p-2 md:p-5 md:bg-white rounded-xl md:bg-opacity-10"
+	>
+		<div class="flex flex-col text-2xl mx-5 my-2 md:my-5 font-serif">
 			<div class="whitespace-nowrap flex flex-row">
 				<div>Reflections | Projections</div>
 			</div>
 			<div class="text-gray-300">2023</div>
 			<div class="text-xl my-3">Coming Soon</div>
 		</div>
-		<div class="flex flex-col m-5 w-96 font-sans">
+		<div class="flex flex-col mx-5 my-2 md:my-5 md:w-96 font-sans">
 			<div class="text-md">
 				The largest student run technology conference in the midwest, held annually at the
 				University of Illinois at Urbana-Champaign.
