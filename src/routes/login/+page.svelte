@@ -3,6 +3,8 @@
 	import GlassContainer from '../../components/glass-container.svelte';
 	import { API_URL } from '../../constants';
 
+	const SIXTY_SECONDS = 60 * 1000;
+
 	type ValidationMessage = { error: boolean; message: string; icon: string } | null;
 
 	let email = '';
@@ -33,7 +35,7 @@
 			emailSent = true;
 			setTimeout(() => {
 				showResend = true;
-			}, 60 * 1000);
+			}, SIXTY_SECONDS);
 		} else {
 			const res = await response.json();
 			// Handle case where email has been sent, but page was refreshed
