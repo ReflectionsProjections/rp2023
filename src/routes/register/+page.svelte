@@ -518,13 +518,18 @@
 				{:else if slideIn}
 					<UserCreateFeedback {...submitStatus} errors={submitErrors} />
 				{/if}
-			</div>
-			<!-- <HandleClick {verifyPasscode} {onSubmit} {fileData} /> -->
-			<PageControls {validate} {formValues} bind:page {pageMeta} />
-		</GlassContainer>
-	{/if}
-</form>
 
+				{#if !submitted}
+					<PageControls {formValues} bind:page {pageMeta} />
+				{/if}
+
+				{#if submitted}
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
+				{/if}
+			</GlassContainer>
+		{/if}
+	</form>
+</main>
 <!--
 	Page 0) Name, email, isCollegeStudent
 	Page 1) if they said yes to CollegeStudent 
