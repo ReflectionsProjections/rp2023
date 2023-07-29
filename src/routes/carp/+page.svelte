@@ -89,6 +89,7 @@
 			<!-- Dropdowns for Filters-->
 			<div class="flex flex-row mx-auto my-auto">	
 
+<<<<<<< HEAD
 				<!-- Majors Drop Down-->
 				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
 					<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
@@ -96,6 +97,26 @@
 							<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
 						</GlassContainer>
 					</div>
+=======
+			{#if show_majors}
+			<div class="fixed">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each majors as major}
+					<li id="major-check" class="flex flex-row hover:text-gray-300">
+						<div  class="pr-3">
+							<input type="checkbox" on:click={() => {
+								onCheckBoxClick(major_filters, major, "major-check")
+								major_filters = major_filters;
+								}} />								
+						</div>
+						<div >{major}</div>
+					</li>
+					{/each}
+				</ul>
+			</div>
+			{/if}
+		</div>
+>>>>>>> b9ad7df (fix dropdown)
 
 					{#if show_majors}
 					<div class="">
@@ -171,6 +192,7 @@
 				</div>
 			</div>
 
+<<<<<<< HEAD
 			
 
 			<!-- <div class="mx-auto my-auto text-gray-100">
@@ -179,6 +201,87 @@
 				<div>
 					{grad_year} 
 				</div>
+=======
+			{#if show_grad_year}
+			<div class="fixed">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each grad_years as grad_year}
+					<li class="flex flex-row hover:text-gray-300">
+						<div id="grad-year-check" class="pr-3">
+							<input type="checkbox" on:click={() => {
+								onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
+								grad_year_filters = grad_year_filters;
+								}} />
+						</div>
+						<div >{grad_year}</div>
+					</li>
+					{/each}
+				</ul>
+			</div>
+			{/if}
+		</div>
+
+		<!-- Job Interest -->
+		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
+			<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
+				<GlassContainer>	
+					<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
+				</GlassContainer>
+			</div>
+
+			{#if show_job_interest}
+			<div class="fixed">
+				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
+					{#each job_interests as job_interest}
+					<li class="flex flex-row hover:text-gray-300">
+						<div id="job-interest-check" class="pr-3">
+						<input type="checkbox" on:click={() => {
+							onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
+							job_interest_filters = job_interest_filters;
+							}} />
+						</div>
+						<div >{job_interest}</div>
+					</li>
+					{/each}
+				</ul>
+			</div>
+			{/if}
+		</div>
+	</div>
+
+	
+
+	<!-- <div class="mx-auto my-auto text-gray-100">
+		Filtered By:
+		{#each grad_year_filters as grad_year}
+		<div>
+			{grad_year} 
+		</div>
+		{/each}
+
+		{#each major_filters as major}
+		<div>
+			{major}
+		</div>
+		{/each}
+	</div> -->
+	<div>
+		<table>
+			<thead>
+				<tr>
+					{#each schema as column}
+						<th>{column.label}</th>
+					{/each}
+				</tr>
+			</thead>
+			<tbody>
+				{#each items as item}
+				<tr>
+					{#each schema as column}
+						<td>{item[column.key]}</td>
+					{/each}
+				</tr>
+>>>>>>> b9ad7df (fix dropdown)
 				{/each}
 
 				{#each major_filters as major}
