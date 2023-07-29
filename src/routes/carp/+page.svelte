@@ -124,7 +124,7 @@
 			</div>
 
 			{#if show_majors}
-			<div class="">
+			<div class="fixed">
 				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
 					{#each majors as major}
 					<li id="major-check" class="flex flex-row hover:text-gray-300">
@@ -151,7 +151,7 @@
 			</div>
 
 			{#if show_grad_year}
-			<div class="">
+			<div class="fixed">
 				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
 					{#each grad_years as grad_year}
 					<li class="flex flex-row hover:text-gray-300">
@@ -178,7 +178,7 @@
 			</div>
 
 			{#if show_job_interest}
-			<div class="">
+			<div class="fixed">
 				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
 					{#each job_interests as job_interest}
 					<li class="flex flex-row hover:text-gray-300">
