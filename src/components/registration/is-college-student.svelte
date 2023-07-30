@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let isUIUCStudent: string;
-	export let isCollegeStudent: string;
+	import type { boolStr } from './misc-types';
+	export let isUIUCStudent: boolStr;
+	export let isCollegeStudent: boolStr;
 	export let collegeName: string;
 </script>
 
@@ -19,7 +20,6 @@
 		}}
 	>
 		<img src="uiuc-logo.svg" alt="illinois logo" class="h-full p-3" />
-		<div>I'm an Illini!</div>
 	</button>
 	<span class="flex flex-row">
 		<button
@@ -43,7 +43,7 @@
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
 			aria-label="I am not a college student"
 			on:click={() => {
-				isCollegeStudent = '';
+				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
 			}}
 		>
