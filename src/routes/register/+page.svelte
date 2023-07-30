@@ -125,8 +125,9 @@
 
     let submitted = false;
 
-    let error = '';
-    let fileData: File;
+	let error = '';
+
+	let fileData: File;
 
     $: console.log(fileData);
 
@@ -346,35 +347,35 @@
                 <div class="flex flex-col gap-5 mb-3">
                     <div class="text-xl text-white">{pageMeta[page].title}</div>
 
-                    <div>
-                        <label for="marketing" class="mb-2">How did you hear about R|P? </label>
-                        <!-- <Marketing bind:marketingOther={formValues.marketingOther} /> -->
-                        <div class="flex flex-row flex-wrap">
-                            {#each referralOptions as { referralId, displayText }}
-                                <span class="flex flex-row items-center w-1/2">
-                                    <input
-                                        class="rounded-md"
-                                        type="checkbox"
-                                        id={referralId}
-                                        value={referralId}
-                                        bind:group={formValues.marketing}
-                                    />
-                                    <label for={referralId}>{displayText}</label>
-                                </span>
-                            {/each}
-                        </div>
+					<div>
+						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
+						<div class="flex flex-row flex-wrap">
+							{#each referralOptions as { referralId, displayText }}
+								<span class="flex flex-row items-center w-1/2">
+									<input
+										class="rounded-md"
+										type="checkbox"
+										id={referralId}
+										value={referralId}
+										bind:group={formValues.marketing}
+									/>
+									<label for={referralId}>{displayText}</label>
+								</span>
+							{/each}
+						</div>
 
-                        <label for="marketin-other">Other</label>
-                        <input
-                            class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-                            type="text"
-                            id="marketing-other"
-                            bind:value={formValues.marketingOther}
-                        />
-                    </div>
-                </div>
-                {/if}
-                {#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
+						<label for="marketin-other">Other</label>
+						<input
+							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+							type="text"
+							id="marketing-other"
+							bind:value={formValues.marketingOther}
+						/>
+					</div>
+				</div>
+
+				{/if}
+				{#if !submitted && formValues.marketing.length != 0 || formValues.marketingOther != ''}
 
                     <HandleClick {onSubmit} {fileData}/>
                     
