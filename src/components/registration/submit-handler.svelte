@@ -1,20 +1,21 @@
-<script lang="ts">
+  <script lang="ts">
 
-    export let onSubmit: () => Promise<string>;
+    export let onSubmit: () => Promise<void>;
     export let fileData: File;
     // export let attendeeId: string;
   
     const HandleClick = async () => {
-      const attendeeId = await onSubmit();
+      // const attendeeId = await onSubmit();
+      onSubmit();
 
-      console.log("attendeeid: ", attendeeId);
+      // console.log("attendeeid: ", attendeeId);
 
       console.log("fileData:", fileData);
   
       if (fileData) {
         const formData = new FormData();
         formData.append('file', fileData);
-        formData.append('attendeeId', attendeeId);
+        // formData.append('attendeeId', attendeeId);
 
         console.log('File data:', formData);
 
