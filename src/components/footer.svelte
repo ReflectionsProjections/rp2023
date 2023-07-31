@@ -40,7 +40,7 @@
 			/>
         </a>
 
-		<a href="mailto:reflectionsprojections@gmail.com">
+		<a href="mailto:contact@reflectionsprojections.org">
             <img
 				src="src/assets/email.png"
 				alt="Email"
