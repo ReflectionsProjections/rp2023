@@ -1,46 +1,42 @@
   <script lang="ts">
 
+    export let verifyPasscode: () => Promise<boolean | undefined>;
     export let onSubmit: () => Promise<void>;
     export let fileData: File;
-    // export let attendeeId: string;
   
     const HandleClick = async () => {
-      // const attendeeId = await onSubmit();
-      onSubmit();
 
-      // console.log("attendeeid: ", attendeeId);
+      const passcodeSuccess = await verifyPasscode();
 
-      console.log("fileData:", fileData);
+      if (passcodeSuccess) {
+        await onSubmit();
   
-      if (fileData) {
-        const formData = new FormData();
-        formData.append('file', fileData);
-        // formData.append('attendeeId', attendeeId);
+        if (fileData) {
+          const formData = new FormData();
+          formData.append('file', fileData);
 
-        console.log('File data:', formData);
-
-        fetch('http://localhost:3000/attendee/upload', {
-        method: 'POST',
-        body: formData 
-        })
-        .then(function(response) {
-            if (response.ok) {
-            return response.text();
-            }
-            throw new Error('Error: ' + response.status);
-        })
-        .then(function(data) {
-            alert('File uploaded successfully.');
-        })
-        .catch(function(error) {
-            alert('An error occurred: ' + error.message);
-        });
+          fetch('http://localhost:3000/attendee/upload', {
+          method: 'POST',
+          cache: 'no-cache',
+			    credentials: 'include',
+          body: formData 
+          })
+          .then(function(response) {
+              if (response.ok) {
+              return response.text();
+              }
+              throw new Error('Error: ' + response.status);
+          })
+          .then(function(data) {
+              alert('File uploaded successfully.');
+          })
+          .catch(function(error) {
+              alert('An error occurred: ' + error.message);
+          });
+        }
       }
+      
     };
-
-    $: {
-        console.log('File data:', fileData);
-    }
   </script>
   
   <button

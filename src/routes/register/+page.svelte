@@ -141,8 +141,6 @@
 
     $: console.log(fileData);
 
-    let attendeeId: string;
-
 	let passcodeSuccess = false;
 
 	const verifyPasscode = async () => {
@@ -153,7 +151,7 @@
 		console.log('email valid: ', emailValid);
 
 		if (!verifyEmail(email) || !passcodeValid) {
-			console.log('entered here cuz something was invalid');
+			console.log('Something was invalid.');
 			return;
 		}
 
@@ -169,13 +167,12 @@
 
 		if (response.ok) {
 			passcodeSuccess = true;
-			await onSubmit();
-			
-			// console.log("got to response ok");
-			//window.location = '/' as Location | (string & Location);
+
 		} else {
 			const res = await response.json();
 		}
+
+        return passcodeSuccess;
 	};
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -453,23 +450,15 @@
 						bind:value={passcode}
 					/>
 				</div>
-				<button
-					type="submit"
-					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-					on:click={verifyPasscode}
-				>
-					Submit
-				</button>
-
-                <HandleClick {onSubmit} {fileData}/>
+				
+                <HandleClick {verifyPasscode} {onSubmit} {fileData}/>
 
                 {#if !submitted}
                     <PageControls {formValues} bind:page {pageMeta} />
                 {/if}
 
 				{#if submitted}
-					Thank you for your interest in Reflections | Projections 2023! Please check your email for
-					additional information.
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
 				{/if}
 			</GlassContainer>
 		{/if}
@@ -484,7 +473,6 @@
 	Page 6) Resume
 	Page 7) MechMania and PuzzleBang
 	Page 8 ) How did you hear about RP?
-	Pagw 9 ) Email Verification
 -->
 <style>
     input {
