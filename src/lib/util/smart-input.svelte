@@ -5,7 +5,7 @@
 </script>
 
 <div class="flex flex-col">
-	<div class="ml-1 flex flex-row gap-2 items-baseline">
+	<div class="ml-1 flex flex-row flex-wrap gap-1.5 items-baseline">
 		<p>{label}</p>
 		<p class="text-gray-400 text-sm">{sublabel}</p>
 	</div>

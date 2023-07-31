@@ -6,6 +6,8 @@ interface Event {
 	duration: number;
 	location: string;
 	virtual: boolean;
+	upgrade: boolean;
+	visible: boolean;
 }
 
 export type { Event };

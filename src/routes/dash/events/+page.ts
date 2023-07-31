@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad<void> = async ({ fetch }) => {
 	// TODO: Change to some access specific endpoint
-	const check = await fetch(`${API_URL}/auth/me`, {
+	const check = await fetch(`${API_URL}/auth/access/admin`, {
 		credentials: 'include'
 	});
 

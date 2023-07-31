@@ -1,12 +1,10 @@
 <script lang="ts">
-	import { invalidate } from '$app/navigation';
 	import EventModal from '$lib/components/event-modal.svelte';
 	import type { Event } from '$lib/types';
 	import Icon from '@iconify/svelte';
 	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { API_URL } from '../../../constants';
-	import { error } from '@sveltejs/kit';
 
 	let events: Event[] = [];
 	const loadEvents = async () => {
@@ -55,10 +53,11 @@
 	bind:show={eventModalData.show}
 	type={eventModalData.type}
 	event={eventModalData.event}
+	{loadEvents}
 />
 <div class="h-full text-white flex justify-between flex-col my-20">
 	<div
-		class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 text-sm md:text-base"
+		class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 lg:w-11/12 text-sm md:text-base"
 	>
 		<div class="flex flex-row justify-between items-baseline">
 			<h1 class="text-xl mb-3 p-2 font-serif">Events Dashboard</h1>
@@ -72,18 +71,28 @@
 
 		<div class="p-3 bg-white bg-opacity-10 rounded-md overflow-x-auto">
 			<table class="w-full table-auto border-spacing-10 border-collapse border-hidden">
-				<thead class="text-left">
+				<thead class="text-left tracking-wider">
+					<th title="Publicly Viewable"><Icon icon="material-symbols:public" class="text-2xl" /></th
+					>
 					<th>Event</th>
 					<th>Location</th>
 					<th>Description</th>
 					<th>Starts at</th>
 					<th>Duration</th>
+					<th>Upgrades</th>
 					<th>Virtual</th>
 					<th>Actions</th>
 				</thead>
 				<tbody>
 					{#each events as event}
 						<tr class="bg-opacity-0 hover:bg-opacity-10 bg-black duration-300">
+							<td>
+								{#if event.visible}
+									<Icon icon="gridicons:visible" class="mx-auto text-xl text-green-400" />
+								{:else}
+									<Icon icon="gridicons:not-visible" class="mx-auto text-xl" />
+								{/if}
+							</td>
 							<td title={event.name}>
 								{event.name}
 							</td>
@@ -99,6 +108,13 @@
 							<td>
 								{event.duration}
 								{event.duration == 1 ? ' hour' : ' hours'}
+							</td>
+							<td>
+								{#if event.upgrade}
+									<Icon icon="ph:check-bold" class="text-xl mx-auto text-green-400" />
+								{:else}
+									<Icon icon="maki:cross" class="text-xl mx-auto text-red-400" />
+								{/if}
 							</td>
 							<td>
 								{#if event.virtual}
@@ -140,14 +156,15 @@
 	th,
 	td {
 		padding: 0.5rem;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
 		border-width: 1px;
 		--tw-border-opacity: 0.3;
 		border-color: rgb(209 213 219 / var(--tw-border-opacity));
-		min-width: 70px;
 		text-overflow: ellipsis;
 		overflow: hidden;
 		max-height: 8rem;
 		white-space: nowrap;
-		max-width: 300px;
+		max-width: 280px;
 	}
 </style>

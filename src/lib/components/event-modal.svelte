@@ -16,6 +16,7 @@
 	export let show: boolean;
 	export let type: 'Create' | 'Update' = 'Create';
 	export let event: Partial<Event>;
+	export let loadEvents: Function;
 
 	let errors: { [K in keyof Event]?: string } = {};
 	let apiError: string | null = null;
@@ -43,6 +44,7 @@
 		if (response.ok) {
 			eventData = {};
 			show = false;
+			loadEvents();
 		} else {
 			apiError = response.status + ' ' + response.statusText;
 		}
@@ -61,6 +63,7 @@
 		if (response.ok) {
 			eventData = {};
 			show = false;
+			loadEvents();
 		} else {
 			apiError = response.status + ' ' + response.statusText;
 		}
@@ -120,8 +123,6 @@
 		const localTimeStr = dayjs(isoStr).tz('America/Chicago').format('YYYY-MM-DDTHH:mm');
 		return localTimeStr;
 	};
-
-	$: console.log(eventData);
 </script>
 
 <Modal bind:show>
@@ -170,6 +171,22 @@
 						/>
 					</SmartInput>
 				</div>
+			</div>
+			<div class="flex flex-row gap-5">
+				<SmartInput label="Upgrades" sublabel="to priority status" bind:error={errors.upgrade}>
+					<input
+						type="checkbox"
+						class="bg-gray-700 rounded-sm p-2 w-5 h-5 accent-pink-500"
+						bind:checked={eventData.upgrade}
+					/>
+				</SmartInput>
+				<SmartInput label="Visible" sublabel="to everyone" bind:error={errors.visible}>
+					<input
+						type="checkbox"
+						class="bg-gray-700 rounded-sm p-2 w-5 h-5 accent-pink-500"
+						bind:checked={eventData.visible}
+					/>
+				</SmartInput>
 			</div>
 
 			<div class="w-32 md:w-96 flex flex-col">

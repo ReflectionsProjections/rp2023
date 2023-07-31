@@ -12,9 +12,6 @@
 	<button on:click={() => (show = false)} class="absolute right-4 text-2xl text-red-500">
 		<Icon icon="mingcute:exit-fill" />
 	</button>
-	<button on:click={() => (show = false)} class="absolute right-12 text-2xl text-gray-300">
-		<Icon icon="fluent:arrow-minimize-20-filled" />
-	</button>
 	<slot />
 </div>
 
