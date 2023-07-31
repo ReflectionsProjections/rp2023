@@ -59,7 +59,7 @@
 			<Icon class="text-xl" icon="icon-park-twotone:good-one" />
 			<div>Instagram</div>
 		</button>
-        <button
+		<button
 			class="flex rounded-tl-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {marketingOther ===
 			'Email'
 				? 'bg-opacity-40'
