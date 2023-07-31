@@ -44,5 +44,4 @@
 			/>
 		</a>
 	</div>
-	<div class="absolute top-8 text-white text-xs sm:text-sm md:text-base">Organized by ACM@UIUC</div>
 </span>
