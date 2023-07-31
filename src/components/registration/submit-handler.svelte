@@ -16,14 +16,14 @@
           formData.append('file', fileData);
 
           fetch('http://localhost:3000/attendee/upload', {
-          method: 'POST',
-          cache: 'no-cache',
-			    credentials: 'include',
-          body: formData 
+            method: 'POST',
+            cache: 'no-cache',
+            credentials: 'include',
+            body: formData 
           })
           .then(function(response) {
               if (response.ok) {
-              return response.text();
+                return response.text();
               }
               throw new Error('Error: ' + response.status);
           })
