@@ -35,26 +35,22 @@
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
 		major: '',
-		majorOther: '',
+		majorOther: null,
 		collegeName: '',
 		expectedGradTerm: '',
 		expectedGradYear: '',
-		// occupation: '',
-		age: '',
+		age: null,
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
 		race: [] as raceOptions[],
-		raceOther: '',
+		raceOther: null,
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
-		//foodOther: '',
-		//resumeSharePerms: '',
 		jobTypeInterest: [] as jobTypeOptions[],
-		portfolioLink: '',
+		portfolioLink: null,
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
-		marketingOther: ''
-		//emailVerificationCode: ''
+		marketingOther: null
 	};
 	let page: PageIndex = 'welcome';
 
@@ -178,9 +174,7 @@
 		if (response.ok) {
 			passcodeSuccess = true;
 			await onSubmit();
-			
-			// console.log("got to response ok");
-			//window.location = '/' as Location | (string & Location);
+			// window.location = '/' as Location | (string & Location);
 		} else {
 			const res = await response.json();
 		}
@@ -296,8 +290,8 @@
 						</div>
 					</div>
 					<MajorSelector
-						bind:formMajor={formValues.major}
-						bind:formMajorOpenEnded={formValues.majorOther}
+						bind:major={formValues.major}
+						bind:majorOther={formValues.majorOther}
 					/>
 					{#if formValues.isUIUCStudent == 'no'}
 						<div class="flex flex-col items-start">
