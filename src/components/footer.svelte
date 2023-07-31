@@ -6,7 +6,7 @@
 				alt="Instagram"
 				height={25}
 				width={25}
-				class="hover:rotate-180 duration-500 hover:scale-125 inline mx-2"
+				class="hover:scale-150 duration-500 inline mx-2"
 			/>
         </a>
 
@@ -16,7 +16,7 @@
 				alt="LinkedIn"
 				height={25}
 				width={25}
-				class="hover:rotate-180 duration-500 hover:scale-125 inline mx-2"
+				class="hover:scale-150 duration-500 inline mx-2"
 			/>
         </a>
 
@@ -26,7 +26,7 @@
 				alt="Twitter"
 				height={25}
 				width={25}
-				class="hover:rotate-180 duration-500 hover:scale-125 inline mx-2"
+				class="hover:scale-150 duration-500 inline mx-2"
 			/>
         </a>
 
@@ -36,7 +36,7 @@
 				alt="Facebook"
 				height={25}
 				width={25}
-				class="hover:rotate-180 duration-500 hover:scale-125 inline mx-2"
+				class="hover:scale-150 duration-500 inline mx-2"
 			/>
         </a>
 
@@ -46,7 +46,7 @@
 				alt="Email"
 				height={25}
 				width={25}
-				class="hover:rotate-180 duration-500 hover:scale-125 inline mx-2"
+				class="hover:scale-150 duration-500 inline mx-2"
 			/>
         </a>
 
