@@ -21,9 +21,10 @@
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
-	import HandleClick from '../../components/registration/submit-handler.svelte';
+    import HandleClick from '../../components/registration/submit-handler.svelte';
 
-	type ValidationMessage = { error: boolean; message: string; icon: string } | null;
+
+    type ValidationMessage = { error: boolean; message: string; icon: string } | null;
 	let email = '';
 	let emailSent = false;
 	let passcode = '';
@@ -53,16 +54,16 @@
 	};
 	let page: PageIndex = 'welcome';
 
-	const referralOptions = [
-		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
-		{ referralId: 'buildingAds', displayText: 'Building Ads' },
-		{ referralId: 'courses', displayText: 'School Course' },
-		{ referralId: 'instagram', displayText: 'Instagram' },
-		{ referralId: 'email', displayText: 'E-mail' },
-		{ referralId: 'posters', displayText: 'Posters/Flyers' },
-		{ referralId: 'website', displayText: 'Website' },
-		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
-	];
+    const referralOptions = [
+        { referralId: 'ACMOH', displayText: 'ACM Open House' },
+        { referralId: 'buildingAds', displayText: 'Building Ads' },
+        { referralId: 'courses', displayText: 'School Course' },
+        { referralId: 'instagram', displayText: 'Instagram' },
+        { referralId: 'email', displayText: 'E-mail' },
+        { referralId: 'posters', displayText: 'Posters/Flyers' },
+        { referralId: 'website', displayText: 'Website' },
+        { referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
+    ];
 
 	const gradYearOptions = [
 		{ gradYearId: '2023', displayText: '2023' },
@@ -72,11 +73,11 @@
 		{ gradYearId: '2027', displayText: '2027' }
 	];
 
-	const gradTermOptions = [
-		{ gradTermId: 'Fall', displayText: 'Fall' },
-		{ gradTermId: 'Spring', displayText: 'Spring' },
-		{ gradTermId: 'Summer', displayText: 'Summer' }
-	];
+    const gradTermOptions = [
+        { gradTermId: 'Fall', displayText: 'Fall' },
+        { gradTermId: 'Spring', displayText: 'Spring' },
+        { gradTermId: 'Summer', displayText: 'Summer' }
+    ];
 
 	const pageMeta: PageMeta = {
 		welcome: {
@@ -130,15 +131,15 @@
 		}
 	};
 
-	$: console.log(formValues);
+    $: console.log(formValues);
 
-	let submitted = false;
+    let submitted = false;
 
 	let error = '';
 
 	let fileData: File;
 
-	$: console.log(fileData);
+    $: console.log(fileData);
 
 	let passcodeSuccess = false;
 
@@ -166,11 +167,12 @@
 
 		if (response.ok) {
 			passcodeSuccess = true;
+
 		} else {
 			const res = await response.json();
 		}
 
-		return passcodeSuccess;
+        return passcodeSuccess;
 	};
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -196,38 +198,40 @@
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
 	};
 
-	function handleFileInput(event: Event) {
-		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
-		var file = fileInput?.files?.[0];
+    function handleFileInput(event: Event) {
 
-		if (file) {
-			fileData = file;
-			console.log('Filedata is updated to: ', fileData);
-		}
-	}
+        var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
+        var file = fileInput?.files?.[0];
+
+        if (file) {
+            fileData = file;
+            console.log("Filedata is updated to: ", fileData);
+        }
+    }
+
 </script>
 
 <main class="flex h-full">
-	<form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
-		{#if page == 'welcome'}
-			<GlassContainer>
-				<div class="flex flex-col gap-5 mb-3">
-					<div>
-						<div class="text-lg md:text-xl text-white">{pageMeta[page].title}</div>
-						<div class="text-base text-slate-300">
-							We're glad you made it. Sign up here to receive your conference passes.
-						</div>
-					</div>
-					<div class="flex flex-col items-start">
-						<label for="name">Full Name</label>
-						<input
-							id="name"
-							bind:value={formValues.name}
-							required
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-							autocomplete="off"
-						/>
-					</div>
+    <form class="mx-auto my-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
+        {#if page == 'welcome'}
+            <GlassContainer>
+                <div class="flex flex-col gap-5 mb-3">
+                    <div>
+                        <div class="text-lg md:text-xl text-white">{pageMeta[page].title}</div>
+                        <div class="text-base text-slate-300">
+                            We're glad you made it. Sign up here to receive your conference passes.
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-start">
+                        <label for="name">Full Name</label>
+                        <input
+                            id="name"
+                            bind:value={formValues.name}
+                            required
+                            class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
+                            autocomplete="off"
+                        />
+                    </div>
 
 					<IsCollegeStudent
 						bind:isCollegeStudent={formValues.isCollegeStudent}
@@ -238,11 +242,11 @@
 						bind:major={formValues.major}
 					/>
 
-					<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
-				</div>
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if}
+                    <DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
+                </div>
+                <PageControls {formValues} bind:page {pageMeta} />
+            </GlassContainer>
+        {/if}
 
 		{#if page == 'academics'}
 			<GlassContainer>
@@ -309,68 +313,68 @@
 						</div>
 					{/if}
 
-					<FirstGenSelector bind:firstGen={formValues.firstGen} />
-				</div>
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if}
+                    <FirstGenSelector bind:firstGen={formValues.firstGen} />
+                </div>
+                <PageControls {formValues} bind:page {pageMeta} />
+            </GlassContainer>
+        {/if}
 
-		{#if page == 'demographics'}
-			<GlassContainer>
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col items-start  gap-2">
-						<label for="gender" class="flex flex-row gap-2">
-							<div>Age</div>
-							<div class="text-slate-400">(optional)</div>
-						</label>
-						<input
-							class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
-							type="number"
-							id="age"
-							bind:value={formValues.age}
-						/>
-					</div>
+        {#if page == 'demographics'}
+            <GlassContainer>
+                <div class="flex flex-col gap-5 mb-3">
+                    <div class="text-xl text-white">{pageMeta[page].title}</div>
+                    <div class="flex flex-col items-start  gap-2">
+                        <label for="gender" class="flex flex-row gap-2">
+                            <div>Age</div>
+                            <div class="text-slate-400">(optional)</div>
+                        </label>
+                        <input
+                            class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
+                            type="number"
+                            id="age"
+                            bind:value={formValues.age}
+                        />
+                    </div>
 
-					<GenderSelector bind:gender={formValues.gender} />
+                    <GenderSelector bind:gender={formValues.gender} />
 
-					<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
+                    <EthinicitySelector bind:ethnicity={formValues.ethnicity} />
 
-					<RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
-				</div>
+                    <RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
+                </div>
 
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if}
+                <PageControls {formValues} bind:page {pageMeta} />
+            </GlassContainer>
+        {/if}
 
-		{#if page == 'dietaryRestrictions'}
-			<GlassContainer>
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
+        {#if page == 'dietaryRestrictions'}
+            <GlassContainer>
+                <div class="flex flex-col gap-5 mb-3">
+                    <div class="text-xl text-white">{pageMeta[page].title}</div>
 
-					<DietaryOptions bind:foodOther={formValues.food} />
-				</div>
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if}
+                    <DietaryOptions bind:foodOther={formValues.food} />
+                </div>
+                <PageControls {formValues} bind:page {pageMeta} />
+            </GlassContainer>
+        {/if}
 
-		{#if page == 'recruitment'}
-			<GlassContainer>
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div class="flex flex-col items-start">
-						<label for="resume">Upload your Resume Here</label>
-						<input
-							type="file"
-							name="resume"
-							id="resume-upload"
-							accept="application/pdf, application/msword, .doc, .docx"
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							on:change={handleFileInput}
-						/>
-					</div>
+        {#if page == 'recruitment'}
+            <GlassContainer>
+                <div class="flex flex-col gap-5 mb-3">
+                    <div class="text-xl text-white">{pageMeta[page].title}</div>
+                    <div class="flex flex-col items-start">
+                        <label for="resume">Upload your Resume Here</label>
+                        <input
+                            type="file"
+                            name="resume"
+                            id="resume-upload"
+                            accept="application/pdf, application/msword, .doc, .docx"
+                            class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
+                            on:change={handleFileInput}
+                        />
+                    </div>
 
-					<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
+                    <JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
 					<div class="flex flex-col items-start">
 						<label for="portfolio"
@@ -395,9 +399,9 @@
 					<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 				</div>
 
-				<PageControls {formValues} bind:page {pageMeta} />
-			</GlassContainer>
-		{/if}
+                <PageControls {formValues} bind:page {pageMeta} />
+            </GlassContainer>
+        {/if}
 
 		{#if page == 'marketing'}
 			<GlassContainer>
@@ -446,16 +450,15 @@
 						bind:value={passcode}
 					/>
 				</div>
+				
+                <HandleClick {verifyPasscode} {onSubmit} {fileData}/>
 
-				<HandleClick {verifyPasscode} {onSubmit} {fileData} />
-
-				{#if !submitted}
-					<PageControls {formValues} bind:page {pageMeta} />
-				{/if}
+                {#if !submitted}
+                    <PageControls {formValues} bind:page {pageMeta} />
+                {/if}
 
 				{#if submitted}
-					Thank you for your interest in Reflections | Projections 2023! Please check your email for
-					additional information.
+					Thank you for your interest in Reflections | Projections 2023! Please check your email for additional information.
 				{/if}
 			</GlassContainer>
 		{/if}
@@ -472,9 +475,9 @@
 	Page 8 ) How did you hear about RP?
 -->
 <style>
-	input {
-		padding: 0.25rem;
-	}
+    input {
+        padding: 0.25rem;
+    }
 
 	.counter {
 		display: inline-block;
@@ -488,3 +491,4 @@
 		padding: 0 10px;
 	}
 </style>
+
