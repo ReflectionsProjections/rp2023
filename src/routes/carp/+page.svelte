@@ -14,23 +14,6 @@
 	// 	{label: 'Job Interest', key: 'job_interest'},
 	// 	{label: 'Resume', key: 'resume'}
 	// ]
-	// // TODO remove this
-	// let temp_items=[
-	// 	{
-	// 		name: 'Atharva Naik',
-	// 		major: 'Math & CS',
-	// 		grad_year: '2024',
-	// 		job_interest: 'Full-Time',
-	// 		resume: 'resume'
-	// 	},
-	// 	{
-	// 		name: 'Saloni Vaishnav',
-	// 		major: 'Computer Science',
-	// 		grad_year: '2025',
-	// 		job_interest: 'Internship',
-	// 		resume: 'resume'
-	// 	},
-	// ]
 
 	// DROP DOWNS
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
@@ -66,9 +49,9 @@
 		}
 	}
 
+	// TABLE
 	const columns = ['Name', 'Major', 'Graduation Year', 'Job Interest', 'Resume'];
-
-    
+	let people: any = [];
 
 	// type TableRow = {
 	// 	name: string;
@@ -93,8 +76,53 @@
 
 	const API_URL = "http://localhost:3000";
 
+	// TODO: actually make this functional
+	const fetchPeople = async () => {
+         let response;
 
+		 people = [
+			{
+				name: 'Atharva Naik',
+				major: 'Math & CS',
+				grad_year: '2024',
+				job_interest: 'Full-Time',
+				email: 'atharva.naik@reflectionsprojections.org'
+			},
+			{
+				name: 'Saloni Vaishnav',
+				major: 'Computer Science',
+				grad_year: '2025',
+				job_interest: 'Internship',
+				email: 'saloni.vaishnav@reflectionsprojections.org'
+			}]
+        //  try {
+		// 	// TODO: change url to actual api endpoint
+        //      response = await fetch('${API_URL}/people');
+        //      try {
+        //          const jsonResponse = await response.json();
+
+        //          if (response.ok) {
+		// 			resume_url = jsonResponse;
+
+		// 			// opent the url
+		// 			window.open(resume_url, '_blank');
+        //          } else {
+        //              console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+        //          }
+        //      } catch (e) {
+        //          console.log(`Error parsing response: ${e}`);
+        //      }
+        //  } catch (e) {
+        //      console.log(`Error making request: ${e}`);
+        //  }
+ 	};
+
+	fetchPeople();
+
+	// currently not functioning bc endpoint in api not done
+	// TODO: Tests with actual endpoint
 	const fetchURl = async (emailToGET: string) => {
+		console.log("trying to fetch url for: " + emailToGET);
          let response;
 		 let resume_url;
          try {
@@ -119,7 +147,7 @@
  	};
 
 	// TODO: call this when open url for a specific one is pressed
-	fetchURl("contact@reflectionsprojections.org");
+	// fetchURl("contact@reflectionsprojections.org");
 
 	// if (typeof fetch !== 'undefined') {
 	// 	// Slice a few off the end to show how the
@@ -311,6 +339,7 @@
 		{/each}
 	</div> -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<div>
 		<table>
 			<thead>
@@ -340,6 +369,33 @@
 				table
 			</div>
 =======
+=======
+
+	<div class = "p-10">
+
+		<table class=" text-center overflow-x-scroll  ">
+			<thead>
+				<tr>
+					{#each columns as column}
+						<th>{column}</th>
+					{/each}
+				</tr>
+			</thead>
+			<tbody >
+				{#each people as person}
+					<tr>
+						<td contenteditable="false" bind:innerHTML={person.name} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:innerHTML={person.name} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:innerHTML={person.major} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:textContent={person.grad_year} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:textContent={person.job_interest} class =" w-56 p-2"></td>
+						<button on:click={() => fetchURl(person.email)} >Access Resume</button>
+					</tr>
+				 {/each}
+			</tbody>
+		</table>
+	</div>
+>>>>>>> c4e6a02 (changed formatting of table to be consistant w dashboard, added button to get resume)
 <!-- 
 	<div class="flex flex-col h-full w-9/12 mx-auto my-auto">
 		<GlassContainer>
