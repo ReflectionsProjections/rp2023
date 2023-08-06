@@ -2,18 +2,37 @@
 	import GlassContainer from '../../components/glass-container.svelte';
 	import IsaCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
-	
-	import DataTable, {
-		Head,
-		Body,
-		Row,
-		Cell,
-		Pagination,
-	} from '@smui/data-table';
-	import IconButton from '@smui/icon-button';
-	import { Label } from '@smui/common';
+	// import { API_URL } from '../../constants';
 	import { onMount } from 'svelte';
- 
+
+	// // TODO update this w actual schema
+	// // TODO connect with actual API call
+	// let schema=[
+	// 	{label: 'Name', key: 'name'},
+	// 	{label: 'Major', key: 'major'},
+	// 	{label: 'Graduation Year', key: 'grad_year'},
+	// 	{label: 'Job Interest', key: 'job_interest'},
+	// 	{label: 'Resume', key: 'resume'}
+	// ]
+	// // TODO remove this
+	// let temp_items=[
+	// 	{
+	// 		name: 'Atharva Naik',
+	// 		major: 'Math & CS',
+	// 		grad_year: '2024',
+	// 		job_interest: 'Full-Time',
+	// 		resume: 'resume'
+	// 	},
+	// 	{
+	// 		name: 'Saloni Vaishnav',
+	// 		major: 'Computer Science',
+	// 		grad_year: '2025',
+	// 		job_interest: 'Internship',
+	// 		resume: 'resume'
+	// 	},
+	// ]
+
+	// DROP DOWNS
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
 	$: major_filters = new Set<string>();
@@ -46,36 +65,72 @@
 			filters.add(item);
 		}
 	}
+
+	const columns = ['Name', 'Major', 'Graduation Year', 'Job Interest', 'Resume'];
+
     
 
-	type Todo = {
-    id: number;
-    title: string;
-    completed: boolean;
-    userId: number;
-	};
-	let items: Todo[] = [];
-	let rowsPerPage = 10;
-	let currentPage = 0;
+	// type TableRow = {
+	// 	name: string;
+	// 	major: string;
+	// 	grad_year: string;
+	// 	job_interest: string;
+	// 	resume_url: string;
+	// };
 
-	$: start = currentPage * rowsPerPage;
-	$: end = Math.min(start + rowsPerPage, items.length);
-	$: slice = items.slice(start, end);
-	$: lastPage = Math.max(Math.ceil(items.length / rowsPerPage) - 1, 0);
+	// let items: TableRow[] = [];
+	// let rowsPerPage = 10;
+	// let currentPage = 0;
 
-	$: if (currentPage > lastPage) {
-		currentPage = lastPage;
-	}
+	// $: start = currentPage * rowsPerPage;
+	// $: end = Math.min(start + rowsPerPage, items.length);
+	// $: slice = items.slice(start, end);
+	// $: lastPage = Math.max(Math.ceil(items.length / rowsPerPage) - 1, 0);
 
-	if (typeof fetch !== 'undefined') {
-		// Slice a few off the end to show how the
-		// last page looks when it's not full.
-		fetch(
-		'https://gist.githubusercontent.com/hperrin/e24a4ebd9afdf2a8c283338ae5160a62/raw/dcbf8e6382db49b0dcab70b22f56b1cc444f26d4/todos.json'
-		)
-		.then((response) => response.json())
-		.then((json) => (items = json.slice(0, 197)));
-	}
+	// $: if (currentPage > lastPage) {
+	// 	currentPage = lastPage;
+	// }
+
+	const API_URL = "http://localhost:3000";
+
+
+	const fetchURl = async (emailToGET: string) => {
+         let response;
+		 let resume_url;
+         try {
+             response = await fetch('${API_URL}/carp/email/${emailToGET}');
+             try {
+                 const jsonResponse = await response.json();
+
+                 if (response.ok) {
+					resume_url = jsonResponse;
+
+					// opent the url
+					window.open(resume_url, '_blank');
+                 } else {
+                     console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+                 }
+             } catch (e) {
+                 console.log(`Error parsing response: ${e}`);
+             }
+         } catch (e) {
+             console.log(`Error making request: ${e}`);
+         }
+ 	};
+
+	// TODO: call this when open url for a specific one is pressed
+	fetchURl("contact@reflectionsprojections.org");
+
+	// if (typeof fetch !== 'undefined') {
+	// 	// Slice a few off the end to show how the
+	// 	// last page looks when it's not full.
+	// 	fetch(
+	// 	'https://gist.githubusercontent.com/hperrin/e24a4ebd9afdf2a8c283338ae5160a62/raw/dcbf8e6382db49b0dcab70b22f56b1cc444f26d4/todos.json'
+	// 	)
+	// 	.then((response) => response.json())
+	// 	.then((json) => (items = json));
+	// }
+	
 </script>
 
 <main class="flex flex-col h-full">
@@ -89,15 +144,6 @@
 			<!-- Dropdowns for Filters-->
 			<div class="flex flex-row mx-auto my-auto">	
 
-<<<<<<< HEAD
-				<!-- Majors Drop Down-->
-				<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-					<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
-						<GlassContainer>	
-							<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
-						</GlassContainer>
-					</div>
-=======
 			{#if show_majors}
 			<div class="fixed">
 				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
@@ -116,7 +162,6 @@
 			</div>
 			{/if}
 		</div>
->>>>>>> b9ad7df (fix dropdown)
 
 					{#if show_majors}
 					<div class="">
@@ -265,6 +310,7 @@
 		</div>
 		{/each}
 	</div> -->
+<<<<<<< HEAD
 	<div>
 		<table>
 			<thead>
@@ -293,6 +339,31 @@
 			<div>
 				table
 			</div>
+=======
+<!-- 
+	<div class="flex flex-col h-full w-9/12 mx-auto my-auto">
+		<GlassContainer>
+			<table class="table-auto text-white text-left mx-auto my-auto">
+				<thead class="font-bold">
+					<tr>
+						{#each schema as column}
+							<th>{column.label}</th>
+						{/each}
+					</tr>
+				</thead>
+				<tbody>
+					{#each temp_items as item}
+					<tr>
+						{#each schema as column}
+							<td>{item[column.key]}</td>
+						{/each}
+					</tr>
+					{/each}
+				</tbody>
+			</table>
+		</GlassContainer>
+	</div> -->
+>>>>>>> 6bccb3d (added GET url api call)
 
 </main>
 
