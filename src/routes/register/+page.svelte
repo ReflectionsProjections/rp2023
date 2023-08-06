@@ -47,7 +47,7 @@
 		marketing: [],
 		marketingOther: ''
 	};
-	let page: PageIndex = 'recruitment';
+	let page: PageIndex = 'welcome';
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
