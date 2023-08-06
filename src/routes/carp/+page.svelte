@@ -51,7 +51,7 @@
 
 	// TABLE
 	const columns = ['Name', 'Major', 'Graduation Year', 'Job Interest', 'Resume'];
-	let people: any = [];
+	let attendees: any = [];
 
 	// type TableRow = {
 	// 	name: string;
@@ -77,10 +77,11 @@
 	const API_URL = "http://localhost:3000";
 
 	// TODO: actually make this functional
-	const fetchPeople = async () => {
+	const fetchAttendees = async () => {
          let response;
 
-		 people = [
+		 // dummy data for now
+		 attendees = [
 			{
 				name: 'Atharva Naik',
 				major: 'Math & CS',
@@ -95,29 +96,26 @@
 				job_interest: 'Internship',
 				email: 'saloni.vaishnav@reflectionsprojections.org'
 			}]
-        //  try {
-		// 	// TODO: change url to actual api endpoint
-        //      response = await fetch('${API_URL}/people');
-        //      try {
-        //          const jsonResponse = await response.json();
+         try {
+			// TODO: change url to actual api endpoint
+             response = await fetch(`${API_URL}/attendee`);
+             try {
+                 const jsonResponse = await response.json();
 
-        //          if (response.ok) {
-		// 			resume_url = jsonResponse;
-
-		// 			// opent the url
-		// 			window.open(resume_url, '_blank');
-        //          } else {
-        //              console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
-        //          }
-        //      } catch (e) {
-        //          console.log(`Error parsing response: ${e}`);
-        //      }
-        //  } catch (e) {
-        //      console.log(`Error making request: ${e}`);
-        //  }
+                 if (response.ok) {
+					attendees = jsonResponse;
+                 } else {
+                     console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
+                 }
+             } catch (e) {
+                 console.log(`Error parsing response: ${e}`);
+             }
+         } catch (e) {
+             console.log(`Error making request: ${e}`);
+         }
  	};
 
-	fetchPeople();
+	fetchAttendees();
 
 	// currently not functioning bc endpoint in api not done
 	// TODO: Tests with actual endpoint
@@ -126,7 +124,7 @@
          let response;
 		 let resume_url;
          try {
-             response = await fetch('${API_URL}/carp/email/${emailToGET}');
+             response = await fetch(`${API_URL}/carp/email/${emailToGET}`);
              try {
                  const jsonResponse = await response.json();
 
@@ -279,14 +277,14 @@
 				</tr>
 			</thead>
 			<tbody >
-				{#each people as person}
+				{#each attendees as attendee}
 					<tr>
-						<td contenteditable="false" bind:innerHTML={person.name} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:innerHTML={person.name} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:innerHTML={person.major} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:textContent={person.grad_year} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:textContent={person.job_interest} class =" w-56 p-2"></td>
-						<button on:click={() => fetchURl(person.email)} >Access Resume</button>
+						<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:innerHTML={attendee.major} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:textContent={attendee.grad_year} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:textContent={attendee.job_interest} class =" w-56 p-2"></td>
+						<button on:click={() => fetchURl(attendee.email)} >Access Resume</button>
 					</tr>
 				 {/each}
 			</tbody>
