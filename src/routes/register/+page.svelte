@@ -170,7 +170,7 @@
 		if (response.ok) {
 			passcodeSuccess = true;
 			await onSubmit();
-			//window.location = '/' as Location | (string & Location);
+			window.location = '/' as Location | (string & Location);
 		} else {
 			const res = await response.json();
 			if (response.status === 403 || response.status === 500) {
