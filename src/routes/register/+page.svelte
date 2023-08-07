@@ -21,7 +21,7 @@
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
-	//import { API_URL } from '../../constants';
+	import { API_URL } from '../../constants';
 	type ValidationMessage = { error: boolean; message: string; icon: string } | null;
 	let email = '';
 	let emailSent = false;
@@ -93,7 +93,6 @@
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
-			// next: () => 'emailVerification',
 			prev: () => 'none',
 			requiredFields: ['name', 'email']
 		},
@@ -151,17 +150,13 @@
 
 	const verifyPasscode = async () => {
 		email = formValues.email;
-		console.log('The email is ', email);
-		console.log('passcode is', passcode);
-		console.log('passcode valid: ', passcodeValid);
-		console.log('email valid: ', emailValid);
 
 		if (!verifyEmail(email) || !passcodeValid) {
 			console.log('entered here cuz something was invalid');
 			return;
 		}
 
-		const response = await fetch('http://localhost:3000/auth/verify', {
+		const response = await fetch(`${API_URL}/auth/verify`, {
 			method: 'POST',
 			cache: 'no-cache',
 			credentials: 'include',
@@ -189,7 +184,7 @@
 	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
 
 	const onSubmit = async () => {
-		const response = await fetch('http://localhost:3000/attendee', {
+		const response = await fetch(`${API_URL}/attendee`, {
 			method: 'POST',
 			credentials: 'include',
 			cache: 'no-cache',
