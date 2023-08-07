@@ -152,6 +152,7 @@
 		email = formValues.email;
 
 		if (!verifyEmail(email) || !passcodeValid) {
+			alert("Invalid Passcode");
 			console.log('entered here cuz something was invalid');
 			return;
 		}
@@ -169,9 +170,13 @@
 		if (response.ok) {
 			passcodeSuccess = true;
 			await onSubmit();
-			// window.location = '/' as Location | (string & Location);
+			//window.location = '/' as Location | (string & Location);
 		} else {
 			const res = await response.json();
+			if (response.status === 403 || response.status === 500) {
+				alert("There was an error filling out the registration form. Please try again");
+				window.location = '/register' as Location | (string & Location);
+			}
 		}
 	};
 
@@ -194,8 +199,17 @@
 			body: JSON.stringify(formValues)
 		});
 
-		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+
+		if (response.ok) {
+			submitted = true;
+		} else {
+			if (response.status === 403 || response.status === 500) {
+				//TODO: This may not be the right way to check for existing email. We may need to be more specific with our check.
+				alert("Email already exists. Please try again");
+				window.location = '/register' as Location | (string & Location);
+			}
+		}	
 	};
 </script>
 

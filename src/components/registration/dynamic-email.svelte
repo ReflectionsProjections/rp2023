@@ -35,6 +35,11 @@
 			if (response.status === 429) {
 				emailSent = true;
 			}
+			if (response.status === 403 || response.status === 500) {
+				alert("There was an error filling out the registration form. Please try again");
+				window.location = '/register' as Location | (string & Location);
+
+			}
 		}
 	};
 </script>
