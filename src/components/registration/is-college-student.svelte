@@ -1,10 +1,9 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	export let isUIUCStudent: string;
-	export let isCollegeStudent: string;
+	import type { boolStr } from './misc-types';
+	export let isUIUCStudent: boolStr;
+	export let isCollegeStudent: boolStr;
 	export let collegeName: string;
-	export let expectedGradTerm: string;
-	export let expectedGradYear: string;
 	export let major: string;
 </script>
 
@@ -22,7 +21,6 @@
 		}}
 	>
 		<img src="uiuc-logo.svg" alt="illinois logo" class="h-full p-3" />
-		<div>I'm an Illini!</div>
 	</button>
 	<span class="flex flex-row">
 		<button
@@ -49,8 +47,6 @@
 				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
 				collegeName = 'N/A';
-				expectedGradTerm = 'N/A';
-				expectedGradYear = 'N/A';
 				major = 'N/A';
 			}}
 		>
