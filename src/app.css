@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 .fluid-gradient {
+	background: linear-gradient( #1d2e5b , #C61E5D 60%, #DF5178 80%,   #1d2e5b);
+	background-size: 200% 200%;
 	background: linear-gradient(0deg, #1d2e5b , #C61E5D 30%, #DF5178 45%,  #1d2e5b);
 	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
 	/* background-size: 150% 150%; */
@@ -24,16 +26,17 @@
 
 @keyframes gradient {
 	0% {
-		background-position: 50% 100%;
+		background-position: 200% 30%;
 	}
 	100% {
-		background-position: 50% -20%;
+		background-position: 50% 0%;
 	}
 }
 
 
 ::-webkit-scrollbar {
-	width: 12px;
+	width: 6px;
+	height: 6px;
   }
   
   /* Track */
