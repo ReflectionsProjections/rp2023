@@ -27,7 +27,7 @@ export async function load({ params }) {
 	}
     return {
         "schedule": schedule,
-		"colours": ["bg-red-400", "bg-violet-400", "bg-blue-400", "bg-pink-400"],
+		"colours": ["bg-red-500", "bg-violet-500", "bg-blue-500", "bg-pink-500"],
 		"heights": heights
     };
 }
