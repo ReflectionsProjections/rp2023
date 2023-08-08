@@ -1,16 +1,5 @@
 <script lang="ts">
-	import { API_URL } from '../constants';
-
-	const getUser = async () => {
-		const response = await fetch(`${$API_URL}/auth/me`, {
-			credentials: 'include'
-		}).catch((err) => console.log(err));
-
-		const user = await response?.json();
-		console.log('user', user);
-	};
-
-	getUser();
+	import Sponsors from '../components/home/sponsors.svelte';
 </script>
 
 <div class="h-full text-white flex items-center">
@@ -29,3 +18,4 @@
 		</button>
 	</span>
 </div>
+<Sponsors />
