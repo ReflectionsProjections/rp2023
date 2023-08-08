@@ -10,7 +10,7 @@
 		{ raceId: 'white', displayText: 'White / Caucasian' }
 	];
 	export let formRace: string[];
-	export let formRaceOther: string;
+	export let formRaceOther: string | null;
 </script>
 
 <div class="flex flex-col items-start gap-2" id="raceDemographics">

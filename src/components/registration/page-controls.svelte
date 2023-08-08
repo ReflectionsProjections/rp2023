@@ -46,6 +46,8 @@
 					}
 				}}><Icon icon="ic:round-navigate-next" class="text-3xl text-white" /></button
 			>
+			<!-- {:else}
+		<button disabled>Next</button> -->
 		{/if}
 	{/if}
 </div>

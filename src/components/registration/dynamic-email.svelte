@@ -35,6 +35,10 @@
 			if (response.status === 429) {
 				emailSent = true;
 			}
+			if (response.status === 403 || response.status === 500) {
+				alert('There was an error filling out the registration form. Please try again');
+				window.location = '/register' as Location | (string & Location);
+			}
 		}
 	};
 </script>
@@ -73,6 +77,7 @@
 				class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-white rounded-md opacity-100 disabled:opacity-0 bg-opacity-20 hover:bg-opacity-40 duration-500 border-gray-400"
 				on:click={generateVerification}
 			>
+				<!-- TODO: Send email when the next page button is clicked, and remove this button-->
 				<div>Send me a code to {email}</div>
 			</button>
 		{/if}

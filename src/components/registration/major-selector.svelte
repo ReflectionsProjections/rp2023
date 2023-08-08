@@ -1,57 +1,66 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import type { majorOptions } from './misc-types';
 
 	export let formMajor: string;
-	export let formMajorOpenEnded: string;
+	export let majorOther: string;
+
+	const csPlusXs = [
+		// { displayName: 'CS + Philosophy', id: 'cs+phil' },
+		{ displayName: 'CS + X', id: 'cs+x' },
+		{ displayName: 'CS + Math', id: 'cs+math' },
+		{ displayName: 'CS + Linguistics', id: 'cs+ling' },
+		{ displayName: 'CS + Music', id: 'cs+music' },
+		{ displayName: 'CS + Advertising', id: 'cs+adv' }
+	];
 </script>
 
-<div class="flex flex-col items-start gap-2" id="majorSelector">
-	<label for="major" class="flex flex-row gap-2">
-		<div>Major</div>
-	</label>
-	<div class="flex-col flex">
-		<div class="flex flex-row">
+<div class="flex flex-col">
+	<div class="ml-1">Major</div>
+	<span class="flex flex-row items-stretch">
+		<div class="flex flex-grow-[1] flex-col">
 			<button
-				class="flex rounded-l-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {formMajor ===
-				'cs'
-					? 'bg-opacity-40'
-					: 'bg-opacity-10 hover:bg-opacity-20'}"
-				on:click={() => {
-					formMajor = 'cs';
-				}}
+				class="flex-grow-[1] rounded-t-md duration-300 p-2 md:p-3 bg-white 
+                {formMajor === 'cs' ? 'bg-opacity-30' : 'bg-opacity-10 hover:bg-opacity-20'}"
+				on:click={() => (formMajor = 'cs')}
 			>
-				<div>Computer Science</div>
+				Computer Science
 			</button>
 			<button
-				class="flex rounded-r-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {formMajor ===
-				'cs+x'
-					? 'bg-opacity-40'
-					: 'bg-opacity-10 hover:bg-opacity-20'}"
-				on:click={() => {
-					formMajor = 'cs+x';
-				}}
-			>
-				<div>CS + X (Blended CS Major)</div>
+				class="flex-grow-[1] duration-300  p-3 bg-white break-words
+                {formMajor === 'ece' ? 'bg-opacity-30' : 'bg-opacity-10 hover:bg-opacity-20'}"
+				on:click={() => (formMajor = 'ece')}
+				>Electrical & Computer Engineering
 			</button>
-		</div>
-		<div class="flex flex-row gap-3 items-center pl-3">
-			<button
-				class="flex rounded-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {formMajor ===
-				formMajorOpenEnded
-					? 'bg-opacity-40'
+
+			<select
+				on:change|capture={(evt) => (formMajor = evt.target?.value || '')}
+				class="flex-grow-[1] duration-300 p-3 bg-white
+                    text-center appearance-none
+                    {formMajor.startsWith('cs+')
+					? 'bg-opacity-30'
 					: 'bg-opacity-10 hover:bg-opacity-20'}"
-				on:click={() => {
-					formMajor = formMajorOpenEnded;
-				}}
 			>
-				<label for="other">Other</label>
+				{#each csPlusXs as csPlusX}
+					<option value={csPlusX.id} class="bg-rp-dull-pink p-1.5 text-gray-200 flex flex-row">
+						{csPlusX.displayName}
+					</option>
+				{/each}
+			</select>
+
+			<div
+				class="flex flex-col flex-grow-[1] rounded-b-md justify-center duration-300 p-3 bg-white
+				{formMajor === majorOther ? 'bg-opacity-30' : 'bg-opacity-10 hover:bg-opacity-20'}"
+			>
 				<input
-					class="bg-transparent border border-gray-400 rounded-md h-fit"
+					class="bg-transparent border border-gray-200 rounded-md h-fit p-1 placeholder-gray-200 text-center"
 					type="text"
+					placeholder="Other Major"
 					id="other"
-					bind:value={formMajorOpenEnded}
+					on:change={() => (formMajor = majorOther)}
+					bind:value={majorOther}
 				/>
-			</button>
+			</div>
 		</div>
-	</div>
+	</span>
 </div>

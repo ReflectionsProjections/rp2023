@@ -4,8 +4,6 @@
 	export let isUIUCStudent: boolStr;
 	export let isCollegeStudent: boolStr;
 	export let collegeName: string;
-	export let expectedGradTerm: string;
-	export let expectedGradYear: string;
 	export let major: string;
 </script>
 
@@ -49,8 +47,6 @@
 				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
 				collegeName = 'N/A';
-				expectedGradTerm = 'N/A';
-				expectedGradYear = 'N/A';
 				major = 'N/A';
 			}}
 		>
