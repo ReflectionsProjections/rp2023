@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Footer from '../components/footer.svelte';
 	import Sponsors from '../components/home/sponsors.svelte';
 </script>
 
@@ -19,3 +20,4 @@
 	</span>
 </div>
 <Sponsors />
+<Footer />
