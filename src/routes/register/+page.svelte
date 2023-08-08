@@ -3,27 +3,29 @@
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
 	import EthinicitySelector from '../../components/registration/ethinicity-selector.svelte';
+	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
 	import FirstGenSelector from '../../components/registration/first-gen-selector.svelte';
 	import GenderSelector from '../../components/registration/gender-selector.svelte';
+	import GradDateSelector from '../../components/registration/grad-date-selector.svelte';
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
-	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
 	import MajorSelector from '../../components/registration/major-selector.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
+		extraEventOptions,
 		firstGenOptions,
 		genderOptions,
-		raceOptions,
-		extraEventOptions,
-		jobTypeOptions
+		jobTypeOptions,
+		raceOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
-	import Icon from '@iconify/svelte';
-	import GradDateSelector from '../../components/registration/grad-date-selector.svelte';
+	import { API_URL } from '../../constants';
 
+	let email = '';
+	let passcode = '';
 	const formValues = {
 		name: '',
 		email: '',
@@ -38,14 +40,14 @@
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
 		race: [] as raceOptions[],
-		raceOther: '',
+		raceOther: null,
 		firstGen: 'preferNotToSay' as firstGenOptions,
 		food: '',
 		jobTypeInterest: [] as jobTypeOptions[],
-		portfolioLink: '',
+		portfolioLink: null,
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
-		marketingOther: ''
+		marketingOther: null
 	};
 	let page: PageIndex = 'welcome';
 
@@ -109,9 +111,15 @@
 		},
 		marketing: {
 			title: 'One Last Step',
-			next: () => 'none',
+			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
 			requiredFields: ['marketing']
+		},
+		emailVerification: {
+			title: 'Email Verification',
+			next: () => 'none',
+			prev: () => 'marketing',
+			requiredFields: ['emailVerificationCode']
 		}
 	};
 
@@ -121,17 +129,70 @@
 
 	let error = '';
 
-	const onSubmit = async () => {
-		const response = await fetch('http://localhost:3000/attendee', {
+	let passcodeSuccess = false;
+
+	const verifyPasscode = async () => {
+		email = formValues.email;
+
+		if (!verifyEmail(email) || !passcodeValid) {
+			alert('Invalid Passcode');
+			console.log('entered here cuz something was invalid');
+			return;
+		}
+
+		const response = await fetch(`${API_URL}/auth/verify`, {
 			method: 'POST',
+			cache: 'no-cache',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email, passcode })
+		});
+
+		if (response.ok) {
+			passcodeSuccess = true;
+			await onSubmit();
+			window.location = '/' as Location | (string & Location);
+		} else {
+			const res = await response.json();
+			if (response.status === 403 || response.status === 500) {
+				alert('There was an error filling out the registration form. Please try again');
+				window.location = '/register' as Location | (string & Location);
+			}
+		}
+	};
+
+	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+	const verifyEmail = (email: string) => email.length > 0 && emailRegex.test(email);
+	$: emailValid = verifyEmail(email);
+
+	//Basic Passcode Validation
+	const passcodeRegex = /^\d{6}$/;
+	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
+
+	const onSubmit = async () => {
+		const response = await fetch(`${API_URL}/attendee`, {
+			method: 'POST',
+			credentials: 'include',
+			cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify({ ...formValues, expectedGradYear: formValues.gradYear.toString() })
 		});
 
-		submitted = true;
 		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+
+		if (response.ok) {
+			submitted = true;
+		} else {
+			if (response.status === 403 || response.status === 500) {
+				//TODO: This may not be the right way to check for existing email. We may need to be more specific with our check.
+				alert('Email already exists. Please try again');
+				window.location = '/register' as Location | (string & Location);
+			}
+		}
 	};
 </script>
 
@@ -162,6 +223,7 @@
 					bind:isCollegeStudent={formValues.isCollegeStudent}
 					bind:isUIUCStudent={formValues.isUIUCStudent}
 					bind:collegeName={formValues.collegeName}
+					bind:major={formValues.major}
 				/>
 
 				<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
@@ -292,7 +354,6 @@
 			{#if !submitted}
 				<div class="flex flex-col gap-5 mb-3">
 					<div class="text-xl text-white">{pageMeta[page].title}</div>
-
 					<div>
 						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
 						<div class="flex flex-row flex-wrap">
@@ -309,8 +370,7 @@
 								</span>
 							{/each}
 						</div>
-
-						<label for="marketin-other">Other</label>
+						<label for="marketing-other">Other</label>
 						<input
 							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
 							type="text"
@@ -320,15 +380,27 @@
 					</div>
 				</div>
 			{/if}
-			{#if (!submitted && formValues.marketing.length != 0) || formValues.marketingOther != ''}
-				<button
-					type="submit"
-					class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-					on:click={onSubmit}
-				>
-					Submit
-				</button>
-			{/if}
+			<PageControls {formValues} bind:page {pageMeta} />
+		</GlassContainer>
+	{/if}
+
+	{#if page == 'emailVerification'}
+		<GlassContainer>
+			<div class="flex flex-col items-start">
+				Let's get your email verified!
+				<label for="portfolio">Enter Verification Code from Email</label>
+				<input
+					class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
+					bind:value={passcode}
+				/>
+			</div>
+			<button
+				type="submit"
+				class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
+				on:click={verifyPasscode}
+			>
+				Submit
+			</button>
 
 			{#if !submitted}
 				<PageControls {formValues} bind:page {pageMeta} />
@@ -350,6 +422,7 @@
 	Page 6) Resume
 	Page 7) MechMania and PuzzleBang
 	Page 8 ) How did you hear about RP?
+	Pagw 9 ) Email Verification
 -->
 <style>
 	input {

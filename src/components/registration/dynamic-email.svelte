@@ -1,6 +1,7 @@
 <script lang="ts">
 	export let uiucStudent: string;
 	export let email: string;
+	let emailSent = false;
 
 	let uiucEmail = '';
 
@@ -13,6 +14,33 @@
 	// Philosophy: Best way to validate an email is by sending a verification token to it.
 	const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 	$: emailValid = email.length > 0 && regex.test(email);
+
+	const generateVerification = async () => {
+		if (!emailValid) {
+			return;
+		}
+
+		const response = await fetch(`http://localhost:3000/auth/generate`, {
+			method: 'POST',
+			cache: 'no-cache',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({email})
+		});
+
+		if (response.ok) {
+			emailSent = true;
+		} else {
+			if (response.status === 429) {
+				emailSent = true;
+			}
+			if (response.status === 403 || response.status === 500) {
+				alert("There was an error filling out the registration form. Please try again");
+				window.location = '/register' as Location | (string & Location);
+			}
+		}
+	};
 </script>
 
 <div class="flex flex-col items-start">
@@ -43,5 +71,15 @@
 	{/if}
 	<div class="{emailValid ? 'opacity-100' : 'opacity-0'} text-green-300 mt-2 duration-300">
 		We'll send you a code at {email}
+
+		{#if !emailSent}
+							<button
+								class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-white rounded-md opacity-100 disabled:opacity-0 bg-opacity-20 hover:bg-opacity-40 duration-500 border-gray-400"
+								on:click={generateVerification}
+							>
+								<!-- TODO: Send email when the next page button is clicked, and remove this button-->
+								<div>Send me a code to {email}</div> 
+							</button>
+		{/if}
 	</div>
 </div>

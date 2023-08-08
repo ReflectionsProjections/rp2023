@@ -4,6 +4,7 @@
 	export let isUIUCStudent: boolStr;
 	export let isCollegeStudent: boolStr;
 	export let collegeName: string;
+	export let major: string;
 </script>
 
 <div class="flex flex-col rounded-md border-gray-700">
@@ -45,6 +46,8 @@
 			on:click={() => {
 				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
+				collegeName = 'N/A';
+				major = 'N/A';
 			}}
 		>
 			<Icon icon="ph:user-fill" class="text-2xl" />
