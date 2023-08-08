@@ -2,6 +2,7 @@
 	import Icon from '@iconify/svelte';
 	import svgLogo from '../assets/rp-logo.svg';
 	import ShootingStar from '../components/shooting-star.svelte';
+    import Sponsors from '../components/home/sponsors.svelte';
 </script>
 
 <div class="h-full text-white flex items-center">
@@ -13,3 +14,4 @@
         </button>
 	</span>
 </div>
+<Sponsors />
