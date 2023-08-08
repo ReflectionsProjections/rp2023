@@ -529,6 +529,7 @@
 			</GlassContainer>
 		{/if}
 	</form>
+	<Footer></Footer>
 </main>
 <!--
 	Page 0) Name, email, isCollegeStudent
