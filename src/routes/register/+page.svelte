@@ -9,6 +9,7 @@
 	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
 	import ExtraEventOptions from '../../components/registration/extra-event-options.svelte';
 	import MajorSelector from '../../components/registration/major-selector.svelte';
+	import Footer from '../../components/footer.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
@@ -430,7 +431,6 @@
 		{/if}
 	</form>
 </main>
-
 <!--
 	Page 0) Name, email, isCollegeStudent
 	Page 1) if they said yes to CollegeStudent 
