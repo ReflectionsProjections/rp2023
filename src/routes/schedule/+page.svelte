@@ -118,27 +118,32 @@
 </script>
 
 <div class="h-full flex items-center">
-	<div class="mx-auto h-[50%] w-[50%]">
+	<div class="mx-auto h-[48rem] w-[50%] my-8">
 		<GlassContainer>
-			<div class="o mx-auto grid grid-cols-5 text-center gap-2 justify-around text-black text-3xl border-8">
-				<div class = "border-4 bg-gray-100 py-4"><button id="monday" on:click = {dayButtonClickLegacy}>Monday</button></div>
-				<div class = "border-4 bg-gray-100 py-4"><button id="tuesday" on:click = {dayButtonClickLegacy}>Tuesday</button></div>
-				<div class = "border-4 bg-gray-100 py-4"><button id="wednesday" on:click = {dayButtonClickLegacy}>Wednesday</button></div>
-				<div class = "border-4 bg-gray-100 py-4"><button id="thursday" on:click = {dayButtonClickLegacy}>Thursday</button></div>
-				<div class = "border-4 bg-gray-100 py-4"><button id="friday" on:click = {dayButtonClickLegacy}>Friday</button></div>
-			</div>
-			<!-- update this to iterate through the day's event list and disiplay info for each event-->
-			<div class="h-full w-full  px-4 pb-4 pt-2">
-				<ul>
-					{#each Object.entries(day_events_list) as [key, value]}
-						<div class="event text-lg text-white pt-1">
-							<p class="text-2xl"><strong>Name:</strong> {value.name}</p>
-							<p class="text-2xl"><strong>Description:</strong> {value.description}</p>
-							<p class="text-2xl pb-2"><strong>Info:</strong> {`${toDate(value.start_time).toLocaleString([], { month: 'long' })} ${toDate(value.start_time).getDate()} @ ${toDate(value.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`}</p>
-							<hr class="pt-2 bg-black-200"/>
-						</div>
-					{/each}
-				</ul>
+			<div class="h-[48rem]">
+
+				
+				<div class="mx-auto grid grid-cols-5 text-center justify-around text-white text-4xl gap-8 p-2">
+					<div class = "border-2 rounded-lg bg-gray-100/10 py-4"><button id="monday" on:click = {dayButtonClickLegacy}>Monday</button></div>
+					<div class = "border-2 rounded-lg bg-gray-100/10 py-4"><button id="tuesday" on:click = {dayButtonClickLegacy}>Tuesday</button></div>
+					<div class = "border-2 rounded-lg bg-gray-100/10 py-4"><button id="wednesday" on:click = {dayButtonClickLegacy}>Wednesday</button></div>
+					<div class = "border-2 rounded-lg bg-gray-100/10 py-4"><button id="thursday" on:click = {dayButtonClickLegacy}>Thursday</button></div>
+					<div class = "border-2 rounded-lg bg-gray-100/10 py-4"><button id="friday" on:click = {dayButtonClickLegacy}>Friday</button></div>
+				</div>
+
+				<!-- update this to iterate through the day's event list and disiplay info for each event-->
+				<div class="h-full w-full  px-4 pb-4 pt-2">
+					<ul>
+						{#each Object.entries(day_events_list) as [key, value]}
+							<div class="event text-lg text-white pt-1">
+								<p class="text-3xl"><strong>Name:</strong> {value.name}</p>
+								<p class="text-3xl"><strong>Description:</strong> {value.description}</p>
+								<p class="text-3xl pb-2"><strong>Info:</strong> {`${toDate(value.start_time).toLocaleString([], { month: 'long' })} ${toDate(value.start_time).getDate()} @ ${toDate(value.start_time).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`}</p>
+								<hr class="pt-2 bg-black-200"/>
+							</div>
+						{/each}
+					</ul>
+				</div>
 			</div>
 		</GlassContainer>
 	</div>
@@ -221,25 +226,12 @@
 								
 								
 								<div class="col-span-1 px-8 z-20 h-full">
-									<!-- <div class="h-fit"> -->
-										<!-- {#each cols_condensed[0] as col}
-											{#if col[0] != 0}
-												<div class="{heights[col[1]]} {colours[col[0] % colours.length]} text-white  text-left  z-20">
-													<p>{col[0]}</p>
-												</div>
-											{:else}
-												<div class="{heights[col[1]]} text-white text-left  z-20">
-													<p>{col[0]}</p>
-												</div>
-											{/if}
-										{/each} -->
-
 										{#each cols_condensed[0] as col}
 											{#if col[0] != 0}
 												{#each {length: col[1]} as j, count}
 													<div class="h-8 {colours[col[0] % colours.length]} text-white  text-left  z-20">
 														{#if count == 0}
-															<p class=" p-1 break-normal text-2xl">{event_map[col[0]].name}</p>
+															<p class="p-2 break-normal text-3xl">{event_map[col[0]].name}</p>
 														{/if}
 													</div>
 												{/each}
@@ -257,9 +249,9 @@
 										{#each cols_condensed[1] as col}
 											{#if col[0] != 0}
 												{#each {length: col[1]} as j, count}
-													<div class="h-8 {colours[col[0] % colours.length]} text-white  text-left  z-20">
+													<div class="h-8 {colours[col[0] % colours.length]} text-white text-left z-20">
 														{#if count == 0}
-															<p class=" p-1 break-normal text-2xl">{event_map[col[0]].name}</p>
+															<p class="p-2 break-normal text-3xl">{event_map[col[0]].name}</p>
 														{/if}
 													</div>
 												{/each}
