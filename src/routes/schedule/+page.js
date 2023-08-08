@@ -1,7 +1,9 @@
+import {API_URL} from "../../constants"
+
 // /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
     let schedule = {}
-    const response = await fetch("http://localhost:3000/events/schedule/days", {
+    const response = await fetch(`${API_URL}/events/schedule/days`, {
 		method: 'GET',
 		cache: 'no-cache',
 		headers: {
