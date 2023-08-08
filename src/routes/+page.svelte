@@ -1,7 +1,8 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import ShootingStar from '../components/shooting-star.svelte';
-  import Sponsors from '../components/home/sponsors.svelte';
+    import Sponsors from '../components/home/sponsors.svelte';
+    import Footer from '../components/footer.svelte';
 	import { API_URL } from '../constants';
 
 	const getUser = async () => {
@@ -15,7 +16,6 @@
 
 	getUser();
 
-    
 </script>
 
 <div class="h-full text-white flex items-center">
@@ -28,3 +28,4 @@
 	</span>
 </div>
 <Sponsors />
+<Footer />

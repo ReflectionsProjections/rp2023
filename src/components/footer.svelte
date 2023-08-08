@@ -1,4 +1,4 @@
-<span class="bg-white bg-opacity-10 px-5 pt-16 h-20 absolute bottom-0 w-full">
+<span class="bg-white bg-opacity-10 px-5 pt-16 h-20 relative block bottom-0 w-full">
     <div class="absolute right-10 top-8 flex flex-row">
         <a href="https://www.instagram.com/uiuc_rp/?hl=en">
             <img
