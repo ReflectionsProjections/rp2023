@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { API_URL } from '../../constants';
 	export let uiucStudent: string;
 	export let email: string;
 	let emailSent = false;
@@ -20,13 +21,13 @@
 			return;
 		}
 
-		const response = await fetch(`http://localhost:3000/auth/generate`, {
+		const response = await fetch(`${$API_URL}/auth/generate`, {
 			method: 'POST',
 			cache: 'no-cache',
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({email})
+			body: JSON.stringify({ email })
 		});
 
 		if (response.ok) {
@@ -36,7 +37,7 @@
 				emailSent = true;
 			}
 			if (response.status === 403 || response.status === 500) {
-				alert("There was an error filling out the registration form. Please try again");
+				alert('There was an error filling out the registration form. Please try again');
 				window.location = '/register' as Location | (string & Location);
 			}
 		}
@@ -65,7 +66,7 @@
 			type="email"
 			id="email"
 			bind:value={email}
-			class="bg-transparent p-1 border border-gray-400  rounded-md h-fit w-full"
+			class="bg-transparent p-1 border border-gray-400 rounded-md h-fit w-full"
 			required
 		/>
 	{/if}
@@ -73,13 +74,13 @@
 		We'll send you a code at {email}
 
 		{#if !emailSent}
-							<button
-								class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-white rounded-md opacity-100 disabled:opacity-0 bg-opacity-20 hover:bg-opacity-40 duration-500 border-gray-400"
-								on:click={generateVerification}
-							>
-								<!-- TODO: Send email when the next page button is clicked, and remove this button-->
-								<div>Send me a code to {email}</div> 
-							</button>
+			<button
+				class="p-2 mt-2 px-3 flex flex-row gap-2 items-center bg-white rounded-md opacity-100 disabled:opacity-0 bg-opacity-20 hover:bg-opacity-40 duration-500 border-gray-400"
+				on:click={generateVerification}
+			>
+				<!-- TODO: Send email when the next page button is clicked, and remove this button-->
+				<div>Send me a code to {email}</div>
+			</button>
 		{/if}
 	</div>
 </div>
