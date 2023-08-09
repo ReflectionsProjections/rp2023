@@ -140,7 +140,7 @@
 			return;
 		}
 
-		const response = await fetch(`${API_URL}/auth/verify`, {
+		const response = await fetch(`${$API_URL}/auth/verify`, {
 			method: 'POST',
 			cache: 'no-cache',
 			credentials: 'include',
@@ -172,7 +172,7 @@
 	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
 
 	const onSubmit = async () => {
-		const response = await fetch(`${API_URL}/attendee`, {
+		const response = await fetch(`${$API_URL}/attendee`, {
 			method: 'POST',
 			credentials: 'include',
 			cache: 'no-cache',
@@ -265,7 +265,7 @@
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="flex flex-col items-start  gap-2">
+				<div class="flex flex-col items-start gap-2">
 					<label for="gender" class="flex flex-row gap-2">
 						<div>Age</div>
 						<div class="text-slate-400">(optional)</div>
@@ -310,7 +310,7 @@
 						type="file"
 						name="resume"
 						accept="application/pdf, application/msword, .doc, .docx"
-						class="block w-full 
+						class="block w-full
 						text-gray-200 file:text-white
 						file:mr-4 file:py-2 file:px-4
 						file:rounded-full file:border-0

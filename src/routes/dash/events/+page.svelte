@@ -8,7 +8,7 @@
 
 	let events: Event[] = [];
 	const loadEvents = async () => {
-		const res = await fetch(`${API_URL}/events`);
+		const res = await fetch(`${$API_URL}/events`);
 		events = await res.json();
 	};
 	onMount(loadEvents);
@@ -34,7 +34,7 @@
 	};
 
 	const onDeleteEventClick = async (event: Event) => {
-		const response = await fetch(`${API_URL}/events/${event._id}`, {
+		const response = await fetch(`${$API_URL}/events/${event._id}`, {
 			method: 'DELETE',
 			credentials: 'include'
 		});

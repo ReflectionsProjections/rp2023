@@ -18,7 +18,7 @@
 	const generateVerification = async () => {
 		if (!emailValid) return;
 
-		const response = await fetch(`${API_URL}/auth/generate?isLogin=true`, {
+		const response = await fetch(`${$API_URL}/auth/generate?isLogin=true`, {
 			method: 'POST',
 			cache: 'no-cache',
 			headers: {
@@ -55,7 +55,7 @@
 			return;
 		}
 
-		const response = await fetch(`${API_URL}/auth/verify`, {
+		const response = await fetch(`${$API_URL}/auth/verify`, {
 			method: 'POST',
 			cache: 'no-cache',
 			credentials: 'include',
@@ -181,7 +181,7 @@
 						<a href="/register" class="underline">Sign up instead</a>
 					</div>
 				</div>
-				<div class="flex text-gray-300  md:p-4 p-2 items-center w-full lg:w-72 pt-4 min-w-[10rem]">
+				<div class="flex text-gray-300 md:p-4 p-2 items-center w-full lg:w-72 pt-4 min-w-[10rem]">
 					<div class="flex flex-col gap-2">
 						<h3 class="text-lg text-gray-200">Did you know?</h3>
 						<div>Attending R|P talks and events gives you priority for food!</div>

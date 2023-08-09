@@ -32,7 +32,7 @@
 	};
 
 	const createEvent = async () => {
-		const response = await fetch(`${API_URL}/events`, {
+		const response = await fetch(`${$API_URL}/events`, {
 			method: 'POST',
 			credentials: 'include',
 			headers: {
@@ -51,7 +51,7 @@
 	};
 
 	const updateEvent = async () => {
-		const response = await fetch(`${API_URL}/events/${eventData._id}`, {
+		const response = await fetch(`${$API_URL}/events/${eventData._id}`, {
 			method: 'PATCH',
 			credentials: 'include',
 			headers: {
@@ -126,7 +126,7 @@
 </script>
 
 <Modal bind:show>
-	<div class="flex flex-col  p-2">
+	<div class="flex flex-col p-2">
 		<h1 class="text-xl mb-3 font-serif">{type} Event</h1>
 
 		<form class="flex flex-col gap-5">

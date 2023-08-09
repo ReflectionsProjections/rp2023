@@ -4,7 +4,7 @@
 	import { API_URL } from '../constants';
 
 	const getUser = async () => {
-		const response = await fetch(`${API_URL}/auth/me`, {
+		const response = await fetch(`${$API_URL}/auth/me`, {
 			credentials: 'include'
 		}).catch((err) => console.log(err));
 
