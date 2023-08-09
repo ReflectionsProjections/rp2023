@@ -10,4 +10,9 @@ interface Event {
 	visible: boolean;
 }
 
-export type { Event };
+interface User {
+	email: string;
+	fullName?: string;
+}
+
+export type { Event, User };

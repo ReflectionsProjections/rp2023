@@ -1,10 +1,13 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import type { User } from '../lib/types';
+
+	export let user: User | null;
 </script>
 
 <span class="absolute top-0 w-full">
 	<div
-		class="flex flex-row justify-between p-5 text-gray-200 text-md md:text-base lg:text-lg font-sans items-center"
+		class="flex flex-row justify-between p-5 lg:px-10 text-gray-200 text-md md:text-base lg:text-lg font-sans items-center"
 	>
 		<a href="/" class="flex flex-row items-center gap-5">
 			<img
@@ -34,14 +37,23 @@
 			class="hover:underline underline-offset-8 hover:underline-offset-4 decoration-pink-500 decoration-2 duration-150"
 			>MechMania</a
 		>
-		<div class="flex flex-row gap-3 items-center">
-			<div class="hidden md:flex">Welcome, Gigachad</div>
-			<a href="/preferences">
-				<Icon
-					icon="fluent:person-28-filled"
-					class="text-xl md:text-3xl hover:text-pink-500 duration-200"
-				/>
-			</a>
-		</div>
+
+		{#if user}
+			<div class="flex flex-row gap-3 items-center">
+				<div class="hidden md:flex">{user?.fullName ? `Welcome, ${user.fullName}` : ''}</div>
+				<a href="/preferences">
+					<Icon
+						icon="fluent:person-28-filled"
+						class="text-xl md:text-3xl hover:text-pink-500 duration-200"
+					/>
+				</a>
+			</div>
+		{:else}
+			<a
+				href="/speakers"
+				class="hover:underline underline-offset-8 hover:underline-offset-4 decoration-pink-500 decoration-2 duration-150"
+				>Log In</a
+			>
+		{/if}
 	</div>
 </span>
