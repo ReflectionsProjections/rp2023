@@ -5,7 +5,7 @@
 
 	const HandleClick = async () => {
 		const passcodeSuccess = await verifyPasscode();
-
+		
 		if (passcodeSuccess) {
 			await onSubmit();
 
@@ -13,24 +13,21 @@
 				const formData = new FormData();
 				formData.append('file', fileData);
 
-				fetch('http://localhost:3000/attendee/upload', {
+				const response  = await fetch('http://localhost:3000/attendee/upload', {
 					method: 'POST',
 					cache: 'no-cache',
 					credentials: 'include',
 					body: formData
-				})
-					.then(function (response) {
-						if (response.ok) {
-							return response.text();
-						}
-						throw new Error('Error: ' + response.status);
-					})
-					.then(function (data) {
-						alert('File uploaded successfully.');
-					})
-					.catch(function (error) {
-						alert('An error occurred: ' + error.message);
-					});
+				});
+
+				if (response.ok) {
+					console.log('File uploaded successfully.');
+					window.location = '/' as Location | (string & Location);
+				} else {
+					throw new Error('Error: ' + response.status);
+				}
+			} else {
+				window.location = '/' as Location | (string & Location);
 			}
 		}
 	};
