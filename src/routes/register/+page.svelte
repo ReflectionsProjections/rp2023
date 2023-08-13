@@ -34,10 +34,10 @@
 		isUIUCStudent: 'yes' as boolStr,
 		major: '',
 		majorOther: '',
-		collegeName: '',
+		collegeName: 'UIUC', // needs to be set as the default in the case where a user does NOT click Illinois but still is a UIUC student
 		expectedGradTerm: '',
 		gradYear: 2023,
-		age: '',
+		age: null,
 		gender: 'preferNotToSay' as genderOptions,
 		ethnicity: 'preferNotToSay' as ethnicityOptions,
 		race: [] as raceOptions[],
@@ -148,8 +148,6 @@
 
 		if (response.ok) {
 			passcodeSuccess = true;
-			await onSubmit();
-			window.location = '/' as Location | (string & Location);
 		} else {
 			const res = await response.json();
 			if (response.status === 403 || response.status === 500) {
@@ -229,8 +227,8 @@
 				</div>
 
 				<IsCollegeStudent
-					bind:isCollegeStudent={formValues.isCollegeStudent}
 					bind:isUIUCStudent={formValues.isUIUCStudent}
+					bind:isCollegeStudent={formValues.isCollegeStudent}
 					bind:collegeName={formValues.collegeName}
 					bind:major={formValues.major}
 				/>
@@ -317,7 +315,7 @@
 					<label for="resume">Upload your Resume Here</label>
 					<input
 						type="file"
-						name="resume"
+						name="file"
 						id="resume-upload"
 						accept="application/pdf, application/msword, .doc, .docx"
 						class="block w-full 

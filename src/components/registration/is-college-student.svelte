@@ -32,6 +32,7 @@
 			on:click={() => {
 				isCollegeStudent = 'yes';
 				isUIUCStudent = 'no';
+				collegeName = '';
 			}}
 		>
 			<Icon icon="ph:student-fill" class="text-2xl" />
