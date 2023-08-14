@@ -3,8 +3,8 @@
 	import type { boolStr } from './misc-types';
 	export let isUIUCStudent: boolStr;
 	export let isCollegeStudent: boolStr;
-	export let collegeName: string;
-	export let major: string;
+	export let collegeName: string | null;
+	export let major: string | null;
 </script>
 
 <div class="flex flex-col rounded-md border-gray-700">
@@ -47,8 +47,8 @@
 			on:click={() => {
 				isCollegeStudent = 'no';
 				isUIUCStudent = 'no';
-				collegeName = 'N/A';
-				major = 'N/A';
+				collegeName = null;
+				major = null;
 			}}
 		>
 			<Icon icon="ph:user-fill" class="text-2xl" />

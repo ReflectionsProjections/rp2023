@@ -32,17 +32,17 @@
 		email: '',
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
-		major: '',
-		majorOther: '',
+		major: 'N/A',
+		majorOther: null,
 		collegeName: 'UIUC', // needs to be set as the default in the case where a user does NOT click Illinois but still is a UIUC student
-		expectedGradTerm: '',
+		expectedGradTerm: 'N/A',
 		gradYear: 2023,
 		age: null,
-		gender: 'preferNotToSay' as genderOptions,
-		ethnicity: 'preferNotToSay' as ethnicityOptions,
+		gender: null as genderOptions,
+		ethnicity: null as ethnicityOptions,
 		race: [] as raceOptions[],
 		raceOther: null,
-		firstGen: 'preferNotToSay' as firstGenOptions,
+		firstGen: null as firstGenOptions,
 		food: '',
 		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: null,
@@ -272,7 +272,7 @@
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="flex flex-col items-start  gap-2">
+				<div class="flex flex-col items-start gap-2">
 					<label for="gender" class="flex flex-row gap-2">
 						<div>Age</div>
 						<div class="text-slate-400">(optional)</div>
@@ -318,7 +318,7 @@
 						name="file"
 						id="resume-upload"
 						accept="application/pdf, application/msword, .doc, .docx"
-						class="block w-full 
+						class="block w-full
 						text-gray-200 file:text-white
 						file:mr-4 file:py-2 file:px-4
 						file:rounded-full file:border-0

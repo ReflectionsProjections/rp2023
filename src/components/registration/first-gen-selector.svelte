@@ -2,11 +2,11 @@
 	import Icon from '@iconify/svelte';
 	import type { firstGenOptions } from './misc-types';
 
-	export let firstGen: firstGenOptions = 'preferNotToSay';
+	export let firstGen: firstGenOptions = null;
 
 	const handleClick = (pressed: firstGenOptions) => () => {
 		if (pressed === firstGen) {
-			firstGen = 'preferNotToSay';
+			firstGen = null;
 			return;
 		}
 		firstGen = pressed;
