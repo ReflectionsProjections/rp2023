@@ -20,14 +20,14 @@
 	<span class="flex flex-row items-stretch">
 		<div class="flex flex-grow-[1] flex-col">
 			<button
-				class="flex-grow-[1] rounded-t-md duration-300 p-2 md:p-3 bg-white 
+				class="flex-grow-[1] rounded-t-md duration-300 p-2 md:p-3 bg-white
                 {formMajor === 'cs' ? 'bg-opacity-30' : 'bg-opacity-10 hover:bg-opacity-20'}"
 				on:click={() => (formMajor = 'cs')}
 			>
 				Computer Science
 			</button>
 			<button
-				class="flex-grow-[1] duration-300  p-3 bg-white break-words
+				class="flex-grow-[1] duration-300 p-3 bg-white break-words
                 {formMajor === 'ece' ? 'bg-opacity-30' : 'bg-opacity-10 hover:bg-opacity-20'}"
 				on:click={() => (formMajor = 'ece')}
 				>Electrical & Computer Engineering

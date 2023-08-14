@@ -1,10 +1,8 @@
-export type unanswered = 'preferNotToSay';
+export type genderOptions = 'male' | 'female' | 'nonbinary' | null;
 
-export type genderOptions = 'male' | 'female' | 'nonbinary' | unanswered;
+export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | null;
 
-export type ethnicityOptions = 'hispanicOrLatino' | 'notHispanicOrLatino' | unanswered;
-
-export type firstGenOptions = boolStr | unanswered;
+export type firstGenOptions = boolStr | null;
 
 export type extraEventOptions = 'mechmania' | 'puzzlebang';
 
@@ -18,10 +16,6 @@ export type raceOptions =
 
 export type boolStr = 'yes' | 'no';
 
-export type jobTypeOptions = 'full-time' | 'internship' | 'co-op' | unanswered;
+export type jobTypeOptions = 'full-time' | 'internship' | 'co-op';
 
 export type majorOptions = 'cs' | 'cs+stats' | 'cs+math' | 'cs+x';
-
-
-
-
