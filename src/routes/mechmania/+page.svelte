@@ -10,7 +10,7 @@
             <a href="https://mechmania.org/">
                 <img src="mm29.png" alt="Mech Mania 29 Logo" class="max-w-full transform scale-75 p-3" />
             </a>
-            <div class="text-base text-slate-300">
+            <div class="text-center text-base text-slate-300">
                 MechMania is a 24-hour AI hackathon where students team up to write a bot that plays a game. Every year, we build a game in secret, and challenge you to write the best bot!
                  It won't be so simple though; your bot will be competing against other teams' bots! You can fly solo or participate in a group of up to four. 
                  MechMania is open to all skill levels of coding. (Oh, and not to mention we've got prizes for the top teams!) 

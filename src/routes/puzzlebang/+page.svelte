@@ -10,7 +10,7 @@
             <a href="https://puzzlebang.com/">
                 <img src="puzzlebang2023_colored.svg" alt="Puzzle Bang 2023 Logo" class="max-w-full transform scale-75 p-3" />
             </a>
-            <div class="text-base text-slate-300">
+            <div class="text-center text-base text-slate-300">
                 Grab your friends and compete in a week-long puzzle contest hosted by four UIUC Alums to win exciting prizes. Go to <a href="https://puzzlebang.com/">PuzzleBang.com</a> to get started!
     PuzzleBang will also be running a pop-up escape room in Siebel on the Saturday after Reflections | Projections!  Make sure you follow @puzzlebang to find out how to register!
             </div>
