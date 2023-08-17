@@ -4,23 +4,28 @@
 	import Footer from '../components/footer.svelte';
 	import Sponsors from '../components/home/sponsors.svelte';
 	import GlassContainer from '../components/glass-container.svelte';
+	import ShootingStar from '../components/shooting-star.svelte';
+	import { onMount } from 'svelte';
 
-	let qrImg = null;
+	let qrImg: string | null = null;
 	const url = get(API_URL);
-	fetch(`${url}/attendee/qr`, {
-		method: 'GET',
-		credentials: 'include',
-		headers: {
-			'Content-Type': 'application/json',
-			Origin: 'dev.reflectionsprojections.org'
+
+	onMount(() => {
+		try {
+			fetch(`${url}/attendee/qr`, {
+				credentials: 'include'
+			})
+				.then((response) => response.text())
+				.then((text) => {
+					qrImg = text;
+				});
+		} catch (e) {
+			console.error(e);
 		}
-	})
-		.then((response) => response.text())
-		.then((text) => {
-			qrImg = text;
-		});
+	});
 </script>
 
+<ShootingStar />
 <div class="text-white flex items-center mx-10 xl:mx-2 my-5 xl:my-9">
 	<span class="w-full flex-col flex items-center">
 		<img class="w-[80%] sm:w-3/5 lg:w-2/5 mb-10" src="/rp-text-logo-white.svg" alt="rp logo" />
@@ -48,7 +53,7 @@
 	</h2>
 	<div class="block w-8/12 max-w-sm mx-auto">
 		<GlassContainer>
-			<img class="w-full aspect-square" src={qrImg} />
+			<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
 		</GlassContainer>
 	</div>
 </section>
