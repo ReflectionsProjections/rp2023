@@ -21,20 +21,25 @@
     });
 </script>
 
-<div class="h-full text-white flex items-center">
-	<span class="w-full">
-		<h1 class="w-full text-center text-3xl sm:text-5xl lg:text-7xl mb-3 md:mb-6">
-			reflections | projections
-		</h1>
-		<div class="text-center text-md sm:text-2xl lg:text-4xl uppercase mb-5 md:mb-10">
-			September 18 - 22, 2023
-		</div>
-		<button class="bg-white text-center block mx-auto p-3 lg:p-4 rounded-lg">
-			<span
-				class="uppercase text-black text-sm sm:text-md md:text-lg lg:text-xl font-semibold text-rp-gradient"
-				>Register</span
-			>
-		</button>
+<div class="xl:h-full text-white flex items-center mx-10 xl:mx-20 my-48 xl:my-0">
+	<span class="w-full flex-col xl:flex-row flex items-center">
+        <div class="w-full xl:w-1/2 xl:pr-5">
+            <img class="w-full md:w-9/12 mx-auto xl:w-11/12 mb-10" src="/rp-text-logo-white.svg" />
+            <div class="text-center xl:text-left text-md sm:text-2xl lg:text-4xl uppercase xl:mb-5 mb-10">
+                September 18 - 22, 2023
+            </div>
+        </div>
+        <div class="w-full xl:w-1/2 xl:pl-5">
+            <GlassContainer>
+                <p class="w-full xl:text-right text-lg mb-5">Expand your horizons at the Midwest’s largest student run tech conference this September. Join us for a week full of insightful talks from industry & academia leaders, hands-on workshops, and networking events.</p>
+                <button class="bg-white text-center block mx-auto xl:mr-0 p-3 lg:p-4 rounded-lg">
+                    <span
+                        class="uppercase text-black text-sm sm:text-md md:text-md lg:text-md font-semibold text-rp-gradient"
+                        >Register Now</span
+                    >
+                </button>
+            </GlassContainer>
+        </div>
 	</span>
 </div>
 <section>
