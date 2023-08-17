@@ -7,12 +7,12 @@ const sponsors = [
 
 <div class="w-full py-28 px-10 lg:py-40">
     <h2 class="text-white text-3xl sm:text-5xl md:text-7xl text-center mb-10 sm:mb-20">Our Sponsors</h2>
-    <div class="w-full sm:w-3/4 xl:w-5/8 mx-auto flex justify-between items-center mb-10 sm:mb-20">
+    <div class="w-full sm:w-3/4 xl:w-5/8 max-w-4xl mx-auto flex justify-between items-center mb-10 sm:mb-20">
         {#each sponsors[0] as sponsor}
             <img class="w-3/12" src="logos/{sponsor}.png" />
         {/each}
     </div>
-    <div class="w-3/4 sm:w-1/2 xl:w-3/8 mx-auto flex justify-around items-center">
+    <div class="w-3/4 sm:w-1/2 xl:w-3/8 max-w-2xl mx-auto flex justify-around items-center">
         {#each sponsors[1] as sponsor}
             <img class="w-4/12" src="logos/{sponsor}.png" />
         {/each}
