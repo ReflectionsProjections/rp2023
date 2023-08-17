@@ -5,7 +5,7 @@
 	export let user: User | null;
 </script>
 
-<span class="absolute top-0 w-full">
+<span class="sticky top-0 w-full">
 	<div
 		class="flex flex-row justify-between p-5 lg:px-10 text-gray-200 text-md md:text-base lg:text-lg font-sans items-center"
 	>
