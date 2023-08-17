@@ -3,37 +3,36 @@
 @tailwind utilities;
 
 .fluid-gradient {
-	background: linear-gradient(0deg, #1d2e5b , #C61E5D 30%, #DF5178 45%,  #1d2e5b);
-	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
-	background-size: 150% 150%;
-	animation: gradient 16s ease forwards;
+	background: linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
+	background-size: 200% 200%;
+	animation: gradient 16s ease infinite alternate;
 }
 
 @keyframes gradient {
 	0% {
-		background-position: 50% 100%;
+		background-position: 200% 30%;
 	}
 	100% {
-		background-position: 50% -20%;
+		background-position: 50% 0%;
 	}
 }
 
-
 ::-webkit-scrollbar {
-	width: 12px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+	width: 6px;
+	height: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
 	background: #1d2e5b;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-	background: linear-gradient(0deg, #1d2e5b , #C61E5D 20%, #DF5178 80%,  #1d2e5b);
-  }
-  
-  /* Handle on hover */
-  /* ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(0deg, #1d2e5b, #c61e5d 20%, #df5178 80%, #1d2e5b);
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
 	background: linear-gradient(0deg, #C61E5D 30%, #DF5178 45%,  #1d2e5b);
   } */

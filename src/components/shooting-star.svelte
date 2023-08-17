@@ -95,4 +95,10 @@
 			animation-duration: 3.2s;
 		}
 	}
+
+	@media (prefers-reduced-motion) {
+		span {
+			display: none;
+		}
+	}
 </style>
