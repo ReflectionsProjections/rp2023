@@ -29,7 +29,7 @@
 			on:click={handleClick('mechmania')}
 		>
 			<strong><u>MechMania</u></strong>
-			<div>Test Here</div>
+			<div>MechMania is a 24-hour AI hackathon where students team up to write a bot that plays a game</div>
 		</button>
 		<button
 			class="w-full duration-300 text-center bg-white p-3 {formExtraEvents.includes('puzzlebang')
@@ -38,7 +38,7 @@
 			on:click={handleClick('puzzlebang')}
 		>
 			<strong><u>PuzzleBang</u></strong>
-			<div>Test Here</div>
+			<div>PuzzleBang is a week-long puzzle contest where you and your friends can win exciting prizes! Not to mention an escape room...</div>
 		</button>
 	</div>
 

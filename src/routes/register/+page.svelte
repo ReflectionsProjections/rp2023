@@ -350,7 +350,13 @@
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="text-base text-slate-300">PLACEHOLDER FOR DESCRIPTION</div>
+				<div class="text-base text-slate-300">
+					Click on the links to learn more about the events! <br> 
+					<ul class="list-none">
+						<li><a href="https://reflectionsprojections.org/mechmania" class="text-blue-300 hover:text-blue-500 underline" target="_blank" rel="noreferrer">MechMania</a></li>
+						<li><a href="https://reflectionsprojections.org/puzzlebang" class="text-blue-300 hover:text-blue-500 underline" target="_blank" rel="noreferrer">Puzzlebang</a></li>
+					</ul>
+				</div>
 				<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 			</div>
 
