@@ -26,7 +26,7 @@
 	$: show, refreshData();
 
 	const refreshData = () => {
-		eventData = { ...event, start_time: isoStringToLocal(event.start_time) };
+		eventData = { ...event, start_time: isoStringToLocal(event.start_time), end_time: isoStringToLocal(event.end_time)};
 		errors = {};
 		apiError = null;
 	};
@@ -75,7 +75,8 @@
 		}
 		eventData = {
 			...eventData,
-			start_time: localToIsoString(eventData.start_time)
+			start_time: localToIsoString(eventData.start_time),
+			end_time: localToIsoString(eventData.end_time)
 		};
 		type == 'Create' ? createEvent() : updateEvent();
 	};
@@ -100,6 +101,13 @@
 			success = false;
 		} else if (dayjs(eventData.start_time).isBefore(dayjs())) {
 			errors.start_time = 'Start time cannot be in the past';
+			success = false;
+		}
+		if (!eventData.end_time || eventData.end_time.length == 0) {
+			errors.end_time = 'end time cannot be empty';
+			success = false;
+		} else if (dayjs(eventData.end_time).isBefore(dayjs())) {
+			errors.end_time = 'end time cannot be in the past';
 			success = false;
 		}
 		if (!eventData.duration || eventData.duration == 0) {
@@ -150,6 +158,13 @@
 						type="datetime-local"
 						class="bg-gray-700 rounded-sm p-1"
 						bind:value={eventData.start_time}
+					/>
+				</SmartInput>
+				<SmartInput bind:error={errors.end_time} label="Ends at" sublabel="Central Time">
+					<input
+						type="datetime-local"
+						class="bg-gray-700 rounded-sm p-1"
+						bind:value={eventData.end_time}
 					/>
 				</SmartInput>
 				<div class="flex flex-row gap-5">
