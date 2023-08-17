@@ -124,12 +124,12 @@
          let response;
 		 let resume_url;
          try {
-             response = await fetch(`${API_URL}/carp/email/${emailToGET}`);
+             response = await fetch(`${API_URL}/carp/resume/${emailToGET}`);
              try {
                  const jsonResponse = await response.json();
 
                  if (response.ok) {
-					resume_url = jsonResponse;
+					resume_url = jsonResponse.url;
 
 					// opent the url
 					window.open(resume_url, '_blank');
