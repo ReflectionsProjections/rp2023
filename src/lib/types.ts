@@ -3,6 +3,7 @@ interface Event {
 	name: string;
 	description: string;
 	start_time: string;
+	end_time: string;
 	duration: number;
 	location: string;
 	virtual: boolean;
