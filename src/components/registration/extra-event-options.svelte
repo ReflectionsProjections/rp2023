@@ -1,27 +1,27 @@
 <script lang="ts">
-    import type { extraEventOptions } from "./misc-types";
+	import type { extraEventOptions } from './misc-types';
 
-    // const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
-    //     { extraEventId: 'mechmania', displayText: 'MechMania' },
-    //     { extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
-    // ];
-    export let formExtraEvents: string[];
+	// const extraEventOptions: { extraEventId: extraEventOptions, displayText: string}[] = [
+	//     { extraEventId: 'mechmania', displayText: 'MechMania' },
+	//     { extraEventId: 'puzzlebang', displayText: 'PuzzleBang' }
+	// ];
+	export let formExtraEvents: string[];
 
-    const handleClick = (pressed: extraEventOptions) => () => {
+	const handleClick = (pressed: extraEventOptions) => () => {
 		if (formExtraEvents.includes(pressed)) {
 			formExtraEvents = formExtraEvents.filter((val) => val !== pressed);
 		} else {
 			formExtraEvents = formExtraEvents.concat(pressed);
 		}
-		
-	}
-
+	};
 </script>
 
 <div class="flex flex-col gap-5 mb-3">
-    <label for="mech-puzzle">Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label>
+	<label for="mech-puzzle"
+		>Are you interested in MechMania/PuzzleBang? (Select all you are interested in)</label
+	>
 
-    <div class="flex flex-col items-center w-full">
+	<div class="flex flex-col items-center w-full">
 		<button
 			class="w-full duration-300 text-center bg-white p-3 {formExtraEvents.includes('mechmania')
 				? 'bg-opacity-40'
@@ -29,7 +29,7 @@
 			on:click={handleClick('mechmania')}
 		>
 			<strong><u>MechMania</u></strong>
-            <div>Test Here</div>
+			<div>Test Here</div>
 		</button>
 		<button
 			class="w-full duration-300 text-center bg-white p-3 {formExtraEvents.includes('puzzlebang')
@@ -37,12 +37,12 @@
 				: 'bg-opacity-10 hover:bg-opacity-20'}"
 			on:click={handleClick('puzzlebang')}
 		>
-        <strong><u>PuzzleBang</u></strong>
-        <div>Test Here</div>
+			<strong><u>PuzzleBang</u></strong>
+			<div>Test Here</div>
 		</button>
-</div>
-    
-    <!-- {#each extraEventOptions as { extraEventId, displayText }}
+	</div>
+
+	<!-- {#each extraEventOptions as { extraEventId, displayText }}
     <div class="flex flex-col items-center">
             <button
                     id={extraEventId}
@@ -64,5 +64,4 @@
             
             </div>
     {/each} -->
-
 </div>

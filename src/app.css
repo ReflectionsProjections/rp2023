@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .fluid-gradient {
-	background: linear-gradient( #1d2e5b , #C61E5D 60%, #DF5178 80%,   #1d2e5b);
+	background: linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
 	background-size: 200% 200%;
 	animation: gradient 16s ease infinite alternate;
 }
@@ -28,23 +28,22 @@
 	}
 }
 
-
 ::-webkit-scrollbar {
 	width: 6px;
 	height: 6px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
 	background: #1d2e5b;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-	background: linear-gradient(0deg, #1d2e5b , #C61E5D 20%, #DF5178 80%,  #1d2e5b);
-  }
-  
-  /* Handle on hover */
-  /* ::-webkit-scrollbar-thumb:hover {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: linear-gradient(0deg, #1d2e5b, #c61e5d 20%, #df5178 80%, #1d2e5b);
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
 	background: linear-gradient(0deg, #C61E5D 30%, #DF5178 45%,  #1d2e5b);
   } */

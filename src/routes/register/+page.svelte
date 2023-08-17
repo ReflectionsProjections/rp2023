@@ -14,15 +14,16 @@
 	import type {
 		boolStr,
 		ethnicityOptions,
-		extraEventOptions,
 		firstGenOptions,
 		genderOptions,
-		jobTypeOptions,
-		raceOptions
+		raceOptions,
+		extraEventOptions,
+		jobTypeOptions
 	} from '../../components/registration/misc-types';
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
+	import HandleClick from '../../components/registration/submit-handler.svelte';
 	import { API_URL } from '../../constants';
 
 	let email = '';
@@ -32,17 +33,17 @@
 		email: '',
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
-		major: '',
-		majorOther: '',
-		collegeName: '',
-		expectedGradTerm: '',
+		major: 'N/A',
+		majorOther: null,
+		collegeName: 'UIUC', // needs to be set as the default in the case where a user does NOT click Illinois but still is a UIUC student
+		expectedGradTerm: 'N/A',
 		gradYear: 2023,
-		age: '',
-		gender: 'preferNotToSay' as genderOptions,
-		ethnicity: 'preferNotToSay' as ethnicityOptions,
+		age: null,
+		gender: null as genderOptions,
+		ethnicity: null as ethnicityOptions,
 		race: [] as raceOptions[],
 		raceOther: null,
-		firstGen: 'preferNotToSay' as firstGenOptions,
+		firstGen: null as firstGenOptions,
 		food: '',
 		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: null,
@@ -54,22 +55,12 @@
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
-		{ referralId: 'ACMN', displayText: 'ACM Newsletter' },
 		{ referralId: 'buildingAds', displayText: 'Building Ads' },
 		{ referralId: 'courses', displayText: 'School Course' },
-		{ referralId: 'WCS', displayText: 'WCS Newsletter' },
-		{ referralId: 'csNewsletter', displayText: 'CS Department Newsletter' },
 		{ referralId: 'instagram', displayText: 'Instagram' },
-		{ referralId: 'facebook', displayText: 'Facebook' },
-		{ referralId: 'twitter', displayText: 'Twitter' },
-		{ referralId: 'linkedin', displayText: 'LinkedIn' },
 		{ referralId: 'email', displayText: 'E-mail' },
 		{ referralId: 'posters', displayText: 'Posters/Flyers' },
-		{ referralId: 'quadDay', displayText: 'Quad Day' },
-		{ referralId: 'eNight', displayText: 'E-Night' },
 		{ referralId: 'website', displayText: 'Website' },
-		{ referralId: 'slack', displayText: 'Slack' },
-		{ referralId: 'discord', displayText: 'Discord' },
 		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
 	];
 
@@ -77,6 +68,7 @@
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
+			// next: () => 'emailVerification',
 			prev: () => 'none',
 			requiredFields: ['name', 'email']
 		},
@@ -130,6 +122,10 @@
 
 	let error = '';
 
+	let fileData: File;
+
+	$: console.log(fileData);
+
 	let passcodeSuccess = false;
 
 	const verifyPasscode = async () => {
@@ -153,15 +149,16 @@
 
 		if (response.ok) {
 			passcodeSuccess = true;
-			await onSubmit();
-			window.location = '/' as Location | (string & Location);
 		} else {
 			const res = await response.json();
 			if (response.status === 403 || response.status === 500) {
 				alert('There was an error filling out the registration form. Please try again');
 				window.location = '/register' as Location | (string & Location);
+			} else {
+				console.error(res);
 			}
 		}
+		return passcodeSuccess;
 	};
 
 	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -195,6 +192,16 @@
 			}
 		}
 	};
+
+	const handleFileInput = (event: Event) => {
+		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
+		var file = fileInput?.files?.[0];
+
+		if (file) {
+			fileData = file;
+			console.log('Filedata is updated to: ', fileData);
+		}
+	};
 </script>
 
 <form
@@ -221,8 +228,8 @@
 				</div>
 
 				<IsCollegeStudent
-					bind:isCollegeStudent={formValues.isCollegeStudent}
 					bind:isUIUCStudent={formValues.isUIUCStudent}
+					bind:isCollegeStudent={formValues.isCollegeStudent}
 					bind:collegeName={formValues.collegeName}
 					bind:major={formValues.major}
 				/>
@@ -309,7 +316,8 @@
 					<label for="resume">Upload your Resume Here</label>
 					<input
 						type="file"
-						name="resume"
+						name="file"
+						id="resume-upload"
 						accept="application/pdf, application/msword, .doc, .docx"
 						class="block w-full
 						text-gray-200 file:text-white
@@ -318,6 +326,7 @@
 						file:bg-white file:bg-opacity-10
 						file:hover:bg-opacity-20 hover:file:bg-violet-100
 						file:duration-300"
+						on:change={handleFileInput}
 					/>
 				</div>
 
@@ -395,13 +404,8 @@
 					bind:value={passcode}
 				/>
 			</div>
-			<button
-				type="submit"
-				class="mx-auto disabled:opacity-25 disabled:cursor-not-allowed duration-500 bg-white bg-opacity-30 text-white px-3 py-2 m-3 rounded-md flex gap-2 border border-white"
-				on:click={verifyPasscode}
-			>
-				Submit
-			</button>
+
+			<HandleClick {verifyPasscode} {onSubmit} {fileData} />
 
 			{#if !submitted}
 				<PageControls {formValues} bind:page {pageMeta} />
