@@ -78,6 +78,7 @@
 					<th>Location</th>
 					<th>Description</th>
 					<th>Starts at</th>
+					<th>Ends at</th>
 					<th>Duration</th>
 					<th>Upgrades</th>
 					<th>Virtual</th>
@@ -104,6 +105,9 @@
 							</td>
 							<td>
 								{dayjs(event.start_time).tz('America/Chicago').format('llll')}
+							</td>
+							<td>
+								{dayjs(event.end_time).tz('America/Chicago').format('llll')}
 							</td>
 							<td>
 								{event.duration}
