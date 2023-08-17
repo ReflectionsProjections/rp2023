@@ -168,7 +168,7 @@
 					/>
 				</SmartInput>
 				<div class="flex flex-row gap-5">
-					<SmartInput label="Duration" sublabel="Hours" bind:error={errors.duration}>
+					<!-- <SmartInput label="Duration" sublabel="Hours" bind:error={errors.duration}>
 						<input
 							type="number"
 							min={0}
@@ -177,7 +177,7 @@
 							class="bg-gray-700 rounded-sm p-1"
 							bind:value={eventData.duration}
 						/>
-					</SmartInput>
+					</SmartInput> -->
 					<SmartInput label="Virtual" bind:error={errors.virtual}>
 						<input
 							type="checkbox"
