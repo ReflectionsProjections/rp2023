@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
 	import GlassContainer from '../../components/glass-container.svelte';
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
@@ -24,33 +25,39 @@
 	import RaceSelector from '../../components/registration/race-selector.svelte';
 	import HandleClick from '../../components/registration/submit-handler.svelte';
 	import { API_URL } from '../../constants';
+	import SmartInput from '../../lib/util/smart-input.svelte';
+	import { formValidators } from './validators';
 
 	let email = '';
 	let passcode = '';
+	type FormKeys = keyof typeof formValues;
+	type Errors = Partial<Record<FormKeys, string | undefined>>;
+	const errors: Errors = {};
+
 	const formValues = {
 		name: '',
 		email: '',
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
 		major: 'N/A',
-		majorOther: null,
-		collegeName: 'UIUC', // needs to be set as the default in the case where a user does NOT click Illinois but still is a UIUC student
-		expectedGradTerm: 'N/A',
+		majorOther: '',
+		collegeName: 'UIUC', // default in the case where a user does NOT click Illinois but still is a UIUC student
+		expectedGradTerm: '',
 		gradYear: 2023,
+		firstGen: null as firstGenOptions,
 		age: null,
 		gender: null as genderOptions,
 		ethnicity: null as ethnicityOptions,
 		race: [] as raceOptions[],
 		raceOther: null,
-		firstGen: null as firstGenOptions,
-		food: '',
+		food: 'none',
 		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: null,
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
 		marketingOther: null
 	};
-	let page: PageIndex = 'welcome';
+	let page: PageIndex = 'specialEvents';
 
 	const referralOptions = [
 		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
@@ -67,72 +74,82 @@
 		welcome: {
 			title: 'Welcome to R | P',
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
-			// next: () => 'emailVerification',
 			prev: () => 'none',
-			requiredFields: ['name', 'email']
+			fields: ['name', 'email']
 		},
 		academics: {
 			title: 'Academics',
 			next: () => 'demographics',
 			prev: () => 'welcome',
-			requiredFields: ['expectedGradTerm', 'expectedGradYear', 'major', 'firstGen']
+			fields: ['major', 'majorOther', 'collegeName', 'expectedGradTerm', 'gradYear', 'firstGen']
 		},
 		demographics: {
 			title: 'Demographics',
 			next: () => 'dietaryRestrictions',
 			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome'),
-			requiredFields: []
+			fields: ['age', 'gender', 'ethnicity', 'race', 'raceOther']
 		},
 		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
 			next: () => 'recruitment',
 			prev: () => 'demographics',
-			requiredFields: ['food']
+			fields: ['food']
 		},
 		recruitment: {
 			title: 'Recruitment',
 			next: () => 'specialEvents',
 			prev: () => 'dietaryRestrictions',
-			requiredFields: []
+			fields: ['jobTypeInterest', 'portfolioLink']
 		},
 		specialEvents: {
 			title: 'Special Events',
 			next: () => 'marketing',
 			prev: () => 'recruitment',
-			requiredFields: []
+			fields: ['mechPuzzle']
 		},
 		marketing: {
 			title: 'One Last Step',
 			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
-			requiredFields: ['marketing']
+			fields: ['marketing', 'marketingOther']
 		},
 		emailVerification: {
 			title: 'Email Verification',
 			next: () => 'none',
 			prev: () => 'marketing',
-			requiredFields: ['emailVerificationCode']
+			fields: []
 		}
 	};
 
-	$: console.log(formValues);
-
 	let submitted = false;
-
-	let error = '';
-
 	let fileData: File;
 
-	$: console.log(fileData);
+	const generateVerification = async () => {
+		// It is assumed reaching here means basic email regex test has passed
+		const response = await fetch(`${$API_URL}/auth/generate`, {
+			method: 'POST',
+			cache: 'no-cache',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email: formValues.email })
+		});
+		// Return true if successful
+		if (response.ok) {
+			return true;
+		}
+		const res = await response.json();
+		console.error(res);
+		errors.email = res.message;
+		return false;
+	};
 
 	let passcodeSuccess = false;
-
 	const verifyPasscode = async () => {
 		email = formValues.email;
 
 		if (!verifyEmail(email) || !passcodeValid) {
 			alert('Invalid Passcode');
-			console.log('entered here cuz something was invalid');
 			return;
 		}
 
@@ -150,12 +167,9 @@
 			passcodeSuccess = true;
 		} else {
 			const res = await response.json();
-			if (response.status === 403 || response.status === 500) {
-				alert('There was an error filling out the registration form. Please try again');
-				window.location = '/register' as Location | (string & Location);
-			} else {
-				console.error(res);
-			}
+			console.error(response.statusText);
+			console.error(res);
+			alert(response.statusText);
 		}
 		return passcodeSuccess;
 	};
@@ -179,13 +193,12 @@
 			body: JSON.stringify({ ...formValues, expectedGradYear: formValues.gradYear.toString() })
 		});
 
-		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
+		//For debugging. After clicking submit, should be able to see the request in console
 
 		if (response.ok) {
 			submitted = true;
 		} else {
 			if (response.status === 403 || response.status === 500) {
-				//TODO: This may not be the right way to check for existing email. We may need to be more specific with our check.
 				alert('Email already exists. Please try again');
 				window.location = '/register' as Location | (string & Location);
 			}
@@ -198,14 +211,28 @@
 
 		if (file) {
 			fileData = file;
-			console.log('Filedata is updated to: ', fileData);
 		}
 	};
+
+	const validate = async () => {
+		let noneFailed = true;
+		for (const field of pageMeta[page].fields) {
+			const validator = formValidators[field];
+			const res = validator(formValues[field as FormKeys]);
+			if (res) {
+				errors[field as FormKeys] = res;
+				console.info('Validation error: ', res);
+				noneFailed = false;
+			} else {
+				errors[field as FormKeys] = undefined;
+			}
+		}
+		return noneFailed;
+	};
+	$: console.log(formValues);
 </script>
 
-<form
-	class="fixed mx-auto center-div w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink overflow-y-auto mt-8"
->
+<form class="flex mx-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink pb-10">
 	{#if page == 'welcome'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
@@ -215,16 +242,13 @@
 						We're glad you made it. Sign up here to receive your conference passes.
 					</div>
 				</div>
-				<div class="flex flex-col items-start">
-					<label for="name">Full Name</label>
+				<SmartInput label="Full Name" bind:error={errors.name}>
 					<input
 						id="name"
 						bind:value={formValues.name}
-						required
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-						autocomplete="off"
 					/>
-				</div>
+				</SmartInput>
 
 				<IsCollegeStudent
 					bind:isUIUCStudent={formValues.isUIUCStudent}
@@ -233,9 +257,25 @@
 					bind:major={formValues.major}
 				/>
 
-				<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
+				<!-- TODO: Dynamic Email has addtional validation based on API Calls -->
+				<DynamicEmail
+					bind:email={formValues.email}
+					uiucStudent={formValues.isUIUCStudent}
+					bind:error={errors.email}
+				/>
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<!-- On Next page, send the verification email -->
+			<PageControls
+				validate={async () => {
+					if (await validate()) {
+						return await generateVerification();
+					}
+					return false;
+				}}
+				{formValues}
+				bind:page
+				{pageMeta}
+			/>
 		</GlassContainer>
 	{/if}
 
@@ -247,8 +287,14 @@
 				<GradDateSelector
 					bind:gradYear={formValues.gradYear}
 					bind:expectedGradTerm={formValues.expectedGradTerm}
+					bind:errorTerm={errors.expectedGradTerm}
 				/>
-				<MajorSelector bind:formMajor={formValues.major} bind:majorOther={formValues.majorOther} />
+				<MajorSelector
+					bind:major={formValues.major}
+					bind:majorOther={formValues.majorOther}
+					bind:errorMajor={errors.major}
+					bind:errorMajorOther={errors.majorOther}
+				/>
 				{#if formValues.isUIUCStudent == 'no'}
 					<div class="flex flex-col">
 						<label for="college-name" class="ml-1">Name of University</label>
@@ -264,7 +310,7 @@
 
 				<FirstGenSelector bind:firstGen={formValues.firstGen} />
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -272,27 +318,27 @@
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="flex flex-col items-start gap-2">
-					<label for="gender" class="flex flex-row gap-2">
-						<div>Age</div>
-						<div class="text-slate-400">(optional)</div>
-					</label>
+				<SmartInput label="Age" sublabel="optional" bind:error={errors.age}>
 					<input
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
 						type="number"
 						id="age"
 						bind:value={formValues.age}
 					/>
-				</div>
+				</SmartInput>
 
 				<GenderSelector bind:gender={formValues.gender} />
 
 				<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
 
-				<RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
+				<RaceSelector
+					bind:formRace={formValues.race}
+					bind:formRaceOther={formValues.raceOther}
+					bind:raceOtherError={errors.raceOther}
+				/>
 			</div>
 
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -301,9 +347,9 @@
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
 
-				<DietaryOptions bind:foodOther={formValues.food} />
+				<DietaryOptions bind:food={formValues.food} bind:error={errors.food} />
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -331,18 +377,19 @@
 
 				<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
-				<div class="flex flex-col items-start">
-					<label for="portfolio"
-						>Portfolio Link/LinkedIn (Separate multiple links with commas)</label
-					>
+				<SmartInput
+					label="Portfolio Link/LinkedIn"
+					sublabel="Separate multiple links with commas"
+					bind:error={errors.portfolioLink}
+				>
 					<input
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 						type="url"
 						bind:value={formValues.portfolioLink}
 					/>
-				</div>
+				</SmartInput>
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -350,11 +397,10 @@
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
 				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="text-base text-slate-300">PLACEHOLDER FOR DESCRIPTION</div>
 				<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 			</div>
 
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -389,7 +435,7 @@
 					</div>
 				</div>
 			{/if}
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
@@ -407,7 +453,7 @@
 			<HandleClick {verifyPasscode} {onSubmit} {fileData} />
 
 			{#if !submitted}
-				<PageControls {formValues} bind:page {pageMeta} />
+				<PageControls {validate} {formValues} bind:page {pageMeta} />
 			{/if}
 
 			{#if submitted}

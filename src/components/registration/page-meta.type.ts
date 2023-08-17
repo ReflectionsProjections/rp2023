@@ -14,6 +14,6 @@ export interface PageMeta {
 		prev: (isCollegeStudent: boolean | undefined) => PageIndex;
 		next: (isCollegeStudent: boolean | undefined) => PageIndex;
 		title: string;
-		requiredFields: string[];
+		fields: string[];
 	};
 }
