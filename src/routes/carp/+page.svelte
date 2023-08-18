@@ -16,6 +16,7 @@
 	// ]
 
 	// DROP DOWNS
+	// TODO add functionality to fetch majors, grad years, and job interests
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
 	let major_value = 'None';
 	$: major_filters = new Set<string>();
@@ -81,21 +82,6 @@
          let response;
 
 		 // dummy data for now
-		 attendees = [
-			{
-				name: 'Atharva Naik',
-				major: 'Math & CS',
-				grad_year: '2024',
-				job_interest: 'Full-Time',
-				email: 'atharva.naik@reflectionsprojections.org'
-			},
-			{
-				name: 'Saloni Vaishnav',
-				major: 'Computer Science',
-				grad_year: '2025',
-				job_interest: 'Internship',
-				email: 'saloni.vaishnav@reflectionsprojections.org'
-			}]
          try {
 			// TODO: change url to actual api endpoint
              response = await fetch(`${API_URL}/attendee`);
@@ -119,12 +105,12 @@
 
 	// currently not functioning bc endpoint in api not done
 	// TODO: Tests with actual endpoint
-	const fetchURl = async (emailToGET: string) => {
-		console.log("trying to fetch url for: " + emailToGET);
+	const fetchURl = async (attendeeId: string) => {
+		console.log("trying to fetch url for: " + attendeeId);
          let response;
 		 let resume_url;
          try {
-             response = await fetch(`${API_URL}/carp/resume/${emailToGET}`);
+             response = await fetch(`${API_URL}/carp/resume/${attendeeId}`);
              try {
                  const jsonResponse = await response.json();
 
@@ -280,11 +266,10 @@
 				{#each attendees as attendee}
 					<tr>
 						<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:innerHTML={attendee.major} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:textContent={attendee.grad_year} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:innerHTML={attendee.studentInfo.major} class =" w-56 p-2"></td>
+						<td contenteditable="false" bind:textContent={attendee.studentInfo.graduation} class =" w-56 p-2"></td>
 						<td contenteditable="false" bind:textContent={attendee.job_interest} class =" w-56 p-2"></td>
-						<button on:click={() => fetchURl(attendee.email)} >Access Resume</button>
+						<button on:click={() => fetchURl(attendee._id)} >Access Resume</button>
 					</tr>
 				 {/each}
 			</tbody>
