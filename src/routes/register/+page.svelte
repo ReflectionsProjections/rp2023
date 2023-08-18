@@ -521,7 +521,7 @@
 	Page 6) Resume
 	Page 7) MechMania and PuzzleBang
 	Page 8 ) How did you hear about RP?
-	Pagw 9 ) Email Verification
+	Page 9 ) Email Verification
 -->
 <style>
 	input {
