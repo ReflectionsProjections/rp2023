@@ -80,22 +80,22 @@
 	const fetchAttendees = async () => {
          let response;
 
-		 // dummy data for now
-		 attendees = [
-			{
-				name: 'Atharva Naik',
-				major: 'Math & CS',
-				grad_year: '2024',
-				job_interest: 'Full-Time',
-				email: 'atharva.naik@reflectionsprojections.org'
-			},
-			{
-				name: 'Saloni Vaishnav',
-				major: 'Computer Science',
-				grad_year: '2025',
-				job_interest: 'Internship',
-				email: 'saloni.vaishnav@reflectionsprojections.org'
-			}]
+		//  // dummy data for now
+		//  attendees = [
+		// 	{
+		// 		name: 'Atharva Naik',
+		// 		major: 'Math & CS',
+		// 		grad_year: '2024',
+		// 		job_interest: 'Full-Time',
+		// 		email: 'atharva.naik@reflectionsprojections.org'
+		// 	},
+		// 	{
+		// 		name: 'Saloni Vaishnav',
+		// 		major: 'Computer Science',
+		// 		grad_year: '2025',
+		// 		job_interest: 'Internship',
+		// 		email: 'saloni.vaishnav@reflectionsprojections.org'
+		// 	}]
          try {
 			// TODO: change url to actual api endpoint
              response = await fetch(`${API_URL}/attendee`);
@@ -104,6 +104,7 @@
 
                  if (response.ok) {
 					attendees = jsonResponse;
+					console.log("attendees " + attendees)
                  } else {
                      console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
                  }
@@ -124,7 +125,7 @@
          let response;
 		 let resume_url;
          try {
-             response = await fetch(`${API_URL}/carp/email/${emailToGET}`);
+             response = await fetch(`${API_URL}/carp/resume/${emailToGET}`);
              try {
                  const jsonResponse = await response.json();
 
