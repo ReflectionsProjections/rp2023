@@ -10,4 +10,6 @@ interface Event {
 	visible: boolean;
 }
 
-export type { Event };
+type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
+
+export type { Event, Status };

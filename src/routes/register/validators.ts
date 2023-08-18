@@ -86,5 +86,13 @@ export const formValidators: FormValidators = {
 		if (!marketingOther) return null;
 		if (marketingOther.length > 30) return 'This cannot be over 30 characters';
 		return null;
+	},
+	passcode: (passcode: string): string | null => {
+		passcode = passcode.trim();
+		// Basic regex for validating emails. NOT RFC2822 compliant, but will not have any false negatives.
+		// Philosophy: Best way to validate an email is by sending a verification token to it.
+		const regex = /^\d{6}$/;
+		if (!regex.test(passcode)) return 'Passcode must be six digits';
+		return null;
 	}
 };

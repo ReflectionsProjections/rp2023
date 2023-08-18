@@ -7,7 +7,8 @@ export type PageIndex =
 	| 'recruitment'
 	| 'specialEvents'
 	| 'marketing'
-	| 'emailVerification';
+	| 'emailVerification'
+	| 'finalPage';
 
 export interface PageMeta {
 	[index: string]: {

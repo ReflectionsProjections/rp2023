@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import Icon from '@iconify/svelte';
 	import GlassContainer from '../../components/glass-container.svelte';
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
@@ -23,13 +24,14 @@
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
-	import HandleClick from '../../components/registration/submit-handler.svelte';
+	import ReferralSelector from '../../components/registration/referral-selector.svelte';
 	import { API_URL } from '../../constants';
 	import SmartInput from '../../lib/util/smart-input.svelte';
 	import { formValidators } from './validators';
+	import UserCreateFeedback from '../../components/registration/user-create-feedback.svelte';
+	import type { Status } from '$lib/types';
+	import { fly, slide } from 'svelte/transition';
 
-	let email = '';
-	let passcode = '';
 	type FormKeys = keyof typeof formValues;
 	type Errors = Partial<Record<FormKeys, string | undefined>>;
 	const errors: Errors = {};
@@ -55,20 +57,10 @@
 		portfolioLink: null,
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
-		marketingOther: null
+		marketingOther: null,
+		passcode: '' // Not sent with POST /attendee
 	};
-	let page: PageIndex = 'specialEvents';
-
-	const referralOptions = [
-		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
-		{ referralId: 'buildingAds', displayText: 'Building Ads' },
-		{ referralId: 'courses', displayText: 'School Course' },
-		{ referralId: 'instagram', displayText: 'Instagram' },
-		{ referralId: 'email', displayText: 'E-mail' },
-		{ referralId: 'posters', displayText: 'Posters/Flyers' },
-		{ referralId: 'website', displayText: 'Website' },
-		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
-	];
+	let page: PageIndex = 'welcome';
 
 	const pageMeta: PageMeta = {
 		welcome: {
@@ -108,25 +100,24 @@
 			fields: ['mechPuzzle']
 		},
 		marketing: {
-			title: 'One Last Step',
+			title: 'How did we reach you?',
 			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
 			fields: ['marketing', 'marketingOther']
 		},
 		emailVerification: {
-			title: 'Email Verification',
+			title: 'One Last Step',
 			next: () => 'none',
 			prev: () => 'marketing',
-			fields: []
+			fields: ['passcode']
 		}
 	};
 
-	let submitted = false;
 	let fileData: File;
 
 	const generateVerification = async () => {
 		// It is assumed reaching here means basic email regex test has passed
-		const response = await fetch(`${$API_URL}/auth/generate`, {
+		const response = await fetch(`${$API_URL}/auth/generate?isRegister=true`, {
 			method: 'POST',
 			cache: 'no-cache',
 			headers: {
@@ -144,15 +135,7 @@
 		return false;
 	};
 
-	let passcodeSuccess = false;
 	const verifyPasscode = async () => {
-		email = formValues.email;
-
-		if (!verifyEmail(email) || !passcodeValid) {
-			alert('Invalid Passcode');
-			return;
-		}
-
 		const response = await fetch(`${$API_URL}/auth/verify`, {
 			method: 'POST',
 			cache: 'no-cache',
@@ -160,29 +143,20 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ email, passcode })
+			body: JSON.stringify({ email: formValues.email, passcode: formValues.passcode })
 		});
 
 		if (response.ok) {
-			passcodeSuccess = true;
-		} else {
-			const res = await response.json();
-			console.error(response.statusText);
-			console.error(res);
-			alert(response.statusText);
+			return true;
 		}
-		return passcodeSuccess;
+		const res = await response.json();
+		const message = res.message;
+		console.error(message);
+		errors.passcode = Array.isArray(message) ? message.join(',') : message;
+		return false;
 	};
 
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	const verifyEmail = (email: string) => email.length > 0 && emailRegex.test(email);
-	$: emailValid = verifyEmail(email);
-
-	//Basic Passcode Validation
-	const passcodeRegex = /^\d{6}$/;
-	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
-
-	const onSubmit = async () => {
+	const createUser = async () => {
 		const response = await fetch(`${$API_URL}/attendee`, {
 			method: 'POST',
 			credentials: 'include',
@@ -190,22 +164,95 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ ...formValues, expectedGradYear: formValues.gradYear.toString() })
+			body: JSON.stringify({
+				...formValues,
+				expectedGradYear: formValues.gradYear.toString(),
+				passcode: undefined
+			})
 		});
 
-		//For debugging. After clicking submit, should be able to see the request in console
-
 		if (response.ok) {
-			submitted = true;
-		} else {
-			if (response.status === 403 || response.status === 500) {
-				alert('Email already exists. Please try again');
-				window.location = '/register' as Location | (string & Location);
-			}
+			return true;
 		}
+		const res = await response.json();
+		console.error(res);
+		const message = res.message;
+		submitErrors = Array.isArray(message) ? message : [message];
+		return false;
 	};
 
-	const handleFileInput = (event: Event) => {
+	const uploadResume = async () => {
+		if (!fileData) {
+			return true;
+		}
+
+		const formData = new FormData();
+		formData.append('file', fileData);
+
+		const response = await fetch(`${$API_URL}/attendee/upload`, {
+			method: 'POST',
+			cache: 'no-cache',
+			credentials: 'include',
+			body: formData
+		});
+
+		if (response.ok) {
+			return true;
+		}
+		const res = await response.json();
+		console.error(res);
+		const message = res.message;
+		submitErrors = Array.isArray(message) ? message : [message];
+		return false;
+	};
+
+	let submitStatus: Record<'verifyPasscode' | 'createUser' | 'uploadResume', Status> = {
+		verifyPasscode: 'waiting',
+		createUser: 'waiting',
+		uploadResume: 'waiting'
+	};
+	let submitErrors: string[] | null = null;
+
+	let submitClicked = false;
+	const handleFormSubmit = async () => {
+		if (!(await validate())) {
+			return;
+		}
+		submitStatus.verifyPasscode = 'in_progress';
+		const passcodeSuccess = await verifyPasscode();
+
+		if (!passcodeSuccess) {
+			submitStatus.verifyPasscode = 'failed';
+			return;
+		}
+
+		// We want the button to stay until passcode is verified
+		submitClicked = true;
+
+		submitStatus.verifyPasscode = 'success';
+		submitStatus.createUser = 'in_progress';
+		const createUserSuccess = await createUser();
+
+		if (!createUserSuccess) {
+			submitStatus.createUser = 'failed';
+			return;
+		}
+		submitStatus.createUser = 'success';
+		submitStatus.uploadResume = 'in_progress';
+
+		const uploadResumeSuccess = await uploadResume();
+		if (!uploadResumeSuccess) {
+			submitStatus.uploadResume = 'failed';
+			return;
+		}
+		submitStatus.uploadResume = 'success';
+
+		setTimeout(() => {
+			goto('/');
+		}, 2000);
+	};
+
+	const handleFileInput = (_event: Event) => {
 		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
 		var file = fileInput?.files?.[0];
 
@@ -221,7 +268,6 @@
 			const res = validator(formValues[field as FormKeys]);
 			if (res) {
 				errors[field as FormKeys] = res;
-				console.info('Validation error: ', res);
 				noneFailed = false;
 			} else {
 				errors[field as FormKeys] = undefined;
@@ -229,7 +275,8 @@
 		}
 		return noneFailed;
 	};
-	$: console.log(formValues);
+
+	let slideIn = false;
 </script>
 
 <form class="flex mx-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink pb-10">
@@ -406,60 +453,62 @@
 
 	{#if page == 'marketing'}
 		<GlassContainer>
-			{#if !submitted}
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div>
-						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
-						<div class="flex flex-row flex-wrap">
-							{#each referralOptions as { referralId, displayText }}
-								<span class="flex flex-row items-center w-1/2">
-									<input
-										class="rounded-md"
-										type="checkbox"
-										id={referralId}
-										value={referralId}
-										bind:group={formValues.marketing}
-									/>
-									<label for={referralId}>{displayText}</label>
-								</span>
-							{/each}
-						</div>
-						<label for="marketing-other">Other</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="text"
-							id="marketing-other"
-							bind:value={formValues.marketingOther}
-						/>
-					</div>
-				</div>
-			{/if}
+			<div class="flex flex-col gap-5 mb-3">
+				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<ReferralSelector
+					bind:marketing={formValues.marketing}
+					bind:marketingOther={formValues.marketingOther}
+					bind:marketingOtherError={errors.marketingOther}
+				/>
+			</div>
 			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'emailVerification'}
 		<GlassContainer>
-			<div class="flex flex-col items-start">
-				Let's get your email verified!
-				<label for="portfolio">Enter Verification Code from Email</label>
-				<input
-					class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
-					bind:value={passcode}
-				/>
+			<div class="flex flex-col gap-5 mb-3">
+				<div class="text-xl text-white">{pageMeta[page].title}</div>
 			</div>
 
-			<HandleClick {verifyPasscode} {onSubmit} {fileData} />
+			<SmartInput label="Enter one-time code from {formValues.email}" bind:error={errors.passcode}>
+				<input
+					placeholder="943120"
+					class="bg-transparent border border-gray-400 text-xl rounded-md h-fit w-full"
+					bind:value={formValues.passcode}
+				/>
+			</SmartInput>
+			<div class="flex flex-row gap-5 text-sm text-gray-300 cursor-pointer my-1">
+				<button
+					on:click={() => {
+						page = 'welcome';
+					}}
+				>
+					<u class="hover:text-gray-400">Wrong email?</u>
+				</button>
+				<button on:click={generateVerification}>
+					<u class="hover:text-gray-400">Resend code</u>
+				</button>
+			</div>
 
-			{#if !submitted}
-				<PageControls {validate} {formValues} bind:page {pageMeta} />
+			{#if !submitClicked}
+				<button
+					class="flex flex-row gap-2 mx-auto bg-green-600 rounded-full px-5 py-3 shaking my-2"
+					on:click|preventDefault={handleFormSubmit}
+					out:fly={{ y: -200, duration: 300 }}
+					on:outroend={() => {
+						slideIn = true;
+					}}
+				>
+					<Icon icon="mingcute:rocket-fill" class="text-2xl" />
+					<div>Let's do this!</div>
+				</button>
+			{:else if slideIn}
+				<UserCreateFeedback {...submitStatus} errors={submitErrors} />
 			{/if}
 
-			{#if submitted}
-				Thank you for your interest in Reflections | Projections 2023! Please check your email for
-				additional information.
-			{/if}
+			<!-- <HandleClick {verifyPasscode} {onSubmit} {fileData} /> -->
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 </form>
@@ -479,9 +528,48 @@
 		padding: 0.25rem;
 	}
 
-	.center-div {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+	.shaking {
+		animation: none;
+	}
+
+	.shaking:hover {
+		animation: shake 0.5s;
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes shake {
+		0% {
+			transform: translate(1px, 1px) rotate(0deg);
+		}
+		10% {
+			transform: translate(-1px, -2px) rotate(-1deg);
+		}
+		20% {
+			transform: translate(-3px, 0px) rotate(1deg);
+		}
+		30% {
+			transform: translate(3px, 2px) rotate(0deg);
+		}
+		40% {
+			transform: translate(1px, -1px) rotate(1deg);
+		}
+		50% {
+			transform: translate(-1px, 2px) rotate(-1deg);
+		}
+		60% {
+			transform: translate(-3px, 1px) rotate(0deg);
+		}
+		70% {
+			transform: translate(3px, 1px) rotate(-1deg);
+		}
+		80% {
+			transform: translate(-1px, -1px) rotate(1deg);
+		}
+		90% {
+			transform: translate(1px, 2px) rotate(0deg);
+		}
+		100% {
+			transform: translate(1px, -2px) rotate(-1deg);
+		}
 	}
 </style>
