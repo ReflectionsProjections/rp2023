@@ -1,8 +1,8 @@
 <script lang="ts">
 </script>
 
-<span class="px-5 pt-5 absolute top-0">
-	<div class="flex flex-row justify-between">
+<span class="sticky top-0">
+	<div class="flex px-5 py-5 flex-row justify-between h-24">
 		<a href="/">
 			<img
 				src="/favicon.png"
