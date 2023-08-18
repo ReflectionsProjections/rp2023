@@ -51,7 +51,7 @@
         </a>
 
     </div>
-    <div class="absolute top-8">
+    <div class="absolute top-8 text-white">
         Organized by ACM@UIUC
     </div>
 
