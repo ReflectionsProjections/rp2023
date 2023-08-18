@@ -1,8 +1,11 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import type { User } from '../lib/types';
+	import { userStore } from '../stores/user-store';
 
-	export let user: User | null;
+	let user: User | null;
+
+    userStore.subscribe(data => user = data);
 </script>
 
 <span class="sticky top-0 w-full">
