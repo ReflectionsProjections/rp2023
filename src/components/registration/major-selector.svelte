@@ -7,12 +7,26 @@
 	export let errorMajorOther: string | undefined;
 
 	const csPlusXs = [
-		// { displayName: 'CS + Philosophy', id: 'cs+phil' },
+		
 		{ displayName: 'CS + X', id: 'cs+x' },
+		{ displayName: 'CS + Statistics', id: 'cs+stats' },
 		{ displayName: 'CS + Math', id: 'cs+math' },
+		{ displayName: 'CS + Economics', id: 'cs+econ' },
 		{ displayName: 'CS + Linguistics', id: 'cs+ling' },
+		{ displayName: 'CS + Philosophy', id: 'cs+phil' },
+		{ displayName: 'CS + Astronomy', id: 'cs+astro' },
 		{ displayName: 'CS + Music', id: 'cs+music' },
-		{ displayName: 'CS + Advertising', id: 'cs+adv' }
+		{ displayName: 'CS + Advertising', id: 'cs+adv' },
+		{ displayName: 'CS + Crop Sciences', id: 'cs+cropsci' },
+		{ displayName: 'CS + GIS', id: 'cs+gis' },
+		{ displayName: 'CS + Chemistry', id: 'cs+chem' },
+		{ displayName: 'CS + Antropology', id: 'cs+anthro' },
+		{ displayName: 'CS + Physics', id: 'cs+phys' },
+		{ displayName: 'CS + Bioengineering', id: 'cs+bioe' },
+		{ displayName: 'CS + Education', id: 'cs+edu' },
+		{ displayName: 'CS + Animal Sciences', id: 'cs+anisci' },
+		
+
 	];
 </script>
 
