@@ -8,11 +8,10 @@
     userStore.subscribe(data => user = data);
 </script>
 
-<span class="sticky top-0 w-full">
-	<div
-		class="flex flex-row justify-between p-5 lg:px-10 text-gray-200 text-md md:text-base lg:text-lg font-sans items-center"
-	>
-		<a href="/" class="flex flex-row items-center gap-5">
+
+<span class="sticky top-0">
+	<div class="flex px-5 py-5 flex-row justify-between h-24">
+		<a href="/">
 			<img
 				src="/favicon.png"
 				alt="Reflections Projections Home Page"

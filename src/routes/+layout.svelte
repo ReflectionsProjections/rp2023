@@ -8,7 +8,7 @@
     userStore.set(data.user);
 </script>
 
-<div class="h-screen">
+<div class="min-h-screen">
 	<Navbar />
 	<slot />
 </div>

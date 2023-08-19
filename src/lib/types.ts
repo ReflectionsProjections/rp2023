@@ -15,4 +15,6 @@ interface User {
 	fullName?: string;
 }
 
-export type { Event, User };
+type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
+
+export type { Event, User, Status };
