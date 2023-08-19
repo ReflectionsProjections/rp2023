@@ -3,7 +3,7 @@ module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
 		fontFamily: {
-			'sans': ['Nunito Sans'],
+			'sans': ['Nunito'],
 			'serif': ['Roboto\\ Slab']
 		},
 		extend: {
@@ -25,7 +25,10 @@ module.exports = {
 			colors: {
 				"rp-blue": "#1D2E5B",
 				"rp-pink": "#EE4179",
-				"rp-dull-pink": "#803b61"
+				"rp-dull-pink": "#803b61",
+				"rp-white": "#f9eeec",
+				"rp-pale-pink": "#e7a4ba",
+				"rp-hover-pale-pink": "#f7d2df"
 			},
 		}
 	},

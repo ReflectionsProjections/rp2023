@@ -5,6 +5,7 @@
 	import GlassContainer from '../../components/glass-container.svelte';
 
 	import { API_URL } from '../../constants';
+	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	export let data;
 
 	let schedule = data.schedule;
@@ -117,6 +118,124 @@
 	condenseCols(populateCols(schedule["monday"]))
 </script>
 
+
+<div class="p-4 my-10 w-full flex items-center place-content-center">
+	<div class="max-w-3xl w-5/6 md:w-3/4 lg:w-5/6  h-[36rem] ">
+		<!-- Tabs -->
+		<div class="grid grid-cols-11 h-8 px-1 pt-1 items-end invisible sm:visible">
+			<div class="flex col-span-2">
+				<input class="sr-only peer" type="radio" name="schedule" id="schedule-mon" value="monday" checked> 
+				<label for="schedule-mon" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+					<p class="h-fit text-md font-bold select-none px-1">Monday.EXE</p>
+				</label>
+			</div>
+			<div class="flex col-span-2">
+				<input class="sr-only peer" type="radio" name="schedule" id="schedule-tues" value="tuesday" > 
+				<label for="schedule-tues" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+					<p class="h-fit text-md font-bold select-none px-1">Tuesday.EXE</p>
+				</label>
+			</div>
+			<div class="flex col-span-2">
+				<input class="sr-only peer" type="radio" name="schedule" id="schedule-wed" value="wednesday" > 
+				<label for="schedule-wed" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+					<p class="h-fit text-md font-bold select-none px-1">Wednesday.EXE</p>
+				</label>
+			</div>
+			<div class="flex col-span-2">
+				<input class="sr-only peer" type="radio" name="schedule" id="schedule-thurs" value="thursday" > 
+				<label for="schedule-thurs" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+					<p class="h-fit text-md font-bold select-none px-1">Thursday.EXE</p>
+				</label>
+			</div>
+			<div class="flex col-span-2">
+				<input class="sr-only peer" type="radio" name="schedule" id="schedule-fri" value="friday" > 
+				<label for="schedule-fri" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+					<p class="h-fit text-md font-bold select-none px-1">Friday.EXE</p>
+				</label>
+			</div>
+		</div>
+		<!-- Header -->
+		<div class="bg-rp-white h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm">
+			<div class="h-12 sm:h-8 grid grid-cols-5 min-[490px]:grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-12">
+				<!-- Bar thingy? -->
+				<div class="h-full col-span-3 min-[490px]:col-span-5 sm:col-span-7 md:col-span-8 lg:col-span-11">
+					<div class="pl-5 pr-3 py-2 w-full h-full items-end">
+						<div class="h-full w-full border-[1px] rounded-[1px] border-black">
+							<div class="">
+
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Fake buttons -->
+				<div class="h-full flex col-span-2 sm:col-span-1 pl-4 w-full items-end justify-end">
+					<div class="h-full flex pr-4 w-full py-2 justify-end items-start">
+						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
+							<Icon class="flex h-fit aspect-square" icon="mdi:window-minimize" width="auto" height="auto"/>
+						</div>
+						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
+							<Icon class="flex h-fit aspect-square" icon="mdi:window-maximize" width="auto" height="auto"/>
+						</div>
+						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
+							<Icon class="flex h-fit aspect-square" icon="mdi:window-close" width="auto" height="auto"/>
+
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<!-- Content -->
+			<div class="flex h-[30rem] sm:h-[31rem] justify-center items-center">
+				<div class="w-11/12 h-full bg-rp-pale-pink p-4 pb-8 overflow-y-scroll">
+					<!-- Turn this into a component -->
+					<div class="flex w-full h-fit justify-center">
+						<div class="w-3/4 flex flex-col h-44 bg-red-400">
+							<div class="flex grow-0 h-1/2 bg-green-400">
+								<div class="flex flex-row h-full w-full">
+									<div class="flex h-full aspect-square p-2">
+										<span class="h-full w-full rounded-full bg-white"></span>
+									</div>
+									<div class="flex flex-col h-full w-full p-2 pl-0">
+										<div class="flex h-3/5 w-full bg-orange-300 p-1 items-center">
+											<p class="text-2xl font-bold">EVENT NAME HERE</p>
+										</div>
+										<div class="flex flex-row h-2/5 w-full bg-yellow-300">
+											<div class="flex basis-2/5 bg-purple-300 items-center p-1">
+												<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
+												<p>PLACEHOLDER</p>
+											</div>
+											<div class="flex grow bg-purple-500 items-center p-1">
+												<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
+												<p>PLACEHOLDER</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="flex grow-0 w-full h-fit bg-pink-400 p-2">
+								<p class="h-full w-full line-clamp-2 overflow-hidden "> We're no strangers to love You know the rules and so do I (do I) A full commitment's what I'm thinking of You wouldn't get this from any other guy I just wanna tell you how I'm feeling Gotta make you understand Never gonna give you up Never gonna let you down Never gonna run around and desert you Never gonna make you cry Never gonna say goodbye Never gonna tell a lie and hurt you</p>
+							</div>
+							<div class="flex grow-0 w-full h-full bg-red-500">
+								<label class="flex w-full h-full bg-lime-400  place-content-center">
+									<input class="sr-only peer" type="checkbox">
+									<Icon class="flex h-fit aspect-square" icon="mdi:chevron-down" width="auto" height="auto"/>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+
+
+<div class="w-full h-8 text-white bg-red-600 sm:bg-yellow-700 md:bg-green-600 lg:bg-blue-600 xl:bg-purple-600 2xl:bg-violet-800">
+	RED=Nothing YELLOW=sm GREEN=md BLUE=lg PURPLE=xl VIOLET=2xl
+</div>
+
 <div class="h-full flex items-center">
 	<div class="mx-auto h-[48rem] w-[50%] my-8">
 		<GlassContainer>
@@ -151,13 +270,13 @@
 
 
 
-<div class="h-full flex place-content-center">
+<!-- <div class="h-full flex place-content-center">
 	
 	<div class="min-w-min max-w-7xl w-3/4 h-fit">
 		<GlassContainer>
 			<div class="pb-8">
 				<div class="grid grid-cols-6 md:grid-cols-5 place-content-center p-0">
-					<!-- Top Row - Two Columns -->
+
 					<div class="grid grid-cols-6 md:grid-cols-2 col-span-6 md:col-span-2 place-content-center">
 
 						<div class="flex col-span-3 md:col-span-1 p-2 lg:p-4 aspect-square place-content-center">
@@ -173,7 +292,7 @@
 							</label>
 						</div>
 					</div>
-					<!-- Bottom Row - Three Columns -->
+					
 					<div class="grid grid-cols-6 md:grid-cols-3 col-span-6 md:col-span-3 place-content-center">
 						<div class="flex col-span-2 md:col-span-1 p-2 lg:p-4 aspect-square place-content-center">
 							<input class="sr-only peer" type="radio" name="day" id="schedule-wed" value="Wednesday" on:change={() => dayButtonClick("wednesday")}>
@@ -242,7 +361,6 @@
 												{/each}
 											{/if}
 										{/each}
-									<!-- </div> -->
 								</div>
 								<div class="col-span-1 px-8 z-20">
 									<div class="">
@@ -262,25 +380,6 @@
 												{/each}
 											{/if}
 										{/each}
-										<!-- {#each cols_condense[1] as c, i}
-											{#if c != 0} 
-												<div class="{colours[c[0] % colours.length]} h-fit z-20">
-													{#each getArrofLen(c[1]) as j, k}
-														{#if k == 0}
-															<div class="text-white {colours[c % colours.length]} text-left h-8 z-20">
-																<p>{c[0]}</p>
-															</div>
-														{:else}
-															<div class="text-white {colours[c % 4]} text-left h-8 z-20">
-															</div>
-														{/if}
-													{/each}
-												</div>
-											{:else}
-												<div class="text-white text-left h-8 z-0">
-												</div>
-											{/if}
-										{/each} -->
 									</div>
 								</div>
 
@@ -294,5 +393,5 @@
 		</GlassContainer>
 	</div>
 	
-</div>
+</div> -->
 

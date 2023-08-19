@@ -1,9 +1,11 @@
 import {API_URL} from "../../constants"
+import { get } from 'svelte/store'
 
 // /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
     let schedule = {}
-    const response = await fetch(`${API_URL}/events/schedule/days`, {
+	console.log("URL: ", get(API_URL))
+    const response = await fetch(`${get(API_URL)}/events/schedule/days`, {
 		method: 'GET',
 		cache: 'no-cache',
 		headers: {
