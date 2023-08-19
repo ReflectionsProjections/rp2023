@@ -4,6 +4,12 @@
 </div>
 
 <style>
+	@media (prefers-reduced-motion) {
+		span {
+			display: hidden;
+		}
+	}
+
 	* {
 		margin: 0;
 		padding: 0;
@@ -68,7 +74,7 @@
 		top: -30px;
 		right: 50%;
 		left: initial;
-		animation-delay: 13s;
+		animation-delay: 0s;
 		animation-duration: 2.3s;
 	}
 	span:nth-child(2) {
