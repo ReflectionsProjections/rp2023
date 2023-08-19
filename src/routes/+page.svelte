@@ -1,44 +1,70 @@
 <script lang="ts">
-	import Icon from '@iconify/svelte';
-	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
+	import { get } from 'svelte/store';
+	import Footer from '../components/footer.svelte';
+	import Sponsors from '../components/home/sponsors.svelte';
+	import GlassContainer from '../components/glass-container.svelte';
+	import ShootingStar from '../components/shooting-star.svelte';
+	import { onMount } from 'svelte';
+	import { userStore } from '../stores/user-store';
+	import type { User } from '../lib/types';
+	import { slide } from 'svelte/transition';
 
-	const getUser = async () => {
-		const response = await fetch(`${$API_URL}/auth/me`, {
-			credentials: 'include'
-		}).catch((err) => console.log(err));
+	let qrImg: string | null = null;
 
-		const user = await response?.json();
-		console.log('user', user);
-	};
+	let user: User | null = null;
+	userStore.subscribe((data) => (user = data));
 
-	getUser();
+	console.log(user);
+
+	onMount(() => {
+		try {
+			if (user) {
+				fetch(`${$API_URL}/attendee/qr`, {
+					credentials: 'include'
+				})
+					.then((response) => response.text())
+					.then((text) => {
+						qrImg = text;
+					});
+			}
+		} catch (e) {
+			console.error(e);
+		}
+	});
 </script>
 
-<div class="h-full text-white flex items-center">
-	<ShootingStar />
-	<span
-		class="flex flex-col md:flex-row mx-auto p-2 md:p-5 md:bg-white rounded-xl md:bg-opacity-10"
-	>
-		<div class="flex flex-col text-2xl mx-5 my-2 md:my-5 font-serif">
-			<div class="whitespace-nowrap flex flex-row">
-				<div>Reflections | Projections</div>
-			</div>
-			<div class="text-gray-300">2023</div>
-			<div class="text-xl my-3">Coming Soon</div>
+<ShootingStar />
+<div class="text-white flex items-center mx-10 xl:mx-2 my-5 xl:my-9">
+	<span class="w-full flex-col flex items-center">
+		<img class="w-[80%] sm:w-3/5 lg:w-2/5 mb-10" src="/rp-text-logo-white.svg" alt="rp logo" />
+		<div class="text-center xl:text-center text-md sm:text-2xl lg:text-xl uppercase xl:mb-5 mb-10">
+			September 18 - 22, 2023
 		</div>
-		<div class="flex flex-col mx-5 my-2 md:my-5 md:w-96 font-sans">
-			<div class="text-md">
-				The largest student run technology conference in the midwest, held annually at the
-				University of Illinois at Urbana-Champaign.
+		{#if user}
+			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto" in:slide>
+				<GlassContainer>
+					<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
+				</GlassContainer>
 			</div>
-			<a
-				href="https://2022.reflectionsprojections.org/"
-				class="flex flex-row gap-2 w-fit items-center bg-white opacity-80 rounded-md py-2 px-4 my-5 hover:opacity-90 duration-200 text-rp-blue"
+		{:else}
+			<p
+				class="w-full md:w-2/3 lg:w-1/2 text-center text-base md:text-lg font-medium text-gray-200"
 			>
-				<div>Visit 2022 Site</div>
-				<Icon icon="mdi:arrow-top-right-thin" />
+				Expand your horizons at the <b class="text-pink-200"
+					>Midwest’s largest student run tech conference</b
+				> this September. Join us for a week full of insightful talks from industry & academia leaders,
+				hands-on workshops, and networking events.
+			</p>
+			<a
+				href="/reister"
+				class="bg-rp-cream text-center p-4 lg:p-6 my-6 rounded-full hover:bg-opacity-70 duration-300"
+			>
+				<span class="uppercase text-black text-base md:text-xl font-semibold text-rp-gradient"
+					>Register Now</span
+				>
 			</a>
-		</div>
+		{/if}
 	</span>
 </div>
+<Sponsors />

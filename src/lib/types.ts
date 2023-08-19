@@ -10,6 +10,11 @@ interface Event {
 	visible: boolean;
 }
 
+interface User {
+	email: string;
+	fullName?: string;
+}
+
 type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
 
-export type { Event, Status };
+export type { Event, User, Status };
