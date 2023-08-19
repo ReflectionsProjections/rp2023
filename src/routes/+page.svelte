@@ -7,9 +7,10 @@
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { onMount } from 'svelte';
 	import { userStore } from '../stores/user-store';
+	import type { User } from '../lib/types';
+	import { slide } from 'svelte/transition';
 
 	let qrImg: string | null = null;
-	const url = get(API_URL);
 
 	let user: User | null = null;
 	userStore.subscribe((data) => (user = data));
@@ -19,7 +20,7 @@
 	onMount(() => {
 		try {
 			if (user) {
-				fetch(`${url}/attendee/qr`, {
+				fetch(`${$API_URL}/attendee/qr`, {
 					credentials: 'include'
 				})
 					.then((response) => response.text())
@@ -40,8 +41,8 @@
 		<div class="text-center xl:text-center text-md sm:text-2xl lg:text-xl uppercase xl:mb-5 mb-10">
 			September 18 - 22, 2023
 		</div>
-		{#if user != null}
-			<div class="block w-8/12 max-w-sm mx-auto">
+		{#if user}
+			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto" in:slide>
 				<GlassContainer>
 					<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
 				</GlassContainer>
@@ -67,4 +68,3 @@
 	</span>
 </div>
 <Sponsors />
-<Footer />
