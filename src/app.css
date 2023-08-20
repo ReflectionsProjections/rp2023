@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .fluid-gradient {
-	background: url(stars-bg.png) repeat, linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
+	background: url(/stars-bg.png) repeat, linear-gradient(#1d2e5b, #c61e5d 60%, #df5178 80%, #1d2e5b);
 	background-size: 1090px, 200% 200%;
 	animation: gradient 16s ease infinite alternate;
 }
