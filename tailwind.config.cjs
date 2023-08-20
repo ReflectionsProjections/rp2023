@@ -26,6 +26,8 @@ module.exports = {
 				'rp-blue': '#1D2E5B',
 				'rp-pink': '#EE4179',
 				'rp-dull-pink': '#803b61',
+				'rp-subtle-pink': '#E7A4BA',
+				'rp-hot-pink': '#C71E5E',
 				'rp-cream': '#F9EEEC'
 			}
 		}
