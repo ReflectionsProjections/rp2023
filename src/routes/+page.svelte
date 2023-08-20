@@ -7,6 +7,7 @@
 	import { API_URL } from '../constants';
 	import type { User } from '../lib/types';
 	import { userStore } from '../stores/user-store';
+	import Info from '../components/home/info.svelte';
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -39,7 +40,7 @@
 </script>
 
 <ShootingStar />
-<div class="text-white flex items-center mx-10 xl:mx-2 my-5 xl:my-9">
+<div class="text-white flex items-center mx-3">
 	<span class="w-full flex-col flex items-center">
 		<img
 			class="w-[80%] sm:w-3/5 {user ? 'lg:w-1/4 mb-5' : 'lg:w-2/5 mb-10'}"
@@ -86,6 +87,8 @@
 				>
 			</a>
 		{/if}
+
+		<Info />
 	</span>
 </div>
 <Sponsors />
