@@ -78,7 +78,7 @@
 				hands-on workshops, and networking events.
 			</p>
 			<a
-				href="/reister"
+				href="/register"
 				class="bg-rp-cream text-center p-4 lg:p-6 my-6 rounded-full hover:bg-opacity-70 duration-300"
 			>
 				<span class="uppercase text-black text-base md:text-xl font-semibold text-rp-gradient"
