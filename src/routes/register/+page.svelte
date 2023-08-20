@@ -62,7 +62,7 @@
 		marketingOther: null,
 		passcode: '' // Not sent with POST /attendee
 	};
-	let page: PageIndex = 'emailVerification';
+	let page: PageIndex = 'welcome';
 
 	const pageMeta: PageMeta = {
 		welcome: {
