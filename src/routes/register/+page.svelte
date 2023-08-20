@@ -32,6 +32,7 @@
 	import UserCreateFeedback from '../../components/registration/user-create-feedback.svelte';
 	import type { Status } from '$lib/types';
 	import { fly, slide } from 'svelte/transition';
+	import PageHeading from '../../components/registration/page-heading.svelte';
 
 	type FormKeys = keyof typeof formValues;
 	type Errors = Partial<Record<FormKeys, string | undefined>>;
@@ -61,53 +62,62 @@
 		marketingOther: null,
 		passcode: '' // Not sent with POST /attendee
 	};
-	let page: PageIndex = 'welcome';
+	let page: PageIndex = 'emailVerification';
 
 	const pageMeta: PageMeta = {
 		welcome: {
 			title: 'Welcome to R | P',
+			subtitle: "We're glad you made it. Sign up here to receive your conference passes.",
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
 			prev: () => 'none',
 			fields: ['name', 'email']
 		},
 		academics: {
 			title: 'Academics',
+			subtitle: 'We use this to find you better career opportunities',
 			next: () => 'demographics',
 			prev: () => 'welcome',
 			fields: ['major', 'majorOther', 'collegeName', 'expectedGradTerm', 'gradYear', 'firstGen']
 		},
 		demographics: {
 			title: 'Demographics',
+			subtitle: 'This helps us make a better R | P experience',
 			next: () => 'dietaryRestrictions',
 			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome'),
 			fields: ['age', 'gender', 'ethnicity', 'race', 'raceOther']
 		},
 		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
+			subtitle: 'We try to be inclusive, including dietary preferences',
 			next: () => 'recruitment',
 			prev: () => 'demographics',
 			fields: ['food']
 		},
 		recruitment: {
 			title: 'Recruitment',
+			subtitle:
+				"Not on the right device? Don't worry, you come back to this section after signing up.",
 			next: () => 'specialEvents',
 			prev: () => 'dietaryRestrictions',
 			fields: ['jobTypeInterest', 'portfolioLink']
 		},
 		specialEvents: {
 			title: 'Special Events',
+			subtitle: 'R | P is more than just a conference',
 			next: () => 'marketing',
 			prev: () => 'recruitment',
 			fields: ['mechPuzzle']
 		},
 		marketing: {
 			title: 'How did we reach you?',
+			subtitle: "Since you're here, we want to know what we did right",
 			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
 			fields: ['marketing', 'marketingOther']
 		},
 		emailVerification: {
 			title: 'One Last Step',
+			subtitle: 'We use *one* cookie to keep you logged in, and only to keep you logged in.',
 			next: () => 'none',
 			prev: () => 'marketing',
 			fields: ['passcode']
@@ -249,7 +259,7 @@
 		submitStatus.uploadResume = 'success';
 
 		setTimeout(() => {
-			window.location.href='/';
+			window.location.href = '/';
 		}, 2000);
 	};
 
@@ -284,12 +294,7 @@
 	{#if page == 'welcome'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div>
-					<div class="text-lg md:text-xl text-white">{pageMeta[page].title}</div>
-					<div class="text-base text-slate-300">
-						We're glad you made it. Sign up here to receive your conference passes.
-					</div>
-				</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<SmartInput label="Full Name" bind:error={errors.name}>
 					<input
 						id="name"
@@ -330,7 +335,7 @@
 	{#if page == 'academics'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 
 				<GradDateSelector
 					bind:gradYear={formValues.gradYear}
@@ -365,8 +370,8 @@
 	{#if page == 'demographics'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<SmartInput label="Age" sublabel="optional" bind:error={errors.age}>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
+				<SmartInput label="Age" sublabel="(optional)" bind:error={errors.age}>
 					<input
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
 						type="number"
@@ -393,7 +398,7 @@
 	{#if page == 'dietaryRestrictions'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 
 				<DietaryOptions bind:food={formValues.food} bind:error={errors.food} />
 			</div>
@@ -404,7 +409,7 @@
 	{#if page == 'recruitment'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<div class="flex flex-col items-start">
 					<label for="resume">Upload your Resume Here</label>
 					<input
@@ -444,7 +449,7 @@
 	{#if page == 'specialEvents'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 			</div>
 
@@ -455,7 +460,7 @@
 	{#if page == 'marketing'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<ReferralSelector
 					bind:marketing={formValues.marketing}
 					bind:marketingOther={formValues.marketingOther}
@@ -469,45 +474,47 @@
 	{#if page == 'emailVerification'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
-			</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 
-			<SmartInput label="Enter one-time code from {formValues.email}" bind:error={errors.passcode}>
-				<input
-					placeholder="943120"
-					class="bg-transparent border border-gray-400 text-xl rounded-md h-fit w-full"
-					bind:value={formValues.passcode}
-				/>
-			</SmartInput>
-			<div class="flex flex-row gap-5 text-sm text-gray-300 cursor-pointer my-1">
-				<button
-					on:click={() => {
-						page = 'welcome';
-					}}
+				<SmartInput
+					label="Enter one-time code from {formValues.email}"
+					bind:error={errors.passcode}
 				>
-					<u class="hover:text-gray-400">Wrong email?</u>
-				</button>
-				<button on:click={generateVerification}>
-					<u class="hover:text-gray-400">Resend code</u>
-				</button>
+					<input
+						placeholder="943120"
+						class="bg-transparent border border-gray-400 text-xl rounded-md h-fit w-full"
+						bind:value={formValues.passcode}
+					/>
+					<div class="flex flex-row gap-5 text-sm text-gray-300 cursor-pointer my-1">
+						<button
+							on:click={() => {
+								page = 'welcome';
+							}}
+						>
+							<u class="hover:text-gray-400">Wrong email?</u>
+						</button>
+						<button on:click={generateVerification}>
+							<u class="hover:text-gray-400">Resend code</u>
+						</button>
+					</div>
+				</SmartInput>
+
+				{#if !submitClicked}
+					<button
+						class="flex flex-row gap-2 mx-auto bg-green-600 rounded-full px-5 py-3 shaking my-2"
+						on:click|preventDefault={handleFormSubmit}
+						out:fly={{ y: -200, duration: 300 }}
+						on:outroend={() => {
+							slideIn = true;
+						}}
+					>
+						<Icon icon="mingcute:rocket-fill" class="text-2xl" />
+						<div>Let's do this!</div>
+					</button>
+				{:else if slideIn}
+					<UserCreateFeedback {...submitStatus} errors={submitErrors} />
+				{/if}
 			</div>
-
-			{#if !submitClicked}
-				<button
-					class="flex flex-row gap-2 mx-auto bg-green-600 rounded-full px-5 py-3 shaking my-2"
-					on:click|preventDefault={handleFormSubmit}
-					out:fly={{ y: -200, duration: 300 }}
-					on:outroend={() => {
-						slideIn = true;
-					}}
-				>
-					<Icon icon="mingcute:rocket-fill" class="text-2xl" />
-					<div>Let's do this!</div>
-				</button>
-			{:else if slideIn}
-				<UserCreateFeedback {...submitStatus} errors={submitErrors} />
-			{/if}
-
 			<!-- <HandleClick {verifyPasscode} {onSubmit} {fileData} /> -->
 			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>

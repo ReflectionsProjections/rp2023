@@ -14,7 +14,7 @@
 </script>
 
 <div class="flex flex-col gap-5 mb-3">
-	<SmartInput label="Interested in MechMania / PuzzleBang?" sublabel="(select none to many)">
+	<SmartInput label="Interested in MechMania / PuzzleBang?" sublabel="(multiple)">
 		<div class="flex flex-col items-center w-full text-gray-300">
 			<button
 				class="w-full flex flex-col items-center rounded-t-md duration-300 text-center bg-white p-3 {formExtraEvents.includes(
