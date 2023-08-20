@@ -22,7 +22,7 @@
 				class="hover:rotate-180 duration-500 hover:scale-125 h-[40px] w-[40px] md:h-[50px] md:w-[50px]"
 			/>
 		</a>
-		<div class="flex flex-row justify-evenly w-full md:w-2/3 lg:w-1/2">
+		<div class="flex flex-row justify-evenly w-full md:w-2/3 lg:w-1/2 items-center">
 			<a
 				href="/speakers"
 				class="hover:underline underline-offset-8 hover:underline-offset-4 decoration-pink-500 decoration-2 duration-150"
