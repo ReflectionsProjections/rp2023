@@ -9,6 +9,16 @@
 	userStore.subscribe((data) => (user = data));
 
 	let openDropDown = false;
+
+	const getFirstName = (fullName: string): string => {
+		const trimmedName = fullName.trim();
+		const names = trimmedName.split(' ');
+		if (names.length > 0) {
+			return names[0];
+		} else {
+			return fullName;
+		}
+	};
 </script>
 
 <span class="sticky top-0">
@@ -67,7 +77,9 @@
 			</div>
 			{#if user}
 				<div class="flex flex-row gap-3 items-center">
-					<div class="hidden md:flex">{user?.fullName ? `Welcome, ${user.fullName}` : ''}</div>
+					<div class="hidden md:flex">
+						{user?.fullName ? `Welcome, ${getFirstName(user.fullName)}` : ''}
+					</div>
 					<a href="/preferences">
 						<Icon
 							icon="fluent:person-28-filled"
