@@ -75,14 +75,14 @@
 		top: -30px;
 		right: 50%;
 		left: initial;
-		animation-delay: 0s;
+		animation-delay: 3s;
 		animation-duration: 2.3s;
 	}
 	span:nth-child(2) {
 		top: -30px;
 		right: 10%;
 		left: initial;
-		animation-delay: 10s;
+		animation-delay: 5s;
 		animation-duration: 3.2s;
 	}
 
@@ -91,14 +91,14 @@
 			top: -30px;
 			right: -80%;
 			left: initial;
-			animation-delay: 13s;
+			animation-delay: 3s;
 			animation-duration: 2.3s;
 		}
 		span:nth-child(2) {
 			top: -30px;
 			right: 5%;
 			left: initial;
-			animation-delay: 10s;
+			animation-delay: 5s;
 			animation-duration: 3.2s;
 		}
 	}
