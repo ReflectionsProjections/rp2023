@@ -249,7 +249,7 @@
 		submitStatus.uploadResume = 'success';
 
 		setTimeout(() => {
-			goto('/');
+			window.location.href='/';
 		}, 2000);
 	};
 

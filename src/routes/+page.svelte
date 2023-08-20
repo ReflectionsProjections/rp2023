@@ -1,21 +1,18 @@
 <script lang="ts">
-	import { API_URL } from '../constants';
-	import { get } from 'svelte/store';
-	import Footer from '../components/footer.svelte';
-	import Sponsors from '../components/home/sponsors.svelte';
-	import GlassContainer from '../components/glass-container.svelte';
-	import ShootingStar from '../components/shooting-star.svelte';
+	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-	import { userStore } from '../stores/user-store';
-	import type { User } from '../lib/types';
 	import { slide } from 'svelte/transition';
+	import Sponsors from '../components/home/sponsors.svelte';
+	import ShootingStar from '../components/shooting-star.svelte';
+	import { API_URL } from '../constants';
+	import type { User } from '../lib/types';
+	import { userStore } from '../stores/user-store';
 
 	let qrImg: string | null = null;
+	let walletUrl: null | string = null;
 
 	let user: User | null = null;
 	userStore.subscribe((data) => (user = data));
-
-	console.log(user);
 
 	onMount(() => {
 		try {
@@ -27,6 +24,13 @@
 					.then((text) => {
 						qrImg = text;
 					});
+				fetch(`${$API_URL}/attendee/wallet/google`, {
+					credentials: 'include'
+				})
+					.then((response) => response.text())
+					.then((text) => {
+						walletUrl = text;
+					});
 			}
 		} catch (e) {
 			console.error(e);
@@ -37,15 +41,32 @@
 <ShootingStar />
 <div class="text-white flex items-center mx-10 xl:mx-2 my-5 xl:my-9">
 	<span class="w-full flex-col flex items-center">
-		<img class="w-[80%] sm:w-3/5 lg:w-2/5 mb-10" src="/rp-text-logo-white.svg" alt="rp logo" />
-		<div class="text-center xl:text-center text-md sm:text-2xl lg:text-xl uppercase xl:mb-5 mb-10">
-			September 18 - 22, 2023
+		<img
+			class="w-[80%] sm:w-3/5 {user ? 'lg:w-1/4 mb-5' : 'lg:w-2/5 mb-10'}"
+			src="/rp-text-logo-white.svg"
+			alt="rp logo"
+		/>
+		<div
+			class="text-center text-md sm:text-2xl {user
+				? 'lg:text-xl'
+				: 'lg:text-3xl'} mb-5 flex flex-row whitespace-nowrap gap-1 items-center"
+		>
+			September 18 <Icon icon="line-md:arrow-right" /> 22
 		</div>
 		{#if user}
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto" in:slide>
-				<GlassContainer>
-					<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
-				</GlassContainer>
+				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
+					{#if qrImg}
+						<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
+					{:else}
+						<div class="w-full aspect-square bg-white animate-pulse rounded-md" />
+					{/if}
+					{#if walletUrl}
+						<a href={walletUrl} target="_blank" rel="noopener noreferrer" in:slide class="w-2/3">
+							<img class="w-full aspect-auto" src="/addToWallet.png" alt="Add to Google Wallet" />
+						</a>
+					{/if}
+				</div>
 			</div>
 		{:else}
 			<p
@@ -68,3 +89,11 @@
 	</span>
 </div>
 <Sponsors />
+
+<style>
+	.qr-pass {
+		background-image: url('/qr-sun-bg.svg');
+		background-repeat: no-repeat;
+		background-size: 90%;
+	}
+</style>
