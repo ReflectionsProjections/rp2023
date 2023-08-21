@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Icon from '@iconify/svelte';
 	import GlassContainer from '../../components/glass-container.svelte';
 	import IsaCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import PageControls from '../../components/registration/page-controls.svelte';
@@ -39,6 +40,7 @@
 			filters.add(item);
 		}
 	}
+
 
 	// TABLE
 	const columns = ['Name', 'Major', 'Graduation Year', 'Job Interest', 'Resume'];
@@ -136,90 +138,7 @@
 		</GlassContainer>
 	</div>
 
-	<!-- Dropdowns for Filters-->
-	<div class="flex flex-row mx-auto my-auto">	
-
-		<!-- Majors Drop Down-->
-		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-			<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
-				<GlassContainer>	
-					<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
-				</GlassContainer>
-			</div>
-
-			{#if show_majors}
-			<div class="fixed">
-				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-					{#each majors as major}
-					<li id="major-check" class="flex flex-row hover:text-gray-300">
-						<div  class="pr-3">
-							<input type="checkbox" on:click={() => {
-								onCheckBoxClick(major_filters, major, "major-check")
-								major_filters = major_filters;
-								}} />								
-						</div>
-						<div >{major}</div>
-					</li>
-					{/each}
-				</ul>
-			</div>
-			{/if}
-		</div>
-
-		<!-- Grad_Year Drop Down-->
-		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-			<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
-				<GlassContainer>	
-					<button class="" on:click={() => (show_grad_year= !show_grad_year)}> Filter By {grad_year_filters.size} Graduation Year(s) </button>
-				</GlassContainer>
-			</div>
-
-			{#if show_grad_year}
-			<div class="fixed">
-				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-					{#each grad_years as grad_year}
-					<li class="flex flex-row hover:text-gray-300">
-						<div id="grad-year-check" class="pr-3">
-							<input type="checkbox" on:click={() => {
-								onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
-								grad_year_filters = grad_year_filters;
-								}} />
-						</div>
-						<div >{grad_year}</div>
-					</li>
-					{/each}
-				</ul>
-			</div>
-			{/if}
-		</div>
-
-		<!-- Job Interest -->
-		<div class="mx-auto my-auto text-gray-100 accent-rp-pink">
-			<div class="mx-auto my-auto w-fit p-1 text-gray-100 accent-rp-pink">
-				<GlassContainer>	
-					<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
-				</GlassContainer>
-			</div>
-
-			{#if show_job_interest}
-			<div class="fixed">
-				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
-					{#each job_interests as job_interest}
-					<li class="flex flex-row hover:text-gray-300">
-						<div id="job-interest-check" class="pr-3">
-						<input type="checkbox" on:click={() => {
-							onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
-							job_interest_filters = job_interest_filters;
-							}} />
-						</div>
-						<div >{job_interest}</div>
-					</li>
-					{/each}
-				</ul>
-			</div>
-			{/if}
-		</div>
-	</div>
+	
 
 	<!-- <div class="mx-auto my-auto text-gray-100">
 		Filtered By:
@@ -236,28 +155,122 @@
 		{/each}
 	</div> -->
 
-	<div class = "p-10">
+	<div class="h-full text-white flex justify-between flex-col my-20">
+		<div
+			class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 lg:w-11/12 text-sm md:text-base"
+		>
+		<div class="flex flex-row justify-between items-baseline">
+			<h1 class="text-xl mb-3 p-2 font-serif">Attendee Resumes</h1>
+			
+			<!-- Dropdowns for Filters-->
+			<div class="flex flex-row mx-auto my-auto">	
 
-		<table class=" text-center overflow-x-scroll  ">
-			<thead>
-				<tr>
-					{#each columns as column}
-						<th>{column}</th>
+				<!-- Majors Drop Down-->
+				<div class="mx-5 my-auto text-gray-100 accent-rp-pink">
+					<div class="py-1 px-3 bg-pink-600 bg-opacity-80 hover:bg-opacity-100 duration-300 rounded-md h-min">
+						
+							<button class="" on:click={() => (show_majors = !show_majors)}> Filter By {major_filters.size} Major(s) </button>
+					</div>
+
+					{#if show_majors}
+					<div class="fixed">
+						<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
+							{#each majors as major}
+							<li id="major-check" class="flex flex-row hover:text-gray-300">
+								<div  class="pr-3">
+									<input type="checkbox" on:click={() => {
+										onCheckBoxClick(major_filters, major, "major-check")
+										major_filters = major_filters;
+										}} />								
+								</div>
+								<div >{major}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
+
+				<!-- Grad_Year Drop Down-->
+				<div class="mx-5 my-auto text-gray-100 accent-rp-pink">
+					<div class="py-1 px-3 bg-pink-600 bg-opacity-80 hover:bg-opacity-100 duration-300 rounded-md h-min">
+							<button class="" on:click={() => (show_grad_year= !show_grad_year)}> Filter By {grad_year_filters.size} Graduation Year(s) </button>
+					</div>
+
+					{#if show_grad_year}
+					<div class="fixed">
+						<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
+							{#each grad_years as grad_year}
+							<li class="flex flex-row hover:text-gray-300">
+								<div id="grad-year-check" class="pr-3">
+									<input type="checkbox" on:click={() => {
+										onCheckBoxClick(grad_year_filters, grad_year, "grad-year-check")
+										grad_year_filters = grad_year_filters;
+										}} />
+								</div>
+								<div >{grad_year}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
+
+				<!-- Job Interest -->
+				<div class="mx-5 my-auto text-gray-100 accent-rp-pink">
+					<div class="py-1 px-3 bg-pink-600 bg-opacity-80 hover:bg-opacity-100 duration-300 rounded-md h-min">
+							<button class="" on:click={() => (show_job_interest = !show_job_interest)}> Filter By {job_interest_filters.size} Job Interests(s) </button>
+					</div>
+
+					{#if show_job_interest}
+					<div class="fixed">
+						<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
+							{#each job_interests as job_interest}
+							<li class="flex flex-row hover:text-gray-300">
+								<div id="job-interest-check" class="pr-3">
+								<input type="checkbox" on:click={() => {
+									onCheckBoxClick(job_interest_filters, job_interest, "job-interest-check")
+									job_interest_filters = job_interest_filters;
+									}} />
+								</div>
+								<div >{job_interest}</div>
+							</li>
+							{/each}
+						</ul>
+					</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+
+		<div class="p-3 bg-white bg-opacity-10 rounded-md overflow-x-auto">
+			<table class="w-full table-auto border-spacing-10 border-collapse border-hidden">
+				<thead class="text-left tracking-wider">
+						{#each columns as column}
+							<th>{column}</th>
+						{/each}
+				</thead>
+				<tbody >
+					{#each attendees as attendee}
+						<!-- {#if showAttendee(attendee)} -->
+						<tr class="bg-opacity-0 hover:bg-opacity-10 bg-black duration-300">
+							<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
+							<td contenteditable="false" bind:innerHTML={attendee.studentInfo.major} class =" w-56 p-2"></td>
+							<td contenteditable="false" bind:textContent={attendee.studentInfo.graduation} class =" w-56 p-2"></td>
+							<td contenteditable="false" bind:textContent={attendee.job_interest} class =" w-56 p-2"></td>
+							<td>
+								<div class="rounded-md p-2">
+									<button aria-label="" on:click={() => fetchURl(attendee._id)} >
+										<Icon icon="bx:file" width="24"/> 
+									</button>
+								</div>
+							</td>
+						</tr>
+						{/if}
 					{/each}
-				</tr>
-			</thead>
-			<tbody >
-				{#each attendees as attendee}
-					<tr>
-						<td contenteditable="false" bind:innerHTML={attendee.name} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:innerHTML={attendee.studentInfo.major} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:textContent={attendee.studentInfo.graduation} class =" w-56 p-2"></td>
-						<td contenteditable="false" bind:textContent={attendee.job_interest} class =" w-56 p-2"></td>
-						<button on:click={() => fetchURl(attendee._id)} >Access Resume</button>
-					</tr>
-				 {/each}
-			</tbody>
-		</table>
+				</tbody>
+			</table>
+		</div>
 	</div>
 <!-- 
 	<div class="flex flex-col h-full w-9/12 mx-auto my-auto">
