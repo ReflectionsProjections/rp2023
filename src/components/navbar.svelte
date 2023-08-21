@@ -41,7 +41,7 @@
 			<a
 				href="/puzzlebang"
 				class="hidden md:block hover:underline underline-offset-8 hover:underline-offset-4 decoration-pink-500 decoration-2 duration-150"
-				>Puzzlebang</a
+				>PuzzleBang</a
 			>
 			<a
 				href="/mechmania"
@@ -69,7 +69,7 @@
 							class="flex flex-col divide-y-2 bg-rp-cream rounded-lg text-rp-blue p-1 border-rp-pink"
 						>
 							<a class="p-1.5 hover:text-rp-dull-pink duration-200" href="/mechmania">MechMania</a>
-							<a class="p-1.5 hover:text-rp-dull-pink duration-200" href="/puzzlebang">Puzzlebang</a
+							<a class="p-1.5 hover:text-rp-dull-pink duration-200" href="/puzzlebang">PuzzleBang</a
 							>
 						</div>
 					</div>
