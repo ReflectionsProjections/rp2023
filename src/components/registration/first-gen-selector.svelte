@@ -2,11 +2,11 @@
 	import Icon from '@iconify/svelte';
 	import type { firstGenOptions } from './misc-types';
 
-	export let firstGen: firstGenOptions = 'preferNotToSay';
+	export let firstGen: firstGenOptions = null;
 
 	const handleClick = (pressed: firstGenOptions) => () => {
 		if (pressed === firstGen) {
-			firstGen = 'preferNotToSay';
+			firstGen = null;
 			return;
 		}
 		firstGen = pressed;
@@ -14,7 +14,10 @@
 </script>
 
 <div class="flex flex-col items-start gap-2 text-sm md:text-base">
-	<label for="is-first-gen" class="ml-1">Are you a first generation college student?</label>
+	<div class="flex flex-row gap-3">
+		<label for="is-first-gen" class="ml-1">Are you a first generation college student?</label>
+		<div class="text-slate-400">(optional)</div>
+	</div>
 	<div class="flex flex-row w-full">
 		<button
 			class="flex rounded-l-md items-center duration-300 w-full p-3 bg-white flex-col gap-2 {firstGen ===

@@ -43,37 +43,37 @@
 		<div class="grid grid-cols-11 h-8 px-1 pt-1 items-end invisible sm:visible">
 			<div class="flex col-span-2">
 				<input class="sr-only peer" type="radio" name="schedule" id="schedule-mon" value="monday" checked on:change={() => dayButtonClick("monday")}> 
-				<label for="schedule-mon" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+				<label for="schedule-mon" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
 					<p class="h-fit text-md font-bold select-none px-1">Monday.EXE</p>
 				</label>
 			</div>
 			<div class="flex col-span-2">
 				<input class="sr-only peer" type="radio" name="schedule" id="schedule-tues" value="tuesday" on:change={() => dayButtonClick("tuesday")}> 
-				<label for="schedule-tues" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+				<label for="schedule-tues" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
 					<p class="h-fit text-md font-bold select-none px-1">Tuesday.EXE</p>
 				</label>
 			</div>
 			<div class="flex col-span-2">
 				<input class="sr-only peer" type="radio" name="schedule" id="schedule-wed" value="wednesday" on:change={() => dayButtonClick("wednesday")}> 
-				<label for="schedule-wed" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+				<label for="schedule-wed" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
 					<p class="h-fit text-md font-bold select-none px-1">Wednesday.EXE</p>
 				</label>
 			</div>
 			<div class="flex col-span-2">
 				<input class="sr-only peer" type="radio" name="schedule" id="schedule-thurs" value="thursday" on:change={() => dayButtonClick("thursday")}> 
-				<label for="schedule-thurs" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+				<label for="schedule-thurs" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
 					<p class="h-fit text-md font-bold select-none px-1">Thursday.EXE</p>
 				</label>
 			</div>
 			<div class="flex col-span-2">
 				<input class="sr-only peer" type="radio" name="schedule" id="schedule-fri" value="friday" on:change={() => dayButtonClick("friday")}> 
-				<label for="schedule-fri" class="w-full h-full cursor-pointer peer-checked:bg-rp-white bg-rp-pale-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+				<label for="schedule-fri" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
 					<p class="h-fit text-md font-bold select-none px-1">Friday.EXE</p>
 				</label>
 			</div>
 		</div>
 		<!-- Component Body -->
-		<div class="bg-rp-white h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm">
+		<div class="bg-rp-cream h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm">
 			<!-- Header -->
 			<div class="h-12 sm:h-8 grid grid-cols-5 min-[490px]:grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-12">
 				<!-- Search Bar thingy? -->
@@ -112,7 +112,7 @@
 			<!-- Content -->
 			<div class="flex h-[30rem] sm:h-[31rem] justify-center items-center">
 				<!-- Inner Pink Box -->
-				<div class="w-11/12 h-full bg-rp-pale-pink p-2 md:p-4 pb-8 overflow-y-scroll">
+				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-y-scroll">
 					{#each events as event, i}
 						<div class="flex w-full h-fit justify-center">
 							<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-4 border-pink-100">

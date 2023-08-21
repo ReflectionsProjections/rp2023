@@ -6,9 +6,9 @@
 
 Main webservice for Reflections | Projections 2023, powered by SvelteKit + Tailwind
 
-## About 
+## About
 
-rp2023 is the user facing portion of RP Infrastructure for 2023. It includes public views, attendee views, internal dashboards, carp (Career portal) & more! 
+rp2023 is the user facing portion of RP Infrastructure for 2023. It includes public views, attendee views, internal dashboards, carp (Career portal) & more!
 
 ### Tenets
 
@@ -50,4 +50,4 @@ Create a GitHub issue to for any bug reports or other requests
 
 ## License
 
-rp2023 is proprietary, closed source software as of June 2023. 
+rp2023 is proprietary, closed source software as of June 2023.
