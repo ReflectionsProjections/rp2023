@@ -5,16 +5,6 @@
 	// import { API_URL } from '../../constants';
 	import { onMount } from 'svelte';
 
-	// // TODO update this w actual schema
-	// // TODO connect with actual API call
-	// let schema=[
-	// 	{label: 'Name', key: 'name'},
-	// 	{label: 'Major', key: 'major'},
-	// 	{label: 'Graduation Year', key: 'grad_year'},
-	// 	{label: 'Job Interest', key: 'job_interest'},
-	// 	{label: 'Resume', key: 'resume'}
-	// ]
-
 	// DROP DOWNS
 	// TODO add functionality to fetch majors, grad years, and job interests
 	let majors = ['None', 'Computer Science', 'Computer Science + X', 'Computer Engineering', 'Electrical Engineering', 'Other'];
@@ -54,34 +44,12 @@
 	const columns = ['Name', 'Major', 'Graduation Year', 'Job Interest', 'Resume'];
 	let attendees: any = [];
 
-	// type TableRow = {
-	// 	name: string;
-	// 	major: string;
-	// 	grad_year: string;
-	// 	job_interest: string;
-	// 	resume_url: string;
-	// };
-
-	// let items: TableRow[] = [];
-	// let rowsPerPage = 10;
-	// let currentPage = 0;
-
-	// $: start = currentPage * rowsPerPage;
-	// $: end = Math.min(start + rowsPerPage, items.length);
-	// $: slice = items.slice(start, end);
-	// $: lastPage = Math.max(Math.ceil(items.length / rowsPerPage) - 1, 0);
-
-	// $: if (currentPage > lastPage) {
-	// 	currentPage = lastPage;
-	// }
-
 	const API_URL = "http://localhost:3000";
 
 	// TODO: actually make this functional
 	const fetchAttendees = async () => {
          let response;
 
-		 // dummy data for now
          try {
 			// TODO: change url to actual api endpoint
              response = await fetch(`${API_URL}/attendee`);
@@ -103,7 +71,6 @@
 
 	fetchAttendees();
 
-	// currently not functioning bc endpoint in api not done
 	// TODO: Tests with actual endpoint
 	const fetchURl = async (attendeeId: string) => {
 		console.log("trying to fetch url for: " + attendeeId);
