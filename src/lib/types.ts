@@ -11,6 +11,12 @@ interface Event {
 	visible: boolean;
 }
 
+type Role = {
+	_id: string;
+	email: string;
+	role: string;
+};
+
 interface User {
 	email: string;
 	fullName?: string;
@@ -18,4 +24,4 @@ interface User {
 
 type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
 
-export type { Event, User, Status };
+export type { Event, User, Status, Role };
