@@ -25,13 +25,7 @@ export async function load({ params }) {
 			"friday": "error"
 		}
 	}
-	let heights = [];
-	for (let i = 0; i < 52; i++) {
-		heights[i] = `h-${i * 8}`;
-	}
     return {
         "schedule": schedule,
-		"colours": ["bg-red-500", "bg-violet-500", "bg-blue-500", "bg-pink-500"],
-		"heights": heights
     };
 }

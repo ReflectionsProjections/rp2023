@@ -7,13 +7,18 @@
 	import { API_URL } from '../constants';
 	import type { User } from '../lib/types';
 	import { userStore } from '../stores/user-store';
+	import { scheduleStore } from '../stores/schedule-store';
+
 	import Info from '../components/home/info.svelte';
+	import Schedule from '../components/schedule/schedule.svelte'
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
 
 	let user: User | null = null;
+	let schedule: { [key: string]: any } | null = null;
 	userStore.subscribe((data) => (user = data));
+	scheduleStore.subscribe((data) => (schedule = data));
 
 	onMount(() => {
 		try {
@@ -37,6 +42,7 @@
 			console.error(e);
 		}
 	});
+	console.log("In client: ", schedule)
 </script>
 
 <ShootingStar />
@@ -91,6 +97,7 @@
 		<Info />
 	</span>
 </div>
+<Schedule schedule={schedule}/>
 <Sponsors />
 
 <style>

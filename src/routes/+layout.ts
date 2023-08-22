@@ -3,9 +3,10 @@ import type { User } from '$lib/types';
 import { get } from 'svelte/store';
 
 /** @type {import('./$types').LayoutServerLoad} */
-export const load = async ({ fetch }): Promise<{ user: User | null }> => {
+export const load = async ({ fetch }): Promise<{ user: User | null, schedule: { [key: string]: any } | null }> => {
 	const url = get(API_URL);
-
+	let user: User | null;
+	let schedule: { [key: string]: any } | null;
 	try {
 		const check = await fetch(`${url}/auth/me`, {
 			credentials: 'include',
@@ -13,16 +14,33 @@ export const load = async ({ fetch }): Promise<{ user: User | null }> => {
 		});
 
 		if (check.status != 200) {
-			return { user: null };
+			user = null;
 		}
-		const user: User = await check.json();
-		return {
-			user
-		};
+		user = await check.json();
+		
 	} catch (e) {
-		return {
-			user: null
-		};
+		user = null;
+	}
+
+	try {
+		const response = await fetch(`${url}/events/schedule/days`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+		if (response.ok) {
+			schedule = await response.json();
+		} else {
+			schedule = null;
+		}
+	} catch (e) {
+		schedule = null;
+	}
+
+	return {
+		user,
+		schedule
 	}
 };
 
