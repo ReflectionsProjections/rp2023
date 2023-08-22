@@ -12,6 +12,7 @@
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
 	import MajorSelector from '../../components/registration/major-selector.svelte';
+	import Footer from '../../components/footer.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
@@ -528,6 +529,7 @@
 			</GlassContainer>
 		{/if}
 	</form>
+	<Footer></Footer>
 </main>
 <!--
 	Page 0) Name, email, isCollegeStudent
