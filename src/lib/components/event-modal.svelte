@@ -78,7 +78,7 @@
 			...eventData,
 			start_time: localToIsoString(eventData.start_time),
 			end_time: localToIsoString(eventData.end_time),
-			duration: 2
+			duration: 1
 		};
 		type == 'Create' ? createEvent() : updateEvent();
 	};
