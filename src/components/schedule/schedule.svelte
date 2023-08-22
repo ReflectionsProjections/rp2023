@@ -8,9 +8,8 @@
 	let events = [];	// list of events currently displapyed
 	let selectedDay: string;	// currently selected day
 
-
 	function dayButtonClick(day: string) {
-		events = schedule[day]
+		if (schedule != null) events = schedule[day]
 	}
 
 	// function isTextCutOff(el) {
@@ -112,52 +111,58 @@
 			<div class="flex h-[30rem] sm:h-[31rem] justify-center items-center">
 				<!-- Inner Pink Box -->
 				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-y-scroll">
-					{#each events as event, i}
-						<div class="flex w-full h-fit justify-center">
-							<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-0 border-pink-100">
-								<div class="flex grow-0 pb-1">
-									<div class="flex flex-row w-full h-fit items-center">
-										<div class="flex h-full min-h-[6rem] aspect-square p-2 items-stretch ">
-											<div class="flex h-full w-full aspect-square  rounded-full items-center justify-center bg-pink-100">
-												<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
-											</div>
-										</div>
-										<!-- Top info cluster -->
-										<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
-											<div class="flex flex-col h-fit w-fit items-center">
-												<p class="flex text-xl sm:text-2xl font-bold ">{event.name}</p>
-											</div>
-											
-											<div class="grid grid-row-2 min-[420px]:grid-cols-3 md:grid-cols-2 h-2/5 w-full gap-0 min-[420px]:gap-2">
-												<div class="flex row-span-1 min-[420px]:col-span-1 items-end">
-													<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
-													<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+					{#if schedule != null}
+						{#each events as event, i}
+							<div class="flex w-full h-fit justify-center">
+								<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-0 border-pink-100">
+									<div class="flex grow-0 pb-1">
+										<div class="flex flex-row w-full h-fit items-center">
+											<div class="flex h-full min-h-[6rem] aspect-square p-2 items-stretch ">
+												<div class="flex h-full w-full aspect-square  rounded-full items-center justify-center bg-pink-100">
+													<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
 												</div>
-												<div class="flex row-span-1 min-[420px]:col-span-2 md:col-span-1 items-end">
-													<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
-													<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.start_time).add(event.duration, 'hour').format('HH:mm')}`}</p>
+											</div>
+											<!-- Top info cluster -->
+											<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
+												<div class="flex flex-col h-fit w-fit items-center">
+													<p class="flex text-xl sm:text-2xl font-bold ">{event.name}</p>
+												</div>
+												
+												<div class="grid grid-row-2 min-[420px]:grid-cols-3 md:grid-cols-2 h-2/5 w-full gap-0 min-[420px]:gap-2">
+													<div class="flex row-span-1 min-[420px]:col-span-1 items-end">
+														<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
+														<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+													</div>
+													<div class="flex row-span-1 min-[420px]:col-span-2 md:col-span-1 items-end">
+														<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
+														<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.start_time).add(event.duration, 'hour').format('HH:mm')}`}</p>
+													</div>
 												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<hr class="border-1 w-11/12 place-self-center border-black">
+									<hr class="border-1 w-11/12 place-self-center border-black">
 
-								<!-- Description -->
-								<div class="flex grow-0 w-full h-fit px-4 py-2" id="description-div-event-{String(i)}">
-									<p class="h-full w-full line-clamp-2 overflow-hidden" id="description-text-event-{String(i)}"> {event.description}</p>
-								</div>
-								<!-- Collapse button -->
-								<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
-									<label class="flex w-full h-6  place-content-center cursor-pointer" >
-										<input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{String(i)}">
-										<Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{String(i)}"/>
-										<Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{String(i)}"/>
-									</label>
+									<!-- Description -->
+									<div class="flex grow-0 w-full h-fit px-4 py-2" id="description-div-event-{String(i)}">
+										<p class="h-full w-full line-clamp-2 overflow-hidden" id="description-text-event-{String(i)}"> {event.description}</p>
+									</div>
+									<!-- Collapse button -->
+									<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
+										<label class="flex w-full h-6  place-content-center cursor-pointer" >
+											<input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{String(i)}">
+											<Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{String(i)}"/>
+											<Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{String(i)}"/>
+										</label>
+									</div>
 								</div>
 							</div>
+						{/each}
+					{:else}
+						<div class="flex w-full h-fit justify-center">
+							<p class="text-black text-2xl">Hmm... something went wrong. Try again later!</p>
 						</div>
-					{/each}
+					{/if}
 				</div>
 			</div>
 		</div>		
