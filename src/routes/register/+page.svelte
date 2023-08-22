@@ -140,6 +140,10 @@
 		if (response.ok) {
 			return true;
 		}
+		// If user comes back after email has been sent
+		if (response.status == 429) {
+			return true;
+		}
 		const res = await response.json();
 		console.error(res);
 		errors.email = res.message;
