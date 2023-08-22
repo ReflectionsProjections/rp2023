@@ -21,7 +21,7 @@
 	};
 </script>
 
-<span class="sticky top-0">
+<span class="top-0">
 	<div
 		class="flex flex-row justify-between p-5 text-gray-200 text-sm md:text-md lg:text-lg font-sans items-center"
 	>
