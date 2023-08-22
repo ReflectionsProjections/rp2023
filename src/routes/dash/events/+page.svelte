@@ -106,7 +106,9 @@
 								{dayjs(event.start_time).tz('America/Chicago').format('llll')}
 							</td>
 							<td>
-								{dayjs(event.end_time).tz('America/Chicago').format('llll')}
+								{event.end_time
+									? dayjs(event.end_time).tz('America/Chicago').format('llll')
+									: 'Not Available'}
 							</td>
 							<td>
 								{#if event.upgrade}

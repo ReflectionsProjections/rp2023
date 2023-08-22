@@ -26,7 +26,11 @@
 	$: show, refreshData();
 
 	const refreshData = () => {
-		eventData = { ...event, start_time: isoStringToLocal(event.start_time), end_time: isoStringToLocal(event.end_time)};
+		eventData = {
+			...event,
+			start_time: isoStringToLocal(event.start_time),
+			end_time: isoStringToLocal(event.end_time)
+		};
 		errors = {};
 		apiError = null;
 	};
@@ -71,14 +75,13 @@
 
 	const onSubmit = () => {
 		if (!validate()) {
-			console.info("validation has failed");
+			console.info('validation has failed');
 			return;
 		}
 		eventData = {
 			...eventData,
 			start_time: localToIsoString(eventData.start_time),
-			end_time: localToIsoString(eventData.end_time),
-			duration: 1
+			end_time: localToIsoString(eventData.end_time)
 		};
 		type == 'Create' ? createEvent() : updateEvent();
 	};
