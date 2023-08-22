@@ -20,7 +20,14 @@ interface User {
 	email: string;
 	fullName?: string;
 }
+interface Speaker {
+	id: string;
+	name: string;
+	role: string;
+	organization: string;
+	bio: string;
+}
 
 type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
 
-export type { Event, User, Status, Role };
+export type { Event, User, Status, Role, Speaker };
