@@ -71,12 +71,14 @@
 
 	const onSubmit = () => {
 		if (!validate()) {
+			console.info("validation has failed");
 			return;
 		}
 		eventData = {
 			...eventData,
 			start_time: localToIsoString(eventData.start_time),
-			end_time: localToIsoString(eventData.end_time)
+			end_time: localToIsoString(eventData.end_time),
+			duration: 2
 		};
 		type == 'Create' ? createEvent() : updateEvent();
 	};
@@ -110,10 +112,10 @@
 			errors.end_time = 'end time cannot be in the past';
 			success = false;
 		}
-		if (!eventData.duration || eventData.duration == 0) {
-			errors.duration = 'Duration cannot be empty or zero';
-			success = false;
-		}
+		// if (!eventData.duration || eventData.duration == 0) {
+		// 	errors.duration = 'Duration cannot be empty or zero';
+		// 	success = false;
+		// }
 		if (!eventData.virtual) {
 			eventData.virtual = false;
 		}

@@ -79,7 +79,6 @@
 					<th>Description</th>
 					<th>Starts at</th>
 					<th>Ends at</th>
-					<th>Duration</th>
 					<th>Upgrades</th>
 					<th>Virtual</th>
 					<th>Actions</th>
@@ -108,10 +107,6 @@
 							</td>
 							<td>
 								{dayjs(event.end_time).tz('America/Chicago').format('llll')}
-							</td>
-							<td>
-								{event.duration}
-								{event.duration == 1 ? ' hour' : ' hours'}
 							</td>
 							<td>
 								{#if event.upgrade}
