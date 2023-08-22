@@ -44,4 +44,8 @@
 			/>
 		</a>
 	</div>
+	
+	<div class="absolute top-8 z-30">
+		Organized by ACM@UIUC
+	</div>
 </span>
