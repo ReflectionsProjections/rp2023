@@ -38,17 +38,19 @@
                 {speaker.role}
             </p>
         </div>
-        <div class="flex grow-0 w-full h-fit" id="description-div-event-{speaker.id}">
-            <p class="h-full w-full line-clamp-3 overflow-hidden bg-rp-cream text-black bg-opacity-50 rounded-xl pl-2 pt-2 pr-2" id="description-text-event-{speaker.id}">
-                {speaker.bio}
-            </p>
-        </div>
-        <div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
-            <label class="flex w-full h-6  place-content-center cursor-pointer" >
-                <input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{speaker.id}">
-                <Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{speaker.id}"/>
-                <Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{speaker.id}"/>
-            </label>
-        </div>
+        {#if speaker.bio !== ""}
+            <div class="flex grow-0 w-full h-fit" id="description-div-event-{speaker.id}">
+                <p class="h-full w-full line-clamp-3 overflow-hidden bg-rp-cream text-black bg-opacity-50 rounded-xl pl-2 pt-2 pr-2" id="description-text-event-{speaker.id}">
+                    {speaker.bio}
+                </p>
+            </div>
+            <div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
+                <label class="flex w-full h-6  place-content-center cursor-pointer" >
+                    <input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{speaker.id}">
+                    <Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{speaker.id}"/>
+                    <Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{speaker.id}"/>
+                </label>
+            </div>
+        {/if}
     </div>
 </span>
