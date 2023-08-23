@@ -114,6 +114,12 @@
 		} else if (dayjs(eventData.end_time).isBefore(dayjs())) {
 			errors.end_time = 'end time cannot be in the past';
 			success = false;
+		} else if (dayjs(eventData.end_time).isBefore(dayjs(eventData.start_time))) {
+			errors.end_time = 'end time cannot be before start time'
+			success = false;
+		} else if (dayjs(eventData.end_time).isSame(dayjs(eventData.start_time))) {
+			errors.end_time = 'end time cannot be the same as start time'
+			success = false;
 		}
 		if (!eventData.upgrade) {
 			eventData.upgrade = false;
