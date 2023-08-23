@@ -115,12 +115,24 @@
 			errors.end_time = 'end time cannot be in the past';
 			success = false;
 		}
-		// if (!eventData.duration || eventData.duration == 0) {
-		// 	errors.duration = 'Duration cannot be empty or zero';
-		// 	success = false;
-		// }
+		if (!eventData.upgrade) {
+			eventData.upgrade = false;
+		}
+		if (!eventData.downgrade) {
+			eventData.downgrade = false;
+		}
+		if (eventData.upgrade && eventData.downgrade) {
+			errors.downgrade = 'Event cannot be both upgrade & downgrade';
+			success = false;
+		}
+		if (!eventData.visible) {
+			eventData.visible = false;
+		}
 		if (!eventData.virtual) {
 			eventData.virtual = false;
+		}
+		if (!eventData.imageUrl) {
+			eventData.imageUrl = null;
 		}
 		return success;
 	};
@@ -150,6 +162,10 @@
 				<input type="text" class="bg-gray-700 rounded-sm p-1" bind:value={eventData.location} />
 			</SmartInput>
 
+			<SmartInput bind:error={errors.imageUrl} label="Image URL" sublabel="Optional, check preview">
+				<input type="text" class="bg-gray-700 rounded-sm p-1" bind:value={eventData.imageUrl} />
+			</SmartInput>
+
 			<SmartInput label="Description" bind:error={errors.description}>
 				<textarea
 					class="bg-gray-700 rounded-sm p-1 hover:resize-y"
@@ -173,7 +189,7 @@
 					/>
 				</SmartInput>
 				<div class="flex flex-row gap-5">
-					<!-- <SmartInput label="Duration" sublabel="Hours" bind:error={errors.duration}>
+					<!-- <SmartInput label	="Duration" sublabel="Hours" bind:error={errors.duration}>
 						<input
 							type="number"
 							min={0}
@@ -200,6 +216,13 @@
 						bind:checked={eventData.upgrade}
 					/>
 				</SmartInput>
+				<SmartInput label="Downgrades" sublabel="to general status" bind:error={errors.downgrade}>
+					<input
+						type="checkbox"
+						class="bg-gray-700 rounded-sm p-2 w-5 h-5 accent-pink-500"
+						bind:checked={eventData.downgrade}
+					/>
+				</SmartInput>
 				<SmartInput label="Visible" sublabel="to everyone" bind:error={errors.visible}>
 					<input
 						type="checkbox"
@@ -208,6 +231,11 @@
 					/>
 				</SmartInput>
 			</div>
+
+			{#if eventData.imageUrl}
+				<h1>Preview Image</h1>
+				<img src={eventData.imageUrl} alt="Preview" height="200" width="200" />
+			{/if}
 
 			<div class="w-32 md:w-96 flex flex-col">
 				<button
