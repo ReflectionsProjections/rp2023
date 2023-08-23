@@ -104,33 +104,3 @@
 	</span>
 </div>
 
-		<!-- Alex Abramson -------------------------------------------------------------------------->
-		<!-- <span
-			class="w-2/3 flex flex-col md:flex-row mx-auto p-2 mb-10 md:p-5 bg-rp-cream rounded-xl md:bg-[url(src/assets/sun-vector.png)] bg-no-repeat"
-		>
-			<div class="md:w-1/4 flex flex-col items-center justify-center md:mr-4 text-2xl">
-				<div
-					class="flex flex-col items-center text-center text-2xl bg-rp-hot-pink text-white rounded-xl p-2"
-				>
-					Alex Abramson
-				</div>
-				<div class="w-full flex justify-center items-center mt-2">
-					<img
-						src="src/assets/alex-abramson.jpeg"
-						alt="Alex Abramson"
-						class="w-24 h-24 object-cover rounded-full"
-					/>
-				</div>
-			</div>
-			<div class="md:w-3/4 flex flex-col font-sans mt-2">
-				<div class="">
-					<p class="underline decoration-wavy font-bold decoration-rp-hot-pink p-2 inline-block">
-						Assistant Professor of Chemical and Biomolecular Engineering @ Georgia Tech
-					</p>
-				</div>
-				<div>(Speaker Bio Empty)</div>
-			</div>
-		</span>
-		<br />
-	</span>
-</div> -->
