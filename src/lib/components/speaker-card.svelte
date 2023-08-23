@@ -55,29 +55,31 @@
 				{speaker.bio}
 			</p>
 		</div>
-		<div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
-			<label class="flex w-full h-6 place-content-center cursor-pointer">
-				<input
-					class="sr-only peer"
-					type="checkbox"
-					on:click={scheduleDescControl}
-					id="event-{speaker.id}"
-				/>
-				<Icon
-					class="absolute flex h-fit aspect-square visible"
-					icon="mdi:chevron-down"
-					width="auto"
-					height="auto"
-					id="icon-arrow-down-event-{speaker.id}"
-				/>
-				<Icon
-					class="absolute flex h-fit aspect-square invisible"
-					icon="mdi:chevron-up"
-					width="auto"
-					height="auto"
-					id="icon-arrow-up-event-{speaker.id}"
-				/>
-			</label>
-		</div>
+        {#if speaker.bio !== ""}
+            <div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
+                <label class="flex w-full h-6 place-content-center cursor-pointer">
+                    <input
+                        class="sr-only peer"
+                        type="checkbox"
+                        on:click={scheduleDescControl}
+                        id="event-{speaker.id}"
+                    />
+                    <Icon
+                        class="absolute flex h-fit aspect-square visible"
+                        icon="mdi:chevron-down"
+                        width="auto"
+                        height="auto"
+                        id="icon-arrow-down-event-{speaker.id}"
+                    />
+                    <Icon
+                        class="absolute flex h-fit aspect-square invisible"
+                        icon="mdi:chevron-up"
+                        width="auto"
+                        height="auto"
+                        id="icon-arrow-up-event-{speaker.id}"
+                    />
+                </label>
+            </div>
+        {/if}
 	</div>
 </span>

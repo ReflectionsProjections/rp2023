@@ -4,19 +4,19 @@
 	import ShootingStar from '../../components/shooting-star.svelte';
 
 	const speakers: Speaker[] = [
-		{
-			id: 'chris-earney',
-			name: 'Chris Earney',
-			role: 'Head of United Nations Future Lab',
-			organization: 'United Nations',
-			bio: "Chris Earney serves as the Head of United Nations Future Lab and has worked as the Deputy Director of United Nations from May 2021 to Jun 2023. Within the United Nations, he has held the positions of Head the Crisis Insights Team within the Executive Office of the Secretary General. Earney has also worked with the United Nations High Commissioner for Refugees (UNHCR) as both the Head of the UN Refugee Agency's Innovation Service and co-founder of the Innovation Team."
-		},
+		// {
+		// 	id: 'chris-earney',
+		// 	name: 'Chris Earney',
+		// 	role: 'Head of United Nations Future Lab',
+		// 	organization: 'United Nations',
+		// 	bio: "Chris Earney serves as the Head of United Nations Future Lab and has worked as the Deputy Director of United Nations from May 2021 to Jun 2023. Within the United Nations, he has held the positions of Head the Crisis Insights Team within the Executive Office of the Secretary General. Earney has also worked with the United Nations High Commissioner for Refugees (UNHCR) as both the Head of the UN Refugee Agency's Innovation Service and co-founder of the Innovation Team."
+		// },
 		{
 			id: 'alex-abramson',
 			name: 'Alex Abramson',
 			role: 'Assistant Professor of Chemical and Biomolecular Engineering at Georgia Tech',
 			organization: 'Georgia Tech',
-			bio: 'Alex Abramson, PhD is an Assistant Professor in the Chemical and Biomolecular Engineering department at Georgia Tech. His research, which focuses on drug delivery and bioelectronic therapeutics, has been featured in news outlets such as The New York Times, NPR, and Wired. Dr. Abramson has received several recognitions for scientific innovation, including being named a member of the Forbes 30 Under 30 Science List and the MIT Technology Review Innovators Under 35 List. Dr. Abramson is passionate about translating scientific endeavors from bench to bedside. Large pharmaceutical companies have exclusively licensed a portfolio of his patents to bring into clinical trials, and Dr. Abramson serves as a scientific advisor overseeing their commercialization. In addition to his scientific endeavors, Dr. Abramson plays an active role in his community by leading Diversity Equity and Inclusion efforts on campus and volunteering as a STEM tutor to local students.\n Prof. Abramson received his B.S. in Chemical and Biomolecular Engineering from Johns Hopkins University and his Ph.D. in Chemical Engineering from MIT as an NSF Graduate Research Fellow under the direction of Profs. Robert Langer and Giovanni Traverso. He conducted postdoctoral work at Stanford University as an NIH fellow with Profs. Zhenan Bao and the late Sanjiv S. Gambhir.'
+			bio: ''
 		},
 		{
 			id: 'archana-chaudhary',
@@ -79,7 +79,7 @@
 			name: 'Setor Zilevu',
 			role: 'Lead User Experience Researcher at Meta',
 			organization: 'Meta',
-			bio: 'Dr. Setor Zilevu is a Lead User Experience and Artificial Intelligence Researcher with a proven track record of leading transformative research projects and initiatives at companies like Meta (Facebook), Google, Adobe, and Intel. At Meta, Dr. Zilevu has led research projects that resulted in significant cost savings, productivity boosts, and enhanced employee experiences. Dr. Zilevu is also currently an adjunct professor at New York University Tandon School of Engineering, where he teaches Applied UX Research, Creative Coding, and User Experience in the World of Artificial Intelligence. Throughout his time at Virginia Tech, Dr. Zilevu developed a cyber-human approach to understanding the mind and mental model of stroke rehabilitation therapists, earning him honors such as the MIT Technology Review Innovator Under 35 Global Winner, Virginia Tech Ph.D. Research of the Year, and various fellowships.'
+			bio: ''
 		},
 		{
 			id: 'sue-harnett',
