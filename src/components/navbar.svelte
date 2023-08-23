@@ -34,7 +34,7 @@
 		</a>
 		<div class="flex flex-row justify-evenly w-[95%] md:w-2/3 lg:w-1/2 items-center">
 			<a
-				href="/speaker-guide"
+				href="/speakers"
 				class="hover:underline underline-offset-8 hover:underline-offset-4 decoration-pink-500 decoration-2 duration-150"
 				>Speakers</a
 			>

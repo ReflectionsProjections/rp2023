@@ -95,7 +95,7 @@
 	<ShootingStar />
 
 	<span class="w-full flex flex-col items-center">
-		<div class="font-bold text-3xl text-white mb-10">SPEAKERS</div>
+		<div class="font-serif text-3xl text-white mt-10 mb-20">Speakers</div>
 
 		{#each speakers as speaker}
 			<SpeakerCard {speaker} />
