@@ -74,6 +74,10 @@
 			const message = res.message;
 			errors = Array.isArray(message) ? message : [message];
 			submitted = false;
+		} else {
+			const preferences = await response.json();
+			formValues.jobTypeInterest = preferences.jobTypeInterest;
+			formValues.portfolioLink = preferences.portfolioLink;
 		}
 	});
 
@@ -101,7 +105,7 @@
 </script>
 
 <main class="flex flex-col items-center h-full gap-5">
-	<div class="text-lg md:text-xl text-white">
+	<div class="font-serif text-3xl text-white mt-10">
 		Preferences
 	</div>
 	<div class="text-base text-slate-300">
@@ -138,6 +142,7 @@
 						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
 						type="url"
 						bind:value={formValues.portfolioLink}
+						placeholder={formValues.portfolioLink}
 					/>
 				</div>
 			</div>
