@@ -105,10 +105,8 @@
 </script>
 
 <main class="flex flex-col items-center h-full gap-5">
-	<div class="font-serif text-3xl text-white mt-10">
-		Preferences
-	</div>
-	<div class="text-base text-slate-300">
+	<div class="font-serif text-3xl text-white mt-10">Preferences</div>
+	<div class="text-base text-slate-300 text-center mx-3">
 		Add new or update existing resumes, job interest preferences, and relevant links.
 	</div>
 	<form class="w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
@@ -139,8 +137,8 @@
 						>Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label
 					>
 					<input
-						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
-						type="url"
+						class="bg-transparent border border-gray-400 rounded-md p-1 h-fit w-full"
+						type="text"
 						bind:value={formValues.portfolioLink}
 						placeholder={formValues.portfolioLink}
 					/>
@@ -159,9 +157,7 @@
 					{/each}
 				</div>
 			{:else if submitted}
-				<div class="text-green-500">
-					Success! Preferences saved successfully.
-				</div>
+				<div class="text-green-500">Success! Preferences saved successfully.</div>
 			{/if}
 		</GlassContainer>
 	</form>
