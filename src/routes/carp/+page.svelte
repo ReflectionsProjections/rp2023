@@ -161,7 +161,7 @@
 </script>
 
 <main class="flex flex-col h-full">
-			
+	<div>
 			<div class="mx-auto my-auto w-fit text-gray-100 accent-rp-pink">
 				<GlassContainer>
 					<h1 class="text-5xl" > Resume Viewer </h1>
@@ -190,6 +190,8 @@
 			{/if}
 		</div>
 
+			<div>
+				<div>
 					{#if show_majors}
 					<div class="">
 						<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
@@ -263,8 +265,6 @@
 					{/if}
 				</div>
 			</div>
-
-<<<<<<< HEAD
 			
 
 			<!-- <div class="mx-auto my-auto text-gray-100">
@@ -273,7 +273,6 @@
 				<div>
 					{grad_year} 
 				</div>
-=======
 			{#if show_grad_year}
 			<div class="fixed">
 				<ul class="p-2 bg-opacity-25 bg-rp-dull-pink">
@@ -337,8 +336,7 @@
 		</div>
 		{/each}
 	</div> -->
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	<div>
 		<table>
 			<thead>
@@ -355,7 +353,7 @@
 						<td>{item[column.key]}</td>
 					{/each}
 				</tr>
->>>>>>> b9ad7df (fix dropdown)
+
 				{/each}
 
 				{#each major_filters as major}
@@ -363,12 +361,10 @@
 					{major}
 				</div>
 				{/each}
-			</div> -->
+			</div>
 			<div>
 				table
 			</div>
-=======
-=======
 
 	<div class = "p-10">
 
@@ -394,7 +390,6 @@
 			</tbody>
 		</table>
 	</div>
->>>>>>> c4e6a02 (changed formatting of table to be consistant w dashboard, added button to get resume)
 <!-- 
 	<div class="flex flex-col h-full w-9/12 mx-auto my-auto">
 		<GlassContainer>
@@ -418,7 +413,6 @@
 			</table>
 		</GlassContainer>
 	</div> -->
->>>>>>> 6bccb3d (added GET url api call)
 
 </main>
 
