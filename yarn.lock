@@ -12,6 +12,7 @@
   resolved "https://registry.yarnpkg.com/@alloc/quick-lru/-/quick-lru-5.2.0.tgz#7bf68b20c0a350f936915fcae06f58e32007ce30"
   integrity sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==
 
+<<<<<<< HEAD
 "@aws-crypto/crc32@3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@aws-crypto/crc32/-/crc32-3.0.0.tgz#07300eca214409c33e3ff769cd5697b57fdd38fa"
@@ -957,6 +958,12 @@
   integrity sha512-TqELu4mOuSIKQCqj63fGVs86Yh+vBx5nHRpWKNUNhB2nPTpfbziTs5c1X358be3peVWA4wPxW7Nt53KIg1tnNw==
   dependencies:
     tslib "^2.5.0"
+=======
+"@cloudflare/workers-types@^4.20230404.0":
+  version "4.20230821.0"
+  resolved "https://registry.yarnpkg.com/@cloudflare/workers-types/-/workers-types-4.20230821.0.tgz#7f9b79595c26ff544e85e1a5afa603ffd2e42ff9"
+  integrity sha512-lVQSyr5E4CEkQw7WIdsrMTj+kHjsm28mJ0B5AhNFByKR+16KTFsU/RW/nGLKHHW2jxT5lvYI+HjNQMzC9QR8Ng==
+>>>>>>> 01119f9 (styling ad filter functionality)
 
 "@esbuild/android-arm64@0.18.20":
   version "0.18.20"
@@ -1081,9 +1088,15 @@
   integrity sha512-pPTNuaAG3QMH+buKyBIGJs3g/S5y0caxw0ygM3YyE6yJFySwiGGSzA+mM3KJ8QQvzeLh3blwgSonkFjgQdxzMw==
 
 "@eslint/eslintrc@^2.1.1":
+<<<<<<< HEAD
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-2.1.1.tgz#18d635e24ad35f7276e8a49d135c7d3ca6a46f93"
   integrity sha512-9t7ZA7NGGK8ckelF0PQCfcxIUzs1Md5rrO6U/c+FIQNanea5UZC0wqKXH4vHBccmu4ZJgZ2idtPeW7+Q2npOEA==
+=======
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@eslint/eslintrc/-/eslintrc-2.1.2.tgz#c6936b4b328c64496692f76944e755738be62396"
+  integrity sha512-+wvgpDsrB1YqAMdEUCcnTlpfVBH7Vqn6A/NT3D8WVXFIaKMlErPIZT3oCIAVCOtarRpMtelZLqJeU3t7WY6X6g==
+>>>>>>> 01119f9 (styling ad filter functionality)
   dependencies:
     ajv "^6.12.4"
     debug "^4.3.2"
@@ -1789,7 +1802,7 @@
     "@nodelib/fs.stat" "2.0.5"
     run-parallel "^1.1.9"
 
-"@nodelib/fs.stat@^2.0.2", "@nodelib/fs.stat@2.0.5":
+"@nodelib/fs.stat@2.0.5", "@nodelib/fs.stat@^2.0.2":
   version "2.0.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-2.0.5.tgz#5bd262af94e9d25bd1e71b05deed44876a222e8b"
   integrity sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A==
@@ -1817,6 +1830,7 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
+<<<<<<< HEAD
 "@smithy/protocol-http@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@smithy/protocol-http/-/protocol-http-1.0.1.tgz#62fd73d73db285fd8e9a2287ed2904ac66e0d43f"
@@ -1831,6 +1845,142 @@
   integrity sha512-kc1m5wPBHQCTixwuaOh9vnak/iJm21DrSf9UK6yDE5S3mQQ4u11pqAUiKWnlrZnYkeLfAI9UEHj9OaMT1v5Umg==
   dependencies:
     tslib "^2.5.0"
+=======
+"@smui/checkbox@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/checkbox/-/checkbox-7.0.0-beta.9.tgz"
+  integrity sha512-LPnYywI3m4kEgskLDs48UcWz5ulIGqZ/l/tzk5/6vibq8NGLYTW6k6v5rEYx9EfoNRMN+K4QNL2AOtIL25v+CQ==
+  dependencies:
+    "@material/checkbox" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/ripple" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/common@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/common/-/common-7.0.0-beta.9.tgz"
+  integrity sha512-Wf63UfvaB8hDSzxkoqCUpFiJffQixmyKW+mWVE5ZUQ94Vwg0gZWGbNMEBrwrtI4tHomMQ95VVNdps/KsaXlStw==
+  dependencies:
+    "@material/dom" "^14.0.0"
+    svelte2tsx "^0.6.15"
+
+"@smui/data-table@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/data-table/-/data-table-7.0.0-beta.9.tgz"
+  integrity sha512-2aItuDD8/XfDYqjf4B6oIdLnD0m/qgPsCVp+t0oM/YDhFQXyAV+iSpT6GL+1hLu2+sGP6nk3+/XoNbPT9BPrLA==
+  dependencies:
+    "@material/data-table" "^14.0.0"
+    "@material/dom" "^14.0.0"
+    "@smui/checkbox" "^7.0.0-beta.9"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/icon-button" "^7.0.0-beta.9"
+    "@smui/ripple" "^7.0.0-beta.9"
+    "@smui/select" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/floating-label@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/floating-label/-/floating-label-7.0.0-beta.9.tgz"
+  integrity sha512-Il3ztKWBjWX3yz7pCZq9C4DpUzRZ4ewKMA6YQ5uqsWRn/crVHPCk5irSVc3chZ7jGHZ6ZvbUYn7qGTv8OlVobg==
+  dependencies:
+    "@material/floating-label" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/icon-button@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/icon-button/-/icon-button-7.0.0-beta.9.tgz"
+  integrity sha512-F1QmslrdIq+plkKnIvN2cyVPFish7lhw7cYzxpWzhOXbjF1Bay0mmyuHSYjiZ3//LL1CcFOnZJ/QMT8dKqfgYg==
+  dependencies:
+    "@material/density" "^14.0.0"
+    "@material/icon-button" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/ripple" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/line-ripple@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/line-ripple/-/line-ripple-7.0.0-beta.9.tgz"
+  integrity sha512-GuWd+mVY1BrLi9Y0/r+5G/EzQXiGmDGxqRTSxA4Ufa6zEhGZ8bk7tHT/WvGZL/xq87MTvJ3PWOYbLbNN3gi2mg==
+  dependencies:
+    "@material/line-ripple" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/list@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/list/-/list-7.0.0-beta.9.tgz"
+  integrity sha512-nSpiFK5kd+yCDrG6dJR5+flYaPiI77zeWMJzmE3XGvqXrQULjTSatCIRmgFjTJYwsDKcWb8xT7Omg7T/H+IoqQ==
+  dependencies:
+    "@material/dom" "^14.0.0"
+    "@material/feature-targeting" "^14.0.0"
+    "@material/list" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/ripple" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/menu-surface@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/menu-surface/-/menu-surface-7.0.0-beta.9.tgz"
+  integrity sha512-xmSyvNCVYDGYrZdZw1TXKmbX3rZYpubxiGcPXnHEElR2zljAwg9LsHKD8ZnpzJJZrpxTpO3xCrj0ybB0yYxqLA==
+  dependencies:
+    "@material/animation" "^14.0.0"
+    "@material/menu-surface" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/menu@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/menu/-/menu-7.0.0-beta.9.tgz"
+  integrity sha512-GpfDZUqSywcNrVzWmHs63uDJiVneK+WuGqC9D6l58Uj5TsPT5fr4UGFfuWAl6685pDjD3eCwEmyFdQKi3DPXfA==
+  dependencies:
+    "@material/dom" "^14.0.0"
+    "@material/menu" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/list" "^7.0.0-beta.9"
+    "@smui/menu-surface" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/notched-outline@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/notched-outline/-/notched-outline-7.0.0-beta.9.tgz"
+  integrity sha512-oZ8ah/9sX+QiTyJwXhrqBkrpfjxwv53zOvyZbs6bVGFi2dp/HBzGXHuoUKgfWHtE8smC6Bd675BDpig8XN86PQ==
+  dependencies:
+    "@material/notched-outline" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/floating-label" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/ripple@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/ripple/-/ripple-7.0.0-beta.9.tgz"
+  integrity sha512-N21ONk6cFMAkKfLjPDMyEKNvcAzklxpJ/TXIWQBUJxRQJZcjhPLLq9y5RpqVF+0DiIFHXm/hQJv98psPtJqHIw==
+  dependencies:
+    "@material/dom" "^14.0.0"
+    "@material/ripple" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+
+"@smui/select@^7.0.0-beta.9":
+  version "7.0.0-beta.9"
+  resolved "https://registry.npmjs.org/@smui/select/-/select-7.0.0-beta.9.tgz"
+  integrity sha512-LB7KiOQT92j6IJAuwHIlaF7G3beLPOUqPsNB/FFN8JKpQSnjx7w7PjLvcgSLlfxkxX38XfNE1dwH8KUp4JKOhA==
+  dependencies:
+    "@material/feature-targeting" "^14.0.0"
+    "@material/ripple" "^14.0.0"
+    "@material/rtl" "^14.0.0"
+    "@material/select" "^14.0.0"
+    "@material/theme" "^14.0.0"
+    "@smui/common" "^7.0.0-beta.9"
+    "@smui/floating-label" "^7.0.0-beta.9"
+    "@smui/line-ripple" "^7.0.0-beta.9"
+    "@smui/list" "^7.0.0-beta.9"
+    "@smui/menu" "^7.0.0-beta.9"
+    "@smui/menu-surface" "^7.0.0-beta.9"
+    "@smui/notched-outline" "^7.0.0-beta.9"
+    "@smui/ripple" "^7.0.0-beta.9"
+    svelte2tsx "^0.6.15"
+>>>>>>> 01119f9 (styling ad filter functionality)
 
 "@sveltejs/adapter-auto@^1.0.0":
   version "1.0.3"
@@ -1888,9 +2038,15 @@
   integrity sha512-Hr5Jfhc9eYOQNPYO5WLDq/n4jqijdHNlDXjuAQkkt+mWdQR+XJToOHrsD4cPaMXpn6KO7y2+wM8AZEs8VpBLVA==
 
 "@types/node@*":
+<<<<<<< HEAD
   version "20.4.8"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-20.4.8.tgz#b5dda19adaa473a9bf0ab5cbd8f30ec7d43f5c85"
   integrity sha512-0mHckf6D2DiIAzh8fM8f3HQCvMKDpK94YQ0DSVkfWTG9BZleYIWudw9cJxX8oCk9bM+vAkDyujDV6dmKHbvQpg==
+=======
+  version "18.11.18"
+  resolved "https://registry.npmjs.org/@types/node/-/node-18.11.18.tgz"
+  integrity sha512-DHQpWGjyQKSHj3ebjFI/wRKcqQcdR+MoFBygntYOZytCqNfkd2ZC4ARDJ2DQqhjH5p85Nnd3jhUJIXrszFX/JA==
+>>>>>>> 01119f9 (styling ad filter functionality)
 
 "@types/pug@^2.0.6":
   version "2.0.6"
@@ -1919,13 +2075,19 @@
     tsutils "^3.21.0"
 
 "@typescript-eslint/parser@^5.45.0":
+<<<<<<< HEAD
   version "5.62.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.62.0.tgz#1b63d082d849a2fcae8a569248fbe2ee1b8a56c7"
   integrity sha512-VlJEV0fOQ7BExOsHYAGrgbEiZoi8D+Bl2+f6V2RrXerRSylnp+ZBHmPvaIa8cz0Ajx7WO7Z5RqfgYg7ED1nRhA==
+=======
+  version "5.49.0"
+  resolved "https://registry.npmjs.org/@typescript-eslint/parser/-/parser-5.49.0.tgz"
+  integrity sha512-veDlZN9mUhGqU31Qiv2qEp+XrJj5fgZpJ8PW30sHU+j/8/e5ruAhLaVDAeznS7A7i4ucb/s8IozpDtt9NqCkZg==
+>>>>>>> 01119f9 (styling ad filter functionality)
   dependencies:
-    "@typescript-eslint/scope-manager" "5.62.0"
-    "@typescript-eslint/types" "5.62.0"
-    "@typescript-eslint/typescript-estree" "5.62.0"
+    "@typescript-eslint/scope-manager" "5.49.0"
+    "@typescript-eslint/types" "5.49.0"
+    "@typescript-eslint/typescript-estree" "5.49.0"
     debug "^4.3.4"
 
 "@typescript-eslint/scope-manager@5.62.0":
@@ -2068,11 +2230,6 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-bowser@^2.11.0:
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/bowser/-/bowser-2.11.0.tgz#5ca3c35757a7aa5771500c70a73a9f91ef420a8f"
-  integrity sha512-AlcaJBi/pqqJBIQ8U9Mcpc9i8Aqxn88Skv5d+xBX006BY5u8N3mGLHa5Lgppa7L/HfwgwLgZ6NYs+Ag6uUmJRA==
-
 brace-expansion@^1.1.7:
   version "1.1.11"
   resolved "https://registry.yarnpkg.com/brace-expansion/-/brace-expansion-1.1.11.tgz#3c7fcbf529d87226f3d2f52b966ff5271eb441dd"
@@ -2102,11 +2259,6 @@ buffer-crc32@^0.2.5:
   version "0.2.13"
   resolved "https://registry.yarnpkg.com/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
   integrity sha512-VO9Ht/+p3SN7SKWqcrgEzjGbRSJYTx+Q1pTQC0wrWqHx0vpJraQ6GtHx8tvcg1rlK1byhU5gccxgOgj7B0TDkQ==
-
-buffer-from@^1.0.0:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
-  integrity sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==
 
 busboy@^1.6.0:
   version "1.6.0"
@@ -2193,11 +2345,6 @@ cssesc@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/cssesc/-/cssesc-3.0.0.tgz#37741919903b868565e1c09ea747445cd18983ee"
   integrity sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==
-
-dayjs@^1.11.9:
-  version "1.11.9"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.9.tgz#9ca491933fadd0a60a2c19f6c237c03517d71d1a"
-  integrity sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==
 
 debug@^4.1.1, debug@^4.3.2, debug@^4.3.4:
   version "4.3.4"
@@ -2335,46 +2482,54 @@ eslint-visitor-keys@^3.3.0, eslint-visitor-keys@^3.4.1, eslint-visitor-keys@^3.4
   integrity sha512-8drBzUEyZ2llkpCA67iYrgEssKDUu68V8ChqqOfFupIaG/LCVPUT+CoGJpT77zJprs4T/W7p07LP7zAIMuweVw==
 
 eslint@^8.28.0:
+<<<<<<< HEAD
   version "8.46.0"
   resolved "https://registry.yarnpkg.com/eslint/-/eslint-8.46.0.tgz#a06a0ff6974e53e643acc42d1dcf2e7f797b3552"
   integrity sha512-cIO74PvbW0qU8e0mIvk5IV3ToWdCq5FYG6gWPHHkx6gNdjlbAYvtfHmlCMXxjcoVaIdwy/IAt3+mDkZkfvb2Dg==
+=======
+  version "8.32.0"
+  resolved "https://registry.npmjs.org/eslint/-/eslint-8.32.0.tgz"
+  integrity sha512-nETVXpnthqKPFyuY2FNjz/bEd6nbosRgKbkgS/y1C7LJop96gYHWpiguLecMHQ2XCPxn77DS0P+68WzG6vkZSQ==
+>>>>>>> 01119f9 (styling ad filter functionality)
   dependencies:
-    "@eslint-community/eslint-utils" "^4.2.0"
-    "@eslint-community/regexpp" "^4.6.1"
-    "@eslint/eslintrc" "^2.1.1"
-    "@eslint/js" "^8.46.0"
-    "@humanwhocodes/config-array" "^0.11.10"
+    "@eslint/eslintrc" "^1.4.1"
+    "@humanwhocodes/config-array" "^0.11.8"
     "@humanwhocodes/module-importer" "^1.0.1"
     "@nodelib/fs.walk" "^1.2.8"
-    ajv "^6.12.4"
+    ajv "^6.10.0"
     chalk "^4.0.0"
     cross-spawn "^7.0.2"
     debug "^4.3.2"
     doctrine "^3.0.0"
     escape-string-regexp "^4.0.0"
-    eslint-scope "^7.2.2"
-    eslint-visitor-keys "^3.4.2"
-    espree "^9.6.1"
-    esquery "^1.4.2"
+    eslint-scope "^7.1.1"
+    eslint-utils "^3.0.0"
+    eslint-visitor-keys "^3.3.0"
+    espree "^9.4.0"
+    esquery "^1.4.0"
     esutils "^2.0.2"
     fast-deep-equal "^3.1.3"
     file-entry-cache "^6.0.1"
     find-up "^5.0.0"
     glob-parent "^6.0.2"
     globals "^13.19.0"
-    graphemer "^1.4.0"
+    grapheme-splitter "^1.0.4"
     ignore "^5.2.0"
+    import-fresh "^3.0.0"
     imurmurhash "^0.1.4"
     is-glob "^4.0.0"
     is-path-inside "^3.0.3"
+    js-sdsl "^4.1.4"
     js-yaml "^4.1.0"
     json-stable-stringify-without-jsonify "^1.0.1"
     levn "^0.4.1"
     lodash.merge "^4.6.2"
     minimatch "^3.1.2"
     natural-compare "^1.4.0"
-    optionator "^0.9.3"
+    optionator "^0.9.1"
+    regexpp "^3.2.0"
     strip-ansi "^6.0.1"
+    strip-json-comments "^3.1.0"
     text-table "^0.2.0"
 
 esm-env@^1.0.0:
@@ -2445,13 +2600,6 @@ fast-levenshtein@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==
-
-fast-xml-parser@4.2.4:
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/fast-xml-parser/-/fast-xml-parser-4.2.4.tgz#6e846ede1e56ad9e5ef07d8720809edf0ed07e9b"
-  integrity sha512-fbfMDvgBNIdDJLdLOwacjFAPYt67tr31H9ZhWSm45CDAxvd0I6WTlSOUo7K2P/K5sA5JgMKG64PI3DMcaFdWpQ==
-  dependencies:
-    strnum "^1.0.5"
 
 fastq@^1.6.0:
   version "1.15.0"
@@ -2837,6 +2985,17 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==
 
+<<<<<<< HEAD
+=======
+no-case@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.npmjs.org/no-case/-/no-case-3.0.4.tgz"
+  integrity sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==
+  dependencies:
+    lower-case "^2.0.2"
+    tslib "^2.0.3"
+
+>>>>>>> 01119f9 (styling ad filter functionality)
 node-releases@^2.0.13:
   version "2.0.13"
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.13.tgz#d5ed1627c23e3461e819b02e57b75e4899b1c81d"
@@ -3004,7 +3163,20 @@ postcss-value-parser@^4.0.0, postcss-value-parser@^4.2.0:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-4.2.0.tgz#723c09920836ba6d3e5af019f92bc0971c02e514"
   integrity sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==
 
+<<<<<<< HEAD
 postcss@^8.4.21, postcss@^8.4.23, postcss@^8.4.27:
+=======
+postcss@^8.4.21:
+  version "8.4.21"
+  resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.21.tgz"
+  integrity sha512-tP7u/Sn/dVxK2NnruI4H9BG+x+Wxz6oeZ1cJ8P6G/PZY0IKk4k/63TDsQf2kQq3+qoJeLm2kIBUNlZe3zgb4Zg==
+  dependencies:
+    nanoid "^3.3.4"
+    picocolors "^1.0.0"
+    source-map-js "^1.0.2"
+
+postcss@^8.4.23, postcss@^8.4.27:
+>>>>>>> 01119f9 (styling ad filter functionality)
   version "8.4.27"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.4.27.tgz#234d7e4b72e34ba5a92c29636734349e0d9c3057"
   integrity sha512-gY/ACJtJPSmUFPDCHtX78+01fHa64FaU4zaaWfuh1MhGJISufJAH4cun6k/8fwsHYeK4UQmENQK+tRLCFJE8JQ==
@@ -3023,7 +3195,7 @@ prettier-plugin-svelte@^2.8.1:
   resolved "https://registry.yarnpkg.com/prettier-plugin-svelte/-/prettier-plugin-svelte-2.10.1.tgz#e1abbe5689e8a926c60b8bc42e61233556ca90d1"
   integrity sha512-Wlq7Z5v2ueCubWo0TZzKc9XHcm7TDxqcuzRuGd0gcENfzfT4JZ9yDlCbEgxWgiPmLHkBjfOtpAWkcT28MCDpUQ==
 
-"prettier@^1.16.4 || ^2.0.0", prettier@^2.8.0:
+prettier@^2.8.0:
   version "2.8.3"
   resolved "https://registry.npmjs.org/prettier/-/prettier-2.8.3.tgz"
   integrity sha512-tJ/oJ4amDihPoufT5sM0Z1SKEuKay8LfVAMlbbhnnkvt6BUserZylqo2PN+p9KeljLr0OHa2rXHU1T8reeoTrw==
@@ -3169,19 +3341,6 @@ source-map-js@^1.0.2:
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
 
-source-map-support@^0.5.21:
-  version "0.5.21"
-  resolved "https://registry.npmjs.org/source-map-support/-/source-map-support-0.5.21.tgz"
-  integrity sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==
-  dependencies:
-    buffer-from "^1.0.0"
-    source-map "^0.6.0"
-
-source-map@^0.6.0:
-  version "0.6.1"
-  resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
-  integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
-
 streamsearch@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/streamsearch/-/streamsearch-1.1.0.tgz#404dd1e2247ca94af554e841a8ef0eaa238da764"
@@ -3205,11 +3364,6 @@ strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-3.1.1.tgz#31f1281b3832630434831c310c01cccda8cbe006"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
-
-strnum@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/strnum/-/strnum-1.0.5.tgz#5c4e829fe15ad4ff0d20c3db5ac97b73c9b072db"
-  integrity sha512-J8bbNyKKXl5qYcR36TIO8W3mVGVHrmmxsd5PAItGkmyzwJvybiw2IVq5nqd0i4LSNSkB/sx9VHllbfFdr9k1JA==
 
 sucrase@^3.32.0:
   version "3.34.0"
@@ -3266,6 +3420,7 @@ svelte-preprocess@^5.0.4:
     sorcery "^0.11.0"
     strip-indent "^3.0.0"
 
+<<<<<<< HEAD
 svelte2tsx@^0.6.15:
   version "0.6.16"
   resolved "https://registry.npmjs.org/svelte2tsx/-/svelte2tsx-0.6.16.tgz"
@@ -3279,6 +3434,8 @@ svelte@^3.54.0:
   resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.59.2.tgz#a137b28e025a181292b2ae2e3dca90bf8ec73aec"
   integrity sha512-vzSyuGr3eEoAtT/A6bmajosJZIUWySzY2CzB3w2pgPvnkUjGqlDnsNnA0PMO+mMAhuyMul6C2uuZzY6ELSkzyA==
 
+=======
+>>>>>>> 01119f9 (styling ad filter functionality)
 svelte2tsx@^0.6.15:
   version "0.6.16"
   resolved "https://registry.npmjs.org/svelte2tsx/-/svelte2tsx-0.6.16.tgz"
@@ -3286,6 +3443,11 @@ svelte2tsx@^0.6.15:
   dependencies:
     dedent-js "^1.0.1"
     pascal-case "^3.1.1"
+
+svelte@^3.54.0:
+  version "3.55.1"
+  resolved "https://registry.npmjs.org/svelte/-/svelte-3.55.1.tgz"
+  integrity sha512-S+87/P0Ve67HxKkEV23iCdAh/SX1xiSfjF1HOglno/YTbSTW7RniICMCofWGdJJbdjw3S+0PfFb1JtGfTXE0oQ==
 
 tailwindcss@^3.2.4:
   version "3.3.3"
@@ -3351,11 +3513,12 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.yarnpkg.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz#784fd3d679722bc103b1b4b8030bcddb5db2a699"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
-tslib@^1.11.1, tslib@^1.8.1:
+tslib@^1.8.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.1.tgz#cf2d38bdc34a134bcaf1091c41f6619e2f672d00"
   integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
+<<<<<<< HEAD
 tslib@^2.3.1, tslib@^2.5.0:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.5.3.tgz#24944ba2d990940e6e982c4bea147aba80209913"
@@ -3365,6 +3528,12 @@ tslib@^2.4.1:
   version "2.6.1"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.6.1.tgz#fd8c9a0ff42590b25703c0acb3de3d3f4ede0410"
   integrity sha512-t0hLfiEKfMUoqhG+U1oid7Pva4bbDPHYfJNiB7BiIjRkj1pyC++4N3huJfqY6aRH6VTB0rvtzQwjM4K6qpfOig==
+=======
+tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.4.1.tgz"
+  integrity sha512-tGyy4dAjRIEwI7BzsB0lynWgOpfqjUdq91XXAlIWD2OwKBH7oCl/GZG/HT4BOHrTlPMOASlMQ7veyTqpmRcrNA==
+>>>>>>> 01119f9 (styling ad filter functionality)
 
 tsutils@^3.21.0:
   version "3.21.0"
@@ -3386,9 +3555,15 @@ type-fest@^0.20.2:
   integrity sha512-Ne+eE4r0/iWnpAxD852z3A+N0Bt5RN//NjJwRd2VFHEmrywxf5vsZlh4R6lixl6B+wz/8d+maTSAkN1FIkI3LQ==
 
 typescript@^4.9.3:
+<<<<<<< HEAD
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
   integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
+=======
+  version "4.9.4"
+  resolved "https://registry.npmjs.org/typescript/-/typescript-4.9.4.tgz"
+  integrity sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==
+>>>>>>> 01119f9 (styling ad filter functionality)
 
 typescript@^5.0.3:
   version "5.1.6"
@@ -3422,6 +3597,7 @@ util-deprecate@^1.0.2:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
+<<<<<<< HEAD
 uuid@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
@@ -3431,10 +3607,17 @@ vite@^4.0.0:
   version "4.4.9"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.4.9.tgz#1402423f1a2f8d66fd8d15e351127c7236d29d3d"
   integrity sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==
+=======
+vite@^4.0.0:
+  version "4.0.4"
+  resolved "https://registry.npmjs.org/vite/-/vite-4.0.4.tgz"
+  integrity sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==
+>>>>>>> 01119f9 (styling ad filter functionality)
   dependencies:
-    esbuild "^0.18.10"
-    postcss "^8.4.27"
-    rollup "^3.27.1"
+    esbuild "^0.16.3"
+    postcss "^8.4.20"
+    resolve "^1.22.1"
+    rollup "^3.7.0"
   optionalDependencies:
     fsevents "~2.3.2"
 
