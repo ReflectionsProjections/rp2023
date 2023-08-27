@@ -13,7 +13,7 @@
 	let submitted = false;
 
 	let fileData: File;
-	let errors = null;
+	let errors: string[] | null = null;
 
 	const handleFileInput = (_event: Event) => {
 		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
@@ -25,7 +25,26 @@
 	};
 
 	const onSubmit = async () => {
-		const response = await fetch(`${$API_URL}/attendee`, {
+		errors = [];
+		if (fileData) {
+			const formData = new FormData();
+			formData.append('file', fileData);
+
+			const response = await fetch(`${$API_URL}/attendee/upload`, {
+				method: 'POST',
+				cache: 'no-cache',
+				credentials: 'include',
+				body: formData
+			});
+
+			if (!response.ok) {
+				const res = await response.json();
+				const message = res.message;
+				errors = Array.isArray(message) ? message : [message];
+				submitted = false;
+			}
+		}
+		const response = await fetch(`${$API_URL}/attendee/preferences`, {
 			method: 'PATCH',
 			credentials: 'include',
 			headers: {
@@ -36,11 +55,12 @@
 
 		if (response.ok) {
 			submitted = true;
+		} else {
+			const res = await response.json();
+			const message = res.message;
+			errors = Array.isArray(message) ? message : [message];
+			submitted = false;
 		}
-		const res = await response.json();
-		console.error(res);
-		const message = res.message;
-		errors = Array.isArray(message) ? message : [message];
 	};
 
 	onMount(async () => {
@@ -48,13 +68,17 @@
 			credentials: 'include'
 		});
 
-		if (response.ok) {
-			submitted = true;
+		if (!response.ok) {
+			const res = await response.json();
+			console.error(res);
+			const message = res.message;
+			errors = Array.isArray(message) ? message : [message];
+			submitted = false;
+		} else {
+			const preferences = await response.json();
+			formValues.jobTypeInterest = preferences.jobTypeInterest;
+			formValues.portfolioLink = preferences.portfolioLink;
 		}
-		const res = await response.json();
-		console.error(res);
-		const message = res.message;
-		errors = Array.isArray(message) ? message : [message];
 	});
 
 	let logoutMessage: { message: any; success?: boolean } | null = null;
@@ -73,7 +97,6 @@
 			setTimeout(() => (window.location.href = '/'), 1000);
 		}
 		const res = await response.json();
-		console.error(res);
 		logoutMessage = {
 			message: response.statusText,
 			success: false
@@ -82,10 +105,9 @@
 </script>
 
 <main class="flex flex-col items-center h-full gap-5">
-	<div
-		class="bg-red-900 max-w-lg bg-opacity-40 text-center text-red-400 border border-red-500 rounded-md px-2 py-3 m-3"
-	>
-		Hi! We're currently working on this page, so please check back later. You're the best!
+	<div class="font-serif text-3xl text-white mt-10">Preferences</div>
+	<div class="text-base text-slate-300 text-center mx-3">
+		Add new or update existing resumes, job interest preferences, and relevant links.
 	</div>
 	<form class="w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink">
 		<GlassContainer>
@@ -115,9 +137,10 @@
 						>Portfolio Link/LinkedIn (If you have multiple links, separate each link with a comma)</label
 					>
 					<input
-						class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
-						type="url"
+						class="bg-transparent border border-gray-400 rounded-md p-1 h-fit w-full"
+						type="text"
 						bind:value={formValues.portfolioLink}
+						placeholder={formValues.portfolioLink}
 					/>
 				</div>
 			</div>
@@ -127,6 +150,15 @@
 			>
 				Submit
 			</button>
+			{#if errors && errors.length > 0}
+				<div class="text-red-500">
+					{#each errors as error}
+						<p>{error}</p>
+					{/each}
+				</div>
+			{:else if submitted}
+				<div class="text-green-500">Success! Preferences saved successfully.</div>
+			{/if}
 		</GlassContainer>
 	</form>
 	<div class="flex flex-col gap-2">

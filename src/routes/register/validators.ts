@@ -54,8 +54,9 @@ export const formValidators: FormValidators = {
 	firstGen: () => null,
 	// --- DEMOGRAPHIC INFO ---
 	// All fields Completely optional
-	age: (age: number) => {
-		if (age < 0) return "Unless you're from the future, age must be positive";
+	age: (age: number | null) => {
+		if (age === null) return null;
+		if (age <= 0) return "Unless you're from the future, age must be positive";
 		if (age > 116) return 'You just broke the world record for oldest person in the world!';
 		return null;
 	},
