@@ -1,5 +1,6 @@
 <script>
 	const sponsors = [['state-farm'], ['forcepoint']];
+	import Buildings from '../building-background.svelte';
 </script>
 
 <div class="w-full py-28 px-10 lg:py-40">
@@ -19,3 +20,6 @@
 		{/each}
 	</div>
 </div>
+<!-- <div class="absolute bottom-0">
+	<Buildings/>
+</div> -->

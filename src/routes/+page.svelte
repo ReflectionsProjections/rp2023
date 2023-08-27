@@ -8,6 +8,7 @@
 	import type { User } from '../lib/types';
 	import { userStore } from '../stores/user-store';
 	import Info from '../components/home/info.svelte';
+	import Buildings from '../components/building-background.svelte';
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -92,6 +93,10 @@
 	</span>
 </div>
 <Sponsors />
+<div class="z-0">
+	<Buildings/>
+</div>
+<!-- <Buildings/> -->
 
 <style>
 	.qr-pass {
