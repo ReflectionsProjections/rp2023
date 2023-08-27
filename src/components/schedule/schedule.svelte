@@ -135,7 +135,7 @@
 													</div>
 													<div class="flex row-span-1 min-[420px]:col-span-2 md:col-span-1 items-end">
 														<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
-														<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.start_time).add(event.duration, 'hour').format('HH:mm')}`}</p>
+														<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.end_time).format('HH:mm')}`}</p>
 													</div>
 												</div>
 											</div>
