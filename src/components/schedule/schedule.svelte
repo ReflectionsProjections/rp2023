@@ -31,7 +31,13 @@
 		icon_up_arrow_target?.classList.toggle('invisible');
 		icon_down_arrow_target?.classList.toggle('invisible');
 	}
-	dayButtonClick(days[dayjs().day()])
+	if (days[dayjs().day()] == "sunday" || days[dayjs().day()] == "saturday") {
+		dayButtonClick("monday");
+	} else {
+		dayButtonClick(days[dayjs().day()]);
+	}
+	
+
 </script>
 
 
@@ -113,13 +119,18 @@
 				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-y-scroll">
 					{#if schedule != null}
 						{#each events as event, i}
+							{#if event.visible == true}
 							<div class="flex w-full h-fit justify-center">
 								<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-0 border-pink-100">
 									<div class="flex grow-0 pb-1">
 										<div class="flex flex-row w-full h-fit items-center">
-											<div class="flex h-full min-h-[6rem] aspect-square p-2 items-stretch ">
-												<div class="flex h-full w-full aspect-square  rounded-full items-center justify-center bg-pink-100">
-													<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
+											<div class="flex h-[6rem] aspect-square p-2 items-stretch ">
+												<div class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-pink-100 object-cover overflow-clip">
+													{#if event.imageUrl != null} 
+														<img class= "" alt="icon" src="{event.imageUrl}">
+													{:else}
+														<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
+													{/if}
 												</div>
 											</div>
 											<!-- Top info cluster -->
@@ -131,11 +142,20 @@
 												<div class="grid grid-row-2 min-[420px]:grid-cols-3 md:grid-cols-2 h-2/5 w-full gap-0 min-[420px]:gap-2">
 													<div class="flex row-span-1 min-[420px]:col-span-1 items-end">
 														<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
-														<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+														{#if event.locationUrl != null}
+															<a href="{event.locationUrl}" class="cursor-pointer underline text-sm sm:text-lg pl-1">{event.location}</a>
+														{:else}
+															<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+														{/if}
 													</div>
 													<div class="flex row-span-1 min-[420px]:col-span-2 md:col-span-1 items-end">
 														<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
-														<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.end_time).format('HH:mm')}`}</p>
+														{#if event.end_time != null}
+															<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.end_time).format('HH:mm')}`}</p>
+														{:else}
+															<!-- fallback in the case the for some reason the event is missing an end time -->
+															<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.start_time).add(event.duration, 'h').format('HH:mm')}`}</p>
+														{/if}
 													</div>
 												</div>
 											</div>
@@ -157,6 +177,7 @@
 									</div>
 								</div>
 							</div>
+							{/if}
 						{/each}
 					{:else}
 						<div class="flex w-full h-fit justify-center">
