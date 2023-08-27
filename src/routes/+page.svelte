@@ -10,7 +10,7 @@
 	import { scheduleStore } from '../stores/schedule-store';
 
 	import Info from '../components/home/info.svelte';
-	import Schedule from '../components/schedule/schedule.svelte'
+	import Schedule from '../components/home/schedule.svelte'
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -18,7 +18,7 @@
 	let user: User | null = null;
 	let schedule: { [key: string]: any } | null = null;
 	userStore.subscribe((data) => (user = data));
-	scheduleStore.subscribe((data) => (schedule = data));
+	scheduleStore.subscribe((schedule_data) => (schedule = schedule_data));
 
 	onMount(() => {
 		try {

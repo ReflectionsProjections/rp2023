@@ -100,13 +100,13 @@
 				<div class="h-full flex col-span-2 sm:col-span-1 pl-4 w-full items-end justify-end">
 					<div class="h-full flex pr-4 w-full py-2 justify-end items-start">
 						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="mdi:window-minimize" width="auto" height="auto"/>
+							<Icon class="flex h-fit aspect-square" icon="ic:baseline-minimize" width="auto" height="auto"/>
 						</div>
 						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="mdi:window-maximize" width="auto" height="auto"/>
+							<Icon class="flex h-fit aspect-square" icon="fluent:maximize-20-filled" width="auto" height="auto"/>
 						</div>
 						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="mdi:window-close" width="auto" height="auto"/>
+							<Icon class="flex h-fit aspect-square" icon="ph:x-bold" width="auto" height="auto"/>
 
 						</div>
 					</div>
