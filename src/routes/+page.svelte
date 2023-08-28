@@ -93,10 +93,18 @@
 	</span>
 </div>
 <Sponsors />
+
+
+<div class="relative">
+	<Buildings/>
+</div>
+
 <style>
 	.qr-pass {
 		background-image: url('/qr-sun-bg.svg');
 		background-repeat: no-repeat;
 		background-size: 90%;
 	}
+
+
 </style>
