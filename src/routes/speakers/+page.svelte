@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SpeakerCard from '$lib/components/speaker-card.svelte';
 	import type { Speaker } from '$lib/types';
+	import Buildings from '../../components/buildings.svelte';
 	import ShootingStar from '../../components/shooting-star.svelte';
 
 	const speakers: Speaker[] = [
@@ -102,6 +103,8 @@
 		{/each}
 	</span>
 </div>
+
+<Buildings />
 
 <!-- Alex Abramson -------------------------------------------------------------------------->
 <!-- <span
