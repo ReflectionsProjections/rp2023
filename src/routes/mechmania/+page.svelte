@@ -4,7 +4,7 @@
 	import WindowCard from '../../lib/components/window-card.svelte';
 </script>
 
-<div class="h-screen mx-auto w-[90%] lg:w-4/5 md:mt-10 relative -z-[10]">
+<div class="h-screen mx-auto w-[90%] lg:w-4/5 md:mt-10 relative">
 	<WindowCard>
 		<div class="bg-rp-subtle-pink p-1 mt-2 flex flex-col-reverse md:flex-row">
 			<a href="https://mechmania.org/" class="mx-auto my-auto w-8/12 sm:w-3/5 md:w-2/5">
