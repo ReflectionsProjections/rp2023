@@ -49,11 +49,9 @@
 				>MechMania</a
 			>
 			<div
-				class="relative inline-block md:hidden"
-				on:mouseenter={() => {
-					openDropDown = true;
-				}}
-				on:mouseleave={() => {
+				class="relative inline-block md:hidden z-50"
+				on:mouseleave|self={() => {
+					console.log('whyyy');
 					openDropDown = false;
 				}}
 			>
@@ -64,7 +62,7 @@
 					}}>Special Events</button
 				>
 				{#if openDropDown}
-					<div class="block absolute z-10 pt-1" in:slide out:slide>
+					<div class="block absolute pt-1" in:slide out:slide>
 						<div
 							class="flex flex-col divide-y-2 bg-rp-cream rounded-lg text-rp-blue p-1 border-rp-pink"
 						>

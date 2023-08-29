@@ -2,7 +2,7 @@
 	import EventModal from '$lib/components/event-modal.svelte';
 	import type { Event } from '$lib/types';
 	import Icon from '@iconify/svelte';
-	// import dayjs from 'dayjs';
+	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { API_URL } from '../../../constants';
 
