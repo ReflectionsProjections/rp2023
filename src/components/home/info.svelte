@@ -2,8 +2,8 @@
 	import Icon from '@iconify/svelte';
 	import fileIcon from './fileIcon.svg';
 
-	type InfoPage = 'who' | 'what' | 'when' | 'where';
-	const pages: InfoPage[] = ['who', 'what', 'when', 'where'];
+	type InfoPage = 'who' | 'what' | 'when' | 'where' | 'priority';
+	const pages: InfoPage[] = ['who', 'what', 'when', 'where', 'priority'];
 	let infoPage: InfoPage = 'who';
 </script>
 
@@ -25,11 +25,11 @@
 
 	<div class="bg-rp-subtle-pink p-1 mt-2">
 		<div
-			class="flex flex-row w-full justify-evenly md:text-sm text-xs uppercase font-semibold p-0.5"
+			class="flex flex-row relative justify-around md:text-sm text-xs uppercase font-semibold p-0.5 overflow-x-auto"
 		>
 			{#each pages as page}
 				<button
-					class="p-2 w-14 flex flex-col items-center uppercase"
+					class="mx-2 p-2 w-14 flex flex-col items-center uppercase"
 					on:click={() => (infoPage = page)}
 				>
 					<img src={fileIcon} alt={`${page}.txt`} />
@@ -88,6 +88,24 @@
 						<br />
 						1405 W Springfield Ave, Urbana, IL 61801
 					</p>
+				{:else if infoPage === 'priority'}
+					<p>Earn Priority Status</p>
+					<br />
+					<ul class="list-disc">
+						<li>
+							Upgrade to priority status for the days you attend at least one conference event (this
+							excludes career fair)
+						</li>
+						<li>
+							Attendees with priority status earn a spot in the food line 15 minutes before general
+							serving
+						</li>
+						<li>Status is restored to General at the end of every day</li>
+						<li>
+							Attending multiple events will not further elevate status. Rather, additional entries
+							are entered into a lottery for a chance to win exclusive merch
+						</li>
+					</ul>
 				{/if}
 			</div>
 		</div>

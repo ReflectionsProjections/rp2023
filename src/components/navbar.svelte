@@ -19,11 +19,15 @@
 			return fullName;
 		}
 	};
+
+	let y: number;
 </script>
 
+<svelte:window bind:scrollY={y} />
 <nav class="sticky block top-0 z-50">
 	<div
-		class="flex flex-row justify-between p-5 text-gray-200 text-sm md:text-md lg:text-lg font-sans items-center"
+		class="flex flex-row justify-between p-5 text-white text-sm md:text-md lg:text-lg font-sans items-center {y >
+			50 && 'bg-rp-blue bg-opacity-25 backdrop-blur-sm'} "
 	>
 		<a href="/" class="flex flex-row items-center gap-3">
 			<img
