@@ -92,6 +92,14 @@
 	];
 </script>
 
+<svelte:head>
+	<title>Speakers at R|P 2023</title>
+	<meta
+		name="description"
+		content="Industry and academia leading speakers from all over the nation at R|P 2023"
+	/>
+</svelte:head>
+
 <div class="h-full text-black">
 	<ShootingStar />
 
