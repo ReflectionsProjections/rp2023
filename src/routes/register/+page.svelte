@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { goto } from '$app/navigation';
+	import Icon from '@iconify/svelte';
 	import GlassContainer from '../../components/glass-container.svelte';
 	import DietaryOptions from '../../components/registration/dietary-options.svelte';
 	import DynamicEmail from '../../components/registration/dynamic-email.svelte';
@@ -10,6 +12,7 @@
 	import IsCollegeStudent from '../../components/registration/is-college-student.svelte';
 	import JobTypeOptions from '../../components/registration/job-type-options.svelte';
 	import MajorSelector from '../../components/registration/major-selector.svelte';
+	import Footer from '../../components/footer.svelte';
 	import type {
 		boolStr,
 		ethnicityOptions,
@@ -22,120 +25,132 @@
 	import PageControls from '../../components/registration/page-controls.svelte';
 	import type { PageIndex, PageMeta } from '../../components/registration/page-meta.type';
 	import RaceSelector from '../../components/registration/race-selector.svelte';
-	import HandleClick from '../../components/registration/submit-handler.svelte';
+	import ReferralSelector from '../../components/registration/referral-selector.svelte';
 	import { API_URL } from '../../constants';
+	import SmartInput from '../../lib/util/smart-input.svelte';
+	import { formValidators } from './validators';
+	import UserCreateFeedback from '../../components/registration/user-create-feedback.svelte';
+	import type { Status } from '$lib/types';
+	import { fly, slide } from 'svelte/transition';
+	import PageHeading from '../../components/registration/page-heading.svelte';
 
-	let email = '';
-	let passcode = '';
+	type FormKeys = keyof typeof formValues;
+	type Errors = Partial<Record<FormKeys, string | undefined>>;
+	const errors: Errors = {};
+
 	const formValues = {
 		name: '',
 		email: '',
 		isCollegeStudent: 'yes' as boolStr,
 		isUIUCStudent: 'yes' as boolStr,
 		major: 'N/A',
-		majorOther: null,
-		collegeName: 'UIUC', // needs to be set as the default in the case where a user does NOT click Illinois but still is a UIUC student
-		expectedGradTerm: 'N/A',
+		majorOther: '',
+		collegeName: 'UIUC', // default in the case where a user does NOT click Illinois but still is a UIUC student
+		expectedGradTerm: '',
 		gradYear: 2023,
+		firstGen: null as firstGenOptions,
 		age: null,
 		gender: null as genderOptions,
 		ethnicity: null as ethnicityOptions,
 		race: [] as raceOptions[],
 		raceOther: null,
-		firstGen: null as firstGenOptions,
-		food: '',
+		food: 'none',
 		jobTypeInterest: [] as jobTypeOptions[],
 		portfolioLink: null,
 		mechPuzzle: [] as extraEventOptions[],
 		marketing: [],
-		marketingOther: null
+		marketingOther: null,
+		passcode: '' // Not sent with POST /attendee
 	};
 	let page: PageIndex = 'welcome';
-
-	const referralOptions = [
-		{ referralId: 'ACMOH', displayText: 'ACM Open House' },
-		{ referralId: 'buildingAds', displayText: 'Building Ads' },
-		{ referralId: 'courses', displayText: 'School Course' },
-		{ referralId: 'instagram', displayText: 'Instagram' },
-		{ referralId: 'email', displayText: 'E-mail' },
-		{ referralId: 'posters', displayText: 'Posters/Flyers' },
-		{ referralId: 'website', displayText: 'Website' },
-		{ referralId: 'word-of-mouth', displayText: 'Word of Mouth' }
-	];
 
 	const pageMeta: PageMeta = {
 		welcome: {
 			title: 'Welcome to R | P',
+			subtitle: "We're glad you made it. Sign up here to receive your conference passes.",
 			next: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'demographics'),
-			// next: () => 'emailVerification',
 			prev: () => 'none',
-			requiredFields: ['name', 'email']
+			fields: ['name', 'email']
 		},
 		academics: {
 			title: 'Academics',
+			subtitle: 'We use this to find you better career opportunities',
 			next: () => 'demographics',
 			prev: () => 'welcome',
-			requiredFields: ['expectedGradTerm', 'expectedGradYear', 'major', 'firstGen']
+			fields: ['major', 'majorOther', 'collegeName', 'expectedGradTerm', 'gradYear', 'firstGen']
 		},
 		demographics: {
 			title: 'Demographics',
+			subtitle: 'This helps us make a better R | P experience',
 			next: () => 'dietaryRestrictions',
 			prev: (isCollegeStudent) => (isCollegeStudent ? 'academics' : 'welcome'),
-			requiredFields: []
+			fields: ['age', 'gender', 'ethnicity', 'race', 'raceOther']
 		},
 		dietaryRestrictions: {
 			title: 'Dietary Restrictions',
+			subtitle: 'We try to be inclusive, including dietary preferences',
 			next: () => 'recruitment',
 			prev: () => 'demographics',
-			requiredFields: ['food']
+			fields: ['food']
 		},
 		recruitment: {
 			title: 'Recruitment',
+			subtitle:
+				"Not on the right device? Don't worry, you come back to this section after signing up.",
 			next: () => 'specialEvents',
 			prev: () => 'dietaryRestrictions',
-			requiredFields: []
+			fields: ['jobTypeInterest', 'portfolioLink']
 		},
 		specialEvents: {
 			title: 'Special Events',
+			subtitle: 'R | P is more than just a conference',
 			next: () => 'marketing',
 			prev: () => 'recruitment',
-			requiredFields: []
+			fields: ['mechPuzzle']
 		},
 		marketing: {
-			title: 'One Last Step',
+			title: 'How did we reach you?',
+			subtitle: "Since you're here, we want to know what we did right",
 			next: () => 'emailVerification',
 			prev: () => 'specialEvents',
-			requiredFields: ['marketing']
+			fields: ['marketing', 'marketingOther']
 		},
 		emailVerification: {
-			title: 'Email Verification',
+			title: 'One Last Step',
+			subtitle: 'We use *one* cookie to keep you logged in, and only to keep you logged in.',
 			next: () => 'none',
 			prev: () => 'marketing',
-			requiredFields: ['emailVerificationCode']
+			fields: ['passcode']
 		}
 	};
 
-	$: console.log(formValues);
-
-	let submitted = false;
-
-	let error = '';
-
 	let fileData: File;
 
-	$: console.log(fileData);
-
-	let passcodeSuccess = false;
+	const generateVerification = async () => {
+		// It is assumed reaching here means basic email regex test has passed
+		const response = await fetch(`${$API_URL}/auth/generate?isRegister=true`, {
+			method: 'POST',
+			cache: 'no-cache',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({ email: formValues.email })
+		});
+		// Return true if successful
+		if (response.ok) {
+			return true;
+		}
+		// If user comes back after email has been sent
+		if (response.status == 429) {
+			return true;
+		}
+		const res = await response.json();
+		console.error(res);
+		errors.email = res.message;
+		return false;
+	};
 
 	const verifyPasscode = async () => {
-		email = formValues.email;
-
-		if (!verifyEmail(email) || !passcodeValid) {
-			alert('Invalid Passcode');
-			console.log('entered here cuz something was invalid');
-			return;
-		}
-
 		const response = await fetch(`${$API_URL}/auth/verify`, {
 			method: 'POST',
 			cache: 'no-cache',
@@ -143,32 +158,20 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ email, passcode })
+			body: JSON.stringify({ email: formValues.email, passcode: formValues.passcode })
 		});
 
 		if (response.ok) {
-			passcodeSuccess = true;
-		} else {
-			const res = await response.json();
-			if (response.status === 403 || response.status === 500) {
-				alert('There was an error filling out the registration form. Please try again');
-				window.location = '/register' as Location | (string & Location);
-			} else {
-				console.error(res);
-			}
+			return true;
 		}
-		return passcodeSuccess;
+		const res = await response.json();
+		const message = res.message;
+		console.error(message);
+		errors.passcode = Array.isArray(message) ? message.join(',') : message;
+		return false;
 	};
 
-	const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-	const verifyEmail = (email: string) => email.length > 0 && emailRegex.test(email);
-	$: emailValid = verifyEmail(email);
-
-	//Basic Passcode Validation
-	const passcodeRegex = /^\d{6}$/;
-	$: passcodeValid = passcode.length == 6 && passcodeRegex.test(passcode);
-
-	const onSubmit = async () => {
+	const createUser = async () => {
 		const response = await fetch(`${$API_URL}/attendee`, {
 			method: 'POST',
 			credentials: 'include',
@@ -176,55 +179,133 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({ ...formValues, expectedGradYear: formValues.gradYear.toString() })
+			body: JSON.stringify({
+				...formValues,
+				expectedGradYear: formValues.gradYear.toString(),
+				passcode: undefined
+			})
 		});
 
-		console.log(response); //For debugging. After clicking submit, should be able to see the request in console
-
 		if (response.ok) {
-			submitted = true;
-		} else {
-			if (response.status === 403 || response.status === 500) {
-				//TODO: This may not be the right way to check for existing email. We may need to be more specific with our check.
-				alert('Email already exists. Please try again');
-				window.location = '/register' as Location | (string & Location);
-			}
+			return true;
 		}
+		const res = await response.json();
+		console.error(res);
+		const message = res.message;
+		submitErrors = Array.isArray(message) ? message : [message];
+		return false;
 	};
 
-	const handleFileInput = (event: Event) => {
+	const uploadResume = async () => {
+		if (!fileData) {
+			return true;
+		}
+
+		const formData = new FormData();
+		formData.append('file', fileData);
+
+		const response = await fetch(`${$API_URL}/attendee/upload`, {
+			method: 'POST',
+			cache: 'no-cache',
+			credentials: 'include',
+			body: formData
+		});
+
+		if (response.ok) {
+			return true;
+		}
+		const res = await response.json();
+		console.error(res);
+		const message = res.message;
+		submitErrors = Array.isArray(message) ? message : [message];
+		return false;
+	};
+
+	let submitStatus: Record<'verifyPasscode' | 'createUser' | 'uploadResume', Status> = {
+		verifyPasscode: 'waiting',
+		createUser: 'waiting',
+		uploadResume: 'waiting'
+	};
+	let submitErrors: string[] | null = null;
+
+	let submitClicked = false;
+	const handleFormSubmit = async () => {
+		if (!(await validate())) {
+			return;
+		}
+		submitStatus.verifyPasscode = 'in_progress';
+		const passcodeSuccess = await verifyPasscode();
+
+		if (!passcodeSuccess) {
+			submitStatus.verifyPasscode = 'failed';
+			return;
+		}
+
+		// We want the button to stay until passcode is verified
+		submitClicked = true;
+
+		submitStatus.verifyPasscode = 'success';
+		submitStatus.createUser = 'in_progress';
+		const createUserSuccess = await createUser();
+
+		if (!createUserSuccess) {
+			submitStatus.createUser = 'failed';
+			return;
+		}
+		submitStatus.createUser = 'success';
+		submitStatus.uploadResume = 'in_progress';
+
+		const uploadResumeSuccess = await uploadResume();
+		if (!uploadResumeSuccess) {
+			submitStatus.uploadResume = 'failed';
+			return;
+		}
+		submitStatus.uploadResume = 'success';
+
+		setTimeout(() => {
+			window.location.href = '/';
+		}, 2000);
+	};
+
+	const handleFileInput = (_event: Event) => {
 		var fileInput = document.getElementById('resume-upload') as HTMLInputElement | null;
 		var file = fileInput?.files?.[0];
 
 		if (file) {
 			fileData = file;
-			console.log('Filedata is updated to: ', fileData);
 		}
 	};
+
+	const validate = async () => {
+		let noneFailed = true;
+		for (const field of pageMeta[page].fields) {
+			const validator = formValidators[field];
+			const res = validator(formValues[field as FormKeys]);
+			if (res) {
+				errors[field as FormKeys] = res;
+				noneFailed = false;
+			} else {
+				errors[field as FormKeys] = undefined;
+			}
+		}
+		return noneFailed;
+	};
+
+	let slideIn = false;
 </script>
 
-<form
-	class="fixed mx-auto center-div w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink overflow-y-auto mt-8"
->
+<form class="flex mx-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink pb-10">
 	{#if page == 'welcome'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div>
-					<div class="text-lg md:text-xl text-white">{pageMeta[page].title}</div>
-					<div class="text-base text-slate-300">
-						We're glad you made it. Sign up here to receive your conference passes.
-					</div>
-				</div>
-				<div class="flex flex-col items-start">
-					<label for="name">Full Name</label>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
+				<SmartInput label="Full Name" bind:error={errors.name}>
 					<input
 						id="name"
 						bind:value={formValues.name}
-						required
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
-						autocomplete="off"
 					/>
-				</div>
+				</SmartInput>
 
 				<IsCollegeStudent
 					bind:isUIUCStudent={formValues.isUIUCStudent}
@@ -233,22 +314,44 @@
 					bind:major={formValues.major}
 				/>
 
-				<DynamicEmail bind:email={formValues.email} uiucStudent={formValues.isUIUCStudent} />
+				<!-- TODO: Dynamic Email has addtional validation based on API Calls -->
+				<DynamicEmail
+					bind:email={formValues.email}
+					uiucStudent={formValues.isUIUCStudent}
+					bind:error={errors.email}
+				/>
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<!-- On Next page, send the verification email -->
+			<PageControls
+				validate={async () => {
+					if (await validate()) {
+						return await generateVerification();
+					}
+					return false;
+				}}
+				{formValues}
+				bind:page
+				{pageMeta}
+			/>
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'academics'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 
 				<GradDateSelector
 					bind:gradYear={formValues.gradYear}
 					bind:expectedGradTerm={formValues.expectedGradTerm}
+					bind:errorTerm={errors.expectedGradTerm}
 				/>
-				<MajorSelector bind:formMajor={formValues.major} bind:majorOther={formValues.majorOther} />
+				<MajorSelector
+					bind:major={formValues.major}
+					bind:majorOther={formValues.majorOther}
+					bind:errorMajor={errors.major}
+					bind:errorMajorOther={errors.majorOther}
+				/>
 				{#if formValues.isUIUCStudent == 'no'}
 					<div class="flex flex-col">
 						<label for="college-name" class="ml-1">Name of University</label>
@@ -264,53 +367,53 @@
 
 				<FirstGenSelector bind:firstGen={formValues.firstGen} />
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'demographics'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="flex flex-col items-start gap-2">
-					<label for="gender" class="flex flex-row gap-2">
-						<div>Age</div>
-						<div class="text-slate-400">(optional)</div>
-					</label>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
+				<SmartInput label="Age" sublabel="(optional)" bind:error={errors.age}>
 					<input
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-16"
 						type="number"
 						id="age"
 						bind:value={formValues.age}
 					/>
-				</div>
+				</SmartInput>
 
 				<GenderSelector bind:gender={formValues.gender} />
 
 				<EthinicitySelector bind:ethnicity={formValues.ethnicity} />
 
-				<RaceSelector bind:formRace={formValues.race} bind:formRaceOther={formValues.raceOther} />
+				<RaceSelector
+					bind:formRace={formValues.race}
+					bind:formRaceOther={formValues.raceOther}
+					bind:raceOtherError={errors.raceOther}
+				/>
 			</div>
 
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'dietaryRestrictions'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 
-				<DietaryOptions bind:foodOther={formValues.food} />
+				<DietaryOptions bind:food={formValues.food} bind:error={errors.food} />
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'recruitment'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<div class="flex flex-col items-start">
 					<label for="resume">Upload your Resume Here</label>
 					<input
@@ -331,89 +434,93 @@
 
 				<JobTypeOptions bind:formJobType={formValues.jobTypeInterest} />
 
-				<div class="flex flex-col items-start">
-					<label for="portfolio"
-						>Portfolio Link/LinkedIn (Separate multiple links with commas)</label
-					>
+				<SmartInput
+					label="Portfolio Link/LinkedIn"
+					sublabel="Separate multiple links with commas"
+					bind:error={errors.portfolioLink}
+				>
 					<input
 						class="bg-transparent border border-gray-400 rounded-md h-fit w-full"
 						type="url"
 						bind:value={formValues.portfolioLink}
 					/>
-				</div>
+				</SmartInput>
 			</div>
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'specialEvents'}
 		<GlassContainer>
 			<div class="flex flex-col gap-5 mb-3">
-				<div class="text-xl text-white">{pageMeta[page].title}</div>
-				<div class="text-base text-slate-300">PLACEHOLDER FOR DESCRIPTION</div>
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
 				<ExtraEventOptions bind:formExtraEvents={formValues.mechPuzzle} />
 			</div>
 
-			<PageControls {formValues} bind:page {pageMeta} />
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'marketing'}
 		<GlassContainer>
-			{#if !submitted}
-				<div class="flex flex-col gap-5 mb-3">
-					<div class="text-xl text-white">{pageMeta[page].title}</div>
-					<div>
-						<label for="marketing" class="mb-2">How did you hear about R|P? </label>
-						<div class="flex flex-row flex-wrap">
-							{#each referralOptions as { referralId, displayText }}
-								<span class="flex flex-row items-center w-1/2">
-									<input
-										class="rounded-md"
-										type="checkbox"
-										id={referralId}
-										value={referralId}
-										bind:group={formValues.marketing}
-									/>
-									<label for={referralId}>{displayText}</label>
-								</span>
-							{/each}
-						</div>
-						<label for="marketing-other">Other</label>
-						<input
-							class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit"
-							type="text"
-							id="marketing-other"
-							bind:value={formValues.marketingOther}
-						/>
-					</div>
-				</div>
-			{/if}
-			<PageControls {formValues} bind:page {pageMeta} />
+			<div class="flex flex-col gap-5 mb-3">
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
+				<ReferralSelector
+					bind:marketing={formValues.marketing}
+					bind:marketingOther={formValues.marketingOther}
+					bind:marketingOtherError={errors.marketingOther}
+				/>
+			</div>
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 
 	{#if page == 'emailVerification'}
 		<GlassContainer>
-			<div class="flex flex-col items-start">
-				Let's get your email verified!
-				<label for="portfolio">Enter Verification Code from Email</label>
-				<input
-					class="bg-rp-dull-pink border border-gray-400 rounded-md h-fit w-full"
-					bind:value={passcode}
-				/>
+			<div class="flex flex-col gap-5 mb-3">
+				<PageHeading title={pageMeta[page].title} subtitle={pageMeta[page].subtitle} />
+
+				<SmartInput
+					label="Enter one-time code from {formValues.email}"
+					bind:error={errors.passcode}
+				>
+					<input
+						placeholder="943120"
+						class="bg-transparent border border-gray-400 text-xl rounded-md h-fit w-full"
+						bind:value={formValues.passcode}
+					/>
+					<div class="flex flex-row gap-5 text-sm text-gray-300 cursor-pointer my-1">
+						<button
+							on:click={() => {
+								page = 'welcome';
+							}}
+						>
+							<u class="hover:text-gray-400">Wrong email?</u>
+						</button>
+						<button on:click={generateVerification}>
+							<u class="hover:text-gray-400">Resend code</u>
+						</button>
+					</div>
+				</SmartInput>
+
+				{#if !submitClicked}
+					<button
+						class="flex flex-row gap-2 mx-auto bg-green-600 rounded-full px-5 py-3 shaking my-2"
+						on:click|preventDefault={handleFormSubmit}
+						out:fly={{ y: -200, duration: 300 }}
+						on:outroend={() => {
+							slideIn = true;
+						}}
+					>
+						<Icon icon="mingcute:rocket-fill" class="text-2xl" />
+						<div>Let's do this!</div>
+					</button>
+				{:else if slideIn}
+					<UserCreateFeedback {...submitStatus} errors={submitErrors} />
+				{/if}
 			</div>
-
-			<HandleClick {verifyPasscode} {onSubmit} {fileData} />
-
-			{#if !submitted}
-				<PageControls {formValues} bind:page {pageMeta} />
-			{/if}
-
-			{#if submitted}
-				Thank you for your interest in Reflections | Projections 2023! Please check your email for
-				additional information.
-			{/if}
+			<!-- <HandleClick {verifyPasscode} {onSubmit} {fileData} /> -->
+			<PageControls {validate} {formValues} bind:page {pageMeta} />
 		</GlassContainer>
 	{/if}
 </form>
@@ -426,16 +533,55 @@
 	Page 6) Resume
 	Page 7) MechMania and PuzzleBang
 	Page 8 ) How did you hear about RP?
-	Pagw 9 ) Email Verification
+	Page 9 ) Email Verification
 -->
 <style>
 	input {
 		padding: 0.25rem;
 	}
 
-	.center-div {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
+	.shaking {
+		animation: none;
+	}
+
+	.shaking:hover {
+		animation: shake 0.5s;
+		animation-iteration-count: infinite;
+	}
+
+	@keyframes shake {
+		0% {
+			transform: translate(1px, 1px) rotate(0deg);
+		}
+		10% {
+			transform: translate(-1px, -2px) rotate(-1deg);
+		}
+		20% {
+			transform: translate(-3px, 0px) rotate(1deg);
+		}
+		30% {
+			transform: translate(3px, 2px) rotate(0deg);
+		}
+		40% {
+			transform: translate(1px, -1px) rotate(1deg);
+		}
+		50% {
+			transform: translate(-1px, 2px) rotate(-1deg);
+		}
+		60% {
+			transform: translate(-3px, 1px) rotate(0deg);
+		}
+		70% {
+			transform: translate(3px, 1px) rotate(-1deg);
+		}
+		80% {
+			transform: translate(-1px, -1px) rotate(1deg);
+		}
+		90% {
+			transform: translate(1px, 2px) rotate(0deg);
+		}
+		100% {
+			transform: translate(1px, -2px) rotate(-1deg);
+		}
 	}
 </style>

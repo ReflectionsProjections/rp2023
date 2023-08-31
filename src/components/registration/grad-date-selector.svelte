@@ -1,25 +1,24 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
+	import SmartInput from '../../lib/util/smart-input.svelte';
 
 	const gradTermOptions = ['Spring', 'Fall', 'Summer'];
 	const range = [2023, 2027];
 
 	export let expectedGradTerm: string;
 	export let gradYear: number;
+	export let errorTerm: string | undefined;
 </script>
 
-<div class="flex flex-col">
-	<label for="exp-grad-date" class="ml-1">Expected Graduation Date </label>
+<SmartInput label="Expected Graduation Date" bind:error={errorTerm}>
 	<div class="flex flex-col md:flex-row items-center">
 		<div id="grad-term" class="flex flex-row bg-transparent rounded-md h-fit p-1">
 			{#each gradTermOptions as term, idx}
 				<button
 					class="bg-white p-2 text-white duration-300 min-w-[4rem]
-                    {term === expectedGradTerm
-						? 'bg-opacity-30'
-						: 'hover:bg-opacity-20 bg-opacity-10'}
-                    {idx == 0 ? 'rounded-l-md' : ''}
-                    {idx == gradTermOptions.length - 1 ? 'rounded-r-md' : ''}"
+						{term === expectedGradTerm ? 'bg-opacity-30' : 'hover:bg-opacity-20 bg-opacity-10'}
+						{idx == 0 ? 'rounded-l-md' : ''}
+						{idx == gradTermOptions.length - 1 ? 'rounded-r-md' : ''}"
 					on:click|preventDefault={() => (expectedGradTerm = term)}
 				>
 					{term}
@@ -41,4 +40,4 @@
 			>
 		</div>
 	</div>
-</div>
+</SmartInput>

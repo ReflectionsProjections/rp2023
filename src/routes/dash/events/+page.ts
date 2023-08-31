@@ -4,7 +4,6 @@ import type { PageLoad } from './$types';
 import { get } from 'svelte/store';
 
 export const load: PageLoad<void> = async ({ fetch }) => {
-	// TODO: Change to some access specific endpoint
 	const url = get(API_URL);
 	const check = await fetch(`${url}/auth/access/admin`, {
 		credentials: 'include'
@@ -16,3 +15,5 @@ export const load: PageLoad<void> = async ({ fetch }) => {
 		throw error(404, { message: 'Not found' });
 	}
 };
+
+export const ssr = false;

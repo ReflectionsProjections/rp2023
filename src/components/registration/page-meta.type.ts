@@ -7,13 +7,15 @@ export type PageIndex =
 	| 'recruitment'
 	| 'specialEvents'
 	| 'marketing'
-	| 'emailVerification';
+	| 'emailVerification'
+	| 'finalPage';
 
 export interface PageMeta {
 	[index: string]: {
 		prev: (isCollegeStudent: boolean | undefined) => PageIndex;
 		next: (isCollegeStudent: boolean | undefined) => PageIndex;
 		title: string;
-		requiredFields: string[];
+		subtitle?: string;
+		fields: string[];
 	};
 }

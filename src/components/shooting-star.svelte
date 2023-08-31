@@ -4,6 +4,12 @@
 </div>
 
 <style>
+	@media (prefers-reduced-motion) {
+		span {
+			display: hidden;
+		}
+	}
+
 	* {
 		margin: 0;
 		padding: 0;
@@ -38,6 +44,7 @@
 		box-shadow: 0 1px 0 5px rgba(254, 254, 255, 0.2), 0 1px 0 7px rgba(245, 254, 255, 0.1),
 			0 1px 21px rgba(253, 253, 245, 1);
 		animation: anim 3s ease-in-out infinite;
+		z-index: -1;
 	}
 	span::before {
 		content: '';
@@ -68,14 +75,14 @@
 		top: -30px;
 		right: 50%;
 		left: initial;
-		animation-delay: 13s;
+		animation-delay: 3s;
 		animation-duration: 2.3s;
 	}
 	span:nth-child(2) {
 		top: -30px;
 		right: 10%;
 		left: initial;
-		animation-delay: 10s;
+		animation-delay: 5s;
 		animation-duration: 3.2s;
 	}
 
@@ -84,21 +91,15 @@
 			top: -30px;
 			right: -80%;
 			left: initial;
-			animation-delay: 13s;
+			animation-delay: 3s;
 			animation-duration: 2.3s;
 		}
 		span:nth-child(2) {
 			top: -30px;
 			right: 5%;
 			left: initial;
-			animation-delay: 10s;
+			animation-delay: 5s;
 			animation-duration: 3.2s;
-		}
-	}
-
-	@media (prefers-reduced-motion) {
-		span {
-			display: none;
 		}
 	}
 </style>

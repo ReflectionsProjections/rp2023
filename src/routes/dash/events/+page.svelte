@@ -2,7 +2,7 @@
 	import EventModal from '$lib/components/event-modal.svelte';
 	import type { Event } from '$lib/types';
 	import Icon from '@iconify/svelte';
-	import dayjs from 'dayjs';
+	// import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { API_URL } from '../../../constants';
 
@@ -55,7 +55,7 @@
 	event={eventModalData.event}
 	{loadEvents}
 />
-<div class="h-full text-white flex justify-between flex-col my-20">
+<div class="h-full text-white flex justify-between flex-col my-5">
 	<div
 		class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 lg:w-11/12 text-sm md:text-base"
 	>
@@ -78,9 +78,10 @@
 					<th>Location</th>
 					<th>Description</th>
 					<th>Starts at</th>
-					<th>Duration</th>
-					<th>Upgrades</th>
+					<th>Ends at</th>
+					<th>Priority</th>
 					<th>Virtual</th>
+					<th>Image</th>
 					<th>Actions</th>
 				</thead>
 				<tbody>
@@ -106,14 +107,29 @@
 								{dayjs(event.start_time).tz('America/Chicago').format('llll')}
 							</td>
 							<td>
-								{event.duration}
-								{event.duration == 1 ? ' hour' : ' hours'}
+								{event.end_time
+									? dayjs(event.end_time).tz('America/Chicago').format('llll')
+									: 'Not Available'}
 							</td>
 							<td>
 								{#if event.upgrade}
-									<Icon icon="ph:check-bold" class="text-xl mx-auto text-green-400" />
+									<Icon
+										icon="mdi:arrow-up-bold"
+										class="text-2xl mx-auto text-green-400"
+										title="upgrades"
+									/>
+								{:else if event.downgrade}
+									<Icon
+										icon="mdi:arrow-down-bold"
+										class="text-2xl mx-auto text-orange-400"
+										title="downgrades"
+									/>
 								{:else}
-									<Icon icon="maki:cross" class="text-xl mx-auto text-red-400" />
+									<Icon
+										icon="radix-icons:dash"
+										class="text-2xl mx-auto text-gray-200"
+										title="no change"
+									/>
 								{/if}
 							</td>
 							<td>
@@ -122,6 +138,15 @@
 								{:else}
 									<Icon icon="maki:cross" class="text-xl mx-auto text-red-400" />
 								{/if}
+							</td>
+							<td>
+								<a href={event.imageUrl} target="_blank" rel="noopener noreferrer">
+									{#if event.imageUrl}
+										<Icon icon="ph:link-bold" class="text-xl mx-auto text-green-400" />
+									{:else}
+										<Icon icon="radix-icons:dash" class="text-2xl mx-auto text-gray-200" />
+									{/if}
+								</a>
 							</td>
 							<td>
 								<div class="flex flex-row gap-5 justify-start text-xl">
