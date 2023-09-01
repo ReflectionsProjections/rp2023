@@ -9,6 +9,7 @@
 	import { userStore } from '../stores/user-store';
 	import Info from '../components/home/info.svelte';
 	import Buildings from '../components/buildings.svelte';
+	import Stats from '../components/home/stats.svelte';
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -96,7 +97,7 @@
 				>
 			</a>
 		{/if}
-
+		<Stats />
 		<Info />
 	</span>
 </div>
