@@ -1,8 +1,7 @@
 <script lang="ts">
-	import Countup from 'svelte-countup';
 	import CountUp from '$lib/util/countup.svelte';
 
-	const DURATION_MS = 1000;
+	const duration = 700;
 </script>
 
 <div
@@ -12,29 +11,19 @@
     text-base sm:text-xl md:text-2xl lg:text-3xl"
 >
 	<div class="flex flex-col items-center">
-		<CountUp start={0} end={5} duration={DURATION_MS} />
-		<!-- <CountUp start={0} end={5} duration={DURATION_MS} /> -->
+		<CountUp start={0} end={5} {duration} />
 		<p>Days</p>
 	</div>
 	<div class="flex flex-col items-center">
-		<span class="flex flex-row">
-			<CountUp start={0} end={11} duration={DURATION_MS} />
-			<p>+</p>
-		</span>
+		<CountUp start={0} end={15} {duration} showPlus />
 		<p>Speakers</p>
 	</div>
 	<div class="flex flex-col items-center">
-		<span class="flex flex-row">
-			<CountUp start={0} end={2500} duration={DURATION_MS} step={137} />
-			<p>+</p>
-		</span>
+		<CountUp start={0} end={2500} {duration} step={237} showPlus />
 		<p>Attendees</p>
 	</div>
 	<div class="flex flex-col items-center">
-		<span class="flex flex-row">
-			<CountUp start={0} end={13} duration={DURATION_MS} />
-			<p>+</p>
-		</span>
+		<CountUp start={0} end={10} {duration} showPlus />
 		<p>Companies</p>
 	</div>
 </div>

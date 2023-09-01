@@ -5,6 +5,7 @@
 	export let end: number;
 	export let duration: number = 1000;
 	export let step: number = 1;
+	export let showPlus: boolean = false;
 
 	let value: number;
 
@@ -25,5 +26,5 @@
 </script>
 
 <p>
-	{value}
+	{`${value}${showPlus ? '+' : ''}`}
 </p>
