@@ -4,6 +4,14 @@
 	import WindowCard from '../../lib/components/window-card.svelte';
 </script>
 
+<svelte:head>
+	<title>MechMania at R|P 2023</title>
+	<meta
+		name="description"
+		content="MechMania is a 24-hour AI hackathon where students team up to create a game-playing AI bot."
+	/>
+</svelte:head>
+
 <div class="h-screen mx-auto w-[90%] lg:w-4/5 md:mt-10 relative">
 	<WindowCard>
 		<div class="bg-rp-subtle-pink p-1 mt-2 flex flex-col-reverse md:flex-row">

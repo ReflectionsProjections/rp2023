@@ -40,6 +40,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Reflections | Projections 2023</title>
+	<meta
+		name="description"
+		content="Expand your horizons at the Midwest’s largest student run tech conference this September. Join us for a week full of insightful talks from industry & academia leaders, hands-on workshops, and networking events."
+	/>
+</svelte:head>
+
 <ShootingStar />
 <div class="text-white flex items-center mx-3">
 	<span class="w-full flex-col flex items-center">
