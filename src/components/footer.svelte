@@ -7,7 +7,7 @@
 		<div class=" text-white text-xs sm:text-sm md:text-base">
 			<a href="https://acm.illinois.edu/">
 				<img 
-				src="src/assets/acmuiuclogo.png" 
+				src="/acmuiuclogo.png" 
 				alt = "acm-logo"
 				width="100"
 				>
