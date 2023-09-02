@@ -14,6 +14,8 @@
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
 
+	let showQR = true;
+
 	let user: User | null = null;
 	userStore.subscribe((data) => (user = data));
 
@@ -68,7 +70,13 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
-						<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
+						<button on:click={() => { showQR = !showQR }} class="w-full aspect-square">
+							{#if showQR}
+								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" />
+							{:else}
+								<p class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center">{user.email}</p>
+							{/if}
+						</button>
 					{:else}
 						<div class="w-full aspect-square bg-white animate-pulse rounded-md" />
 					{/if}
