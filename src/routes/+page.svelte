@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import Sponsors from '../components/home/sponsors.svelte';
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
@@ -72,7 +72,7 @@
 					{#if qrImg}
 						<button on:click={() => { showQR = !showQR }} class="w-full aspect-square">
 							{#if showQR}
-								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" />
+								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade/>
 							{:else}
 								<p class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center">{user.email}</p>
 							{/if}
