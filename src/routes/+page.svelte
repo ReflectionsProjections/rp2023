@@ -69,9 +69,7 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if $user.priority}
-						<div class="text-lg shining py-1 px-4 rounded-full bg-shining">
-							<!--<div class="text-rp-cream text-xl bg-rp-blue py-1 px-4 rounded-full">-->
-							<!--<span class="text-shining-rp-gradient">Priority Status</span>-->
+						<div class="text-md md:text-lg shining py-1 px-4 rounded-full bg-shining">
 							<div class="text-rp-cream">Priority Status</div>
 						</div>
 					{/if}
