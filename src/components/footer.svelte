@@ -4,7 +4,15 @@
 
 <div class="relative">
 	<span class="px-5 absolute bottom-0 flex flex-row justify-between w-full mt-4 py-4 items-center">
-		<div class=" text-white text-xs sm:text-sm md:text-base">Organized by ACM@UIUC</div>
+		<div class=" text-white text-xs sm:text-sm md:text-base">
+			<a href="https://acm.illinois.edu/">
+				<img 
+				src="/acmuiuclogo.png" 
+				alt = "acm-logo"
+				width="100"
+				>
+			</a>
+		</div>
 		<div class="flex flex-row justify-around">
 			<a href="https://www.instagram.com/uiuc_rp/?hl=en">
 				<Icon
