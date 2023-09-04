@@ -91,6 +91,14 @@
 	$: emailValid = email.length > 0 && emailRegex.test(email);
 </script>
 
+<svelte:head>
+	<title>Log in for R|P 2023</title>
+	<meta
+		name="description"
+		content="Log in here to access your conference passes and update preferences"
+	/>
+</svelte:head>
+
 <div class="flex items-center h-full justify-center">
 	<div class="w-[95%] md:w-3/5 text-gray-200">
 		<GlassContainer>

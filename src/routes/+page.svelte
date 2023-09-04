@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { onMount } from 'svelte';
-	import { slide } from 'svelte/transition';
+	import { fade, slide } from 'svelte/transition';
 	import Sponsors from '../components/home/sponsors.svelte';
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
@@ -11,9 +11,12 @@
 	import Info from '../components/home/info.svelte';
 	import Buildings from '../components/buildings.svelte';
 	import Schedule from '../components/home/schedule.svelte'
+	import Stats from '../components/home/stats.svelte';
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
+
+	let showQR = true;
 
 	let user: User | null = null;
 	let schedule: { [key: string]: any } | null = null;
@@ -55,6 +58,14 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Reflections | Projections 2023</title>
+	<meta
+		name="description"
+		content="Expand your horizons at the Midwest’s largest student run tech conference this September. Join us for a week full of insightful talks from industry & academia leaders, hands-on workshops, and networking events."
+	/>
+</svelte:head>
+
 <ShootingStar />
 <div class="text-white flex items-center mx-3">
 	<span class="w-full flex-col flex items-center">
@@ -71,10 +82,16 @@
 			September 18 <Icon icon="line-md:arrow-right" /> 22
 		</div>
 		{#if user}
-			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto" in:slide>
+			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
-						<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
+						<button on:click={() => { showQR = !showQR }} class="w-full aspect-square">
+							{#if showQR}
+								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade/>
+							{:else}
+								<p class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center">{user.email}</p>
+							{/if}
+						</button>
 					{:else}
 						<div class="w-full aspect-square bg-white animate-pulse rounded-md" />
 					{/if}
@@ -103,7 +120,7 @@
 				>
 			</a>
 		{/if}
-
+		<Stats />
 		<Info />
 	</span>
 </div>

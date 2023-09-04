@@ -19,17 +19,21 @@
 			return fullName;
 		}
 	};
+
+	let y: number;
 </script>
 
-<nav class="sticky block top-0">
+<svelte:window bind:scrollY={y} />
+<nav class="sticky block top-0 z-50">
 	<div
-		class="flex flex-row justify-between p-5 text-gray-200 text-sm md:text-md lg:text-lg font-sans items-center"
+		class="flex flex-row justify-between p-5 text-white text-sm md:text-md lg:text-lg font-sans items-center {y >
+			50 && 'navbar-bg '} duration-300"
 	>
 		<a href="/" class="flex flex-row items-center gap-3">
 			<img
 				src="/favicon.png"
 				alt="Reflections Projections Home Page"
-				class="hover:rotate-180 duration-500 hover:scale-125 h-10 w-10 md:h-14 md:w-14 aspect-square"
+				class="hover:rotate-180 duration-500 hover:scale-125 w-10 md:h-14 md:w-14 aspect-square object-cover"
 			/>
 		</a>
 		<div class="flex flex-row justify-evenly w-[95%] md:w-2/3 lg:w-1/2 items-center">
@@ -49,9 +53,8 @@
 				>MechMania</a
 			>
 			<div
-				class="relative inline-block md:hidden z-50"
+				class="relative inline-block md:hidden"
 				on:mouseleave|self={() => {
-					console.log('whyyy');
 					openDropDown = false;
 				}}
 			>
@@ -95,3 +98,10 @@
 		</div>
 	</div>
 </nav>
+
+<style>
+	.navbar-bg {
+		background: rgb(29, 46, 91);
+		background: linear-gradient(180deg, rgba(29, 46, 91, 1) 0%, rgba(255, 255, 255, 0) 100%);
+	}
+</style>
