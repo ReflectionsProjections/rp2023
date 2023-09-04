@@ -20,6 +20,13 @@
 			bio: ''
 		},
 		{
+			id: 'anna-belova',
+			name: 'Anna Belova',
+			role: 'CEO&Founder DEVAR',
+			organization: 'DEVAR',
+			bio: 'Anna Belova, CEO&Founder DEVAR, an augmented reality platform for brands, businesses, and creators, often referred to as the "Canva" for Augmented Reality Tech entrepreneur, Forbes U30 Creator one of the most successful mass-market AR products on the consumer market, with over 13 million Devar-branded AR books sold worldwide. She has also collaborated with renowned brands like Hasbro and Nickelodeon and her branded products are available in 74 countries and 27 languages. Two years ago, DEVAR introduced a no-code platform for AR creation (MyWebAR), which has quickly become one of the two most popular web-based AR platforms. DEVAR is one of the few companies that has a completely proprietary computer vision and generative AI technology stack for augmented reality. One of the DEVAR’s recent unique developments is text-to-3D — generative creation of ready-made 3D models by text. Today, among the platform\'s users are such companies and brands as Google, McDonalds, Nasdaq, PWC, Deloitte, WIX, and others.'
+		},
+		{
 			id: 'archana-chaudhary',
 			name: 'Archana Chaudhary',
 			role: 'Senior Engineering Manager at Adobe',
@@ -83,11 +90,11 @@
 			bio: ''
 		},
 		{
-			id: 'sue-harnett',
-			name: 'Sue Harnett',
-			role: 'Founder and CEO at Rewriting the Code',
-			organization: 'Rewriting The Code',
-			bio: 'Sue is a proven company founder, entrepreneur and healthcare leader. Prior to Rewriting the Code, Sue launched, developed and successfully sold a novel e-commerce and technology business in the collegiate and professional sports industry. Sue also created the strategic vision and operational infrastructure for a multi-specialty physician organization within Duke University Health System, a nationally acclaimed academic health system. She is an expert at recognizing the viability of business opportunities, testing the market to refine the proposed model and executing the go-to-market strategy. She brings a strong ability to create passionate teams, establish focused and positive work cultures and lead disruptive business models to bring innovative change. Sue hopes to positively impact the young college women of Rewriting the Code by supporting the students with the necessary skills, confidence and applied work opportunities to develop the next generation of technology leaders.\n Sue received her Masters in Healthcare Administration from Duke University in 1992 and an AB in Economics from Duke University in 1990. Sue earned a full scholarship to Duke where she received All-America honors prior to playing professional basketball in Kortrijk, Belgium.'
+			id: 'wade',
+			name: 'Wade Fagen-Ulmschneider',
+			role: 'Teaching Professor',
+			organization: 'University of Illinois Urbana-Champaign',
+			bio: 'Wade Fagen-Ulmschneider is a Teaching Professor of Computer Science at the University of Illinois Urbana-Champaign (UIUC). With a passion for data, he often teaches thousands of students each year in his courses on Data Structures, Data Visualization, and Data Science. He was selected as one of the National Academy of Engineering’s Frontiers of Engineering Education scholars, awarded the Collins Award for Innovation Teaching, and has been consistently ranked as an excellent instructor by his students for the past ten years. His work on data visualizations has been used by governors of multiple states, featured by websites including Popular Mechanics and The Verge, and has been viewed by millions of readers.'
 		}
 	];
 </script>
