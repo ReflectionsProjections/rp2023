@@ -1,22 +1,40 @@
 <script lang='ts'>
 	import Icon from '@iconify/svelte';
+	import { onMount } from 'svelte';
 	import dayjs from 'dayjs'	
 	export let schedule: { [key: string]: any } | null;
-
-	let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]	// Convert from .day() to value
-	let card_colors = ["bg-pink-200", "bg-pink-300"]	// Colours to select from for the event cards
-	let events = [];	// list of events currently displapyed
+	// let schedule: {} | null = null;
+	let schedule_buttons = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+	let days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"]	
+	let option_ids = [["schedule-mon", 0], ["schedule-mon", 0], ["schedule-tue", 1], ["schedule-wed", 2], ["schedule-thu", 3], ["schedule-fri", 4], ["schedule-mon", 0]]// Convert from .day() to value
+	let card_colors = ["bg-pink-200", "bg-[#FBC5E3]"]		// Colours to select from for the event cards
+	let error_messages = [
+		"Hmm... something's broken.",
+		"Well, this is awkward.",
+		"Whoops. This wasn't supposed to happen.",
+		"I've a feeling we're not in Kansas anymore...",
+		"Now, where are those pesky events...",
+		"I swear I put the events /right/ there...",
+		"Oops."
+	]
+	let error_message = "";
+	let events = [];	// list of events currently displayed
 	let selectedDay: string;	// currently selected day
+	console.log("Schedule", schedule);
 
 	function dayButtonClick(day: string) {
-		if (schedule != null) events = schedule[day]
+		if (schedule != null) events = schedule[day];
+		else chooseErrorMessage();
+		(document.getElementById("schedule-display-day") as HTMLParagraphElement).innerText = day[0].toUpperCase() + day.slice(1);
+		
+
 	}
 
-	// function isTextCutOff(el) {
-	// 	console.log("Scroll Height: ", el.scrollHeight, "; Client Height: ", el.clientHeight)
-	// 	return el.scrollHeight > el.clientHeight;
-	// }
-
+	function updateCheckedDate() {
+		(document.getElementById(option_ids[dayjs().day()][0] as string) as HTMLInputElement).checked = true;
+		(document.getElementById("schedule-display-day") as HTMLParagraphElement).innerText = days[dayjs().day()][0].toUpperCase() + days[dayjs().day()].slice(1);
+	}
+	
 	function scheduleDescControl(event: MouseEvent) {
 		const target = event.currentTarget as HTMLInputElement;
 		let event_target_id = target.id.toLowerCase();
@@ -24,169 +42,156 @@
 		let desc_text_target = document.getElementById("description-text-" + event_target_id);
 		let icon_up_arrow_target = document.getElementById("icon-arrow-up-" + event_target_id);
 		let icon_down_arrow_target = document.getElementById("icon-arrow-down-" + event_target_id);
-		// let expand_target = document.getElementById("expand-" + event_target_id);
 		desc_div_target?.classList.toggle('h-fit');
 		desc_div_target?.classList.toggle('h-full');
 		desc_text_target?.classList.toggle('line-clamp-2');
 		icon_up_arrow_target?.classList.toggle('invisible');
 		icon_down_arrow_target?.classList.toggle('invisible');
 	}
-	if (days[dayjs().day()] == "sunday" || days[dayjs().day()] == "saturday") {
-		dayButtonClick("monday");
-	} else {
-		dayButtonClick(days[dayjs().day()]);
+
+	function chooseErrorMessage() {
+		error_message = error_messages[Math.floor(Math.random() * error_messages.length)]
+	}
+
+
+	function updateSchedule() {
+		if (schedule != null) { events = schedule[days[dayjs().day()]] }
 	}
 	
+	onMount(async () => {
+		chooseErrorMessage();
+		updateCheckedDate();
+		if (days[dayjs().day()] == "sunday" || days[dayjs().day()] == "saturday") {
+			dayButtonClick("monday");
+		} else {
+			dayButtonClick(days[dayjs().day()]);
+		}
+	})
 
+	$: schedule, updateSchedule();
 </script>
 
-
 <div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center">
-	<div class="max-w-3xl w-[95%] md:w-3/4 lg:w-5/6  h-[36rem] ">
+	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12  h-[36rem] ">
 		<!-- Tabs -->
-		<div class="grid grid-cols-11 h-8 px-1 pt-1 items-end invisible sm:visible">
-			<div class="flex col-span-2">
-				<input class="sr-only peer" type="radio" name="schedule" id="schedule-mon" value="monday" checked on:change={() => dayButtonClick("monday")}> 
-				<label for="schedule-mon" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
-					<p class="h-fit text-md font-bold select-none px-1">Monday.EXE</p>
-				</label>
-			</div>
-			<div class="flex col-span-2">
-				<input class="sr-only peer" type="radio" name="schedule" id="schedule-tues" value="tuesday" on:change={() => dayButtonClick("tuesday")}> 
-				<label for="schedule-tues" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
-					<p class="h-fit text-md font-bold select-none px-1">Tuesday.EXE</p>
-				</label>
-			</div>
-			<div class="flex col-span-2">
-				<input class="sr-only peer" type="radio" name="schedule" id="schedule-wed" value="wednesday" on:change={() => dayButtonClick("wednesday")}> 
-				<label for="schedule-wed" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
-					<p class="h-fit text-md font-bold select-none px-1">Wednesday.EXE</p>
-				</label>
-			</div>
-			<div class="flex col-span-2">
-				<input class="sr-only peer" type="radio" name="schedule" id="schedule-thurs" value="thursday" on:change={() => dayButtonClick("thursday")}> 
-				<label for="schedule-thurs" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
-					<p class="h-fit text-md font-bold select-none px-1">Thursday.EXE</p>
-				</label>
-			</div>
-			<div class="flex col-span-2">
-				<input class="sr-only peer" type="radio" name="schedule" id="schedule-fri" value="friday" on:change={() => dayButtonClick("friday")}> 
-				<label for="schedule-fri" class="w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
-					<p class="h-fit text-md font-bold select-none px-1">Friday.EXE</p>
-				</label>
-			</div>
+		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end ">
+			{#each schedule_buttons as day}
+			<div class="flex col-span-3 sm:col-span-3">
+					<input class="sr-only peer" type="radio" name="schedule" id="schedule-{day.slice(0, 3).toLowerCase()}" value="{day.toLowerCase()}" on:change={() => dayButtonClick(`${day.toLowerCase()}`)}> 
+					<label for="schedule-{day.slice(0, 3).toLowerCase()}" class="select-none w-full h-full cursor-pointer peer-checked:bg-rp-cream bg-rp-subtle-pink border-[1px] hover:bg-rp-hover-pale-pink border-black">
+						<p class="h-0 sm:h-fit text-md font-bold select-none px-1 collapse sm:visible">{day + ".EXE"}</p>
+						{#if day != "Wednesday"}
+							<p class="h-0 min-[500px]:h-fit sm:h-0 text-md font-bold select-none px-1 invisible min-[500px]:visible sm:invisible">{day.slice(0, 3)}.EXE</p>
+						
+						{:else}
+						<!-- Edge Case for Wednesday -->
+							<p class="h-0 sm:h-fit min-[870px]:h-0 text-md font-bold select-none px-1 collapse sm:visible min-[870px]:invisible">Wednes.EXE</p>
+							<p class="h-0 min-[500px]:h-fit sm:h-0 text-md font-bold select-none px-1 collapse min-[500px]:visible sm:invisible">Wed.EXE</p>
+						{/if}
+						<p class="h-fit min-[500px]:h-0 text-md font-bold select-none px-1 visible min-[500px]:invisible">{day.slice(0, 3).toUpperCase()}</p>
+					</label>
+				</div>
+			{/each}
+			
 		</div>
 		<!-- Component Body -->
 		<div class="bg-rp-cream h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm">
-			<!-- Header -->
-			<div class="h-12 sm:h-8 grid grid-cols-5 min-[490px]:grid-cols-7 sm:grid-cols-8 md:grid-cols-9 lg:grid-cols-12">
-				<!-- Search Bar thingy? -->
-				<div class="h-full col-span-3 min-[490px]:col-span-5 sm:col-span-7 md:col-span-8 lg:col-span-11">
-					<div class="pl-5 pr-3 py-2 w-full h-full items-end">
-						<div class="h-full w-full border-[1px] rounded-[1px] border-black">
-							<div class="flex visible sm:invisible sm:h-0 w-full h-full">
-								<select class="sans w-full indent-0.5" bind:value={selectedDay} on:change={() => dayButtonClick(selectedDay)}>
-									<option class="font-sans" value="monday"> Monday</option>
-									<option class="sans" value="tuesday"> Tuesday</option>
-									<option class="sans" value="wednesday"> Wednesday</option>
-									<option class="sans" value="thursday"> Thursday</option>
-									<option class="sans" value="friday"> Friday</option>
-								</select>
-							</div>
-						</div>
-					</div>
+			<div class="flex flex-row m-2 items-start">
+				<div class="flex border border-rp-blue w-full h-4 sm:h-4 m-0.5 ">
+					<div id="schedule-display-day" class="h-4 align-bottom text-[0.68rem] indent-1">Monday</div>
 				</div>
-				<!-- Fake buttons -->
-				<div class="h-full flex col-span-2 sm:col-span-1 pl-4 w-full items-end justify-end">
-					<div class="h-full flex pr-4 w-full py-2 justify-end items-start">
-						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="ic:baseline-minimize" width="auto" height="auto"/>
-						</div>
-						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="fluent:maximize-20-filled" width="auto" height="auto"/>
-						</div>
-						<div class="flex h-8 sm:h-4 sm:w-4 mr-[2px] sm:mr-[1px] aspect-square border-[1px] border-black rounded-[1px] place-content-center items-center">
-							<Icon class="flex h-fit aspect-square" icon="ph:x-bold" width="auto" height="auto"/>
-
-						</div>
+				<div class="flex flex-row text-rp-blue items-start">
+					<div class="w-4 h-4 m-0.5 border border-rp-blue flex items-center justify-center">
+						<Icon icon="ic:baseline-minimize" />
 					</div>
-					
+					<div class="w-4 h-4 m-0.5 border border-rp-blue flex items-center justify-center">
+						<Icon icon="fluent:maximize-20-filled" />
+					</div>
+					<div class="w-4 h-4 m-0.5 border border-rp-blue flex items-center justify-center">
+						<Icon icon="ph:x-bold" />
+					</div>
 				</div>
 			</div>
 			<!-- Content -->
 			<div class="flex h-[30rem] sm:h-[31rem] justify-center items-center">
 				<!-- Inner Pink Box -->
-				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-y-scroll">
-					{#if schedule != null}
-						{#each events as event, i}
-							{#if event.visible == true}
-							<div class="flex w-full h-fit justify-center">
-								<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-0 border-pink-100">
-									<div class="flex grow-0 pb-1">
-										<div class="flex flex-row w-full h-fit items-center">
-											<div class="flex h-[6rem] aspect-square p-2 items-stretch ">
-												<div class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-pink-100 object-cover overflow-clip">
-													{#if event.imageUrl != null} 
-														<img class= "" alt="icon" src="{event.imageUrl}">
-													{:else}
-														<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
-													{/if}
-												</div>
-											</div>
-											<!-- Top info cluster -->
-											<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
-												<div class="flex flex-col h-fit w-fit items-center">
-													<p class="flex text-xl sm:text-2xl font-bold ">{event.name}</p>
-												</div>
-												
-												<div class="grid grid-row-2 min-[420px]:grid-cols-3 md:grid-cols-2 h-2/5 w-full gap-0 min-[420px]:gap-2">
-													<div class="flex row-span-1 min-[420px]:col-span-1 items-end">
-														<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
-														{#if event.locationUrl != null}
-															<a href="{event.locationUrl}" class="cursor-pointer underline text-sm sm:text-lg pl-1">{event.location}</a>
+				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-auto">
+						{#if schedule != null}
+							{#each events as event, i}
+								<div class="flex w-full h-fit justify-center">
+									<div class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit {card_colors[i % card_colors.length]} rounded-md m-2 border-0 border-pink-100">
+										<div class="flex grow-0 pb-1">
+											<div class="flex flex-row w-full h-fit items-center">
+												<div class="flex h-[6rem] aspect-square p-2 items-stretch ">
+													<div class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-pink-100 object-cover overflow-clip">
+														{#if event.imageUrl != null} 
+															<img class= "object-cover h-full w-full" alt="Event" src="{event.imageUrl}">
 														{:else}
-															<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+															<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range"/>
 														{/if}
 													</div>
-													<div class="flex row-span-1 min-[420px]:col-span-2 md:col-span-1 items-end">
-														<Icon class="flex h-fit aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
-														{#if event.end_time != null}
-															<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.end_time).format('HH:mm')}`}</p>
-														{:else}
-															<!-- fallback in the case the for some reason the event is missing an end time -->
-															<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('HH:mm')} - ${dayjs(event.start_time).add(event.duration, 'h').format('HH:mm')}`}</p>
-														{/if}
+												</div>
+												<!-- Top info cluster -->
+												<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
+													<div class="flex flex-col h-fit w-fit items-center">
+														<p class="flex text-xl sm:text-2xl font-bold ">{event.name}</p>
+													</div>
+													
+													<div class="grid grid-row-2 min-[460px]:grid-cols-3 md:grid-cols-3 h-2/5 w-full gap-0 min-[460px]:gap-2">
+														<div class="flex row-span-1 min-[460px]:col-span-1 items-end">
+															<Icon class="flex h-fit aspect-square" icon="mdi:map-marker" width="auto" height="auto"/>
+															{#if event.virtual && event.locationUrl != null}
+																<a href="{event.locationUrl}" class="cursor-pointer underline text-sm sm:text-lg pl-1">Virtual</a>
+															{:else if event.virtual && event.locationUrl == null}
+																<p class="text-sm sm:text-lg pl-1">Virtual</p>
+															{:else if !event.virtual && event.locationUrl != null}
+																<a href="{event.locationUrl}" class="cursor-pointer underline text-sm sm:text-lg pl-1">{event.location}</a>
+															{:else}
+																<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+															{/if}
+														</div>
+														<div class="flex row-span-1 min-[460px]:col-span-2 md:col-span-2 items-end">
+															<Icon class="flex h-full aspect-square" icon="mdi:calendar" width="auto" height="auto"/>
+															{#if event.end_time != null}
+																<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('hh:mmA')} - ${dayjs(event.end_time).format('hh:mmA')}`}</p>
+															{:else}
+																<!-- fallback in the case the for some reason the event is missing an end time -->
+																<p class="text-sm sm:text-lg pl-1">{`${dayjs(event.start_time).format('hh:mm A')} - ${dayjs(event.start_time).add(event.duration, 'h').format('HH:mm')}`}</p>
+															{/if}
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<hr class="border-1 w-11/12 place-self-center border-black">
+										<hr class="border-1 w-11/12 place-self-center border-black">
 
-									<!-- Description -->
-									<div class="flex grow-0 w-full h-fit px-4 py-2" id="description-div-event-{String(i)}">
-										<p class="h-full w-full line-clamp-2 overflow-hidden" id="description-text-event-{String(i)}"> {event.description}</p>
-									</div>
-									<!-- Collapse button -->
-									<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
-										<label class="flex w-full h-6  place-content-center cursor-pointer" >
-											<input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{String(i)}">
-											<Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{String(i)}"/>
-											<Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{String(i)}"/>
-										</label>
+										<!-- Description -->
+										<div class="flex grow-0 w-full h-fit px-4 py-2" id="description-div-event-{String(i)}">
+											<p class="h-full w-full line-clamp-2 overflow-hidden" id="description-text-event-{String(i)}"> {event.description}</p>
+										</div>
+										<!-- Collapse button -->
+										<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
+											<label class="flex w-full h-6  place-content-center cursor-pointer" >
+												<input class="sr-only peer" type="checkbox" on:click = {scheduleDescControl} id="event-{String(i)}">
+												<Icon class="absolute flex h-fit aspect-square visible" icon="mdi:chevron-down" width="auto" height="auto" id="icon-arrow-down-event-{String(i)}"/>
+												<Icon class="absolute flex h-fit aspect-square invisible" icon="mdi:chevron-up" width="auto" height="auto" id="icon-arrow-up-event-{String(i)}"/>
+											</label>
+										</div>
 									</div>
 								</div>
+							{/each}
+						{:else}
+							<div class="flex w-full h-full place-content-center place-items-center">
+								<div class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center {card_colors[0]} place-content-center text-center p-4 md:p-8 rounded-md">
+									<p class="flex text-black text-3xl sm:text-4xl font-bold">{error_message}</p>
+									<p class="flex text-black text-1xl sm:text-2xl pt-1">Something went wrong. Please come back later!</p>
+								</div>
 							</div>
-							{/if}
-						{/each}
-					{:else}
-						<div class="flex w-full h-fit justify-center">
-							<p class="text-black text-2xl">Hmm... something went wrong. Try again later!</p>
-						</div>
-					{/if}
+						{/if}
 				</div>
 			</div>
 		</div>		
 	</div>
 </div>
+
 

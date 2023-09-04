@@ -7,14 +7,10 @@
 	import { API_URL } from '../constants';
 	import type { User } from '../lib/types';
 	import { userStore } from '../stores/user-store';
-	import { scheduleStore } from '../stores/schedule-store';
 
 	import Info from '../components/home/info.svelte';
-<<<<<<< HEAD
 	import Buildings from '../components/buildings.svelte';
-=======
 	import Schedule from '../components/home/schedule.svelte'
->>>>>>> schedule-component-v2
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -22,7 +18,6 @@
 	let user: User | null = null;
 	let schedule: { [key: string]: any } | null = null;
 	userStore.subscribe((data) => (user = data));
-	scheduleStore.subscribe((schedule_data) => (schedule = schedule_data));
 
 	onMount(() => {
 		try {
@@ -45,8 +40,19 @@
 		} catch (e) {
 			console.error(e);
 		}
+		try {
+			fetch(`${$API_URL}/events/schedule/days`, {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+				.then((response) => response.json())
+				.then((json) => schedule = json );
+		} catch (e) {
+			console.error("In schedule fetch", e);
+		}
 	});
-	console.log("In client: ", schedule)
 </script>
 
 <ShootingStar />
