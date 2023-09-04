@@ -161,7 +161,7 @@
 			{/if}
 		</GlassContainer>
 	</form>
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col gap-2 z-50">
 		<button
 			on:click={logout}
 			class="bg-rp-blue p-2 rounded-md text-gray-200 hover:bg-opacity-100 bg-opacity-80"

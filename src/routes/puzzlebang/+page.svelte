@@ -3,7 +3,15 @@
 	import WindowCard from '../../lib/components/window-card.svelte';
 </script>
 
-<div class="h-screen mx-auto w-[90%] lg:w-4/5 md:mt-10 relative -z-[10]">
+<svelte:head>
+	<title>PuzzleBang at R|P 2023</title>
+	<meta
+		name="description"
+		content="Compete in a week-long puzzle contest to win exciting prizes!"
+	/>
+</svelte:head>
+
+<div class="h-screen mx-auto w-[90%] lg:w-4/5 md:mt-10 relative z-0">
 	<WindowCard>
 		<div class="bg-rp-subtle-pink p-1 mt-2 flex flex-col md:flex-row">
 			<a href="https://puzzlebang.com/" class="mx-auto my-auto w-8/12 sm:w-3/12">
