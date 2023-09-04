@@ -74,7 +74,7 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
-						<img class="w-full aspect-square" src={qrImg} alt="QR Pass" />
+						<img class="w-full aspect-square rendering-pixelated" src={qrImg} alt="QR Pass" />
 					{:else}
 						<div class="w-full aspect-square bg-white animate-pulse rounded-md" />
 					{/if}
