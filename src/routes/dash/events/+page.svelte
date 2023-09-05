@@ -9,7 +9,10 @@
 
 	let events: Event[] = [];
 	const loadEvents = async () => {
-		const res = await fetch(`${$API_URL}/events`);
+		const res = await fetch(`${$API_URL}/events`, {
+			cache: 'no-cache',
+			credentials: 'include'
+		});
 		events = await res.json();
 	};
 	onMount(loadEvents);
@@ -181,6 +184,7 @@
 	{#key events}
 		<Schedule />
 	{/key}
+	<div class="h-10" />
 </div>
 
 <style>
