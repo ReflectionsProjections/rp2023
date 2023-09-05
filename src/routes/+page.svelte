@@ -117,10 +117,10 @@
 			</a>
 		{/if}
 		<Stats />
+		<Schedule />
 		<Info />
 	</span>
 </div>
-<Schedule />
 <Sponsors />
 <Buildings />
 

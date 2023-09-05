@@ -5,6 +5,7 @@
 	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { API_URL } from '../../../constants';
+	import Schedule from '../../../components/home/schedule.svelte';
 
 	let events: Event[] = [];
 	const loadEvents = async () => {
@@ -175,6 +176,11 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="text-center text-3xl mt-10 font-serif">Live Schedule View</div>
+	{#key events}
+		<Schedule />
+	{/key}
 </div>
 
 <style>

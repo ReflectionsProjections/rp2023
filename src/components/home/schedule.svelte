@@ -71,7 +71,7 @@
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
-<div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center">
+<div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
 	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
