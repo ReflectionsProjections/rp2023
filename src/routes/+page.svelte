@@ -117,7 +117,7 @@
 			</a>
 		{/if}
 		<Stats />
-		<Schedule />
+		<!-- <Schedule /> -->
 		<Info />
 	</span>
 </div>
