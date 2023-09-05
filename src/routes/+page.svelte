@@ -10,7 +10,7 @@
 
 	import Info from '../components/home/info.svelte';
 	import Buildings from '../components/buildings.svelte';
-	import Schedule from '../components/home/schedule.svelte'
+	import Schedule from '../components/home/schedule.svelte';
 	import Stats from '../components/home/stats.svelte';
 
 	let qrImg: string | null = null;
@@ -19,7 +19,6 @@
 	let showQR = true;
 
 	let user: User | null = null;
-	let schedule: { [key: string]: any } | null = null;
 	userStore.subscribe((data) => (user = data));
 
 	onMount(() => {
@@ -42,18 +41,6 @@
 			}
 		} catch (e) {
 			console.error(e);
-		}
-		try {
-			fetch(`${$API_URL}/events/schedule/days`, {
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			})
-				.then((response) => response.json())
-				.then((json) => schedule = json );
-		} catch (e) {
-			console.error("In schedule fetch", e);
 		}
 	});
 </script>
@@ -85,11 +72,20 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
-						<button on:click={() => { showQR = !showQR }} class="w-full aspect-square">
+						<button
+							on:click={() => {
+								showQR = !showQR;
+							}}
+							class="w-full aspect-square"
+						>
 							{#if showQR}
-								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade/>
+								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade />
 							{:else}
-								<p class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center">{user.email}</p>
+								<p
+									class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center"
+								>
+									{user.email}
+								</p>
 							{/if}
 						</button>
 					{:else}
@@ -124,7 +120,7 @@
 		<Info />
 	</span>
 </div>
-<Schedule schedule={schedule}/>
+<Schedule />
 <Sponsors />
 <Buildings />
 
