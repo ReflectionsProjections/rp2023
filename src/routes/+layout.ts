@@ -3,7 +3,7 @@ import type { User } from '$lib/types';
 import { get } from 'svelte/store';
 
 /** @type {import('./$types').LayoutServerLoad} */
-export const load = async ({ fetch }): Promise<{ user: User | null}> => {
+export const load = async ({ fetch }): Promise<{ user: User | null }> => {
 	const url = get(API_URL);
 	let user: User | null;
 	try {
@@ -12,20 +12,18 @@ export const load = async ({ fetch }): Promise<{ user: User | null}> => {
 			cache: 'no-cache'
 		});
 
-		if (check.status != 200) {
+		if (check.ok) {
+			user = await check.json();
+		} else {
 			user = null;
 		}
-		user = await check.json();
-		
 	} catch (e) {
 		user = null;
 	}
 
-	
-
 	return {
 		user
-	}
+	};
 };
 
 export const ssr = false;
