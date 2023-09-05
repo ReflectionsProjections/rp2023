@@ -79,7 +79,7 @@
 							class="w-full aspect-square"
 						>
 							{#if showQR}
-								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade />
+								<img src={qrImg} class="rendering-pixelated w-full aspect-square" alt="QR Pass" in:fade />
 							{:else}
 								<p
 									class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center"
