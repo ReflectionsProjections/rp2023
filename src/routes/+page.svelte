@@ -7,8 +7,10 @@
 	import { API_URL } from '../constants';
 	import type { User } from '../lib/types';
 	import { userStore } from '../stores/user-store';
+
 	import Info from '../components/home/info.svelte';
 	import Buildings from '../components/buildings.svelte';
+	import Schedule from '../components/home/schedule.svelte';
 	import Stats from '../components/home/stats.svelte';
 
 	let qrImg: string | null = null;
@@ -70,11 +72,20 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
-						<button on:click={() => { showQR = !showQR }} class="w-full aspect-square">
+						<button
+							on:click={() => {
+								showQR = !showQR;
+							}}
+							class="w-full aspect-square"
+						>
 							{#if showQR}
-								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade/>
+								<img src={qrImg} class="w-full aspect-square" alt="QR Pass" in:fade />
 							{:else}
-								<p class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center">{user.email}</p>
+								<p
+									class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center"
+								>
+									{user.email}
+								</p>
 							{/if}
 						</button>
 					{:else}
@@ -106,6 +117,7 @@
 			</a>
 		{/if}
 		<Stats />
+		<Schedule />
 		<Info />
 	</span>
 </div>
