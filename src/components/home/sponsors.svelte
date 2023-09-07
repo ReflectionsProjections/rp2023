@@ -9,6 +9,12 @@
 	];
 	const gigaSponsors = [
 		{
+			id: 'aechelon',
+			name: 'Aechelon Technology',
+			imgUrl: 'logos/aechelon.png',
+			link: 'https://aechelon.com'
+		},
+		{
 			id: 'deere',
 			name: 'John Deere',
 			imgUrl: 'logos/deere.png',
@@ -35,10 +41,10 @@
 			link: 'https://cloudflare.com'
 		},
 		{
-			id: 'aechelon',
-			name: 'Aechelon Technology',
-			imgUrl: 'logos/aechelon.png',
-			link: 'https://aechelon.com'
+			id: 'cmegroup',
+			name: 'CME Group',
+			imgUrl: 'logos/cmegroup.png',
+			link: 'https://www.cmegroup.com/'
 		},
 		{
 			id: 'hrt',
@@ -53,12 +59,6 @@
 			link: 'https://magna.com'
 		},
 		{
-			id: 'sandia',
-			name: 'Sandia National Laboratories',
-			imgUrl: 'logos/sandia.png',
-			link: 'https://www.sandia.gov/'
-		},
-		{
 			id: 'verkada',
 			name: 'Verkada',
 			imgUrl: 'logos/verkada.png',
@@ -69,7 +69,7 @@
 
 <div class="w-[90%] md:w-4/5 lg:w-2/3 mx-auto py-14 lg:py-24">
 	<h2 class="text-white text-xl md:text-2xl lg:text-4xl text-center mb-10 md:mb-14">
-		Thank you to our sponsors
+		Thank you to our sponsors:
 	</h2>
 	<div
 		class="flex flex-col gap-3 mx-auto bg-rp-subtle-pink bg-opacity-80 backdrop-blur-sm rounded-3xl md:py-16 py-10"
