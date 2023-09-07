@@ -198,7 +198,7 @@
 				</div>
 
 				<div
-					class="bg-gray-900 w-6/12 md:w-6/12 rounded-lg fixed z-[999] p-5 duration-300 text-gray-200 center-div overflow-y-auto {show_filters_modal
+					class="bg-gray-900 w-3/12 rounded-lg fixed z-[999] p-5 right-48 duration-300 text-gray-200 center-div overflow-y-auto {show_filters_modal
 						? 'visible opacity-100'
 						: 'invisible opacity-0'} max-h-screen"
 				>
@@ -216,15 +216,15 @@
 						<p>Major</p>
 						<div class="my-auto text-gray-100 accent-rp-pink">
 							<div class="duration-300 p-2 bg-white rounded-md text-center bg-opacity-10 hover:bg-opacity-20">
-									<button class="" on:click={() => (show_majors = !show_majors)}>{major_filters.size} Filters </button>
+									<button class="w-full h-full" on:click={() => (show_majors = !show_majors)}>{major_filters.size} Filters </button>
 							</div>
 
 							{#if show_majors}
 							<div class="fixed">
-								<ul class="p-2 bg-opacity-4 rounded-md bg-white-300 bg-opacity-100">
+								<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
 									{#each majors as major}
-									<li id="major-check" class="flex flex-row hover:text-gray-300">
-										<div class="flex flex-row">
+									<li class="flex flex-row hover:text-gray-300">
+										<div id="major-check" class="flex flex-row">
 											<input type="button" value={major} on:click={() => {
 												let major_id = major_id_dict.get(major);
 												if (major_id == undefined) {
@@ -233,9 +233,9 @@
 												onCheckBoxClick(major_filters, major_id, "major-check")
 												major_filters = major_filters;
 												}} />	
-											{#if major_filters.has(major)}
-												<Icon class="align-end pt-2" icon="ion:checkmark" width="24"/> 
-											{/if}
+												{#if major_filters.has(major_id_dict.get(major) || "")}
+													<Icon class="align-end pt-2" icon="ion:checkmark" width="24"/> 
+												{/if}
 										</div>
 									</li>
 									{/each}
@@ -251,12 +251,12 @@
 
 						<div class="text-gray-100 accent-rp-pink">
 							<div class="duration-300 p-2 bg-white rounded-md text-center bg-opacity-10 hover:bg-opacity-20">
-								<button class="" on:click={() => (show_grad_year= !show_grad_year)}>{grad_year_filters.size} Graduation Year(s) </button>
+								<button class="w-full h-full" on:click={() => (show_grad_year= !show_grad_year)}>{grad_year_filters.size} Filters </button>
 							</div>
 
 							{#if show_grad_year}
 							<div class="fixed">
-								<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
+								<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900 h-48 overflow-scroll">
 									{#each grad_years as grad_year}
 									<li class="flex flex-row hover:text-gray-300">
 										<div id="grad-year-check" class="flex flex-row">
@@ -282,7 +282,7 @@
 						<p>Job Interest</p>
 						<div class="my-auto text-gray-100 accent-rp-pink">
 							<div class="duration-300 p-2 bg-white rounded-md text-center bg-opacity-10 hover:bg-opacity-20">
-								<button class="" on:click={() => (show_job_interest = !show_job_interest)}>{job_interest_filters.size} Job Interests(s) </button>
+								<button class="w-full h-full"  on:click={() => (show_job_interest = !show_job_interest)}>{job_interest_filters.size} Filters </button>
 							</div>
 
 							{#if show_job_interest}
@@ -309,10 +309,26 @@
 
 					</div>
 					<!-- Save Button -->
-					<div class="w-20 md:w-20 flex mt-3 flex-col">
-						<button
-							class="px-2 py-1 rounded-md bg-green-600 hover:bg-green-500 duration-300"
-								on:click={() => fetchFilteredAttendees(1)}> Save </button>
+					<div class="flex flex-row gap-5 mt-4">
+						<div class="w-20 md:w-20 flex mt-3 flex-col">
+							<button
+								class="px-2 py-1 rounded-md bg-green-600 hover:bg-green-500 duration-300"
+									on:click={() => fetchFilteredAttendees(1)}> Save </button>
+						</div>
+						<div class="w-fit flex mt-3 flex-col">
+							<button
+								class="px-2 py-1 rounded-md bg-pink-600 hover:bg-pink-500 duration-300"
+									on:click={() => {
+										major_filters.clear()
+										major_filters = new Set();
+										job_interest_filters.clear();
+										job_interest_filters = new Set();
+										grad_year_filters.clear();
+										grad_year_filters = new Set();
+										
+										fetchAttendees();
+									}}> Clear Filters </button>
+						</div>
 					</div>
 					<slot />
 				</div>
