@@ -36,7 +36,7 @@
 	let show_filters_modal: boolean;
 
 
-	let page: number = 0;
+	let page: number = 1;
 	let first_page: number = 1;
 	let last_page: number = 1;
 
@@ -179,6 +179,13 @@
              console.log(`Error making request: ${e}`);
          }
  	};
+
+
+	function handleDownload() {
+		alert("This functionality is not yet implemented. Check back soon!")
+	}
+
+
 </script>
 
 <main class="flex flex-col h-full">	
@@ -189,6 +196,14 @@
 		>
 		<div class="flex flex-row justify-between">
 			<h1 class="text-xl mb-3 p-2 font-serif">Attendee Resumes</h1>
+
+
+			<div class="flex flex-row gap-5">
+			<div class="justify-self-end my-auto text-gray-100 accent-rp-pink">
+					<div class="py-1 px-3 bg-pink-600 bg-opacity-80 hover:bg-opacity-100 duration-300 rounded-md h-min">
+							<button class="" on:click={handleDownload}> Export All </button>
+					</div>
+				</div>
 			
 				<!-- Dropdowns for Filters-->
 				<div class="justify-self-end my-auto text-gray-100 accent-rp-pink">
@@ -196,6 +211,7 @@
 							<button class="" on:click={() => {show_filters_modal = true}}> Filter By </button>
 					</div>
 				</div>
+			</div>
 
 				<div
 					class="bg-gray-900 w-3/12 rounded-lg fixed z-[999] p-5 right-48 duration-300 text-gray-200 center-div overflow-y-auto {show_filters_modal
