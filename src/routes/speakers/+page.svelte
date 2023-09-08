@@ -55,6 +55,13 @@
 			bio: "Craig is co-founder and CTO of Fluid Reality, a spinout commercializing his post doctoral work in miniaturized soft hydraulic actuation at the Human-Computer Interaction Institute at Carnegie Mellon University in the Future Interfaces Group. He's the inventor of Flat Panel Haptics and specializes in interactive embedded systems and haptic actuation. His work has won 6 best paper awards and nominations at premiere ACM and IEEE venues and has been featured in venues such as NBC Nightly News with Lester Holt, TechCrunch, and Engadget. Before CMU and Fluid Reality, Craig was the VP of Research and Development at Tanvas, where he developed novel electroadhesive touchscreens based on his PhD work in surface haptics at Northwestern University's Center for Robotics and Biosystems. Craig currently holds an adjunct professor position at UIUC ECE."
 		},
 		{
+			id: 'dale-francis',
+			name: 'Dale Francis',
+			role: 'Director of Product Engineering at Climavision',
+			organization: 'Climavision',
+			bio: "Dale is a full stack software developer specializing in solving real world problems with technology, he has over 15 years software development experience and 12 years design with a focus on custom solution development and green fields projects. Areas of expertise extend into multiple different facets of software development such as distributed systems, micro-services, functional programming, reactive programming, and design. He has worked extensively with most major Microsoft products as well as Azure along with the Adobe Suite as needed. He is competent in multiple programming languages including C#, Python, JavaScript, and HTML/CSS. He has a unique blended skill set in business, sales and technical IT competencies which allows him to engage with customers, clients, and team members more effectively."
+		},
+		{
 			id: 'emily-bender',
 			name: 'Emily M. Bender',
 			role: 'Professor of Linguistics and Adjunct Professor in the School of Computer Science and Information Science at the University of Washington',
