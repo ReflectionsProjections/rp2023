@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
 	import dayjs from 'dayjs';
 	import { API_URL } from '../../constants';
+	import GlassContainer from '../glass-container.svelte';
 
 	const SCHEDULE_BUTTONS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 	const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -60,19 +61,19 @@
 	};
 
 	onMount(async () => {
-		await loadSchedule();
 		chooseErrorMessage();
+		await loadSchedule();
 		currentDay = OPTION_IDS[dayjs().day()];
 		dayButtonClick(currentDay.toLowerCase());
 	});
 
 	$: schedule, updateSchedule();
-
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
 <div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
 	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
+	  <h1 class="text-center h-fit text-white text-3xl p-2"><strong>Note:</strong> Schedule is subject to change!</h1>
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
 			{#each SCHEDULE_BUTTONS as day}
@@ -134,130 +135,140 @@
 				<!-- Inner Pink Box -->
 				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-auto">
 					{#if schedule != null}
-						{#each events as event, i}
-							<div class="flex w-full h-fit justify-center">
-								<div
-									class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit bg-rp-cream rounded-md m-2 border-0 border-pink-100"
-								>
-									<div class="flex grow-0 pb-1">
-										<div class="flex flex-row w-full h-fit items-center">
-											<div class="flex h-[6rem] aspect-square p-2 items-stretch">
-												<div
-													class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-white object-cover overflow-clip"
-												>
-													{#if event.imageUrl != null}
-														<img
-															class="object-cover h-full w-full"
-															alt="Event"
-															src={event.imageUrl}
-														/>
-													{:else}
-														<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range" />
-													{/if}
-												</div>
-											</div>
-											<!-- Top info cluster -->
-											<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
-												<!-- Event name -->
-												<div class="flex flex-col h-fit w-fit items-center">
-													<p class="flex text-xl sm:text-2xl font-bold">{event.name}</p>
-												</div>
-												<!-- Basic info cluster -->
-												<div class="flex flex-col h-2/5 w-full gap-1 justify-between">
-													<!-- Location -->
-													<div class="flex flex-row">
-														<Icon
-															class="flex h-fit aspect-square"
-															icon="mdi:map-marker"
-															width="auto"
-															height="auto"
-														/>
-														{#if event.virtual && event.locationUrl != null}
-															<a
-																href={event.locationUrl}
-																class="cursor-pointer underline text-sm sm:text-lg pl-1">Virtual</a
-															>
-														{:else if event.virtual && event.locationUrl == null}
-															<p class="text-sm sm:text-lg pl-1">Virtual</p>
-														{:else if !event.virtual && event.locationUrl != null}
-															<a
-																href={event.locationUrl}
-																class="cursor-pointer underline text-sm sm:text-lg pl-1"
-																>{event.location}</a
-															>
+						{#if events.length != 0}
+							{#each events as event, i}
+								<div class="flex w-full h-fit justify-center">
+									<div
+										class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit bg-rp-cream rounded-md m-2 border-0 border-pink-100"
+									>
+										<div class="flex grow-0 pb-1">
+											<div class="flex flex-row w-full h-fit items-center px-2 py-2">
+												<div class="flex h-[6rem] aspect-square p-2 items-stretch">
+													<div
+														class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-white object-cover overflow-clip"
+													>
+														{#if event.imageUrl != null}
+															<img
+																class="object-cover h-full w-full"
+																alt="Event"
+																src={event.imageUrl}
+															/>
 														{:else}
-															<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+															<Icon class="h-1/2 w-1/2" icon="mdi:calendar-range" />
 														{/if}
 													</div>
-													<!-- Time -->
-													<div class="flex flex-row mr-3">
-														<Icon
-															class="flex h-full aspect-square"
-															icon="mdi:calendar"
-															width="auto"
-															height="auto"
-														/>
-														<p class="text-sm sm:text-lg pl-1">
-															{`${dayjs(event.start_time).format('h:mm A')} - ${dayjs(
-																event.end_time
-															).format('h:mm A')}`}
-														</p>
+												</div>
+												<!-- Top info cluster -->
+												<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
+													<!-- Event name -->
+													<div class="flex flex-col h-fit w-fit items-center">
+														<p class="flex text-xl sm:text-2xl font-bold">{event.name}</p>
+													</div>
+													<!-- Basic info cluster -->
+													<div class="flex flex-col h-2/5 w-full gap-1 justify-between">
+														<!-- Location -->
+														<div class="flex flex-row">
+															<Icon
+																class="flex h-fit aspect-square"
+																icon="mdi:map-marker"
+																width="auto"
+																height="auto"
+															/>
+															{#if event.virtual && event.locationUrl != null}
+																<a
+																	href={event.locationUrl}
+																	class="cursor-pointer underline text-sm sm:text-lg pl-1">Virtual</a
+																>
+															{:else if event.virtual && event.locationUrl == null}
+																<p class="text-sm sm:text-lg pl-1">Virtual</p>
+															{:else if !event.virtual && event.locationUrl != null}
+																<a
+																	href={event.locationUrl}
+																	class="cursor-pointer underline text-sm sm:text-lg pl-1"
+																	>{event.location}</a
+																>
+															{:else}
+																<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+															{/if}
+														</div>
+														<!-- Time -->
+														<div class="flex flex-row mr-3">
+															<Icon
+																class="flex h-full aspect-square"
+																icon="mdi:calendar"
+																width="auto"
+																height="auto"
+															/>
+															<p class="text-sm sm:text-lg pl-1">
+																{`${dayjs(event.start_time).format('h:mm A')} - ${dayjs(
+																	event.end_time
+																).format('h:mm A')}`}
+															</p>
+														</div>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>
-									<hr class="border-1 w-11/12 place-self-center border-black" />
-									<!-- Description -->
-									<div
-										class="flex grow-0 w-full {descToggles[event._id]
-											? 'h-full'
-											: 'h-fit'} px-4 py-2"
-										id="description-div-event-{String(i)}"
-									>
-										<p
-											class="h-full w-full {descToggles[event._id]
-												? ''
-												: 'line-clamp-2'} overflow-hidden"
-											id="description-text-event-{String(i)}"
+										<hr class="border-1 w-11/12 place-self-center border-black" />
+										<!-- Description -->
+										<div
+											class="flex grow-0 w-full {descToggles[event._id]
+												? 'h-full'
+												: 'h-fit'} px-4 py-2"
+											id="description-div-event-{String(i)}"
 										>
-											{event.description}
-										</p>
-									</div>
-									<!-- Collapse button -->
-									<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
-										<button
-											class="flex w-full h-6 place-content-center"
-											on:click={() => {
-												if (descToggles[event._id] === undefined || !descToggles[event._id]) {
-													descToggles[event._id] = true;
-												} else {
-													descToggles[event._id] = false;
-												}
-											}}
-										>
-											{#if descToggles[event._id] === undefined || !descToggles[event._id]}
-												<Icon
-													class="absolute flex h-fit aspect-square"
-													icon="mdi:chevron-down"
-													width="auto"
-													height="auto"
-													id="icon-arrow-down-event-{String(i)}"
-												/>
-											{:else}
-												<Icon
-													class="absolute flex h-fit aspect-square"
-													icon="mdi:chevron-up"
-													width="auto"
-													height="auto"
-													id="icon-arrow-up-event-{String(i)}"
-												/>
-											{/if}
-										</button>
+											<p
+												class="h-full w-full {descToggles[event._id]
+													? ''
+													: 'line-clamp-2'} overflow-hidden"
+												id="description-text-event-{String(i)}"
+											>
+												{event.description}
+											</p>
+										</div>
+										<!-- Collapse button -->
+										<div class="relative flex grow-0 w-full h-full" id="expand-event-{String(i)}">
+											<button
+												class="flex w-full h-6 place-content-center"
+												on:click={() => {
+													if (descToggles[event._id] === undefined || !descToggles[event._id]) {
+														descToggles[event._id] = true;
+													} else {
+														descToggles[event._id] = false;
+													}
+												}}
+											>
+												{#if descToggles[event._id] === undefined || !descToggles[event._id]}
+													<Icon
+														class="absolute flex h-fit aspect-square"
+														icon="mdi:chevron-down"
+														width="auto"
+														height="auto"
+														id="icon-arrow-down-event-{String(i)}"
+													/>
+												{:else}
+													<Icon
+														class="absolute flex h-fit aspect-square"
+														icon="mdi:chevron-up"
+														width="auto"
+														height="auto"
+														id="icon-arrow-up-event-{String(i)}"
+													/>
+												{/if}
+											</button>
+										</div>
 									</div>
 								</div>
+							{/each}
+						{:else}
+							<div class="flex w-full h-full place-content-center place-items-center">
+								<div
+									class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center {CARD_COLORS[0]} place-content-center text-center p-4 md:p-8 rounded-md"
+								>
+									<p class="flex text-black text-3xl sm:text-4xl font-bold">No events today!</p>
+								</div>
 							</div>
-						{/each}
+						{/if}
 					{:else}
 						<div class="flex w-full h-full place-content-center place-items-center">
 							<div
