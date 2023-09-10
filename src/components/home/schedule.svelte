@@ -72,7 +72,7 @@
 </script>
 
 <div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
-	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
+	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[41rem] min-[313px]:h-[40rem] min-[569px]:h-[36rem]">
 	  <h1 class="text-center h-fit text-white text-3xl p-2"><strong>Note:</strong> Schedule is subject to change!</h1>
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
