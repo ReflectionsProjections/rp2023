@@ -5,7 +5,7 @@ import { env } from '$env/dynamic/public';
 const API_URL_MAP: { [key: string]: string } = {
 	dev: 'http://localhost:3000',
 	development: 'http://localhost:3000',
-	staging: 'https://dev.reflectionsprojections.org/api',
+	staging: 'https://api.reflectionsprojections.org', // Overriding for black
 	prod: 'https://api.reflectionsprojections.org',
 	production: 'https://api.reflectionsprojections.org'
 };

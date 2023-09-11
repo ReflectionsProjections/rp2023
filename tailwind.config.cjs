@@ -23,12 +23,12 @@ module.exports = {
 				}
 			},
 			colors: {
-				'rp-blue': '#1D2E5B',
+				'rp-blue': '#eee',
 				'rp-pink': '#EE4179',
 				'rp-dull-pink': '#803b61',
-				'rp-subtle-pink': '#E7A4BA',
+				'rp-subtle-pink': '#000',
 				'rp-hot-pink': '#C71E5E',
-				'rp-cream': '#F9EEEC'
+				'rp-cream': '#222'
 			},
 			gridTemplateColumns: {
 				'30': 'repeat(30, minmax(0, 1fr))',

@@ -121,7 +121,7 @@
 	/>
 </svelte:head>
 
-<div class="h-full text-black">
+<div class="h-full text-white">
 	<ShootingStar />
 
 	<span class="w-full flex flex-col items-center">

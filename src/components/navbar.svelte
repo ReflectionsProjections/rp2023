@@ -98,7 +98,7 @@
 
 <style>
 	.navbar-bg {
-		background: rgb(29, 46, 91);
-		background: linear-gradient(180deg, rgba(29, 46, 91, 1) 0%, rgba(255, 255, 255, 0) 100%);
+		background: #222;
+		background: linear-gradient(180deg, #222 0%, rgba(255, 255, 255, 0) 100%);
 	}
 </style>

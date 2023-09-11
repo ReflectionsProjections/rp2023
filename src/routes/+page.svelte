@@ -90,7 +90,7 @@
 								/>
 							{:else}
 								<p
-									class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center"
+									class="w-full aspect-square font-semibold text-rp-blue flex items-center justify-center"
 								>
 									{$user.email}
 								</p>

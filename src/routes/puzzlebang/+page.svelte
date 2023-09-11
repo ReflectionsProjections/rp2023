@@ -36,7 +36,7 @@
 					<br />
 					<a
 						href="https://puzzlebang.com/"
-						class="duration-500 bg-rp-blue text-gray-200 px-3 py-2 my-5 rounded-md text-center"
+						class="duration-500 bg-gray-700 text-gray-200 px-3 py-2 my-5 rounded-md text-center"
 						target="_blank"
 						referrerpolicy="no-referrer">Visit PuzzleBang</a
 					>

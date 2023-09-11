@@ -55,7 +55,7 @@
 </script>
 
 <div
-	class="flex flex-col my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-black h-[36rem]"
+	class="flex flex-col my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-gray-100 h-[36rem]"
 >
 	<!-- Day Select Tabs -->
 	<div class="flex flex-row h-8 pt-1 w-full">
@@ -118,7 +118,7 @@
 										<div class="flex flex-row w-full h-fit items-center px-2 py-2">
 											<div class="flex h-[6rem] aspect-square p-2 items-stretch">
 												<div
-													class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-white object-cover overflow-clip"
+													class="flex h-full w-full aspect-square rounded-full items-center justify-center bg-gray-800 object-cover overflow-clip"
 												>
 													{#if event.imageUrl != null}
 														<img
@@ -276,12 +276,12 @@
 
 	/* Track */
 	::-webkit-scrollbar-track {
-		background: #e7a4ba;
+		background: #000;
 	}
 
 	/* Handle */
 	::-webkit-scrollbar-thumb {
-		background: #df5178;
+		background: #888;
 		border-radius: 3px;
 	}
 

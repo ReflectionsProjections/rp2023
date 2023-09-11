@@ -78,7 +78,7 @@
 		Thank you to our sponsors:
 	</h2>
 	<div
-		class="flex flex-col gap-3 mx-auto bg-rp-subtle-pink bg-opacity-80 backdrop-blur-sm rounded-3xl md:py-16 py-10"
+		class="flex flex-col gap-3 mx-auto bg-pink-300 bg-opacity-80 backdrop-blur-sm rounded-3xl md:py-16 py-10"
 	>
 		<div class="flex flex-wrap justify-center gap-5 items-stretch">
 			{#each petaSponsors as sponsor}

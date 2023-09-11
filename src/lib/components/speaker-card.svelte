@@ -36,50 +36,50 @@
 	</div>
 	<div class="md:w-3/4 flex flex-col font-sans mt-2">
 		<div
-			class="flex flex-col items-center text-center text-2xl bg-gradient-to-r from-rp-hot-pink to-rp-blue text-white rounded-xl p-2 mb-2"
+			class="flex flex-col items-center text-center text-2xl bg-black text-white rounded-xl p-2 mb-2"
 		>
 			{speaker.name}
 		</div>
 		<div class="">
 			<p
-				class=" decoration-rp-hot-pink pt-2 inline-block pl-2 pr-2 font-bold bg-rp-cream text-black bg-opacity-60"
+				class=" decoration-rp-hot-pink pt-2 inline-block pl-2 pr-2 font-bold bg-rp-cream text-gray-100 bg-opacity-60"
 			>
 				{speaker.role}
 			</p>
 		</div>
 		<div class="flex grow-0 w-full h-fit" id="description-div-event-{speaker.id}">
 			<p
-				class="h-full w-full line-clamp-3 overflow-hidden bg-rp-cream text-black bg-opacity-60 rounded-xl pl-2 pt-2 pr-2"
+				class="h-full w-full line-clamp-3 overflow-hidden bg-rp-cream text-gray-200 bg-opacity-60 rounded-xl pl-2 pt-2 pr-2"
 				id="description-text-event-{speaker.id}"
 			>
 				{speaker.bio}
 			</p>
 		</div>
-        {#if speaker.bio !== ""}
-            <div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
-                <label class="flex w-full h-6 place-content-center cursor-pointer">
-                    <input
-                        class="sr-only peer"
-                        type="checkbox"
-                        on:click={scheduleDescControl}
-                        id="event-{speaker.id}"
-                    />
-                    <Icon
-                        class="absolute flex h-fit aspect-square visible"
-                        icon="mdi:chevron-down"
-                        width="auto"
-                        height="auto"
-                        id="icon-arrow-down-event-{speaker.id}"
-                    />
-                    <Icon
-                        class="absolute flex h-fit aspect-square invisible"
-                        icon="mdi:chevron-up"
-                        width="auto"
-                        height="auto"
-                        id="icon-arrow-up-event-{speaker.id}"
-                    />
-                </label>
-            </div>
-        {/if}
+		{#if speaker.bio !== ''}
+			<div class="relative flex grow-0 w-full h-full" id="expand-event-{speaker.id}">
+				<label class="flex w-full h-6 place-content-center cursor-pointer">
+					<input
+						class="sr-only peer"
+						type="checkbox"
+						on:click={scheduleDescControl}
+						id="event-{speaker.id}"
+					/>
+					<Icon
+						class="absolute flex h-fit aspect-square visible"
+						icon="mdi:chevron-down"
+						width="auto"
+						height="auto"
+						id="icon-arrow-down-event-{speaker.id}"
+					/>
+					<Icon
+						class="absolute flex h-fit aspect-square invisible"
+						icon="mdi:chevron-up"
+						width="auto"
+						height="auto"
+						id="icon-arrow-up-event-{speaker.id}"
+					/>
+				</label>
+			</div>
+		{/if}
 	</div>
 </span>
