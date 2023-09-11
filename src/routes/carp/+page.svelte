@@ -85,12 +85,15 @@
 		try {
 			// TODO: change url to actual api endpoint
 			let majors = [...major_filters].join(',').replace('&', 'and');
+            let years = [...grad_year_filters].join(',')
+            let jobs = [...job_interest_filters].join(',')
 
-			let uri = encodeURIComponent(majors);
+            let major_uri = encodeURIComponent(majors);
+            let year_uri = encodeURIComponent(years);
+            let job_uri = encodeURIComponent(jobs);
+
 			response = await fetch(
-				`${$API_URL}/carp/filter?majors=${uri}&years=${[...grad_year_filters].join(',')}&jobs=${[
-					...job_interest_filters
-				].join(',')}&page=${page_to_fetch}`,
+				`${$API_URL}/carp/filter?majors=${major_uri}&years=${year_uri}&jobs=${job_uri}&page=${page_to_fetch}`,
 				{
 					credentials: "include",
 					cache: 'no-cache'
