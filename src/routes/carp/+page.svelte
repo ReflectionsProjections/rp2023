@@ -217,7 +217,7 @@
 			class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 lg:w-11/12 text-sm md:text-base"
 		>
 			<div class="flex flex-row justify-between">
-				<h1 class="text-xl mb-3 p-2 font-serif">Attendee Resumes</h1>
+				<h1 class="text-xl mb-3 p-2 font-serif">Reflections | Projections 2023 Resume Book</h1>
 
 				<div class="flex flex-row gap-5">
 					<div class="justify-self-end my-auto text-gray-100 accent-rp-pink">
