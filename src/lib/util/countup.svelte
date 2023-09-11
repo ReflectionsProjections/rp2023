@@ -7,7 +7,7 @@
 	export let step: number = 1;
 	export let showPlus: boolean = false;
 
-	let value: number;
+	let value: number = 0;
 
 	const increment = () => {
 		value = value + step;

@@ -1,12 +1,9 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
-	import type { User } from '../lib/types';
-	import { userStore } from '../stores/user-store';
 	import { slide } from 'svelte/transition';
+	import type { User } from '../lib/types';
 
-	let user: User | null;
-
-	userStore.subscribe((data) => (user = data));
+	export let user: User | null;
 
 	let openDropDown = false;
 

@@ -5,11 +5,10 @@
 	import Sponsors from '../components/home/sponsors.svelte';
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
-	import type { User } from '../lib/types';
-	import { userStore } from '../stores/user-store';
+	import { userStore as user } from '../stores/user-store';
 
-	import Info from '../components/home/info.svelte';
 	import Buildings from '../components/buildings.svelte';
+	import Info from '../components/home/info.svelte';
 	import Schedule from '../components/home/schedule.svelte';
 	import Stats from '../components/home/stats.svelte';
 
@@ -18,12 +17,9 @@
 
 	let showQR = true;
 
-	let user: User | null = null;
-	userStore.subscribe((data) => (user = data));
-
 	onMount(() => {
 		try {
-			if (user) {
+			if ($user) {
 				fetch(`${$API_URL}/attendee/qr`, {
 					credentials: 'include'
 				})
@@ -57,18 +53,18 @@
 <div class="text-white flex items-center mx-3">
 	<span class="w-full flex-col flex items-center">
 		<img
-			class="w-[80%] sm:w-3/5 {user ? 'lg:w-1/4 mb-5' : 'lg:w-2/5 mb-10'}"
+			class="w-[80%] sm:w-3/5 {$user ? 'lg:w-1/4 mb-5' : 'lg:w-2/5 mb-10'}"
 			src="/rp-text-logo-white.svg"
 			alt="rp logo"
 		/>
 		<div
-			class="text-center text-md sm:text-2xl {user
+			class="text-center text-md sm:text-2xl {$user
 				? 'lg:text-xl'
 				: 'lg:text-3xl'} mb-5 flex flex-row whitespace-nowrap gap-1 items-center"
 		>
 			September 18 <Icon icon="line-md:arrow-right" /> 22
 		</div>
-		{#if user}
+		{#if $user}
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
 					{#if qrImg}
@@ -79,12 +75,17 @@
 							class="w-full aspect-square"
 						>
 							{#if showQR}
-								<img src={qrImg} class="rendering-pixelated w-full aspect-square" alt="QR Pass" in:fade />
+								<img
+									src={qrImg}
+									class="rendering-pixelated w-full aspect-square"
+									alt="QR Pass"
+									in:fade
+								/>
 							{:else}
 								<p
 									class="w-full aspect-square bg-white font-semibold text-rp-blue flex items-center justify-center"
 								>
-									{user.email}
+									{$user.email}
 								</p>
 							{/if}
 						</button>

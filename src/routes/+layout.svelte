@@ -10,7 +10,7 @@
 </script>
 
 <div class="min-h-screen">
-	<Navbar />
+	<Navbar user={data.user} />
 	<slot />
 </div>
 <Footer />
