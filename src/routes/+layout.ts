@@ -26,4 +26,4 @@ export const load = async ({ fetch }): Promise<{ user: User | null }> => {
 	};
 };
 
-export const ssr = false;
+// export const ssr = false;
