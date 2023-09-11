@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { API_URL } from '../../constants';
+    import { onMount } from 'svelte';
 
 	const major_dict = new Map([
 		['cs', 'Computer Science'],
@@ -16,7 +17,6 @@
 	]);
 
 	// DROP DOWNS
-	// TODO add functionality to fetch majors, grad years, and job interests
 	let majors = ['Computer Science', 'CS + X', 'Electrical & Computer Engineering', 'Other'];
 	$: major_filters = new Set<string>();
 
@@ -83,7 +83,6 @@
 	const fetchFilteredAttendees = async (page_to_fetch: number) => {
 		let response;
 		try {
-			// TODO: change url to actual api endpoint
 			let majors = [...major_filters].join(',').replace('&', 'and');
             let years = [...grad_year_filters].join(',')
             let jobs = [...job_interest_filters].join(',')
@@ -99,7 +98,6 @@
 					cache: 'no-cache'
 				}
 			);
-			// response = await fetch(`${$API_URL}/attendee`);
 
 			try {
 				const jsonResponse = await response.json();
@@ -121,43 +119,11 @@
 	const fetchAttendees = async () => {
 		let response;
 
-		//  // dummy data for now
-		//  attendees = [
-		// 	{
-		// 		name: 'Atharva Naik',
-		// 		studentInfo : {
-		// 			major: 'CS + X',
-		// 			graduation: 'Spring 2024',
-		// 		},
-		// 		job_interest: 'Full-Time',
-		// 		email: 'atharva.naik@reflectionsprojections.org'
-		// 	},
-		// 	{
-		// 		name: 'Saloni Vaishnav',
-		// 		studentInfo : {
-		// 			major: 'Computer Science',
-		// 			graduation: 'Spring 2025',
-		// 		},
-		// 		job_interest: 'Internship',
-		// 		email: 'saloni.vaishnav@reflectionsprojections.org'
-		// 	},
-		// 	{
-		// 		name: 'Bob Jones',
-		// 		studentInfo : {
-		// 			major: 'Computer Science',
-		// 			graduation: 'Spring 2024',
-		// 		},
-		// 		job_interest: 'Full-Time',
-		// 		email: 'bob.jones@something.com'
-		// 	}]
-
 		try {
-			// TODO: change url to actual api endpoint
 			response = await fetch(`${$API_URL}/carp/filter?majors=&years=&jobs=&page=${1}`, {
 					credentials: "include",
 					cache: 'no-cache'
 				});
-			// response = await fetch(`${$API_URL}/attendee`);
 
 			try {
 				const jsonResponse = await response.json();
@@ -176,7 +142,7 @@
 		}
 	};
 
-	fetchAttendees();
+	onMount(fetchAttendees);
 
 	const fetchURl = async (attendeeId: string) => {
 		console.log('trying to fetch url for: ' + attendeeId);
@@ -193,7 +159,6 @@
 				if (response.ok) {
 					resume_url = jsonResponse.url;
 
-					// opent the url
 					window.open(resume_url, '_blank');
 				} else {
 					console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
@@ -245,7 +210,7 @@
 					</div>
 				</div>
 
-				<div
+				<div 
 					class="bg-gray-900 w-3/12 rounded-lg fixed z-[999] p-5 right-48 duration-300 text-gray-200 center-div overflow-y-auto {show_filters_modal
 						? 'visible opacity-100'
 						: 'invisible opacity-0'} max-h-screen"
@@ -273,7 +238,7 @@
 								</div>
 
 								{#if show_majors}
-									<div class="fixed">
+									<div on:mouseleave={() => {show_majors = false}} class="fixed">
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
 											{#each majors as major}
 												<li class="flex flex-row hover:text-gray-300">
@@ -316,7 +281,7 @@
 								</div>
 
 								{#if show_grad_year}
-									<div class="fixed">
+									<div on:mouseleave={() => {show_grad_year = false}} class="fixed">
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900 h-48 overflow-scroll">
 											{#each grad_years as grad_year}
 												<li class="flex flex-row hover:text-gray-300">
@@ -356,7 +321,7 @@
 								</div>
 
 								{#if show_job_interest}
-									<div class="fixed">
+									<div on:mouseleave={() => {show_job_interest = false}} class="fixed">
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
 											{#each job_interests as job_interest}
 												<li class="flex flex-row hover:text-gray-300">
