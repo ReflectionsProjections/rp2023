@@ -73,7 +73,6 @@
 
 <div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
 	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
-	  <h1 class="text-center h-fit text-white text-3xl p-2"><strong>Note:</strong> Schedule is subject to change!</h1>
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
 			{#each SCHEDULE_BUTTONS as day}
@@ -159,7 +158,9 @@
 													</div>
 												</div>
 												<!-- Top info cluster -->
-												<div class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center">
+												<div
+													class="flex flex-col h-full w-full pl-1 pr-2 pt-2 place-content-center"
+												>
 													<!-- Event name -->
 													<div class="flex flex-col h-fit w-fit items-center">
 														<p class="flex text-xl sm:text-2xl font-bold">{event.name}</p>
@@ -177,7 +178,8 @@
 															{#if event.virtual && event.locationUrl != null}
 																<a
 																	href={event.locationUrl}
-																	class="cursor-pointer underline text-sm sm:text-lg pl-1">Virtual</a
+																	class="cursor-pointer underline text-sm sm:text-lg pl-1"
+																	>Virtual</a
 																>
 															{:else if event.virtual && event.locationUrl == null}
 																<p class="text-sm sm:text-lg pl-1">Virtual</p>
@@ -284,6 +286,7 @@
 				</div>
 			</div>
 		</div>
+		<p class="text-pink-200">Schedule is subject to change</p>
 	</div>
 </div>
 

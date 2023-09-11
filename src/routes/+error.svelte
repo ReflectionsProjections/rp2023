@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	console.error($page.status, $page.error?.message);
 </script>
 
 <div class="flex flex-col justify-center items-center h-screen">
