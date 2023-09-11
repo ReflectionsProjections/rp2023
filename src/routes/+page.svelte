@@ -6,6 +6,7 @@
 	import ShootingStar from '../components/shooting-star.svelte';
 	import { API_URL } from '../constants';
 	import { userStore as user } from '../stores/user-store';
+	export let data: { schedule: Schedule | null };
 
 	import Buildings from '../components/buildings.svelte';
 	import Info from '../components/home/info.svelte';
@@ -118,7 +119,7 @@
 			</a>
 		{/if}
 		<Stats />
-		<Schedule />
+		<Schedule schedule={data.schedule} />
 		<Info />
 	</span>
 </div>

@@ -4,6 +4,7 @@
 	import dayjs from 'dayjs';
 	import { API_URL } from '../../constants';
 	import GlassContainer from '../glass-container.svelte';
+	import type { Schedule } from '$lib/types';
 
 	const SCHEDULE_BUTTONS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 	const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
@@ -19,7 +20,7 @@
 		'Oops.'
 	];
 
-	let schedule: { [key: string]: any } | null = null;
+	export let schedule: Schedule | null;
 	let error_message = '';
 	let displayDay = '';
 	let currentDay = '';
@@ -44,25 +45,8 @@
 		}
 	}
 
-	const loadSchedule = async () => {
-		const response = await fetch(`${$API_URL}/events/schedule/days`, {
-			method: 'GET',
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-
-		const body = await response.json();
-		if (response.ok) {
-			schedule = body;
-		} else {
-			console.error('Error while fetching schedule', response.status, response.statusText, body);
-		}
-	};
-
 	onMount(async () => {
 		chooseErrorMessage();
-		await loadSchedule();
 		currentDay = OPTION_IDS[dayjs().day()];
 		dayButtonClick(currentDay.toLowerCase());
 	});

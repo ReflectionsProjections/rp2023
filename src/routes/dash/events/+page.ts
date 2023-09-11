@@ -15,5 +15,3 @@ export const load: PageLoad<void> = async ({ fetch }) => {
 		throw error(404, { message: 'Not found' });
 	}
 };
-
-export const ssr = false;
