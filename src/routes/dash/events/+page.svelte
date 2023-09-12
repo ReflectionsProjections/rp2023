@@ -2,13 +2,17 @@
 	import EventModal from '$lib/components/event-modal.svelte';
 	import type { Event } from '$lib/types';
 	import Icon from '@iconify/svelte';
-	// import dayjs from 'dayjs';
+	import dayjs from 'dayjs';
 	import { onMount } from 'svelte';
 	import { API_URL } from '../../../constants';
+	import Schedule from '../../../components/home/schedule.svelte';
 
 	let events: Event[] = [];
 	const loadEvents = async () => {
-		const res = await fetch(`${$API_URL}/events`);
+		const res = await fetch(`${$API_URL}/events`, {
+			cache: 'no-cache',
+			credentials: 'include'
+		});
 		events = await res.json();
 	};
 	onMount(loadEvents);
@@ -46,6 +50,24 @@
 		}
 	};
 
+	const loadSchedule = async (): Promise<Schedule | null> => {
+		const response = await fetch(`${$API_URL}/events/schedule/days`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
+
+		const body = await response.json();
+		let schedule = null;
+		if (response.ok) {
+			schedule = body as Schedule;
+		} else {
+			console.error('Error while fetching schedule', response.status, response.statusText, body);
+		}
+		return schedule;
+	};
+
 	const showNotImplemented = () => window.alert('This feature is currently unimplemented.');
 </script>
 
@@ -55,6 +77,7 @@
 	event={eventModalData.event}
 	{loadEvents}
 />
+
 <div class="h-full text-white flex justify-between flex-col my-5">
 	<div
 		class="bg-black bg-opacity-10 rounded-lg p-3 md:p-7 mx-auto w-full md:w-10/12 lg:w-11/12 text-sm md:text-base"
@@ -175,6 +198,16 @@
 			</div>
 		</div>
 	</div>
+
+	<div class="text-center text-3xl mt-10 font-serif">Live Schedule View</div>
+	{#key events}
+		{#await loadSchedule()}
+			<div class="mx-auto text-center">Loading Live Event View...</div>
+		{:then schedule}
+			<Schedule {schedule} />
+		{/await}
+	{/key}
+	<div class="h-10" />
 </div>
 
 <style>

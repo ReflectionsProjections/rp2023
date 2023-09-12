@@ -29,8 +29,17 @@ module.exports = {
 				'rp-subtle-pink': '#E7A4BA',
 				'rp-hot-pink': '#C71E5E',
 				'rp-cream': '#F9EEEC'
+			},
+			gridTemplateColumns: {
+				'16': 'repeat(16, minmax(0, 1fr))',
+				'footer': '200px minmax(900px, 1fr) 100px'
 			}
 		}
 	},
-	plugins: []
+	variants: { // all the following default to ['responsive']
+		imageRendering: ['responsive'],
+	},
+	plugins: [
+		require('tailwindcss-image-rendering')(), // no options to configure
+	],
 };

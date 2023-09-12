@@ -44,7 +44,7 @@
 		box-shadow: 0 1px 0 5px rgba(254, 254, 255, 0.2), 0 1px 0 7px rgba(245, 254, 255, 0.1),
 			0 1px 21px rgba(253, 253, 245, 1);
 		animation: anim 3s ease-in-out infinite;
-		z-index: -1;
+		z-index: -30;
 	}
 	span::before {
 		content: '';

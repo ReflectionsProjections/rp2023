@@ -5,25 +5,25 @@ import { get } from 'svelte/store';
 /** @type {import('./$types').LayoutServerLoad} */
 export const load = async ({ fetch }): Promise<{ user: User | null }> => {
 	const url = get(API_URL);
-
+	let user: User | null;
 	try {
 		const check = await fetch(`${url}/auth/me`, {
 			credentials: 'include',
 			cache: 'no-cache'
 		});
 
-		if (check.status != 200) {
-			return { user: null };
+		if (check.ok) {
+			user = await check.json();
+		} else {
+			user = null;
 		}
-		const user: User = await check.json();
-		return {
-			user
-		};
 	} catch (e) {
-		return {
-			user: null
-		};
+		user = null;
 	}
+
+	return {
+		user
+	};
 };
 
-export const ssr = false;
+// export const ssr = false;

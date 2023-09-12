@@ -294,6 +294,11 @@
 	let slideIn = false;
 </script>
 
+<svelte:head>
+	<title>Register for R|P 2023</title>
+	<meta name="description" content="Sign up here to receive your conference passes." />
+</svelte:head>
+
 <form class="flex mx-auto w-[90%] md:w-3/5 lg:w-2/5 text-gray-200 accent-rp-pink pb-10">
 	{#if page == 'welcome'}
 		<GlassContainer>

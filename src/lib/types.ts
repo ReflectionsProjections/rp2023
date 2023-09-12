@@ -31,6 +31,10 @@ interface Speaker {
 	bio: string;
 }
 
+interface Schedule {
+	[key: string]: Event[];
+}
+
 type Status = 'waiting' | 'in_progress' | 'failed' | 'success';
 
-export type { Event, User, Status, Role, Speaker };
+export type { Event, User, Status, Role, Speaker, Schedule };

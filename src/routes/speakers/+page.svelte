@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SpeakerCard from '$lib/components/speaker-card.svelte';
 	import type { Speaker } from '$lib/types';
+	import Buildings from '../../components/buildings.svelte';
 	import ShootingStar from '../../components/shooting-star.svelte';
 
 	const speakers: Speaker[] = [
@@ -17,6 +18,13 @@
 			role: 'Assistant Professor of Chemical and Biomolecular Engineering at Georgia Tech',
 			organization: 'Georgia Tech',
 			bio: ''
+		},
+		{
+			id: 'anna-belova',
+			name: 'Anna Belova',
+			role: 'CEO&Founder DEVAR',
+			organization: 'DEVAR',
+			bio: 'Anna Belova, CEO&Founder DEVAR, an augmented reality platform for brands, businesses, and creators, often referred to as the "Canva" for Augmented Reality Tech entrepreneur, Forbes U30 Creator one of the most successful mass-market AR products on the consumer market, with over 13 million Devar-branded AR books sold worldwide. She has also collaborated with renowned brands like Hasbro and Nickelodeon and her branded products are available in 74 countries and 27 languages. Two years ago, DEVAR introduced a no-code platform for AR creation (MyWebAR), which has quickly become one of the two most popular web-based AR platforms. DEVAR is one of the few companies that has a completely proprietary computer vision and generative AI technology stack for augmented reality. One of the DEVAR’s recent unique developments is text-to-3D — generative creation of ready-made 3D models by text. Today, among the platform\'s users are such companies and brands as Google, McDonalds, Nasdaq, PWC, Deloitte, WIX, and others.'
 		},
 		{
 			id: 'archana-chaudhary',
@@ -45,6 +53,13 @@
 			role: 'Co-Founder and CTO at Fluid Reality Inc',
 			organization: 'Fluid Reality Inc',
 			bio: "Craig is co-founder and CTO of Fluid Reality, a spinout commercializing his post doctoral work in miniaturized soft hydraulic actuation at the Human-Computer Interaction Institute at Carnegie Mellon University in the Future Interfaces Group. He's the inventor of Flat Panel Haptics and specializes in interactive embedded systems and haptic actuation. His work has won 6 best paper awards and nominations at premiere ACM and IEEE venues and has been featured in venues such as NBC Nightly News with Lester Holt, TechCrunch, and Engadget. Before CMU and Fluid Reality, Craig was the VP of Research and Development at Tanvas, where he developed novel electroadhesive touchscreens based on his PhD work in surface haptics at Northwestern University's Center for Robotics and Biosystems. Craig currently holds an adjunct professor position at UIUC ECE."
+		},
+		{
+			id: 'dale-francis',
+			name: 'Dale Francis',
+			role: 'Director of Product Engineering at Climavision',
+			organization: 'Climavision',
+			bio: "Dale is a full stack software developer specializing in solving real world problems with technology, he has over 15 years software development experience and 12 years design with a focus on custom solution development and green fields projects. Areas of expertise extend into multiple different facets of software development such as distributed systems, micro-services, functional programming, reactive programming, and design. He has worked extensively with most major Microsoft products as well as Azure along with the Adobe Suite as needed. He is competent in multiple programming languages including C#, Python, JavaScript, and HTML/CSS. He has a unique blended skill set in business, sales and technical IT competencies which allows him to engage with customers, clients, and team members more effectively."
 		},
 		{
 			id: 'emily-bender',
@@ -82,14 +97,22 @@
 			bio: ''
 		},
 		{
-			id: 'sue-harnett',
-			name: 'Sue Harnett',
-			role: 'Founder and CEO at Rewriting the Code',
-			organization: 'Rewriting The Code',
-			bio: 'Sue is a proven company founder, entrepreneur and healthcare leader. Prior to Rewriting the Code, Sue launched, developed and successfully sold a novel e-commerce and technology business in the collegiate and professional sports industry. Sue also created the strategic vision and operational infrastructure for a multi-specialty physician organization within Duke University Health System, a nationally acclaimed academic health system. She is an expert at recognizing the viability of business opportunities, testing the market to refine the proposed model and executing the go-to-market strategy. She brings a strong ability to create passionate teams, establish focused and positive work cultures and lead disruptive business models to bring innovative change. Sue hopes to positively impact the young college women of Rewriting the Code by supporting the students with the necessary skills, confidence and applied work opportunities to develop the next generation of technology leaders.\n Sue received her Masters in Healthcare Administration from Duke University in 1992 and an AB in Economics from Duke University in 1990. Sue earned a full scholarship to Duke where she received All-America honors prior to playing professional basketball in Kortrijk, Belgium.'
+			id: 'wade',
+			name: 'Wade Fagen-Ulmschneider',
+			role: 'Teaching Professor',
+			organization: 'University of Illinois Urbana-Champaign',
+			bio: 'Wade Fagen-Ulmschneider is a Teaching Professor of Computer Science at the University of Illinois Urbana-Champaign (UIUC). With a passion for data, he often teaches thousands of students each year in his courses on Data Structures, Data Visualization, and Data Science. He was selected as one of the National Academy of Engineering’s Frontiers of Engineering Education scholars, awarded the Collins Award for Innovation Teaching, and has been consistently ranked as an excellent instructor by his students for the past ten years. His work on data visualizations has been used by governors of multiple states, featured by websites including Popular Mechanics and The Verge, and has been viewed by millions of readers.'
 		}
 	];
 </script>
+
+<svelte:head>
+	<title>Speakers at R|P 2023</title>
+	<meta
+		name="description"
+		content="Industry and academia leading speakers from all over the nation at R|P 2023"
+	/>
+</svelte:head>
 
 <div class="h-full text-black">
 	<ShootingStar />
@@ -102,6 +125,8 @@
 		{/each}
 	</span>
 </div>
+
+<Buildings />
 
 <!-- Alex Abramson -------------------------------------------------------------------------->
 <!-- <span
