@@ -22,6 +22,7 @@ type Role = {
 interface User {
 	email: string;
 	fullName?: string;
+	priority: boolean;
 }
 interface Speaker {
 	id: string;

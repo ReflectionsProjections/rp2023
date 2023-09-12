@@ -19,6 +19,12 @@
 	-moz-text-fill-color: transparent;
 }
 
+@keyframes shine {
+	0% {
+		background-position: right;
+	}
+}
+
 @keyframes gradient {
 	0% {
 		background-position: 50%, 200% 30%;

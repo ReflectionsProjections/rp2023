@@ -67,18 +67,23 @@
 		</div>
 		{#if $user}
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
-				<div class="bg-rp-cream px-8 pt-8 pb-5 rounded-md qr-pass flex flex-col items-center gap-2">
+				<div
+					class="{$user.priority
+						? 'qr-pass-priority border-yellow-200 border'
+						: 'bg-rp-cream'} px-8 pt-8 pb-5 rounded-md flex flex-col items-center gap-2 relative"
+				>
+					<img src="/qr-sun-bg.svg" class="absolute left-0 top-0 w-[90%] z-0" alt="background" />
 					{#if qrImg}
 						<button
 							on:click={() => {
 								showQR = !showQR;
 							}}
-							class="w-full aspect-square"
+							class="w-full aspect-square relative"
 						>
 							{#if showQR}
 								<img
 									src={qrImg}
-									class="rendering-pixelated w-full aspect-square"
+									class="rendering-pixelated w-full aspect-square z-20"
 									alt="QR Pass"
 									in:fade
 								/>
@@ -91,10 +96,16 @@
 							{/if}
 						</button>
 					{:else}
-						<div class="w-full aspect-square bg-white animate-pulse rounded-md" />
+						<div class="w-full aspect-square bg-white animate-pulse rounded-md z-10" />
 					{/if}
 					{#if walletUrl}
-						<a href={walletUrl} target="_blank" rel="noopener noreferrer" in:slide class="w-2/3">
+						<a
+							href={walletUrl}
+							target="_blank"
+							rel="noopener noreferrer"
+							in:slide
+							class="w-2/3 z-10"
+						>
 							<img class="w-full aspect-auto" src="/addToWallet.png" alt="Add to Google Wallet" />
 						</a>
 					{/if}
@@ -127,9 +138,9 @@
 <Buildings />
 
 <style>
-	.qr-pass {
-		background-image: url('/qr-sun-bg.svg');
-		background-repeat: no-repeat;
-		background-size: 90%;
+	.qr-pass-priority {
+		background: linear-gradient(120deg, #0000 33%, rgba(255, 255, 255, 0.2) 50%, #0000 66%) #000;
+		background-size: 300% 100%;
+		animation: shine 2s infinite;
 	}
 </style>
