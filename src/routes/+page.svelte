@@ -69,7 +69,7 @@
 			<div class="block w-full md:max-w-sm md:w-8/12 mx-auto mb-10" in:slide>
 				<div
 					class="{$user.priority
-						? 'qr-pass-priority'
+						? 'qr-pass-priority border-yellow-200 border'
 						: 'bg-rp-cream'} px-8 pt-8 pb-5 rounded-md flex flex-col items-center gap-2 relative"
 				>
 					<img src="/qr-sun-bg.svg" class="absolute left-0 top-0 w-[90%] z-0" alt="background" />
@@ -78,12 +78,12 @@
 							on:click={() => {
 								showQR = !showQR;
 							}}
-							class="w-full aspect-square"
+							class="w-full aspect-square relative"
 						>
 							{#if showQR}
 								<img
 									src={qrImg}
-									class="rendering-pixelated w-full aspect-square"
+									class="rendering-pixelated w-full aspect-square z-20"
 									alt="QR Pass"
 									in:fade
 								/>
@@ -139,7 +139,7 @@
 
 <style>
 	.qr-pass-priority {
-		background: linear-gradient(90deg, #0000 33%, rgba(255, 255, 255, 0.5) 50%, #0000 66%) #ffef0a;
+		background: linear-gradient(120deg, #0000 33%, rgba(255, 255, 255, 0.2) 50%, #0000 66%) #000;
 		background-size: 300% 100%;
 		animation: shine 2s infinite;
 	}
