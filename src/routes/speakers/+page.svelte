@@ -5,19 +5,19 @@
 	import ShootingStar from '../../components/shooting-star.svelte';
 
 	const speakers: Speaker[] = [
-		// {
-		// 	id: 'chris-earney',
-		// 	name: 'Chris Earney',
-		// 	role: 'Head of United Nations Future Lab',
-		// 	organization: 'United Nations',
-		// 	bio: "Chris Earney serves as the Head of United Nations Future Lab and has worked as the Deputy Director of United Nations from May 2021 to Jun 2023. Within the United Nations, he has held the positions of Head the Crisis Insights Team within the Executive Office of the Secretary General. Earney has also worked with the United Nations High Commissioner for Refugees (UNHCR) as both the Head of the UN Refugee Agency's Innovation Service and co-founder of the Innovation Team."
-		// },
+		{
+			id: 'chris-earney',
+			name: 'Keynote: Chris Earney',
+			role: 'Head, United Nations Futures Lab',
+			organization: 'United Nations',
+			bio: 'Chris works at the intersection of foresight, innovation, and culture change at the UN. He’s had the privilege of serving the organisation in Sudan, Iraq, Kenya, at HQ in NYC and multiple other operations - from crisis to development. When he’s not working you’ll find him somewhere near a mountain and/or cheese. Terrified of flying and public speaking.'
+		},
 		{
 			id: 'alex-abramson',
 			name: 'Alex Abramson',
 			role: 'Assistant Professor of Chemical and Biomolecular Engineering at Georgia Tech',
 			organization: 'Georgia Tech',
-			bio: ''
+			bio: 'Alex Abramson, PhD is an Assistant Professor in the Chemical and Biomolecular Engineering department at Georgia Tech. He received his PhD from MIT and completed his postdoctoral research at Stanford University. Dr. Abramson’s lab designs wearable, ingestible, and implantable technologies that hold profound implications in treating chronic diseases such as diabetes, cancer, and heart failure. These biomedical devices have been featured in news outlets such as The New York Times, NPR, and Wired. Dr. Abramson has received several recognitions for scientific innovation, including being named a member of the Forbes 30 Under 30 Science List and the MIT Technology Review Innovators Under 35 List. Dr. Abramson is passionate about translating scientific endeavors from bench to bedside. Large pharmaceutical companies have exclusively licensed a portfolio of his patents to bring into clinical trials, and Dr. Abramson serves as a scientific advisor overseeing their commercialization. In addition to his scientific endeavors, Dr. Abramson plays an active role in his community by leading Diversity Equity and Inclusion efforts at his university and volunteering as a STEM tutor to local students.'
 		},
 		{
 			id: 'anna-belova',
