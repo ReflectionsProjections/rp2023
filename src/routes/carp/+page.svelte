@@ -394,7 +394,7 @@
 							<tr class="bg-opacity-0 hover:bg-opacity-10 bg-black duration-300">
 								<td contenteditable="false" bind:innerHTML={attendee.name} class=" w-56 p-2" />
 								<td contenteditable="false" class=" w-56 p-2"
-									>{major_dict.get(attendee.studentInfo.major)}</td
+									>{attendee.studentInfo.major.startsWith('cs+') ? "CS + X" : major_dict.get(attendee.studentInfo.major)}</td
 								>
 								<td
 									contenteditable="false"
