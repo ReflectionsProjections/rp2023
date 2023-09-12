@@ -76,6 +76,13 @@
 			bio: 'Josh Starmer is the person behind the popular YouTube channel, “StatQuest with Josh Starmer.” Since 2016, Josh has used an innovative and unique visual style to clearly explain Statistics, Data Science and Machine Learning concepts and algorithms to curious people all over the world.'
 		},
 		{
+			id: 'kristin-austin',
+			name: 'Kristin Austin',
+			role: 'Vice-President, Inclusion, Diversity, Equity & Access at Rewriting the Code',
+			organization: 'Rewriting the Code',
+			bio: 'Dr. Kristin Austin (she/her) serves as Vice-President of I.D.E.As. (Inclusion, Diversity, Equity, & Access) for Rewriting the Code (RTC), where she committed to disrupting gender and racial inequity in tech by centering the strengths and experiences of college women in tech. In addition to directing RTC’s inclusion strategy, Dr. Austin also equips RTC’s 50+ company partners to welcome and retain the next generation of diverse tech talent.'
+		},
+		{
 			id: 'mark-guzdial',
 			name: 'Mark Guzdial',
 			role: 'Director of PCAS at the University of Michigan',
@@ -94,7 +101,7 @@
 			name: 'Setor Zilevu',
 			role: 'Lead User Experience Researcher at Meta',
 			organization: 'Meta',
-			bio: ''
+			bio: "Dr. Setor Zilevu is a Senior User Experience Researcher at Meta and a professor at New York University’s Tandon School of Engineering. Dr. Zilevu brings his expertise in computer engineering, computer science, and human-computer interaction to design innovative solutions to better understand human behavior and human knowledge. He has a wealth of experience in developing innovative solutions to improve user experiences ranging from healthcare, education, and retail. His dedication and commitment to improving the lives of stroke survivors earned him recognition as a 2022 Innovator Under 35 by MIT Technology Review. Through his work on developing the assistive interfaces for the world's first cyber-human system for stroke survivors and developing a framework for empowering humans through UX and Al, Setor has demonstrated his ability to seamlessly merge the fields of UX and AI. With his Ph.D. in Computer Science, focusing on understanding the mental models of therapists and clinicians, and his previous experience as a UX Researcher at Google, Setor is pushing the boundaries of what is possible in the field of human-computer interaction. As the youngest Ghanaian UX Ph.D. holder, Setor hopes to make a lasting impact on the lives of people everywhere through the merger of UX and AI."
 		},
 		{
 			id: 'wade',
