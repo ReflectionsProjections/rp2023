@@ -12,6 +12,7 @@
 	import Info from '../components/home/info.svelte';
 	import Schedule from '../components/home/schedule.svelte';
 	import Stats from '../components/home/stats.svelte';
+	import PriorityInfo from '../components/home/priorityInfo.svelte';
 
 	let qrImg: string | null = null;
 	let walletUrl: null | string = null;
@@ -134,13 +135,6 @@
 		<Info />
 	</span>
 </div>
+<PriorityInfo />
 <Sponsors />
 <Buildings />
-
-<style>
-	.qr-pass-priority {
-		background: linear-gradient(120deg, #0000 33%, rgba(255, 255, 255, 0.2) 50%, #0000 66%) #000;
-		background-size: 300% 100%;
-		animation: shine 2s infinite;
-	}
-</style>

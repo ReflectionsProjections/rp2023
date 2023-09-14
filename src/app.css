@@ -8,6 +8,12 @@
 	animation: gradient 16s ease infinite alternate;
 }
 
+.qr-pass-priority {
+	background: linear-gradient(120deg, #0000 33%, rgba(255, 255, 255, 0.2) 50%, #0000 66%) #000;
+	background-size: 300% 100%;
+	animation: shine 2s infinite;
+}
+
 .text-rp-gradient {
 	color: #c61e5d;
 	background-image: linear-gradient(270deg, #c61e5d, #1d2e5b);
