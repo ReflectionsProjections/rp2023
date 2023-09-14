@@ -73,12 +73,17 @@
 					</p>
 				{:else if infoPage === 'where'}
 					<p>
-						<b>In-Person</b>
+						<b>Check-In + Pick up conference swag</b> from
+						<b>Siebel Center for CS, Outside ACM Office</b>
 						<br />
 						<br />
-						University of Illinois Urbana-Champaign at
+						See the <b>schedule</b> for specific room information. R|P is in <b>two locations</b>
+						this year:
+						<br />
 						<br />
 						<b>Siebel Center for Computer Science</b>
+						<br />
+						University of Illinois Urbana-Champaign
 						<br />
 						201 N Goodwin Ave, Urbana, IL 61801
 						<br />
