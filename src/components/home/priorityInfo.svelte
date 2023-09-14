@@ -1,5 +1,5 @@
 <div
-	class="flex flex-col bg-rp-cream rounded-xl w-full max-w-4xl mx-auto p-4 md:p-8 text-white custom-background border border-yellow-300 my-4 relative overflow-hidden"
+	class="flex flex-col bg-rp-cream rounded-xl w-full max-w-4xl mx-3 p-4 md:p-8 text-white custom-background border border-yellow-300 my-4 relative overflow-hidden"
 >
 	<h2
 		class="text-center text-3xl flex flex-col mx-auto gap-3 font-serif text-gray-200 w-fit mt-5 z-30"

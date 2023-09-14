@@ -133,8 +133,8 @@
 		<Stats />
 		<Schedule schedule={data.schedule} />
 		<Info />
+		<PriorityInfo />
 	</span>
 </div>
-<PriorityInfo />
 <Sponsors />
 <Buildings />
