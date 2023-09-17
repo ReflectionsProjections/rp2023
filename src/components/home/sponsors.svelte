@@ -63,6 +63,12 @@
 			name: 'Verkada',
 			imgUrl: 'logos/verkada.png',
 			link: 'https://verkada.com'
+		},
+		{
+			id: 'sandia',
+			name: 'Sandia National Laboratories',
+			imgUrl: 'logos/sandia.png',
+			link: 'https://www.sandia.gov/'
 		}
 	];
 </script>

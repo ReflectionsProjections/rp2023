@@ -55,6 +55,7 @@
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
+
 <div class="flex my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-black">
 	<div class="w-full h-[36rem]">
 		<!-- Day Select Tabs -->
@@ -132,7 +133,7 @@
 													>
 														{#if event.imageUrl != null}
 															<img
-																class="object-cover h-full w-full"
+																class="object-cover object-top h-full w-full"
 																alt="Event"
 																src={event.imageUrl}
 															/>
@@ -236,7 +237,6 @@
 														icon="mdi:chevron-down"
 														width="auto"
 														height="auto"
-														id="icon-arrow-down-event-{String(i)}"
 													/>
 												{:else}
 													<Icon
@@ -244,7 +244,6 @@
 														icon="mdi:chevron-up"
 														width="auto"
 														height="auto"
-														id="icon-arrow-up-event-{String(i)}"
 													/>
 												{/if}
 											</button>
@@ -255,9 +254,9 @@
 						{:else}
 							<div class="flex w-full h-full place-content-center place-items-center">
 								<div
-									class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center {CARD_COLORS[0]} place-content-center text-center p-4 md:p-8 rounded-md"
+									class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center place-content-center text-center p-4 md:p-8 rounded-md"
 								>
-									<p class="flex text-black text-3xl sm:text-4xl font-bold">No events today!</p>
+									<p class="flex text-black text-3xl sm:text-2xl font-bold">No events today</p>
 								</div>
 							</div>
 						{/if}
