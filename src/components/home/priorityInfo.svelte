@@ -31,7 +31,7 @@
 				Show off with <b class="text-amber-400">custom black & gold</b> conference passes
 			</li>
 			<li class="font-sans">
-				Attending more events <b class="text-pink-200">increases your chances</b> to win exclusive
+				Attending more events <b class="text-pink-200">increases your chance</b> to win exclusive
 				R|P merch
 			</li>
 		</ul>
