@@ -55,8 +55,8 @@
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
-<div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
-	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
+<div class="md:p-4 my-10 w-full flex items-center place-content-center text-black">
+	<div class="max-w-3xl w-full md:w-5/6 lg:w-11/12 h-[36rem]">
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
 			{#each SCHEDULE_BUTTONS as day}
@@ -122,7 +122,7 @@
 							{#each events as event, i}
 								<div class="flex w-full h-fit justify-center">
 									<div
-										class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit bg-rp-cream rounded-md m-2 border-0 border-pink-100"
+										class="w-full md:w-11/12 flex flex-col h-fit bg-rp-cream rounded-md m-2 border-0 border-pink-100"
 									>
 										<div class="flex grow-0 pb-1">
 											<div class="flex flex-row w-full h-fit items-center px-2 py-2">
@@ -132,7 +132,7 @@
 													>
 														{#if event.imageUrl != null}
 															<img
-																class="object-cover h-full w-full"
+																class="object-cover object-top h-full w-full"
 																alt="Event"
 																src={event.imageUrl}
 															/>
@@ -230,7 +230,6 @@
 														icon="mdi:chevron-down"
 														width="auto"
 														height="auto"
-														id="icon-arrow-down-event-{String(i)}"
 													/>
 												{:else}
 													<Icon
@@ -238,7 +237,6 @@
 														icon="mdi:chevron-up"
 														width="auto"
 														height="auto"
-														id="icon-arrow-up-event-{String(i)}"
 													/>
 												{/if}
 											</button>
@@ -249,9 +247,9 @@
 						{:else}
 							<div class="flex w-full h-full place-content-center place-items-center">
 								<div
-									class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center {CARD_COLORS[0]} place-content-center text-center p-4 md:p-8 rounded-md"
+									class="flex flex-col w-11/12 md:w-3/4 h-fit place-items-center place-content-center text-center p-4 md:p-8 rounded-md"
 								>
-									<p class="flex text-black text-3xl sm:text-4xl font-bold">No events today!</p>
+									<p class="flex text-black text-3xl sm:text-2xl font-bold">No events today</p>
 								</div>
 							</div>
 						{/if}
