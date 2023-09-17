@@ -6,9 +6,9 @@
 	import GlassContainer from '../glass-container.svelte';
 	import type { Schedule } from '$lib/types';
 
-	const SCHEDULE_BUTTONS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+	const SCHEDULE_BUTTONS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	const DAYS = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-	const OPTION_IDS = ['Monday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Monday']; // Convert from .day() to value
+	const OPTION_IDS = ['Monday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']; // Convert from .day() to value
 	const CARD_COLORS = ['bg-pink-200', 'bg-[#FBC5E3]']; // Colours to select from for the event cards
 	const ERROR_MESSAGES = [
 		"Hmm... something's broken.",
@@ -25,7 +25,7 @@
 	let displayDay = '';
 	let currentDay = '';
 	let descToggles: { [key: string]: boolean } = {};
-
+	console.log(schedule)
 	// list of events currently displayed
 	let events: any[] = [];
 
@@ -55,36 +55,36 @@
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
-<div class="p-2 md:p-4 my-10 w-full flex items-center place-content-center text-black">
-	<div class="max-w-3xl w-[95%] md:w-5/6 lg:w-11/12 h-[36rem]">
+<div class="flex my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-black">
+	<div class="w-full h-[36rem]">
 		<!-- Day Select Tabs -->
-		<div class="grid grid-cols-16 h-8 px-1 pt-1 items-end">
+		<div class="grid grid-cols-6 h-8 pl-0.5 pt-1 items-end">
 			{#each SCHEDULE_BUTTONS as day}
-				<div class="flex col-span-3 sm:col-span-3">
+				<div class="flex col-span-1"> 
 					<button
 						on:click={() => {
 							currentDay = day;
 						}}
-						class="select-none w-full h-full border-[1px] hover:bg-rp-hover-pale-pink border-black
+						class="select-none w-full h-full border-[1px] hover:bg-rp-hover-pale-pink border-black items-center  align-baseline
 						{currentDay === day ? 'bg-rp-cream' : 'bg-rp-subtle-pink'}"
 					>
 						<p
-							class="h-0 text-left min-[870px]:h-fit text-md font-bold select-none px-1 collapse min-[870px]:visible"
+							class="h-0 text-left min-[870px]:h-fit text-md font-bold select-none indent-[3px] collapse min-[870px]:visible"
 						>
 							{day + '.EXE'}
 						</p>
 						<p
-							class="h-0 text-left sm:h-fit min-[870px]:h-0 text-md font-bold select-none px-1 collapse sm:visible min-[870px]:collapse"
+							class="h-0 text-left sm:h-fit min-[870px]:h-0 text-md font-bold select-none indent-[3px] collapse sm:visible min-[870px]:collapse"
 						>
 							{day}
 						</p>
 						<p
-							class="h-0 text-left min-[500px]:h-fit sm:h-0 text-md font-bold select-none px-1 collapse min-[500px]:visible sm:collapse"
+							class="h-0 text-left min-[500px]:h-fit sm:h-0 text-md font-bold select-none indent-[3px] collapse min-[500px]:visible sm:collapse"
 						>
 							{day.slice(0, 3)}.EXE
 						</p>
 						<p
-							class="h-fit text-left min-[500px]:h-0 text-md font-bold select-none px-1 visible min-[500px]:collapse"
+							class="h-fit text-left min-[500px]:h-0 text-md font-bold select-none indent-[3px] visible min-[500px]:collapse"
 						>
 							{day.slice(0, 3).toUpperCase()}
 						</p>
@@ -116,13 +116,13 @@
 			<!-- Content -->
 			<div class="flex h-[30rem] sm:h-[31rem] justify-center items-center">
 				<!-- Inner Pink Box -->
-				<div class="w-11/12 h-full bg-rp-subtle-pink p-2 md:p-4 pb-8 overflow-auto">
+				<div class="w-full h-full bg-rp-subtle-pink m-2 p-4 pb-8 overflow-auto">
 					{#if schedule != null}
 						{#if events.length != 0}
 							{#each events as event, i}
 								<div class="flex w-full h-fit justify-center">
 									<div
-										class="w-full md:w-5/6 lg:w-3/4 flex flex-col h-fit bg-rp-cream rounded-md m-2 border-0 border-pink-100"
+										class="w-full flex flex-col h-fit bg-rp-cream rounded-md my-2 border-0 border-pink-100"
 									>
 										<div class="flex grow-0 pb-1">
 											<div class="flex flex-row w-full h-fit items-center px-2 py-2">
@@ -153,42 +153,48 @@
 													<div class="flex flex-col h-2/5 w-full gap-1 justify-between">
 														<!-- Location -->
 														<div class="flex flex-row">
-															<Icon
-																class="flex h-fit aspect-square"
-																icon="mdi:map-marker"
-																width="auto"
-																height="auto"
-															/>
+															<div class='min-h-[2px]'>
+																<Icon
+																	class="flex h-fit aspect-square"
+																	icon="mdi:map-marker"
+																	width="auto"
+																	height="auto"
+																/>
+															</div>
+															
 															{#if event.virtual && event.locationUrl != null}
 																<a
 																	href={event.locationUrl}
-																	class="cursor-pointer underline text-sm sm:text-lg pl-1"
+																	class="cursor-pointer underline text-md sm:text-lg pl-1"
 																	>Virtual</a
 																>
 															{:else if event.virtual && event.locationUrl == null}
-																<p class="text-sm sm:text-lg pl-1">Virtual</p>
+																<p class="text-md sm:text-lg pl-1">Virtual</p>
 															{:else if !event.virtual && event.locationUrl != null}
 																<a
 																	href={event.locationUrl}
-																	class="cursor-pointer underline text-sm sm:text-lg pl-1"
+																	class="cursor-pointer underline text-md sm:text-lg pl-1"
 																	>{event.location}</a
 																>
 															{:else}
-																<p class="text-sm sm:text-lg pl-1">{event.location}</p>
+																<p class="text-md sm:text-lg pl-1">{event.location}</p>
 															{/if}
 														</div>
 														<!-- Time -->
-														<div class="flex flex-row mr-3">
-															<Icon
-																class="flex h-full aspect-square"
-																icon="mdi:calendar"
-																width="auto"
-																height="auto"
-															/>
-															<p class="text-sm sm:text-lg pl-1">
-																{`${dayjs(event.start_time).format('h:mm A')} - ${dayjs(
-																	event.end_time
-																).format('h:mm A')}`}
+														<div class="flex flex-row">
+															<div class='min-h-[2px]'>
+																<Icon
+																	class="flex h-fit aspect-square"
+																	icon="mdi:calendar"
+																	width="auto"
+																	height="auto"
+																/>
+															</div>
+															
+															<p class="text-md sm:text-lg pl-1">
+																<span class="break-after-column inline-block">{dayjs(event.start_time).format('h:mm A')}</span>
+																<span class="break-after-column inline-block"> - </span>
+																<span class="break-after-column inline-block">{dayjs(event.end_time).format('h:mm A')}</span>
 															</p>
 														</div>
 													</div>
