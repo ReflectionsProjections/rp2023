@@ -25,7 +25,6 @@
 	let displayDay = '';
 	let currentDay = '';
 	let descToggles: { [key: string]: boolean } = {};
-	console.log(schedule)
 	// list of events currently displayed
 	let events: any[] = [];
 
@@ -55,18 +54,17 @@
 	$: if (currentDay) dayButtonClick(currentDay.toLowerCase());
 </script>
 
-
 <div class="flex my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-black">
 	<div class="w-full h-[36rem]">
 		<!-- Day Select Tabs -->
 		<div class="grid grid-cols-6 h-8 pl-0.5 pt-1 items-end">
 			{#each SCHEDULE_BUTTONS as day}
-				<div class="flex col-span-1"> 
+				<div class="flex col-span-1">
 					<button
 						on:click={() => {
 							currentDay = day;
 						}}
-						class="select-none w-full h-full border-[1px] hover:bg-rp-hover-pale-pink border-black items-center  align-baseline
+						class="select-none w-full h-full border-[1px] hover:bg-rp-hover-pale-pink border-black items-center align-baseline
 						{currentDay === day ? 'bg-rp-cream' : 'bg-rp-subtle-pink'}"
 					>
 						<p
@@ -154,7 +152,7 @@
 													<div class="flex flex-col h-2/5 w-full gap-1 justify-between">
 														<!-- Location -->
 														<div class="flex flex-row">
-															<div class='min-h-[2px]'>
+															<div class="min-h-[2px]">
 																<Icon
 																	class="flex h-fit aspect-square"
 																	icon="mdi:map-marker"
@@ -162,7 +160,7 @@
 																	height="auto"
 																/>
 															</div>
-															
+
 															{#if event.virtual && event.locationUrl != null}
 																<a
 																	href={event.locationUrl}
@@ -183,7 +181,7 @@
 														</div>
 														<!-- Time -->
 														<div class="flex flex-row">
-															<div class='min-h-[2px]'>
+															<div class="min-h-[2px]">
 																<Icon
 																	class="flex h-fit aspect-square"
 																	icon="mdi:calendar"
@@ -191,11 +189,15 @@
 																	height="auto"
 																/>
 															</div>
-															
+
 															<p class="text-md sm:text-lg pl-1">
-																<span class="break-after-column inline-block">{dayjs(event.start_time).format('h:mm A')}</span>
+																<span class="break-after-column inline-block"
+																	>{dayjs(event.start_time).format('h:mm A')}</span
+																>
 																<span class="break-after-column inline-block"> - </span>
-																<span class="break-after-column inline-block">{dayjs(event.end_time).format('h:mm A')}</span>
+																<span class="break-after-column inline-block"
+																	>{dayjs(event.end_time).format('h:mm A')}</span
+																>
 															</p>
 														</div>
 													</div>
