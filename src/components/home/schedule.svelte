@@ -58,7 +58,7 @@
 	class="flex flex-col my-10 w-full max-w-3xl rounded-sm items-center place-content-center text-black h-[36rem]"
 >
 	<!-- Day Select Tabs -->
-	<div class="flex flex-row h-8 pl-0.5 pt-1 w-full">
+	<div class="flex flex-row h-8 pt-1 w-full">
 		{#each SCHEDULE_BUTTONS as day}
 			<button
 				on:click={() => {

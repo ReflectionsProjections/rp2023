@@ -47,6 +47,6 @@
 		</div>
 	{/if}
 	<div class="{emailValid ? 'opacity-100' : 'opacity-0'} text-green-300 mt-2 duration-300">
-		To ensure it's you, we'll send a code to {email}
+		To ensure it's you, we'll ask for a code from {email} at the end.
 	</div>
 </div>
