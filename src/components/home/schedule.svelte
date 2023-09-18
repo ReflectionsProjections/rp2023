@@ -84,7 +84,7 @@
 	</div>
 	<!-- Component Body -->
 	<div
-		class="bg-rp-cream h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm w-full"
+		class="bg-rp-cream h-[34rem] place-content-center place-items-center border-[1px] border-black rounded-sm w-full pb-2"
 	>
 		<!-- Fake Heading Bar -->
 		<div class="flex flex-row m-2 items-start">
@@ -265,7 +265,7 @@
 			</div>
 		</div>
 	</div>
-	<p class="text-pink-200">Schedule is subject to change</p>
+	<p class="text-pink-200 md:self-start">Schedule is subject to change</p>
 </div>
 
 <style>
