@@ -97,6 +97,13 @@
 			bio: 'Meghana Joglekar is a tech director at Amazon Music and runs their monetization and identity orgs. After graduating at the top of her class in 1997 at University of Mumbai, Electrical Engineering program, she started her tech career with Tata Infotech. Over the years, she has built her leadership experience at Cisco and Amazon. Now a veteran at Amazon after 11years, she takes pride in encouraging and promoting diversity and inclusion at work place.'
 		},
 		{
+			id: 'ruchi-asthana',
+			name: 'Ruchi Asthana',
+			role: 'Machine Learning Engineer II, Amazon',
+			organization: 'Amazon',
+			bio: 'Ruchi is a Machine Learning Engineer II at Amazon. She graduated with a B.S. in Computational Biology from Carnegie Mellon University in 2018, and is currently pursuing a Masters in Data Science. With over 5 years of industry experience, she enjoys building, deploying, scaling machine learning solutions for real world customer impact!'
+		},
+		{
 			id: 'wade',
 			name: 'Wade Fagen-Ulmschneider',
 			role: 'Teaching Professor',
