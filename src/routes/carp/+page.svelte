@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Icon from '@iconify/svelte';
 	import { API_URL } from '../../constants';
-    import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
 	const major_dict = new Map([
 		['cs', 'Computer Science'],
@@ -84,17 +84,17 @@
 		let response;
 		try {
 			let majors = [...major_filters].join(',').replace('&', 'and');
-            let years = [...grad_year_filters].join(',')
-            let jobs = [...job_interest_filters].join(',')
+			let years = [...grad_year_filters].join(',');
+			let jobs = [...job_interest_filters].join(',');
 
-            let major_uri = encodeURIComponent(majors);
-            let year_uri = encodeURIComponent(years);
-            let job_uri = encodeURIComponent(jobs);
+			let major_uri = encodeURIComponent(majors);
+			let year_uri = encodeURIComponent(years);
+			let job_uri = encodeURIComponent(jobs);
 
 			response = await fetch(
 				`${$API_URL}/carp/filter?majors=${major_uri}&years=${year_uri}&jobs=${job_uri}&page=${page_to_fetch}`,
 				{
-					credentials: "include",
+					credentials: 'include',
 					cache: 'no-cache'
 				}
 			);
@@ -121,9 +121,9 @@
 
 		try {
 			response = await fetch(`${$API_URL}/carp/filter?majors=&years=&jobs=&page=${1}`, {
-					credentials: "include",
-					cache: 'no-cache'
-				});
+				credentials: 'include',
+				cache: 'no-cache'
+			});
 
 			try {
 				const jsonResponse = await response.json();
@@ -145,14 +145,13 @@
 	onMount(fetchAttendees);
 
 	const fetchURl = async (attendeeId: string) => {
-		console.log('trying to fetch url for: ' + attendeeId);
 		let response;
 		let resume_url;
 		try {
 			response = await fetch(`${$API_URL}/carp/resume/${attendeeId}`, {
-					credentials: "include",
-					cache: 'no-cache'
-				});
+				credentials: 'include',
+				cache: 'no-cache'
+			});
 			try {
 				const jsonResponse = await response.json();
 
@@ -164,16 +163,45 @@
 					console.log(`Request returned an error: ${JSON.stringify(jsonResponse)}`);
 				}
 			} catch (e) {
-				console.log(`Error parsing response: ${e}`);
+				console.error(`Error parsing response: ${e}`);
 			}
 		} catch (e) {
-			console.log(`Error making request: ${e}`);
+			console.error(`Error making request: ${e}`);
 		}
 	};
 
-	function handleDownload() {
-		alert('This functionality is not yet implemented. Check back soon!');
-	}
+	const handleDownload = async () => {
+		try {
+			fetch(`${$API_URL}/carp/resume/csv`, {
+				credentials: 'include',
+				cache: 'no-cache'
+			})
+				.then((res) => res.blob())
+				.then((blob) => {
+					if (blob != null) {
+						var url = window.URL.createObjectURL(blob);
+						var a = document.createElement('a');
+						a.href = url;
+						a.download = 'rp2023-resumes.csv';
+						document.body.appendChild(a);
+						a.click();
+						a.remove();
+					}
+				})
+				.catch(async (res) => {
+					const body = await res.json();
+					alert(
+						'Oops, something went wrong! If this persists, please contact us at contact@reflectionsprojections.org'
+					);
+					console.error(`Request returned an error: ${body}`);
+				});
+		} catch (e) {
+			alert(
+				'Oops, something went wrong! If this persists, please contact us at contact@reflectionsprojections.org'
+			);
+			console.error(`Error making request: ${e}`);
+		}
+	};
 </script>
 
 <main class="flex flex-col h-full">
@@ -210,7 +238,7 @@
 					</div>
 				</div>
 
-				<div 
+				<div
 					class="bg-gray-900 w-3/12 rounded-lg fixed z-[999] p-5 right-48 duration-300 text-gray-200 center-div overflow-y-auto {show_filters_modal
 						? 'visible opacity-100'
 						: 'invisible opacity-0'} max-h-screen"
@@ -238,7 +266,12 @@
 								</div>
 
 								{#if show_majors}
-									<div on:mouseleave={() => {show_majors = false}} class="fixed">
+									<div
+										on:mouseleave={() => {
+											show_majors = false;
+										}}
+										class="fixed"
+									>
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
 											{#each majors as major}
 												<li class="flex flex-row hover:text-gray-300">
@@ -281,7 +314,12 @@
 								</div>
 
 								{#if show_grad_year}
-									<div on:mouseleave={() => {show_grad_year = false}} class="fixed">
+									<div
+										on:mouseleave={() => {
+											show_grad_year = false;
+										}}
+										class="fixed"
+									>
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900 h-48 overflow-scroll">
 											{#each grad_years as grad_year}
 												<li class="flex flex-row hover:text-gray-300">
@@ -321,7 +359,12 @@
 								</div>
 
 								{#if show_job_interest}
-									<div on:mouseleave={() => {show_job_interest = false}} class="fixed">
+									<div
+										on:mouseleave={() => {
+											show_job_interest = false;
+										}}
+										class="fixed"
+									>
 										<ul class="p-2 bg-opacity-4 rounded-md bg-gray-900">
 											{#each job_interests as job_interest}
 												<li class="flex flex-row hover:text-gray-300">
@@ -394,7 +437,9 @@
 							<tr class="bg-opacity-0 hover:bg-opacity-10 bg-black duration-300">
 								<td contenteditable="false" bind:innerHTML={attendee.name} class=" w-56 p-2" />
 								<td contenteditable="false" class=" w-56 p-2"
-									>{attendee.studentInfo.major.startsWith('cs+') ? "CS + X" : major_dict.get(attendee.studentInfo.major)}</td
+									>{attendee.studentInfo.major.startsWith('cs+')
+										? 'CS + X'
+										: major_dict.get(attendee.studentInfo.major)}</td
 								>
 								<td
 									contenteditable="false"
