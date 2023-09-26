@@ -50,4 +50,6 @@ Create a GitHub issue to for any bug reports or other requests
 
 ## License
 
-rp2023 is proprietary, closed source software as of June 2023.
+rp2023 is open-source software under the MIT License.
+
+Copyright 2023 Reflections | Projections
